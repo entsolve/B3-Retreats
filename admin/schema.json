@@ -1,0 +1,1766 @@
+[
+  {
+    "path": "meta.title",
+    "label": "Seitentitel (Browser-Tab & Google)",
+    "type": "text",
+    "hint": "Erscheint im Browser-Tab und als blaue Überschrift bei Google. Ideal 50–60 Zeichen."
+  },
+  {
+    "path": "meta.description",
+    "label": "Meta-Beschreibung (Google-Vorschau)",
+    "type": "textarea",
+    "hint": "Der Beschreibungstext unter dem Google-Treffer. Ideal 140–160 Zeichen, mit Termin, Ort und Preis."
+  },
+  {
+    "path": "meta.canonical",
+    "label": "Kanonische Adresse der Seite",
+    "type": "url",
+    "hint": "Die eine offizielle Adresse dieser Seite für Suchmaschinen. Nur ändern, wenn die Domain wechselt."
+  },
+  {
+    "path": "meta.og.site_name",
+    "label": "Website-Name beim Teilen",
+    "type": "text",
+    "hint": "Name der Website, den WhatsApp, Facebook & Co. über der Vorschau anzeigen."
+  },
+  {
+    "path": "meta.og.title",
+    "label": "Titel beim Teilen (Social Media)",
+    "type": "text",
+    "hint": "Überschrift der Link-Vorschau, wenn jemand die Seite in WhatsApp, Instagram oder Facebook teilt."
+  },
+  {
+    "path": "meta.og.description",
+    "label": "Beschreibung beim Teilen (Social Media)",
+    "type": "textarea",
+    "hint": "Kurztext der Link-Vorschau beim Teilen. Zwei bis drei Sätze, die neugierig machen."
+  },
+  {
+    "path": "meta.og.image",
+    "label": "Vorschaubild beim Teilen",
+    "type": "image",
+    "hint": "Bild der Link-Vorschau beim Teilen. Querformat, empfohlen 1200 × 630 Pixel."
+  },
+  {
+    "path": "meta.jsonld.name",
+    "label": "Veranstaltungsname (Suchmaschinen-Daten)",
+    "type": "text",
+    "hint": "Offizieller Name des Retreats in den strukturierten Daten, mit denen Google das Event erkennt."
+  },
+  {
+    "path": "meta.jsonld.start_date",
+    "label": "Beginn (Datum und Uhrzeit)",
+    "type": "text",
+    "hint": "Startzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-08T16:00."
+  },
+  {
+    "path": "meta.jsonld.end_date",
+    "label": "Ende (Datum und Uhrzeit)",
+    "type": "text",
+    "hint": "Endzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-11T12:00."
+  },
+  {
+    "path": "meta.jsonld.description",
+    "label": "Event-Beschreibung (Suchmaschinen-Daten)",
+    "type": "textarea",
+    "hint": "Kurzbeschreibung des Retreats für die Google-Event-Anzeige. Ein bis zwei Sätze, keine Anführungszeichen verwenden."
+  },
+  {
+    "path": "meta.jsonld.location.name",
+    "label": "Name des Veranstaltungsortes",
+    "type": "text",
+    "hint": "Wie die Location heißt, z. B. Anwesen Spabrücken."
+  },
+  {
+    "path": "meta.jsonld.location.locality",
+    "label": "Ort",
+    "type": "text",
+    "hint": "Stadt oder Gemeinde des Veranstaltungsortes."
+  },
+  {
+    "path": "meta.jsonld.location.region",
+    "label": "Bundesland / Region",
+    "type": "text",
+    "hint": "Region des Veranstaltungsortes, z. B. Rheinland-Pfalz."
+  },
+  {
+    "path": "meta.jsonld.location.country",
+    "label": "Land (Länderkürzel)",
+    "type": "text",
+    "hint": "Zweibuchstabiges Länderkürzel, DE für Deutschland, AT für Österreich, CH für die Schweiz."
+  },
+  {
+    "path": "meta.jsonld.organizer.name",
+    "label": "Veranstalterin (Name)",
+    "type": "text",
+    "hint": "Name der Veranstalterin bzw. der Marke, die das Retreat anbietet."
+  },
+  {
+    "path": "meta.jsonld.organizer.url",
+    "label": "Website der Veranstalterin",
+    "type": "url",
+    "hint": "Vollständige Internetadresse der Veranstalterin, inklusive https://."
+  },
+  {
+    "path": "meta.jsonld.offers.shared.name",
+    "label": "Angebot 1: Bezeichnung",
+    "type": "text",
+    "hint": "Name des ersten Buchungspakets, wie es Google anzeigt, z. B. Shared House."
+  },
+  {
+    "path": "meta.jsonld.offers.shared.price",
+    "label": "Angebot 1: Preis in Euro",
+    "type": "number",
+    "hint": "Nur die Zahl ohne Euro-Zeichen und ohne Punkt, z. B. 1549. Muss zum Preis im Buchungsabschnitt passen."
+  },
+  {
+    "path": "meta.jsonld.offers.friends.name",
+    "label": "Angebot 2: Bezeichnung",
+    "type": "text",
+    "hint": "Name des zweiten Buchungspakets, z. B. Friends Special (2 Personen)."
+  },
+  {
+    "path": "meta.jsonld.offers.friends.price",
+    "label": "Angebot 2: Preis in Euro",
+    "type": "number",
+    "hint": "Nur die Zahl ohne Euro-Zeichen und ohne Punkt, z. B. 3950. Muss zum Preis im Buchungsabschnitt passen."
+  },
+  {
+    "path": "nav.programm",
+    "label": "Menüpunkt 01",
+    "type": "text",
+    "hint": "Beschriftung des ersten Navigationspunktes (führt zum Programm). Ein bis zwei Wörter."
+  },
+  {
+    "path": "nav.ort",
+    "label": "Menüpunkt 02",
+    "type": "text",
+    "hint": "Beschriftung des zweiten Navigationspunktes (führt zum Ort)."
+  },
+  {
+    "path": "nav.unterkunft",
+    "label": "Menüpunkt 03",
+    "type": "text",
+    "hint": "Beschriftung des dritten Navigationspunktes (führt zu Unterkunft und Preisen). Ein Und-Zeichen muss als &amp; geschrieben werden."
+  },
+  {
+    "path": "nav.team",
+    "label": "Menüpunkt 04",
+    "type": "text",
+    "hint": "Beschriftung des vierten Navigationspunktes (führt zur Vorstellung des Teams)."
+  },
+  {
+    "path": "nav.faq",
+    "label": "Menüpunkt 05",
+    "type": "text",
+    "hint": "Beschriftung des fünften Navigationspunktes (führt zu den häufigen Fragen)."
+  },
+  {
+    "path": "nav.cta",
+    "label": "Button im Menü",
+    "type": "text",
+    "hint": "Beschriftung des hervorgehobenen Buttons im Menü, der zum Buchungsformular springt. Kurz halten, maximal drei Wörter."
+  },
+  {
+    "path": "nav.meta.dates",
+    "label": "Termin im Menü",
+    "type": "text",
+    "hint": "Datumszeile unter den Menüpunkten. Der Gedankenstrich ist ein Halbgeviertstrich (–)."
+  },
+  {
+    "path": "nav.meta.location",
+    "label": "Ort im Menü",
+    "type": "text",
+    "hint": "Ortszeile unter den Menüpunkten, z. B. Spabrücken, Rheinland-Pfalz."
+  },
+  {
+    "path": "hero.meta",
+    "label": "Termin und Ort (kleine Zeile oben)",
+    "type": "html",
+    "hint": "Steht über der Hauptüberschrift. Das Trennzeichen &nbsp;|&nbsp; bitte unverändert lassen."
+  },
+  {
+    "path": "hero.headline",
+    "label": "Hauptüberschrift (H1)",
+    "type": "html",
+    "hint": "Der große Claim im Startbild. &nbsp; hält 'be you' zusammen in einer Zeile."
+  },
+  {
+    "path": "hero.lead",
+    "label": "Einleitungssatz im Startbild",
+    "type": "textarea",
+    "hint": "Ein bis zwei Sätze direkt unter der Hauptüberschrift."
+  },
+  {
+    "path": "hero.cta.label",
+    "label": "Beschriftung Buchungs-Button",
+    "type": "text",
+    "hint": "Text des Buttons, der zum Buchungsabschnitt springt. Kurz halten."
+  },
+  {
+    "path": "hero.cta.note",
+    "label": "Hinweis unter dem Button",
+    "type": "html",
+    "hint": "Kurzer Zusatz zu Plätzen und Zahlung. &middot; ist das Trennzeichen."
+  },
+  {
+    "path": "hero.image.wide.src",
+    "label": "Startbild mobil (Querformat)",
+    "type": "image",
+    "hint": "Wird auf Bildschirmen unter 860 px angezeigt. Seitenverhältnis 1920 × 1080."
+  },
+  {
+    "path": "hero.image.tall.src",
+    "label": "Startbild Desktop (Hochformat)",
+    "type": "image",
+    "hint": "Hauptbild im Startbereich. Seitenverhältnis 1500 × 2000."
+  },
+  {
+    "path": "hero.image.tall.alt",
+    "label": "Bildbeschreibung Startbild",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Google. Beschreibt, was zu sehen ist."
+  },
+  {
+    "path": "hero.belt",
+    "label": "Laufband unter dem Startbild",
+    "type": "html",
+    "hint": "Drei Eckdaten in einer Zeile, getrennt durch &nbsp;·&nbsp;."
+  },
+  {
+    "path": "einladung.rail",
+    "label": "Kapitelmarke (seitlich)",
+    "type": "text",
+    "hint": "Senkrechte Beschriftung am Seitenrand, z. B. 'Kapitel 01'."
+  },
+  {
+    "path": "einladung.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift."
+  },
+  {
+    "path": "einladung.headline",
+    "label": "Überschrift Einladung",
+    "type": "text",
+    "hint": "Hauptüberschrift (H2) des Abschnitts."
+  },
+  {
+    "path": "einladung.body",
+    "label": "Absätze der Einladung",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Fließtext des Abschnitts. Jeder Eintrag wird ein eigener Absatz.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatztext",
+        "type": "textarea",
+        "hint": "Ein Absatz Fließtext."
+      }
+    ]
+  },
+  {
+    "path": "einladung.link.label",
+    "label": "Textlink zum Programm",
+    "type": "text",
+    "hint": "Beschriftung des Links, der zum Programmabschnitt springt."
+  },
+  {
+    "path": "einladung.image.src",
+    "label": "Bild im Einladungsabschnitt",
+    "type": "image",
+    "hint": "Hochformat, Seitenverhältnis 900 × 1125."
+  },
+  {
+    "path": "einladung.image.alt",
+    "label": "Bildbeschreibung Einladung",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Google."
+  },
+  {
+    "path": "einladung.accent.title",
+    "label": "Titel des Merkkastens",
+    "type": "text",
+    "hint": "Fett hervorgehobene erste Zeile im farbigen Kasten."
+  },
+  {
+    "path": "einladung.accent.text",
+    "label": "Text des Merkkastens",
+    "type": "textarea",
+    "hint": "Ein Satz unter dem Titel des Kastens."
+  },
+  {
+    "path": "einladung.accent.said",
+    "label": "Aussprache-Hinweis",
+    "type": "text",
+    "hint": "Kleine Schlusszeile im Kasten, z. B. wie B³ gesprochen wird."
+  },
+  {
+    "path": "bms.rail",
+    "label": "Kapitelmarke (seitlich)",
+    "type": "text",
+    "hint": "Senkrechte Beschriftung am Seitenrand, z. B. 'Kapitel 02'."
+  },
+  {
+    "path": "bms.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift."
+  },
+  {
+    "path": "bms.headline",
+    "label": "Überschrift Body. Mind. Soul.",
+    "type": "text",
+    "hint": "Hauptüberschrift (H2) des Abschnitts."
+  },
+  {
+    "path": "bms.ruler",
+    "label": "Linienbeschriftung",
+    "type": "text",
+    "hint": "Kurzes Wort in der Zierlinie unter der Überschrift."
+  },
+  {
+    "path": "bms.intro",
+    "label": "Einleitung",
+    "type": "textarea",
+    "hint": "Absatz, der die drei Gastgeberinnen einführt."
+  },
+  {
+    "path": "bms.cols",
+    "label": "Die drei Zugänge",
+    "type": "list",
+    "itemLabel": "title",
+    "hint": "Je Eintrag eine Spalte: Ebene, Person und Beschreibung.",
+    "fields": [
+      {
+        "path": "title",
+        "label": "Ebene",
+        "type": "text",
+        "hint": "Body, Mind oder Soul."
+      },
+      {
+        "path": "sup",
+        "label": "Hochgestellte Ziffer",
+        "type": "text",
+        "hint": "Kleine Zahl neben der Ebene (1, 2, 3)."
+      },
+      {
+        "path": "who",
+        "label": "Name",
+        "type": "text",
+        "hint": "Wer diese Ebene begleitet."
+      },
+      {
+        "path": "text",
+        "label": "Beschreibung",
+        "type": "textarea",
+        "hint": "Was diese Person einbringt."
+      }
+    ]
+  },
+  {
+    "path": "bms.outro",
+    "label": "Schlussabsätze",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Abschließende Absätze des Abschnitts.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatztext",
+        "type": "textarea",
+        "hint": "Ein Absatz Fließtext."
+      }
+    ]
+  },
+  {
+    "path": "bms.sign",
+    "label": "Signatur-Zeile",
+    "type": "text",
+    "hint": "Kurze, hervorgehobene Schlusszeile des Abschnitts."
+  },
+  {
+    "path": "bms.frieze.image.src",
+    "label": "Breitbild (Fries)",
+    "type": "image",
+    "hint": "Sehr breites Bild am Abschnittsende. Seitenverhältnis 1920 × 738."
+  },
+  {
+    "path": "bms.frieze.image.alt",
+    "label": "Bildbeschreibung Fries",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Google."
+  },
+  {
+    "path": "ablauf.rail",
+    "label": "Kapitelmarke (seitlich)",
+    "type": "text",
+    "hint": "Senkrechte Beschriftung am Seitenrand, z. B. 'Kapitel 03'."
+  },
+  {
+    "path": "ablauf.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift, hier der Zeitraum."
+  },
+  {
+    "path": "ablauf.headline",
+    "label": "Überschrift Ablauf",
+    "type": "text",
+    "hint": "Hauptüberschrift (H2) des Abschnitts."
+  },
+  {
+    "path": "ablauf.ruler",
+    "label": "Linienbeschriftung",
+    "type": "text",
+    "hint": "Kurzes Wort in der Zierlinie unter der Überschrift."
+  },
+  {
+    "path": "ablauf.intro",
+    "label": "Einleitungsabsätze",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Absätze über der Zeitleiste.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatztext",
+        "type": "textarea",
+        "hint": "Ein Absatz Fließtext."
+      }
+    ]
+  },
+  {
+    "path": "ablauf.image.src",
+    "label": "Bild im Ablaufabschnitt",
+    "type": "image",
+    "hint": "Hochformat, Seitenverhältnis 1000 × 1333."
+  },
+  {
+    "path": "ablauf.image.alt",
+    "label": "Bildbeschreibung Ablauf",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Google."
+  },
+  {
+    "path": "ablauf.timeline",
+    "label": "Zeitleiste der vier Tage",
+    "type": "list",
+    "itemLabel": "tag",
+    "hint": "Ein Eintrag je Tag, in der Reihenfolge der Anzeige.",
+    "fields": [
+      {
+        "path": "tag",
+        "label": "Tag",
+        "type": "text",
+        "hint": "Wochentag, fett vorangestellt."
+      },
+      {
+        "path": "text",
+        "label": "Beschreibung des Tages",
+        "type": "textarea",
+        "hint": "Was an diesem Tag passiert, inklusive Uhrzeiten."
+      }
+    ]
+  },
+  {
+    "path": "ablauf.note",
+    "label": "Schlusssatz Ablauf",
+    "type": "textarea",
+    "hint": "Hervorgehobener Satz unter der Zeitleiste."
+  },
+  {
+    "path": "neumond.rail",
+    "label": "Kapitelmarke (seitlich)",
+    "type": "text",
+    "hint": "Senkrechte Beschriftung am Seitenrand, z. B. 'Kapitel 04'."
+  },
+  {
+    "path": "neumond.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift."
+  },
+  {
+    "path": "neumond.headline",
+    "label": "Überschrift Neumond",
+    "type": "text",
+    "hint": "Hauptüberschrift (H2) des Abschnitts."
+  },
+  {
+    "path": "neumond.ruler",
+    "label": "Linienbeschriftung",
+    "type": "text",
+    "hint": "Kurzes Wort in der Zierlinie, hier der Wochentag."
+  },
+  {
+    "path": "neumond.intro",
+    "label": "Einleitung Neumond",
+    "type": "textarea",
+    "hint": "Absatz, der den Neumond einordnet."
+  },
+  {
+    "path": "neumond.fragen",
+    "label": "Reflexionsfragen",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Aufzählung der Fragen, die das Wochenende begleiten.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Frage",
+        "type": "text",
+        "hint": "Eine Frage pro Eintrag."
+      }
+    ]
+  },
+  {
+    "path": "neumond.outro",
+    "label": "Schlussabsätze Neumond",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Absätze unter den Fragen.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatztext",
+        "type": "textarea",
+        "hint": "Ein Absatz Fließtext."
+      }
+    ]
+  },
+  {
+    "path": "exp.kapitel",
+    "label": "Kapitelnummer Experiences",
+    "type": "text",
+    "hint": "Kleine Randbeschriftung am linken Seitenrand, z.B. \"Kapitel 05\"."
+  },
+  {
+    "path": "exp.eyebrow",
+    "label": "Übertitel Experiences",
+    "type": "text",
+    "hint": "Kurze Zeile über der Überschrift, z.B. \"Das Programm\"."
+  },
+  {
+    "path": "exp.headline",
+    "label": "Überschrift Experiences",
+    "type": "text",
+    "hint": "Hauptüberschrift des Programm-Abschnitts."
+  },
+  {
+    "path": "exp.ruler",
+    "label": "Linien-Label Experiences",
+    "type": "text",
+    "hint": "Kurzer Text in der Zierlinie unter der Überschrift, z.B. \"Vier Zugänge\"."
+  },
+  {
+    "path": "exp.intro",
+    "label": "Einleitung Experiences",
+    "type": "textarea",
+    "hint": "Hervorgehobener Einleitungssatz über den vier Experiences."
+  },
+  {
+    "path": "exp.items",
+    "type": "list",
+    "label": "Die einzelnen Experiences",
+    "itemLabel": "title",
+    "hint": "Reihenfolge, Anzahl und Inhalt frei. Die Seite des Bildes bitte abwechseln lassen.",
+    "fields": [
+      {
+        "path": "title",
+        "label": "Überschrift",
+        "type": "text",
+        "hint": "Name der Session, z. B. „Yin Yoga & Breathwork“"
+      },
+      {
+        "path": "who",
+        "label": "Wer leitet sie",
+        "type": "text",
+        "hint": "Steht klein über der Überschrift, z. B. „Mit Sarah“"
+      },
+      {
+        "path": "image.src",
+        "label": "Bild",
+        "type": "image",
+        "hint": "Hochformat 4:5 — im Reiter „Bilder“ anlegen"
+      },
+      {
+        "path": "image.alt",
+        "label": "Bildbeschreibung",
+        "type": "text",
+        "hint": "Für Screenreader und Suchmaschinen. Was ist zu sehen?"
+      },
+      {
+        "path": "image.height",
+        "label": "Bildhöhe in Pixeln",
+        "type": "number",
+        "hint": "1250 bei Hochformat 4:5, 1000 bei quadratisch. Verhindert das Springen beim Laden."
+      },
+      {
+        "path": "flip",
+        "label": "Bild auf welcher Seite",
+        "type": "choice",
+        "hint": "Abwechselnd links und rechts — sonst kippt der Rhythmus des Abschnitts.",
+        "choices": [
+          {
+            "value": "",
+            "label": "Bild links"
+          },
+          {
+            "value": " exp__item--flip",
+            "label": "Bild rechts"
+          }
+        ]
+      },
+      {
+        "path": "paragraphs",
+        "type": "list",
+        "label": "Absätze",
+        "itemLabel": "text",
+        "fields": [
+          {
+            "path": "text",
+            "label": "Absatz",
+            "type": "textarea",
+            "hint": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "freizeit.frieze.src",
+    "label": "Bildstreifen über \"Freie Zeit\" – Bild",
+    "type": "image",
+    "hint": "Breites Panoramabild 1920×800 px über dem Abschnitt Freie Zeit."
+  },
+  {
+    "path": "freizeit.frieze.alt",
+    "label": "Bildstreifen über \"Freie Zeit\" – Alternativtext",
+    "type": "text",
+    "hint": "Beschreibung des Panoramabildes."
+  },
+  {
+    "path": "freizeit.kapitel",
+    "label": "Kapitelnummer Freie Zeit",
+    "type": "text",
+    "hint": "Randbeschriftung, z.B. \"Kapitel 06\"."
+  },
+  {
+    "path": "freizeit.eyebrow",
+    "label": "Übertitel Freie Zeit",
+    "type": "text",
+    "hint": "Kurze Zeile über der Überschrift, z.B. \"Raum dazwischen\"."
+  },
+  {
+    "path": "freizeit.headline",
+    "label": "Überschrift Freie Zeit",
+    "type": "text",
+    "hint": "Hauptüberschrift des Abschnitts zur freien Zeit."
+  },
+  {
+    "path": "freizeit.p1",
+    "label": "Freie Zeit – Absatz 1",
+    "type": "textarea",
+    "hint": "Erster Fließtextabsatz."
+  },
+  {
+    "path": "freizeit.p2",
+    "label": "Freie Zeit – Absatz 2",
+    "type": "textarea",
+    "hint": "Zweiter Fließtextabsatz."
+  },
+  {
+    "path": "freizeit.pullout",
+    "label": "Freie Zeit – Hervorgehobener Satz",
+    "type": "text",
+    "hint": "Optisch hervorgehobene Kernaussage zwischen den Absätzen."
+  },
+  {
+    "path": "freizeit.p3",
+    "label": "Freie Zeit – Absatz 3",
+    "type": "textarea",
+    "hint": "Absatz nach der hervorgehobenen Aussage."
+  },
+  {
+    "path": "freizeit.small",
+    "label": "Freie Zeit – Hinweis (klein)",
+    "type": "textarea",
+    "hint": "Kleingedruckter Zusatzhinweis, z.B. zu 1:1 Sessions gegen Aufpreis."
+  },
+  {
+    "path": "freizeit.cta",
+    "label": "Freie Zeit – Button-Beschriftung",
+    "type": "text",
+    "hint": "Text des Buttons, der zum Buchungsabschnitt führt."
+  },
+  {
+    "path": "freizeit.belt",
+    "label": "Zitatband nach Freie Zeit",
+    "type": "text",
+    "hint": "Breite, zitatartige Zeile zwischen den Abschnitten."
+  },
+  {
+    "path": "ort.kapitel",
+    "label": "Kapitelnummer Retreat-Ort",
+    "type": "text",
+    "hint": "Randbeschriftung, z.B. \"Kapitel 07\"."
+  },
+  {
+    "path": "ort.eyebrow",
+    "label": "Übertitel Retreat-Ort",
+    "type": "text",
+    "hint": "Ortsangabe über der Überschrift, z.B. \"Spabrücken | Rheinland-Pfalz\"."
+  },
+  {
+    "path": "ort.headline",
+    "label": "Überschrift Retreat-Ort",
+    "type": "text",
+    "hint": "Hauptüberschrift des Ort-Abschnitts."
+  },
+  {
+    "path": "ort.map.line1",
+    "label": "Karte – Zeile 1",
+    "type": "text",
+    "hint": "Erste Zeile neben der Kartengrafik (Ort und Landkreis)."
+  },
+  {
+    "path": "ort.map.line2",
+    "label": "Karte – Zeile 2",
+    "type": "text",
+    "hint": "Zweite Zeile neben der Kartengrafik (Anfahrt), steht nach dem Zeilenumbruch."
+  },
+  {
+    "path": "ort.p1",
+    "label": "Retreat-Ort – Absatz 1",
+    "type": "textarea",
+    "hint": "Erster Fließtextabsatz zum Anwesen."
+  },
+  {
+    "path": "ort.p2",
+    "label": "Retreat-Ort – Absatz 2",
+    "type": "textarea",
+    "hint": "Zweiter Fließtextabsatz (Remise)."
+  },
+  {
+    "path": "ort.p3",
+    "label": "Retreat-Ort – Absatz 3",
+    "type": "textarea",
+    "hint": "Dritter Fließtextabsatz (Terrasse, Abende)."
+  },
+  {
+    "path": "ort.p4",
+    "label": "Retreat-Ort – Absatz 4",
+    "type": "textarea",
+    "hint": "Vierter Fließtextabsatz (Umgebung, Wege)."
+  },
+  {
+    "path": "ort.mosaic[0].src",
+    "label": "Bildmosaik 1 – Bild",
+    "type": "image",
+    "hint": "Querformat 1600×900 px, große Kachel oben."
+  },
+  {
+    "path": "ort.mosaic[0].alt",
+    "label": "Bildmosaik 1 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[1].src",
+    "label": "Bildmosaik 2 – Bild",
+    "type": "image",
+    "hint": "Hochformat 1000×1250 px."
+  },
+  {
+    "path": "ort.mosaic[1].alt",
+    "label": "Bildmosaik 2 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[2].src",
+    "label": "Bildmosaik 3 – Bild",
+    "type": "image",
+    "hint": "Querformat 1100×619 px."
+  },
+  {
+    "path": "ort.mosaic[2].alt",
+    "label": "Bildmosaik 3 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[3].src",
+    "label": "Bildmosaik 4 – Bild",
+    "type": "image",
+    "hint": "Querformat 1100×619 px."
+  },
+  {
+    "path": "ort.mosaic[3].alt",
+    "label": "Bildmosaik 4 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[4].src",
+    "label": "Bildmosaik 5 – Bild",
+    "type": "image",
+    "hint": "Querformat 1100×619 px."
+  },
+  {
+    "path": "ort.mosaic[4].alt",
+    "label": "Bildmosaik 5 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[5].src",
+    "label": "Bildmosaik 6 – Bild",
+    "type": "image",
+    "hint": "Hochformat 1000×1250 px."
+  },
+  {
+    "path": "ort.mosaic[5].alt",
+    "label": "Bildmosaik 6 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[6].src",
+    "label": "Bildmosaik 7 – Bild",
+    "type": "image",
+    "hint": "Hochformat 1000×1250 px."
+  },
+  {
+    "path": "ort.mosaic[6].alt",
+    "label": "Bildmosaik 7 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "ort.mosaic[7].src",
+    "label": "Bildmosaik 8 – Bild",
+    "type": "image",
+    "hint": "Hochformat 1000×1250 px."
+  },
+  {
+    "path": "ort.mosaic[7].alt",
+    "label": "Bildmosaik 8 – Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "kulinarik.kapitel",
+    "label": "Kapitelnummer Kulinarik",
+    "type": "text",
+    "hint": "Randbeschriftung, z.B. \"Kapitel 08\"."
+  },
+  {
+    "path": "kulinarik.image.src",
+    "label": "Kulinarik – Hauptbild",
+    "type": "image",
+    "hint": "Quadratisches Bild 1000×1000 px (Essen)."
+  },
+  {
+    "path": "kulinarik.image.alt",
+    "label": "Kulinarik – Hauptbild Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "kulinarik.grill.src",
+    "label": "Kulinarik – Zweitbild (Grill)",
+    "type": "image",
+    "hint": "Kleineres Bild 800×1000 px, versetzt neben dem Hauptbild."
+  },
+  {
+    "path": "kulinarik.grill.alt",
+    "label": "Kulinarik – Zweitbild Alternativtext",
+    "type": "text",
+    "hint": "Bildbeschreibung für Screenreader."
+  },
+  {
+    "path": "kulinarik.eyebrow",
+    "label": "Übertitel Kulinarik",
+    "type": "text",
+    "hint": "Kurze Zeile über der Überschrift. \"&\" muss als &amp; geschrieben werden."
+  },
+  {
+    "path": "kulinarik.headline",
+    "label": "Überschrift Kulinarik",
+    "type": "text",
+    "hint": "Hauptüberschrift des Essens-Abschnitts."
+  },
+  {
+    "path": "kulinarik.ruler",
+    "label": "Linien-Label Kulinarik",
+    "type": "text",
+    "hint": "Kurzer Text in der Zierlinie, z.B. \"Am Tisch\"."
+  },
+  {
+    "path": "kulinarik.p1",
+    "label": "Kulinarik – Absatz 1",
+    "type": "textarea",
+    "hint": "Absatz zum Frühstück."
+  },
+  {
+    "path": "kulinarik.p2",
+    "label": "Kulinarik – Absatz 2",
+    "type": "textarea",
+    "hint": "Absatz zu Snacks zwischendurch."
+  },
+  {
+    "path": "kulinarik.p3",
+    "label": "Kulinarik – Absatz 3",
+    "type": "textarea",
+    "hint": "Absatz zum Abendessen vom Holzgrill."
+  },
+  {
+    "path": "kulinarik.tagline",
+    "label": "Kulinarik – Schlusszeile",
+    "type": "text",
+    "hint": "Hervorgehobene Zeile am Ende, z.B. Hinweis auf vegetarische Verpflegung."
+  },
+  {
+    "path": "haus.frieze.image.src",
+    "label": "Bildstreifen Unterkunft",
+    "type": "image",
+    "hint": "Breites Bild über dem Abschnitt Unterbringung (Querformat 3:2, 1600x1067)"
+  },
+  {
+    "path": "haus.frieze.image.alt",
+    "label": "Bildbeschreibung Bildstreifen",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Suchmaschinen"
+  },
+  {
+    "path": "haus.rail",
+    "label": "Kapitelmarke",
+    "type": "text",
+    "hint": "Seitliche Kapitelnummer, z. B. „Kapitel 09“"
+  },
+  {
+    "path": "haus.eyebrow",
+    "label": "Überzeile",
+    "type": "text",
+    "hint": "Kleine Zeile über der Überschrift"
+  },
+  {
+    "path": "haus.headline",
+    "label": "Überschrift",
+    "type": "text",
+    "hint": "Hauptüberschrift des Abschnitts Unterbringung & Preise"
+  },
+  {
+    "path": "haus.sub",
+    "label": "Einleitungssatz",
+    "type": "textarea",
+    "hint": "Kurzer Satz unter der Überschrift, erklärt die zwei Wohnoptionen"
+  },
+  {
+    "path": "haus.shared.image.src",
+    "label": "Bild Shared House",
+    "type": "image",
+    "hint": "Hochformat 900x1125, zeigt das Gemeinschaftshaus"
+  },
+  {
+    "path": "haus.shared.image.alt",
+    "label": "Bildbeschreibung Shared House",
+    "type": "text",
+    "hint": "Alternativtext des Bildes"
+  },
+  {
+    "path": "haus.shared.label",
+    "label": "Name der Option",
+    "type": "text",
+    "hint": "Bezeichnung der Unterbringung, z. B. „Shared House“"
+  },
+  {
+    "path": "haus.shared.headline",
+    "label": "Überschrift Shared House",
+    "type": "text",
+    "hint": "Kurze Zeile, die die Option beschreibt"
+  },
+  {
+    "path": "haus.shared.text",
+    "label": "Beschreibung Shared House",
+    "type": "textarea",
+    "hint": "Fließtext zu Größe, Einrichtung und Personenzahl"
+  },
+  {
+    "path": "haus.shared.feats",
+    "label": "Ausstattung Shared House",
+    "type": "list",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Ausstattungspunkt",
+        "type": "text",
+        "hint": "Ein Stichpunkt der Ausstattungsliste, z. B. „4 Schlafzimmer“"
+      }
+    ]
+  },
+  {
+    "path": "haus.shared.note",
+    "label": "Hinweis Shared House",
+    "type": "textarea",
+    "hint": "Kleingedruckter Hinweis unter der Ausstattungsliste (Zimmerzuteilung)"
+  },
+  {
+    "path": "haus.shared.price",
+    "label": "Preis Shared House",
+    "type": "text",
+    "hint": "Preisangabe, geschütztes Leerzeichen &nbsp; vor dem €-Zeichen beibehalten"
+  },
+  {
+    "path": "haus.shared.price_note",
+    "label": "Preiszusatz Shared House",
+    "type": "textarea",
+    "hint": "Kleintext unter dem Preis: worauf sich der Preis bezieht und was inklusive ist"
+  },
+  {
+    "path": "haus.shared.cta",
+    "label": "Button Shared House",
+    "type": "text",
+    "hint": "Beschriftung des Buchungsbuttons"
+  },
+  {
+    "path": "haus.friends.image.src",
+    "label": "Bild Friends Special",
+    "type": "image",
+    "hint": "Hochformat 900x1125, zeigt das exklusive Apartment"
+  },
+  {
+    "path": "haus.friends.image.alt",
+    "label": "Bildbeschreibung Friends Special",
+    "type": "text",
+    "hint": "Alternativtext des Bildes"
+  },
+  {
+    "path": "haus.friends.label",
+    "label": "Name der Option",
+    "type": "text",
+    "hint": "Bezeichnung der Unterbringung, z. B. „Friends Special“"
+  },
+  {
+    "path": "haus.friends.badge",
+    "label": "Auszeichnung",
+    "type": "text",
+    "hint": "Kleiner Zusatz neben dem Namen, z. B. „Exklusiv“"
+  },
+  {
+    "path": "haus.friends.headline",
+    "label": "Überschrift Friends Special",
+    "type": "text",
+    "hint": "Kurze Zeile, die die Option beschreibt"
+  },
+  {
+    "path": "haus.friends.text",
+    "label": "Beschreibung Friends Special",
+    "type": "textarea",
+    "hint": "Fließtext zum Apartment für zwei Personen"
+  },
+  {
+    "path": "haus.friends.feats",
+    "label": "Ausstattung Friends Special",
+    "type": "list",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Ausstattungspunkt",
+        "type": "text",
+        "hint": "Ein Stichpunkt der Ausstattungsliste, z. B. „großer Balkon mit weitem Ausblick“"
+      }
+    ]
+  },
+  {
+    "path": "haus.friends.note",
+    "label": "Hinweis Friends Special",
+    "type": "textarea",
+    "hint": "Kleingedruckter Hinweis unter der Ausstattungsliste (Teilnahme an gemeinsamen Programmpunkten)"
+  },
+  {
+    "path": "haus.friends.price",
+    "label": "Preis Friends Special",
+    "type": "text",
+    "hint": "Preisangabe, geschütztes Leerzeichen &nbsp; vor dem €-Zeichen beibehalten"
+  },
+  {
+    "path": "haus.friends.price_note",
+    "label": "Preiszusatz Friends Special",
+    "type": "textarea",
+    "hint": "Kleintext unter dem Preis: worauf sich der Preis bezieht und was inklusive ist"
+  },
+  {
+    "path": "haus.friends.cta",
+    "label": "Button Friends Special",
+    "type": "text",
+    "hint": "Beschriftung des Buchungsbuttons"
+  },
+  {
+    "path": "inkl.eyebrow",
+    "label": "Überzeile Inklusivleistungen",
+    "type": "text",
+    "hint": "Kleine Zeile über der Überschrift"
+  },
+  {
+    "path": "inkl.headline",
+    "label": "Überschrift Inklusivleistungen",
+    "type": "text",
+    "hint": "Hauptüberschrift des Abschnitts"
+  },
+  {
+    "path": "inkl.image.src",
+    "label": "Bild Inklusivleistungen",
+    "type": "image",
+    "hint": "Hochformat 900x1125, begleitendes Bild im Abschnitt"
+  },
+  {
+    "path": "inkl.image.alt",
+    "label": "Bildbeschreibung Inklusivleistungen",
+    "type": "text",
+    "hint": "Alternativtext des Bildes"
+  },
+  {
+    "path": "inkl.intro",
+    "label": "Einleitung Inklusivleistungen",
+    "type": "textarea",
+    "hint": "Satz über der Liste, endet mit Doppelpunkt"
+  },
+  {
+    "path": "inkl.items",
+    "label": "Enthaltene Leistungen",
+    "type": "list",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Leistung",
+        "type": "text",
+        "hint": "Eine im Preis enthaltene Leistung, z. B. „3 Übernachtungen“"
+      }
+    ]
+  },
+  {
+    "path": "inkl.excluded_label",
+    "label": "Titel Nicht enthalten",
+    "type": "text",
+    "hint": "Fette Überschrift des Kastens mit den nicht enthaltenen Leistungen"
+  },
+  {
+    "path": "inkl.excluded_text",
+    "label": "Nicht enthaltene Leistungen",
+    "type": "textarea",
+    "hint": "Kurztext, was zusätzlich anfällt (Anreise, 1:1 Sessions)"
+  },
+  {
+    "path": "team.rail",
+    "label": "Kapitelmarke Team",
+    "type": "text",
+    "hint": "Seitliche Kapitelnummer, z. B. „Kapitel 10“"
+  },
+  {
+    "path": "team.eyebrow",
+    "label": "Überzeile Team",
+    "type": "text",
+    "hint": "Namen der Gastgeberinnen, getrennt durch &middot;"
+  },
+  {
+    "path": "team.headline",
+    "label": "Überschrift Team",
+    "type": "text",
+    "hint": "Hauptüberschrift des Team-Abschnitts"
+  },
+  {
+    "path": "team.intro",
+    "label": "Einleitung Team",
+    "type": "textarea",
+    "hint": "Gemeinsamer Einleitungsabsatz über die drei Gastgeberinnen"
+  },
+  {
+    "path": "team.sophie.image.src",
+    "label": "Foto Sophie",
+    "type": "image",
+    "hint": "Porträt im Hochformat 900x1125"
+  },
+  {
+    "path": "team.sophie.image.alt",
+    "label": "Bildbeschreibung Foto Sophie",
+    "type": "text",
+    "hint": "Alternativtext des Porträts"
+  },
+  {
+    "path": "team.sophie.name",
+    "label": "Name Sophie",
+    "type": "text",
+    "hint": "Vollständiger Name als Überschrift des Profils"
+  },
+  {
+    "path": "team.sophie.craft",
+    "label": "Fachgebiete Sophie",
+    "type": "text",
+    "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
+  },
+  {
+    "path": "team.sophie.text1",
+    "label": "Sophie Absatz 1",
+    "type": "textarea",
+    "hint": "Erster Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.sophie.text2",
+    "label": "Sophie Absatz 2",
+    "type": "textarea",
+    "hint": "Zweiter Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.sophie.accent",
+    "label": "Sophie Hervorhebung",
+    "type": "textarea",
+    "hint": "Hervorgehoben gesetzter Zwischensatz zwischen Absatz 2 und 3"
+  },
+  {
+    "path": "team.sophie.text3",
+    "label": "Sophie Absatz 3",
+    "type": "textarea",
+    "hint": "Absatz nach der Hervorhebung, beschreibt die Arbeitsweise"
+  },
+  {
+    "path": "team.sophie.text4",
+    "label": "Sophie Absatz 4",
+    "type": "textarea",
+    "hint": "Abschließender Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.sarah.image.src",
+    "label": "Foto Sarah",
+    "type": "image",
+    "hint": "Porträt im Hochformat 900x1125"
+  },
+  {
+    "path": "team.sarah.image.alt",
+    "label": "Bildbeschreibung Foto Sarah",
+    "type": "text",
+    "hint": "Alternativtext des Porträts"
+  },
+  {
+    "path": "team.sarah.name",
+    "label": "Name Sarah",
+    "type": "text",
+    "hint": "Vollständiger Name als Überschrift des Profils"
+  },
+  {
+    "path": "team.sarah.craft",
+    "label": "Fachgebiete Sarah",
+    "type": "text",
+    "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
+  },
+  {
+    "path": "team.sarah.text1",
+    "label": "Sarah Absatz 1",
+    "type": "textarea",
+    "hint": "Erster Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.sarah.text2",
+    "label": "Sarah Absatz 2",
+    "type": "textarea",
+    "hint": "Zweiter Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.christina.image.src",
+    "label": "Foto Christina",
+    "type": "image",
+    "hint": "Porträt im Hochformat 900x1125"
+  },
+  {
+    "path": "team.christina.image.alt",
+    "label": "Bildbeschreibung Foto Christina",
+    "type": "text",
+    "hint": "Alternativtext des Porträts"
+  },
+  {
+    "path": "team.christina.name",
+    "label": "Name Christina",
+    "type": "text",
+    "hint": "Name als Überschrift des Profils"
+  },
+  {
+    "path": "team.christina.craft",
+    "label": "Fachgebiete Christina",
+    "type": "text",
+    "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
+  },
+  {
+    "path": "team.christina.text1",
+    "label": "Christina Absatz 1",
+    "type": "textarea",
+    "hint": "Erster Absatz der Selbstvorstellung"
+  },
+  {
+    "path": "team.christina.accent",
+    "label": "Christina Hervorhebung",
+    "type": "textarea",
+    "hint": "Hervorgehoben gesetzter Zwischensatz nach Absatz 1"
+  },
+  {
+    "path": "team.christina.text2",
+    "label": "Christina Absatz 2",
+    "type": "textarea",
+    "hint": "Absatz nach der Hervorhebung"
+  },
+  {
+    "path": "team.christina.text3",
+    "label": "Christina Absatz 3",
+    "type": "textarea",
+    "hint": "Absatz zum Verhältnis von Business und Leben"
+  },
+  {
+    "path": "team.christina.text4",
+    "label": "Christina Absatz 4",
+    "type": "textarea",
+    "hint": "Absatz über Prioritäten und Gleichzeitigkeit"
+  },
+  {
+    "path": "team.christina.text5",
+    "label": "Christina Absatz 5",
+    "type": "textarea",
+    "hint": "Absatz über Struktur und Arbeitsweise"
+  },
+  {
+    "path": "team.christina.text6",
+    "label": "Christina Absatz 6",
+    "type": "textarea",
+    "hint": "Abschließender Absatz zur Selbstverwirklichung"
+  },
+  {
+    "path": "fuerwen.rail",
+    "label": "Kapitelmarke",
+    "type": "text",
+    "hint": "Kleine Kapitelnummer am Seitenrand, z. B. Kapitel 11."
+  },
+  {
+    "path": "fuerwen.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift."
+  },
+  {
+    "path": "fuerwen.headline",
+    "label": "Überschrift",
+    "type": "text",
+    "hint": "Hauptüberschrift des Abschnitts Für wen."
+  },
+  {
+    "path": "fuerwen.body",
+    "type": "list",
+    "label": "Einleitungsabsätze",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": "Ein Absatz des Einleitungstextes. Jeder Eintrag wird ein eigener Absatz."
+      }
+    ]
+  },
+  {
+    "path": "fuerwen.image.src",
+    "label": "Bild",
+    "type": "image",
+    "hint": "Hochformat-Bild neben dem Text, Bildgröße 900 × 1125 Pixel."
+  },
+  {
+    "path": "fuerwen.image.alt",
+    "label": "Bildbeschreibung",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader und Suchmaschinen."
+  },
+  {
+    "path": "fuerwen.fragen",
+    "type": "list",
+    "label": "Fragen an dich",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Frage",
+        "type": "text",
+        "hint": "Eine Frage der Aufzählung, kurz und in Du-Ansprache."
+      }
+    ]
+  },
+  {
+    "path": "fuerwen.fazit",
+    "label": "Schlusssatz",
+    "type": "textarea",
+    "hint": "Hervorgehobener Satz in Serifenschrift am Ende des Abschnitts."
+  },
+  {
+    "path": "fuerwen.cta.label",
+    "label": "Button-Beschriftung",
+    "type": "text",
+    "hint": "Text des Buttons, der zum Buchungsabschnitt springt."
+  },
+  {
+    "path": "fuerwen.cta.note",
+    "label": "Kleinzeile unter dem Button",
+    "type": "text",
+    "hint": "Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben."
+  },
+  {
+    "path": "buchung.bg.src",
+    "label": "Hintergrundbild Buchung",
+    "type": "image",
+    "hint": "Dekoratives Hintergrundbild hinter dem Ticket, Bildgröße 1600 × 900 Pixel."
+  },
+  {
+    "path": "buchung.titel",
+    "label": "Ticket-Titel",
+    "type": "text",
+    "hint": "Name des Retreats auf dem Ticket."
+  },
+  {
+    "path": "buchung.ort",
+    "label": "Ort",
+    "type": "text",
+    "hint": "Ortsangabe unter dem Ticket-Titel."
+  },
+  {
+    "path": "buchung.termine",
+    "type": "list",
+    "label": "An- und Abreise",
+    "itemLabel": "label",
+    "fields": [
+      {
+        "path": "label",
+        "label": "Bezeichnung",
+        "type": "text",
+        "hint": "Zum Beispiel Anreise oder Abreise."
+      },
+      {
+        "path": "zeit",
+        "label": "Datum und Uhrzeit",
+        "type": "text",
+        "hint": "Wochentag, Datum und Uhrzeit als ein Text."
+      }
+    ]
+  },
+  {
+    "path": "buchung.preise",
+    "type": "list",
+    "label": "Preise",
+    "itemLabel": "label",
+    "fields": [
+      {
+        "path": "label",
+        "label": "Bezeichnung",
+        "type": "text",
+        "hint": "Name der Buchungsvariante, z. B. Shared House."
+      },
+      {
+        "path": "preis",
+        "label": "Preis",
+        "type": "text",
+        "hint": "Preis inklusive Währungszeichen, z. B. 1.549 €."
+      },
+      {
+        "path": "hinweis",
+        "label": "Preis-Zusatz",
+        "type": "text",
+        "hint": "Kleiner Zusatz unter dem Preis, z. B. pro Person."
+      }
+    ]
+  },
+  {
+    "path": "buchung.hinweis",
+    "label": "Leistungshinweis",
+    "type": "textarea",
+    "hint": "Was im Preis enthalten ist, direkt über dem Buchungsbutton."
+  },
+  {
+    "path": "buchung.cta.label",
+    "label": "Button-Beschriftung",
+    "type": "text",
+    "hint": "Text des Buchungsbuttons."
+  },
+  {
+    "path": "buchung.fine",
+    "label": "Rechtlicher Hinweis",
+    "type": "textarea",
+    "hint": "Kleingedrucktes zu Zahlungsanbieter, AGB und Stornierung."
+  },
+  {
+    "path": "faq.rail",
+    "label": "Kapitelmarke",
+    "type": "text",
+    "hint": "Kleine Kapitelnummer am Seitenrand, z. B. Kapitel 12."
+  },
+  {
+    "path": "faq.eyebrow",
+    "label": "Übertitel",
+    "type": "text",
+    "hint": "Kleine Zeile über der Abschnittsüberschrift."
+  },
+  {
+    "path": "faq.headline",
+    "label": "Überschrift",
+    "type": "text",
+    "hint": "Hauptüberschrift des FAQ-Abschnitts."
+  },
+  {
+    "path": "faq.spalte1",
+    "type": "list",
+    "label": "Fragen – linke Spalte",
+    "itemLabel": "frage",
+    "fields": [
+      {
+        "path": "frage",
+        "label": "Frage",
+        "type": "text",
+        "hint": "Sichtbare Frage, die aufgeklappt werden kann."
+      },
+      {
+        "path": "antwort",
+        "label": "Antwort",
+        "type": "html",
+        "hint": "Antworttext. Jeder Absatz steht in eigenen <p>-Tags, Links sind erlaubt."
+      }
+    ]
+  },
+  {
+    "path": "faq.spalte2",
+    "type": "list",
+    "label": "Fragen – rechte Spalte",
+    "itemLabel": "frage",
+    "fields": [
+      {
+        "path": "frage",
+        "label": "Frage",
+        "type": "text",
+        "hint": "Sichtbare Frage, die aufgeklappt werden kann."
+      },
+      {
+        "path": "antwort",
+        "label": "Antwort",
+        "type": "html",
+        "hint": "Antworttext. Jeder Absatz steht in eigenen <p>-Tags, Links sind erlaubt."
+      }
+    ]
+  },
+  {
+    "path": "abschluss.bg.src",
+    "label": "Hintergrundbild Abschluss",
+    "type": "image",
+    "hint": "Grossflaechiges Bild hinter dem Schlussabschnitt. Pfad relativ zur Startseite, z. B. assets/img/abschluss.webp. Format 16:9 (1920x1080)."
+  },
+  {
+    "path": "abschluss.eyebrow",
+    "label": "Kleine Zeile ueber der Ueberschrift",
+    "type": "text",
+    "hint": "Kurzer Vorspann ueber der Schlussueberschrift, wenige Woerter."
+  },
+  {
+    "path": "abschluss.headline",
+    "label": "Schlussueberschrift",
+    "type": "text",
+    "hint": "Die grosse Aussage am Ende der Seite."
+  },
+  {
+    "path": "abschluss.lines",
+    "label": "Schlussabsaetze (normal)",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Die ruhigen Absaetze vor der Schlusspointe. Reihenfolge frei, Anzahl beliebig.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": "Ein Absatz Fliesstext, ohne HTML."
+      }
+    ]
+  },
+  {
+    "path": "abschluss.lines_big",
+    "label": "Schlussabsaetze (hervorgehoben)",
+    "type": "list",
+    "itemLabel": "text",
+    "hint": "Die letzten, groesser gesetzten Saetze des Abschnitts.",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": "Ein hervorgehobener Absatz, ohne HTML."
+      }
+    ]
+  },
+  {
+    "path": "abschluss.cta",
+    "label": "Knopfbeschriftung Abschluss",
+    "type": "text",
+    "hint": "Text des Buchungsknopfes am Seitenende, z. B. 'Ich bin dabei'."
+  },
+  {
+    "path": "abschluss.stamp",
+    "label": "Eckdaten neben dem Knopf",
+    "type": "text",
+    "hint": "Kurzzeile mit Name, Datum und Ort. Trennzeichen bitte als &middot; schreiben."
+  },
+  {
+    "path": "foot.brand.tagline",
+    "label": "Fusszeile: Markenzeile",
+    "type": "html",
+    "hint": "Zwei Zeilen unter dem Logo. Zeilenumbruch als <br>, Trennpunkte als &middot;."
+  },
+  {
+    "path": "foot.brand.dateline",
+    "label": "Fusszeile: Termin und Ort",
+    "type": "html",
+    "hint": "Datum und Ort unter dem Logo. Zeilenumbruch als <br>, Gedankenstrich als &ndash;."
+  },
+  {
+    "path": "foot.nav.retreat.label",
+    "label": "Fusszeile Spalte 1: Ueberschrift",
+    "type": "text",
+    "hint": "Ueberschrift der ersten Linkspalte."
+  },
+  {
+    "path": "foot.nav.retreat.programm",
+    "label": "Link 'Programm'",
+    "type": "text",
+    "hint": "Beschriftung des Links zum Programm-Abschnitt. Das Sprungziel ist fest."
+  },
+  {
+    "path": "foot.nav.retreat.ort",
+    "label": "Link 'Der Ort'",
+    "type": "text",
+    "hint": "Beschriftung des Links zum Ort-Abschnitt. Das Sprungziel ist fest."
+  },
+  {
+    "path": "foot.nav.retreat.unterkunft",
+    "label": "Link 'Unterkunft & Preise'",
+    "type": "text",
+    "hint": "Beschriftung des Links zur Unterkunft. Kaufmaennisches Und bitte als &amp; schreiben."
+  },
+  {
+    "path": "foot.nav.retreat.team",
+    "label": "Link 'Ueber uns'",
+    "type": "text",
+    "hint": "Beschriftung des Links zum Team-Abschnitt. Das Sprungziel ist fest."
+  },
+  {
+    "path": "foot.nav.retreat.faq",
+    "label": "Link 'Haeufige Fragen'",
+    "type": "text",
+    "hint": "Beschriftung des Links zum FAQ-Abschnitt. Das Sprungziel ist fest."
+  },
+  {
+    "path": "foot.nav.legal.label",
+    "label": "Fusszeile Spalte 2: Ueberschrift",
+    "type": "text",
+    "hint": "Ueberschrift der Rechtliches-Spalte."
+  },
+  {
+    "path": "foot.nav.legal.impressum",
+    "label": "Link 'Impressum'",
+    "type": "text",
+    "hint": "Beschriftung des Links auf impressum.html."
+  },
+  {
+    "path": "foot.nav.legal.datenschutz",
+    "label": "Link 'Datenschutz'",
+    "type": "text",
+    "hint": "Beschriftung des Links auf datenschutz.html."
+  },
+  {
+    "path": "foot.nav.legal.agb",
+    "label": "Link 'AGB'",
+    "type": "text",
+    "hint": "Beschriftung des Links auf agb.html."
+  },
+  {
+    "path": "foot.nav.legal.kontakt",
+    "label": "Link 'Kontakt'",
+    "type": "text",
+    "hint": "Beschriftung des Links auf den Kontaktbereich im Impressum."
+  },
+  {
+    "path": "foot.nav.legal.consent",
+    "label": "Knopf 'Cookie-Einstellungen'",
+    "type": "text",
+    "hint": "Beschriftung des Knopfes, der den Cookie-Hinweis erneut oeffnet."
+  },
+  {
+    "path": "foot.booking.label",
+    "label": "Fusszeile Spalte 3: Ueberschrift",
+    "type": "text",
+    "hint": "Ueberschrift der Buchungsspalte."
+  },
+  {
+    "path": "foot.booking.prices",
+    "label": "Fusszeile: Preishinweis",
+    "type": "html",
+    "hint": "Zwei Preiszeilen. Zeilenumbruch als <br>, Eurozeichen als &euro;."
+  },
+  {
+    "path": "foot.booking.cta",
+    "label": "Fusszeile: Knopfbeschriftung",
+    "type": "text",
+    "hint": "Text des Buchungsknopfes in der Fusszeile."
+  },
+  {
+    "path": "foot.legal.line",
+    "label": "Fusszeile: Anbieterzeile",
+    "type": "text",
+    "hint": "Firmierung, Name und Anschrift. Trennpunkte als &middot; schreiben."
+  },
+  {
+    "path": "foot.legal.note",
+    "label": "Fusszeile: Hinweis zur Abwicklung",
+    "type": "text",
+    "hint": "Kurzer Hinweis, ueber welchen Anbieter Buchung und Zahlung laufen."
+  },
+  {
+    "path": "bar.price",
+    "label": "Mobile Leiste: Preisangabe",
+    "type": "text",
+    "hint": "Kurzer Preistext in der festen Leiste am unteren Bildschirmrand (mobil). Hier steht ein echtes Eurozeichen."
+  },
+  {
+    "path": "bar.cta",
+    "label": "Mobile Leiste: Knopfbeschriftung",
+    "type": "text",
+    "hint": "Sehr kurzer Knopftext in der mobilen Leiste, moeglichst unter 20 Zeichen."
+  },
+  {
+    "path": "consent.eyebrow",
+    "label": "Cookie-Hinweis: Kleine Zeile",
+    "type": "text",
+    "hint": "Vorspann ueber dem Cookie-Text."
+  },
+  {
+    "path": "consent.text",
+    "label": "Cookie-Hinweis: Text",
+    "type": "html",
+    "hint": "Erklaerung im Einwilligungsbanner, enthaelt den Link zur Datenschutzerklaerung als HTML. Rechtlich relevant, Aenderungen nur mit Bedacht."
+  },
+  {
+    "path": "consent.btn_necessary",
+    "label": "Cookie-Hinweis: Knopf 'Nur notwendige'",
+    "type": "text",
+    "hint": "Beschriftung des Knopfes, der nur technisch notwendige Cookies erlaubt."
+  },
+  {
+    "path": "consent.btn_all",
+    "label": "Cookie-Hinweis: Knopf 'Alle akzeptieren'",
+    "type": "text",
+    "hint": "Beschriftung des Knopfes, der alle Cookies erlaubt."
+  }
+]

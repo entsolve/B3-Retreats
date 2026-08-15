@@ -1,2 +1,10 @@
 .DS_Store
 **/.DS_Store
+
+__pycache__/
+*.pyc
+
+# Sicherungen der Redaktion: lokal nuetzlich, im Verlauf ueberfluessig —
+# content/site.json selbst liegt bewusst IM Verlauf, das ist die Historie.
+content/backups/
+tools/content/*.bak

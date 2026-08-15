@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Redaktion — B³ Retreats</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top__brand">
+    <span class="top__mark">B³</span>
+    <span class="top__title">Redaktion</span>
+  </div>
+
+  <nav class="tabs" id="tabs" aria-label="Bereiche">
+    <button type="button" class="tab is-on" data-tab="inhalt">Inhalte</button>
+    <button type="button" class="tab" data-tab="bilder">Bilder</button>
+    <button type="button" class="tab" data-tab="recht">Rechtstexte</button>
+    <button type="button" class="tab" data-tab="sicherungen">Sicherungen</button>
+  </nav>
+
+  <div class="top__actions">
+    <span class="state" id="state" role="status" aria-live="polite"></span>
+    <button type="button" class="btn btn--ghost" id="reload">Verwerfen</button>
+    <button type="button" class="btn btn--primary" id="save" disabled>Speichern</button>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- Inhalte ------------------------------------------------------------- -->
+  <section class="pane is-on" id="pane-inhalt">
+    <nav class="side" id="side" aria-label="Abschnitte"></nav>
+
+    <div class="work">
+      <div class="work__head">
+        <h1 id="group-title">Inhalte</h1>
+        <p class="hint" id="group-hint"></p>
+        <input type="search" id="filter" placeholder="Feld suchen …" aria-label="Feld suchen">
+      </div>
+      <form class="fields" id="fields" autocomplete="off"></form>
+    </div>
+
+    <aside class="preview">
+      <div class="preview__bar">
+        <span>Vorschau</span>
+        <div class="preview__sizes" role="group" aria-label="Breite">
+          <button type="button" data-w="390" class="is-on">Telefon</button>
+          <button type="button" data-w="820">Tablet</button>
+          <button type="button" data-w="1440">Rechner</button>
+        </div>
+        <button type="button" id="preview-reload" class="linklike">neu laden</button>
+      </div>
+      <div class="preview__stage">
+        <iframe id="preview" title="Vorschau der Startseite" src="../index.html"></iframe>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Bilder -------------------------------------------------------------- -->
+  <section class="pane" id="pane-bilder">
+    <div class="plain">
+      <h1>Bilder</h1>
+      <p class="hint">
+        Neue Fotos bekommen denselben Farblook wie alle anderen: Lichter zurück,
+        wärmerer Weißabgleich, gedämpfter Himmel, Korn und warme Vignette. Ohne
+        diesen Schritt fällt ein Bild sofort aus der Tonalität der Seite.
+      </p>
+
+      <div class="upload" id="upload">
+        <div class="upload__drop" id="drop">
+          <p><strong>Foto hierher ziehen</strong> oder <label class="linklike" for="file">auswählen</label></p>
+          <input type="file" id="file" accept="image/*" hidden>
+        </div>
+
+        <div class="upload__opts">
+          <label>Name der Datei
+            <input type="text" id="up-name" placeholder="z. B. ort-terrasse">
+            <span class="hint">Kleinbuchstaben und Bindestriche, ohne Endung</span>
+          </label>
+          <label>Bildrolle
+            <select id="up-profile"></select>
+            <span class="hint">Bestimmt den Farblook — Porträt schont Hauttöne, Außen dämpft den Himmel</span>
+          </label>
+          <label>Seitenverhältnis
+            <select id="up-aspect">
+              <option value="0.8">4 : 5 — hoch, für Arkaden und Porträts</option>
+              <option value="0.75">3 : 4 — hoch</option>
+              <option value="1">1 : 1 — quadratisch</option>
+              <option value="1.3333">4 : 3 — quer</option>
+              <option value="1.7778">16 : 9 — quer, für Friese</option>
+              <option value="2.4">2,4 : 1 — breiter Fries</option>
+            </select>
+          </label>
+          <label>Breite in Pixeln
+            <input type="number" id="up-width" value="1000" min="200" max="3000" step="100">
+          </label>
+          <button type="button" class="btn btn--primary" id="up-go" disabled>Verarbeiten</button>
+        </div>
+      </div>
+
+      <h2>Im Projekt</h2>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- Rechtstexte --------------------------------------------------------- -->
+  <section class="pane" id="pane-recht">
+    <div class="plain">
+      <h1>Rechtstexte</h1>
+      <p class="hint">
+        Quelle für Impressum, Datenschutz und AGB. Nach dem Speichern werden die
+        drei Seiten neu erzeugt — <code>impressum.html</code>, <code>datenschutz.html</code>
+        und <code>agb.html</code> nie von Hand bearbeiten.
+      </p>
+
+      <div class="legal-pick">
+        <button type="button" class="chip is-on" data-legal="legal.md">legal.md — Impressum und Datenschutz</button>
+        <button type="button" class="chip" data-legal="agb.txt">agb.txt — AGB</button>
+      </div>
+
+      <textarea id="legal-text" spellcheck="false" aria-label="Rechtstext"></textarea>
+      <button type="button" class="btn btn--primary" id="legal-save">Rechtstexte speichern und neu bauen</button>
+    </div>
+  </section>
+
+  <!-- Sicherungen --------------------------------------------------------- -->
+  <section class="pane" id="pane-sicherungen">
+    <div class="plain">
+      <h1>Sicherungen</h1>
+      <p class="hint">
+        Vor jedem Speichern legt der Server eine Kopie von <code>content/site.json</code> an.
+        Zurückholen ersetzt den heutigen Stand — und wird selbst wieder gesichert,
+        ist also umkehrbar.
+      </p>
+      <div class="backups" id="backups"></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="alert" aria-live="assertive" hidden></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

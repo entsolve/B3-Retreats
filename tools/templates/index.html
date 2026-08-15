@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ meta.title }}</title>
+<meta name="description" content="{{ meta.description }}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ meta.canonical }}">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="{{ meta.og.site_name }}">
+<meta property="og:title" content="{{ meta.og.title }}">
+<meta property="og:description" content="{{ meta.og.description }}">
+<meta property="og:image" content="{{ meta.og.image }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "{{ meta.jsonld.name }}",
+  "startDate": "{{ meta.jsonld.start_date }}",
+  "endDate": "{{ meta.jsonld.end_date }}",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "description": "{{ meta.jsonld.description }}",
+  "location": {
+    "@type": "Place",
+    "name": "{{ meta.jsonld.location.name }}",
+    "address": { "@type": "PostalAddress", "addressLocality": "{{ meta.jsonld.location.locality }}", "addressRegion": "{{ meta.jsonld.location.region }}", "addressCountry": "{{ meta.jsonld.location.country }}" }
+  },
+  "organizer": { "@type": "Organization", "name": "{{ meta.jsonld.organizer.name }}", "url": "{{ meta.jsonld.organizer.url }}" },
+  "offers": [
+    { "@type": "Offer", "name": "{{ meta.jsonld.offers.shared.name }}", "price": "{{ meta.jsonld.offers.shared.price }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "{{ meta.jsonld.offers.friends.name }}", "price": "{{ meta.jsonld.offers.friends.price }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Wiederverwendbares Markenzeichen -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- Farbe kommt über currentColor herein — Klassen greifen im <use>-Schattenbaum nicht. -->
+  <g id="b3mark">
+    <path d="M90.97 15.76 A54 54 0 1 1 73.98 7.84" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <path d="M94.71 18.64 A54 54 0 0 1 110.74 41.53" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <circle cx="82.82" cy="11.06" r="2.6" fill="currentColor"/>
+    <text x="58" y="74" text-anchor="middle" font-size="48" fill="currentColor"
+          font-family="'Cormorant Garamond', Georgia, serif" font-weight="300">B<tspan font-size="25" dy="-17">3</tspan></text>
+    <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
+          font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
+  </g>
+</defs></svg>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-head" id="head">
+  <div class="wrap site-head__in">
+    <a class="site-head__logo" href="#top" aria-label="B³ Retreats – Startseite">
+      <svg class="mark" viewBox="0 0 120 120" width="76" height="76"><use href="#b3mark"/></svg>
+    </a>
+
+    <nav class="site-nav" id="menu" aria-label="Hauptnavigation">
+      <a href="#experiences"><i>01</i>{{ nav.programm }}</a>
+      <a href="#ort"><i>02</i>{{ nav.ort }}</a>
+      <a href="#unterkunft"><i>03</i>{{ nav.unterkunft }}</a>
+      <a href="#team"><i>04</i>{{ nav.team }}</a>
+      <a href="#faq"><i>05</i>{{ nav.faq }}</a>
+      <a class="is-cta" href="#buchung" data-booking>{{ nav.cta }}</a>
+      <p class="site-nav__meta">{{ nav.meta.dates }}<br>{{ nav.meta.location }}</p>
+    </nav>
+
+    <!-- Zwei Haarlinien statt eines Standard-Icons — dasselbe Mittel wie im Raster -->
+    <button class="burger" id="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 01 ─ Hero ─────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero__copy">
+    <p class="hero__meta">{{ hero.meta }}</p>
+    <h1>{{ hero.headline }}</h1>
+    <p class="lead">{{ hero.lead }}</p>
+    <div class="hero__cta">
+      <a class="btn btn--primary" href="#buchung" data-booking>{{ hero.cta.label }}</a>
+      <span class="small">{{ hero.cta.note }}</span>
+    </div>
+  </div>
+  <div class="hero__ph ph px" data-px="7">
+    <picture>
+      <!-- Am Telefon steht das Bild quer über der Typo, nicht daneben -->
+      <source media="(max-width: 860px)" srcset="{{ hero.image.wide.src }}" width="1920" height="1080">
+      <img src="{{ hero.image.tall.src }}" width="1500" height="2000" alt="{{ hero.image.tall.alt }}" fetchpriority="high">
+    </picture>
+  </div>
+  <div class="medallion">
+    <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
+  </div>
+</section>
+
+<p class="belt belt--seam">{{ hero.belt }}</p>
+
+<!-- 02 ─ Einladung ────────────────────────────────────────────────────── -->
+<section class="invite band-ivory">
+  <div class="wrap grid">
+    <div class="rail">{{ einladung.rail }}</div>
+    <div class="invite__head rise">
+      <p class="eyebrow">{{ einladung.eyebrow }}</p>
+      <h2>{{ einladung.headline }}</h2>
+    </div>
+    <div class="invite__body rise">
+      {{# einladung.body }}
+      <p>{{ .text }}</p>
+      {{/ einladung.body }}
+      <p><a class="link" href="#experiences">{{ einladung.link.label }}</a></p>
+    </div>
+    <figure class="invite__ph rise">
+      <div class="ph"><img src="{{ einladung.image.src }}" width="900" height="1125" alt="{{ einladung.image.alt }}" loading="lazy" decoding="async"></div>
+    </figure>
+    <div class="accent-block rise">
+      <strong>{{ einladung.accent.title }}</strong>
+      {{ einladung.accent.text }}
+      <span class="said">{{ einladung.accent.said }}</span>
+    </div>
+  </div>
+</section>
+
+<div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- 03 ─ Body. Mind. Soul. ────────────────────────────────────────────── -->
+<section class="bms band-sand">
+  <div class="wrap grid">
+    <div class="rail">{{ bms.rail }}</div>
+    <div class="bms__head rise">
+      <p class="eyebrow">{{ bms.eyebrow }}</p>
+      <h2>{{ bms.headline }}</h2>
+      <div class="ruler"><span>{{ bms.ruler }}</span></div>
+      <p>{{ bms.intro }}</p>
+    </div>
+
+    <div class="bms__cols rise">
+      {{# bms.cols }}
+      <div class="bms__col">
+        <h3>{{ .title }}<sup>{{ .sup }}</sup></h3>
+        <span class="bms__who">{{ .who }}</span>
+        <p>{{ .text }}</p>
+      </div>
+      {{/ bms.cols }}
+    </div>
+
+    <div class="bms__outro rise">
+      {{# bms.outro }}
+      <p>{{ .text }}</p>
+      {{/ bms.outro }}
+    </div>
+    <p class="bms__sign rise">{{ bms.sign }}</p>
+  </div>
+
+  <div class="frieze frieze--tight rise">
+    <div class="ph px" data-px="8"><img src="{{ bms.frieze.image.src }}" width="1920" height="738" alt="{{ bms.frieze.image.alt }}" loading="lazy" decoding="async"></div>
+  </div>
+</section>
+
+<!-- 04 ─ Ablauf ───────────────────────────────────────────────────────── -->
+<section class="ablauf band-ivory">
+  <div class="wrap grid">
+    <div class="rail">{{ ablauf.rail }}</div>
+    <div class="ablauf__head rise">
+      <p class="eyebrow">{{ ablauf.eyebrow }}</p>
+      <h2>{{ ablauf.headline }}</h2>
+      <div class="ruler"><span>{{ ablauf.ruler }}</span></div>
+      {{# ablauf.intro }}
+      <p>{{ .text }}</p>
+      {{/ ablauf.intro }}
+    </div>
+
+    <div class="ablauf__ph rise">
+      <div class="ph"><img src="{{ ablauf.image.src }}" width="1000" height="1333" alt="{{ ablauf.image.alt }}" loading="lazy" decoding="async"></div>
+    </div>
+
+    <ol class="timeline rise">
+      {{# ablauf.timeline }}
+      <li class="timeline__day"><b>{{ .tag }}</b><p>{{ .text }}</p></li>
+      {{/ ablauf.timeline }}
+    </ol>
+
+    <p class="ablauf__note rise">{{ ablauf.note }}</p>
+  </div>
+
+  <svg class="sprig" viewBox="0 0 90 220" aria-hidden="true">
+    <path d="M45 218 C45 160 44 92 46 6"/>
+    <path d="M45 190 C28 184 20 170 20 152 C36 154 45 168 45 190Z"/>
+    <path d="M45 172 C62 166 70 152 70 134 C54 136 45 150 45 172Z"/>
+    <path d="M45 148 C28 142 20 128 20 110 C36 112 45 126 45 148Z"/>
+    <path d="M45 126 C62 120 70 106 70 88 C54 90 45 104 45 126Z"/>
+    <path d="M45 100 C28 94 20 80 20 62 C36 64 45 78 45 100Z"/>
+    <path d="M45 76 C62 70 70 56 70 38 C54 40 45 54 45 76Z"/>
+  </svg>
+</section>
+
+<!-- 05 ─ Neumond ──────────────────────────────────────────────────────── -->
+<section class="neumond band-olive">
+  <div class="wrap grid">
+    <div class="rail">{{ neumond.rail }}</div>
+    <div class="neumond__head rise">
+      <p class="eyebrow">{{ neumond.eyebrow }}</p>
+      <h2>{{ neumond.headline }}</h2>
+      <div class="ruler"><span>{{ neumond.ruler }}</span></div>
+      <p>{{ neumond.intro }}</p>
+    </div>
+
+    <div class="neumond__q rise">
+      <ul>
+        {{# neumond.fragen }}
+        <li>{{ .text }}</li>
+        {{/ neumond.fragen }}
+      </ul>
+    </div>
+
+    <div class="neumond__outro rise">
+      {{# neumond.outro }}
+      <p>{{ .text }}</p>
+      {{/ neumond.outro }}
+    </div>
+  </div>
+
+  <svg class="neumond__moon" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="72"/>
+    <circle cx="100" cy="100" r="92"/>
+    <circle cx="100" cy="100" r="52" stroke-dasharray="3 9"/>
+  </svg>
+</section>
+
+<!-- 06 ─ Experiences ──────────────────────────────────────────────────── -->
+<section class="exp band-ivory" id="experiences">
+  <svg class="sun" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="62"/>
+    <circle cx="200" cy="200" r="96" stroke-dasharray="2 10"/>
+    <g>
+      <line x1="200" y1="20" x2="200" y2="120"/><line x1="200" y1="280" x2="200" y2="380"/>
+      <line x1="20" y1="200" x2="120" y2="200"/><line x1="280" y1="200" x2="380" y2="200"/>
+      <line x1="73" y1="73" x2="144" y2="144"/><line x1="256" y1="256" x2="327" y2="327"/>
+      <line x1="327" y1="73" x2="256" y2="144"/><line x1="144" y1="256" x2="73" y2="327"/>
+      <line x1="130" y1="35" x2="165" y2="118"/><line x1="235" y1="282" x2="270" y2="365"/>
+      <line x1="270" y1="35" x2="235" y2="118"/><line x1="165" y1="282" x2="130" y2="365"/>
+      <line x1="35" y1="130" x2="118" y2="165"/><line x1="282" y1="235" x2="365" y2="270"/>
+      <line x1="35" y1="270" x2="118" y2="235"/><line x1="282" y1="165" x2="365" y2="130"/>
+    </g>
+  </svg>
+
+  <div class="wrap grid">
+    <div class="rail">{{ exp.kapitel }}</div>
+    <div class="exp__head rise">
+      <p class="eyebrow">{{ exp.eyebrow }}</p>
+      <h2>{{ exp.headline }}</h2>
+      <div class="ruler"><span>{{ exp.ruler }}</span></div>
+    </div>
+    <div class="exp__intro rise">
+      <p class="lead">{{ exp.intro }}</p>
+    </div>
+{{# exp.items }}
+
+    <article class="exp__item{{ .flip }} rise">
+      <div class="ph"><img src="{{ .image.src }}" width="1000" height="{{ .image.height }}" alt="{{ .image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="exp__tx">
+        <span class="exp__who">{{ .who }}</span>
+        <h3>{{ .title }}</h3>
+{{# .paragraphs }}
+        <p>{{ .text }}</p>
+{{/ .paragraphs }}
+      </div>
+    </article>
+{{/ exp.items }}
+  </div>
+</section>
+
+<div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- 07 ─ Freie Zeit ───────────────────────────────────────────────────── -->
+<div class="frieze rise">
+  <div class="ph px" data-px="8"><img src="{{ freizeit.frieze.src }}" width="1920" height="800" alt="{{ freizeit.frieze.alt }}" loading="lazy" decoding="async"></div>
+</div>
+
+<section class="freizeit band-ivory">
+  <div class="wrap grid">
+    <div class="rail">{{ freizeit.kapitel }}</div>
+    <div class="freizeit__head rise">
+      <p class="eyebrow">{{ freizeit.eyebrow }}</p>
+      <h2>{{ freizeit.headline }}</h2>
+    </div>
+    <div class="freizeit__body rise">
+      <p>{{ freizeit.p1 }}</p>
+      <p>{{ freizeit.p2 }}</p>
+      <p class="pullout">{{ freizeit.pullout }}</p>
+      <p>{{ freizeit.p3 }}</p>
+      <p class="small">{{ freizeit.small }}</p>
+      <p style="margin-top:2.5rem"><a class="btn btn--ghost" href="#buchung" data-booking>{{ freizeit.cta }}</a></p>
+    </div>
+  </div>
+</section>
+
+<p class="belt">{{ freizeit.belt }}</p>
+
+<!-- 08 ─ Retreat-Ort ──────────────────────────────────────────────────── -->
+<section class="ort band-sand" id="ort">
+  <div class="wrap grid">
+    <div class="rail">{{ ort.kapitel }}</div>
+    <div class="ort__head rise">
+      <p class="eyebrow">{{ ort.eyebrow }}</p>
+      <h2>{{ ort.headline }}</h2>
+      <div class="ort__map">
+        <svg viewBox="0 0 60 60" aria-hidden="true">
+          <circle cx="30" cy="30" r="25" stroke-dasharray="2 7"/>
+          <path d="M30 2 V16 M30 44 V58 M2 30 H16 M44 30 H58"/>
+          <circle class="pin" cx="30" cy="30" r="3.2"/>
+        </svg>
+        <span class="small">{{ ort.map.line1 }}<br>{{ ort.map.line2 }}</span>
+      </div>
+    </div>
+    <div class="ort__body rise">
+      <p>{{ ort.p1 }}</p>
+      <p>{{ ort.p2 }}</p>
+      <p>{{ ort.p3 }}</p>
+      <p>{{ ort.p4 }}</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="mosaic rise">
+      <div class="ph m1"><img src="{{ ort.mosaic[0].src }}" width="1600" height="900" alt="{{ ort.mosaic[0].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m2"><img src="{{ ort.mosaic[1].src }}" width="1000" height="1250" alt="{{ ort.mosaic[1].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m3"><img src="{{ ort.mosaic[2].src }}" width="1100" height="619" alt="{{ ort.mosaic[2].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m4"><img src="{{ ort.mosaic[3].src }}" width="1100" height="619" alt="{{ ort.mosaic[3].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m5"><img src="{{ ort.mosaic[4].src }}" width="1100" height="619" alt="{{ ort.mosaic[4].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m6"><img src="{{ ort.mosaic[5].src }}" width="1000" height="1250" alt="{{ ort.mosaic[5].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m7"><img src="{{ ort.mosaic[6].src }}" width="1000" height="1250" alt="{{ ort.mosaic[6].alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph m8"><img src="{{ ort.mosaic[7].src }}" width="1000" height="1250" alt="{{ ort.mosaic[7].alt }}" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 ─ Kulinarik ────────────────────────────────────────────────────── -->
+<section class="kulinarik band-warm">
+  <div class="wrap grid">
+    <div class="rail">{{ kulinarik.kapitel }}</div>
+    <div class="kulinarik__ph rise">
+      <div class="ph"><img src="{{ kulinarik.image.src }}" width="1000" height="1000" alt="{{ kulinarik.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="kulinarik__extra">
+        <div class="ph"><img src="{{ kulinarik.grill.src }}" width="800" height="1000" alt="{{ kulinarik.grill.alt }}" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+    <div class="kulinarik__tx rise">
+      <p class="eyebrow">{{ kulinarik.eyebrow }}</p>
+      <h2>{{ kulinarik.headline }}</h2>
+      <div class="ruler"><span>{{ kulinarik.ruler }}</span></div>
+      <p>{{ kulinarik.p1 }}</p>
+      <p>{{ kulinarik.p2 }}</p>
+      <p>{{ kulinarik.p3 }}</p>
+      <p class="tagline-rule">{{ kulinarik.tagline }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ─ Unterkunft &amp; Preise ──────────────────────────────────────── -->
+<div class="frieze rise">
+  <div class="ph px" data-px="8"><img src="{{ haus.frieze.image.src }}" width="1600" height="1067" alt="{{ haus.frieze.image.alt }}" loading="lazy" decoding="async" style="aspect-ratio:3/2"></div>
+</div>
+
+<section class="haus band-ivory" id="unterkunft">
+  <div class="wrap grid">
+    <div class="rail">{{ haus.rail }}</div>
+    <div class="haus__head rise">
+      <p class="eyebrow">{{ haus.eyebrow }}</p>
+      <h2>{{ haus.headline }}</h2>
+    </div>
+    <p class="haus__sub rise">{{ haus.sub }}</p>
+  </div>
+
+  <div class="wrap grid" style="margin-top:var(--space-m)">
+    <article class="tier rise">
+      <div class="tier__ph">
+        <div class="ph arch"><img src="{{ haus.shared.image.src }}" width="900" height="1125" alt="{{ haus.shared.image.alt }}" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="tier__tx">
+        <p class="tier__label"><span>{{ haus.shared.label }}</span></p>
+        <h3>{{ haus.shared.headline }}</h3>
+        <p>{{ haus.shared.text }}</p>
+        <ul class="feats">
+          {{# haus.shared.feats }}
+          <li>{{ .text }}</li>
+          {{/ haus.shared.feats }}
+        </ul>
+        <p class="small" style="margin-top:1.4rem">{{ haus.shared.note }}</p>
+      </div>
+      <div class="tier__buy">
+        <p class="price">{{ haus.shared.price }}
+          <small>{{ haus.shared.price_note }}</small>
+        </p>
+        <a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ haus.shared.cta }}</a>
+      </div>
+    </article>
+
+    <article class="tier tier--exklusiv rise">
+      <div class="tier__ph">
+        <div class="ph arch"><img src="{{ haus.friends.image.src }}" width="900" height="1125" alt="{{ haus.friends.image.alt }}" loading="lazy" decoding="async"></div>
+      </div>
+      <div class="tier__tx">
+        <p class="tier__label"><span>{{ haus.friends.label }}</span><em>{{ haus.friends.badge }}</em></p>
+        <h3>{{ haus.friends.headline }}</h3>
+        <p>{{ haus.friends.text }}</p>
+        <ul class="feats">
+          {{# haus.friends.feats }}
+          <li>{{ .text }}</li>
+          {{/ haus.friends.feats }}
+        </ul>
+        <p class="small" style="margin-top:1.4rem">{{ haus.friends.note }}</p>
+      </div>
+      <div class="tier__buy">
+        <p class="price">{{ haus.friends.price }}
+          <small>{{ haus.friends.price_note }}</small>
+        </p>
+        <a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ haus.friends.cta }}</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 11 ─ Inklusive ────────────────────────────────────────────────────── -->
+<section class="inkl band-ivory">
+  <div class="wrap grid">
+    <div class="inkl__head rise">
+      <p class="eyebrow">{{ inkl.eyebrow }}</p>
+      <h2>{{ inkl.headline }}</h2>
+      <figure class="inkl__ph">
+        <div class="ph"><img src="{{ inkl.image.src }}" width="900" height="1125" alt="{{ inkl.image.alt }}" loading="lazy" decoding="async"></div>
+      </figure>
+    </div>
+    <div class="inkl__list rise">
+      <p style="margin-bottom:2rem">{{ inkl.intro }}</p>
+      <ul>
+        {{# inkl.items }}
+        <li>{{ .text }}</li>
+        {{/ inkl.items }}
+      </ul>
+    </div>
+    <div class="inkl__out rise">
+      <b>{{ inkl.excluded_label }}</b>
+      <p class="small">{{ inkl.excluded_text }}</p>
+    </div>
+  </div>
+</section>
+
+<div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- 12 ─ Team ─────────────────────────────────────────────────────────── -->
+<section class="team band-ivory" id="team">
+  <div class="wrap grid">
+    <div class="rail">{{ team.rail }}</div>
+    <div class="team__head rise">
+      <p class="eyebrow">{{ team.eyebrow }}</p>
+      <h2>{{ team.headline }}</h2>
+    </div>
+    <div class="team__intro rise">
+      <p>{{ team.intro }}</p>
+    </div>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="{{ team.sophie.image.src }}" width="900" height="1125" alt="{{ team.sophie.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.sophie.name }}</h3>
+        <span class="member__craft">{{ team.sophie.craft }}</span>
+        <p>{{ team.sophie.text1 }}</p>
+        <p>{{ team.sophie.text2 }}</p>
+        <p class="member__accent">{{ team.sophie.accent }}</p>
+        <p>{{ team.sophie.text3 }}</p>
+        <p>{{ team.sophie.text4 }}</p>
+      </div>
+    </article>
+
+    <article class="member member--flip rise">
+      <div class="ph arch"><img src="{{ team.sarah.image.src }}" width="900" height="1125" alt="{{ team.sarah.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.sarah.name }}</h3>
+        <span class="member__craft">{{ team.sarah.craft }}</span>
+        <p>{{ team.sarah.text1 }}</p>
+        <p>{{ team.sarah.text2 }}</p>
+      </div>
+    </article>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="{{ team.christina.image.src }}" width="900" height="1125" alt="{{ team.christina.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.christina.name }}</h3>
+        <span class="member__craft">{{ team.christina.craft }}</span>
+        <p>{{ team.christina.text1 }}</p>
+        <p class="member__accent">{{ team.christina.accent }}</p>
+        <p>{{ team.christina.text2 }}</p>
+        <p>{{ team.christina.text3 }}</p>
+        <p>{{ team.christina.text4 }}</p>
+        <p>{{ team.christina.text5 }}</p>
+        <p>{{ team.christina.text6 }}</p>
+      </div>
+    </article>
+  </div>
+  <div class="team__seam">
+    <div class="medallion">
+      <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 13 ─ Für wen ──────────────────────────────────────────────────────── -->
+<section class="fuerwen band-olive">
+  <div class="wrap grid">
+    <div class="rail">{{ fuerwen.rail }}</div>
+    <div class="fuerwen__head rise">
+      <p class="eyebrow">{{ fuerwen.eyebrow }}</p>
+      <h2>{{ fuerwen.headline }}</h2>
+    </div>
+    <div class="fuerwen__body rise">
+      {{# fuerwen.body }}
+      <p>{{ .text }}</p>
+      {{/ fuerwen.body }}
+    </div>
+
+    <figure class="fuerwen__ph rise">
+      <div class="ph arch"><img src="{{ fuerwen.image.src }}" width="900" height="1125" alt="{{ fuerwen.image.alt }}" loading="lazy" decoding="async"></div>
+    </figure>
+
+    <ul class="fuerwen__q rise">
+      {{# fuerwen.fragen }}
+      <li>{{ .text }}</li>
+      {{/ fuerwen.fragen }}
+    </ul>
+
+    <div class="fuerwen__end rise">
+      <p class="serif-line">{{ fuerwen.fazit }}</p>
+    </div>
+
+    <div class="fuerwen__cta rise">
+      <a class="btn btn--invert" href="#buchung" data-booking>{{ fuerwen.cta.label }}</a>
+      <p class="small">{{ fuerwen.cta.note }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 ─ Buchung ──────────────────────────────────────────────────────── -->
+<section class="buchung" id="buchung">
+  <div class="buchung__bg ph px" data-px="9">
+    <img src="{{ buchung.bg.src }}" width="1600" height="900" alt="" aria-hidden="true" loading="lazy" decoding="async">
+  </div>
+  <div class="wrap">
+    <div class="ticket rise">
+      <div class="ticket__top">
+        <h2>{{ buchung.titel }}</h2>
+        <span>{{ buchung.ort }}</span>
+      </div>
+      <hr>
+      <div class="ticket__when">
+        {{# buchung.termine }}
+        <div><b>{{ .label }}</b><span class="num-tab">{{ .zeit }}</span></div>
+        {{/ buchung.termine }}
+      </div>
+      <hr>
+      <div class="ticket__prices">
+        {{# buchung.preise }}
+        <div><b>{{ .label }}</b><span>{{ .preis }}</span><p class="small">{{ .hinweis }}</p></div>
+        {{/ buchung.preise }}
+      </div>
+      <hr>
+      <p class="small">{{ buchung.hinweis }}</p>
+      <p style="margin-top:2rem"><a class="btn btn--primary btn--block" href="#" data-booking>{{ buchung.cta.label }}</a></p>
+      <p class="small ticket__fine">{{ buchung.fine }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 ─ FAQ ──────────────────────────────────────────────────────────── -->
+<section class="faq band-ivory" id="faq">
+  <div class="wrap grid">
+    <div class="rail">{{ faq.rail }}</div>
+    <div class="faq__head rise">
+      <p class="eyebrow">{{ faq.eyebrow }}</p>
+      <h2>{{ faq.headline }}</h2>
+    </div>
+    <div class="faq__list rise">
+      <div class="faq__col">
+        {{# faq.spalte1 }}
+        <details>
+          <summary>{{ .frage }}</summary>
+          <div>{{ .antwort }}</div>
+        </details>
+        {{/ faq.spalte1 }}
+      </div>
+      <div class="faq__col">
+        {{# faq.spalte2 }}
+        <details>
+          <summary>{{ .frage }}</summary>
+          <div>{{ .antwort }}</div>
+        </details>
+        {{/ faq.spalte2 }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 ─ Abschluss ────────────────────────────────────────────────────── -->
+<section class="abschluss">
+  <div class="abschluss__bg ph px" data-px="9">
+    <img src="{{ abschluss.bg.src }}" width="1920" height="1080" alt="" aria-hidden="true" loading="lazy" decoding="async">
+  </div>
+  <div class="wrap grid">
+    <div class="abschluss__tx">
+      <p class="eyebrow">{{ abschluss.eyebrow }}</p>
+      <h2>{{ abschluss.headline }}</h2>
+      <div class="abschluss__lines">
+        {{# abschluss.lines }}
+        <p>{{ .text }}</p>
+        {{/ abschluss.lines }}
+        {{# abschluss.lines_big }}
+        <p class="big">{{ .text }}</p>
+        {{/ abschluss.lines_big }}
+      </div>
+      <div class="abschluss__foot">
+        <a class="btn btn--outline-light" href="#" data-booking>{{ abschluss.cta }}</a>
+        <span class="abschluss__stamp">{{ abschluss.stamp }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__in">
+    <div class="site-foot__brand">
+      <svg class="mark mark--invert" viewBox="0 0 120 120" width="96" height="96"><use href="#b3mark"/></svg>
+      <p class="small">{{ foot.brand.tagline }}</p>
+      <p class="small">{{ foot.brand.dateline }}</p>
+    </div>
+
+    <nav class="site-foot__col" aria-label="Retreat">
+      <p class="site-foot__label">{{ foot.nav.retreat.label }}</p>
+      <a href="#experiences">{{ foot.nav.retreat.programm }}</a>
+      <a href="#ort">{{ foot.nav.retreat.ort }}</a>
+      <a href="#unterkunft">{{ foot.nav.retreat.unterkunft }}</a>
+      <a href="#team">{{ foot.nav.retreat.team }}</a>
+      <a href="#faq">{{ foot.nav.retreat.faq }}</a>
+    </nav>
+
+    <nav class="site-foot__col" aria-label="Rechtliches">
+      <p class="site-foot__label">{{ foot.nav.legal.label }}</p>
+      <a href="impressum.html">{{ foot.nav.legal.impressum }}</a>
+      <a href="datenschutz.html">{{ foot.nav.legal.datenschutz }}</a>
+      <a href="agb.html">{{ foot.nav.legal.agb }}</a>
+      <a href="impressum.html#kontakt">{{ foot.nav.legal.kontakt }}</a>
+      <button class="linklike" type="button" data-consent-open>{{ foot.nav.legal.consent }}</button>
+    </nav>
+
+    <div class="site-foot__col site-foot__book">
+      <p class="site-foot__label">{{ foot.booking.label }}</p>
+      <p class="small">{{ foot.booking.prices }}</p>
+      <a class="btn btn--invert" href="#buchung" data-booking>{{ foot.booking.cta }}</a>
+    </div>
+
+    <p class="small site-foot__legal">
+      {{ foot.legal.line }}
+      <span>{{ foot.legal.note }}</span>
+    </p>
+  </div>
+</footer>
+
+<a class="totop" id="totop" href="#top" aria-label="Zurück nach oben">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5.4M5.6 11.8 12 5.4l6.4 6.4"/></svg>
+</a>
+
+<div class="bar" id="bar">
+  <span>{{ bar.price }}</span>
+  <a class="btn btn--primary" href="#" data-booking>{{ bar.cta }}</a>
+</div>
+
+<!-- Einwilligung. Aktuell setzt die Seite ausschließlich technisch notwendigen
+     Speicher (die Entscheidung selbst). Der Banner ist so gebaut, dass er trägt,
+     sobald Statistik- oder Marketing-Dienste dazukommen. -->
+<aside class="consent" id="consent" hidden aria-label="Hinweis zu Cookies">
+  <div class="wrap consent__in">
+    <div class="consent__tx">
+      <p class="eyebrow">{{ consent.eyebrow }}</p>
+      <p>{{ consent.text }}</p>
+    </div>
+    <div class="consent__btns">
+      <button class="btn btn--ghost" type="button" data-consent="necessary">{{ consent.btn_necessary }}</button>
+      <button class="btn btn--primary" type="button" data-consent="all">{{ consent.btn_all }}</button>
+    </div>
+  </div>
+</aside>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
