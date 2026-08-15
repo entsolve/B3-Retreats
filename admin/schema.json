@@ -381,18 +381,6 @@
     "hint": "Kurze, hervorgehobene Schlusszeile des Abschnitts."
   },
   {
-    "path": "bms.frieze.image.src",
-    "label": "Breitbild (Fries)",
-    "type": "image",
-    "hint": "Sehr breites Bild am Abschnittsende. Seitenverhältnis 1920 × 738."
-  },
-  {
-    "path": "bms.frieze.image.alt",
-    "label": "Bildbeschreibung Fries",
-    "type": "text",
-    "hint": "Alternativtext für Screenreader und Google."
-  },
-  {
     "path": "ablauf.rail",
     "label": "Kapitelmarke (seitlich)",
     "type": "text",
@@ -1112,18 +1100,6 @@
     "label": "Überschrift Inklusivleistungen",
     "type": "text",
     "hint": "Hauptüberschrift des Abschnitts"
-  },
-  {
-    "path": "inkl.image.src",
-    "label": "Bild Inklusivleistungen",
-    "type": "image",
-    "hint": "Hochformat 900x1125, begleitendes Bild im Abschnitt"
-  },
-  {
-    "path": "inkl.image.alt",
-    "label": "Bildbeschreibung Inklusivleistungen",
-    "type": "text",
-    "hint": "Alternativtext des Bildes"
   },
   {
     "path": "inkl.intro",

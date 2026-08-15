@@ -1,0 +1,52 @@
+/* B³ Retreats — die Marke in Zahlen.
+   Eine Quelle für Seite UND Redaktionsoberflaeche: liegen die Werte doppelt,
+   driften sie auseinander, und die Vorschau neben dem Formular zeigt einen
+   anderen Ton als die Seite selbst. */
+
+:root {
+  /* Farbe — Verteilung 60/20/10/5/5 aus dem Brandboard */
+  --ivory:        #F7F4EF;
+  --white:        #FCFBF9;
+  --sand:         #E8E0D5;
+  --sand-warm:    #EDE4D7;
+  --olive:        #454B40;
+  --sage:         #7D8174;
+  --taupe:        #9A846C;
+  --taupe-deep:   #65584C;
+  --ink:          #292824;
+  --ink-invert:   #F7F4EF;
+  --on-olive-mut: #BFC3B6;   /* Sage selbst käme auf Oliv nur auf 2,6:1 */
+
+  --rule:         rgba(154, 132, 108, .30);
+  --rule-strong:  #9A846C;
+  --rule-invert:  rgba(125, 129, 116, .35);
+
+  --veil-olive:   rgba(69, 75, 64, .22);
+  --veil-warm:    rgba(247, 244, 239, .16);
+
+  /* Raster */
+  --maxw:   1440px;
+  --pad:    clamp(20px, 5vw, 72px);
+  --gutter: clamp(16px, 2vw, 32px);
+
+  /* Rhythmus — bewusst ungleich, damit die Seite nicht durchgetaktet wirkt.
+     Die Untergrenzen sind bewusst klein: auf dem Telefon stossen zwei Abstaende
+     aneinander, aus 2 x 72px wird ein Loch von anderthalb Handbreit. Unterhalb
+     von rund 530px Breite uebernimmt darum wieder der vw-Anteil. */
+  --space-s:  clamp(32px,  6vw,  80px);
+  --space-m:  clamp(48px,  9vw, 128px);
+  --space-l:  clamp(64px, 12vw, 176px);
+
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:  'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+
+  /* Bewegung. Lange, flach auslaufende Kurve — daher wirkt sie ruhig statt
+     flott. Steht hier und nicht im Bewegungsteil von style.css, weil auch die
+     Oberflaeche damit arbeitet. */
+  --ease-soft: cubic-bezier(.16, 1, .3, 1);
+  --dur-s: .5s;
+  --dur-m: .9s;
+  --dur-l: 1.4s;
+}

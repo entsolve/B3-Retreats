@@ -10,6 +10,9 @@ import numpy as np
 from PIL import Image, ImageOps, ImageEnhance, ImageFilter
 
 SRC = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/materials- in/B3 Retreats"
+# Nicht aus dem Kundenordner: das erzeugte Hero-Motiv liegt getrennt, damit
+# Material der Kundin und Erzeugtes nicht durcheinandergeraten.
+HERO_DIR = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei/out/"
 OUT = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/assets/img"
 os.makedirs(OUT, exist_ok=True)
 
@@ -33,6 +36,11 @@ P = {
     "portrait_beton": dict(hi=0.84, wb=(1.045, 1.010, 0.940), sky=0.88, green=0.92, red=1.00, sat=0.95, vig=0.08, sharp=False),
     "sunset":   dict(hi=0.85, wb=(1.020, 1.000, 0.975), sky=1.00, green=0.88, red=1.00, sat=0.95, vig=0.14, sharp=False),
     "food":     dict(hi=0.75, wb=(1.030, 1.005, 0.960), sky=1.00, green=0.90, red=1.00, sat=1.00, vig=0.12, sharp=True),
+    # Landschaft MIT Menschen darin. Wie "outdoor", aber red=1.00: die 0.68 von
+    # "outdoor" sind für Ziegel und Blüten gedacht und schlagen auf Haut als
+    # Flecken durch. Himmel und Grün werden dafür etwas weniger hart gezogen,
+    # sonst kippt der Hautton mit.
+    "outdoor_haut": dict(hi=0.78, wb=(1.045, 1.005, 0.938), sky=0.52, green=0.82, red=1.00, sat=0.92, vig=0.14, sharp=False),
 }
 
 
@@ -164,7 +172,9 @@ def fit_aspect(box, aspect, bias=(0.5, 0.5)):
 
 def build(name, src, profile, aspect, width, crop=(0, 0, 1, 1), bias=(0.5, 0.5), quality=84, rot=0):
     p = P[profile]
-    im = ImageOps.exif_transpose(Image.open(os.path.join(SRC, src))).convert("RGB")
+    # Absoluter Pfad: für Bilder, die nicht aus dem Kundenordner stammen (Hero).
+    path_in = src if os.path.isabs(src) else os.path.join(SRC, src)
+    im = ImageOps.exif_transpose(Image.open(path_in)).convert("RGB")
     if rot:
         # Die Schlafzimmer-Aufnahmen sind aus der Hüfte geschossen und kippen ~14°.
         im = im.rotate(rot, resample=Image.BICUBIC, expand=False)
@@ -207,10 +217,14 @@ def build(name, src, profile, aspect, width, crop=(0, 0, 1, 1), bias=(0.5, 0.5),
 
 # --- Asset-Liste (Rollen aus dem Build-Brief) --------------------------------
 JOBS = [
-    # Hero: 7594 statt d6480b05 - 5712 px tragen den 2x-Split, d6480b05 nur 2048.
-    ("hero-tall",       "26-08-12 09-56-00 7594.jpg", "outdoor",  3/4,  1500, (0.30, 0.30, 1.00, 0.92), (0.55, 0.62)),
-    ("hero-wide",       "26-08-12 09-56-00 7594.jpg", "outdoor", 16/9,  1920, (0.00, 0.33, 1.00, 0.90), (0.50, 0.55)),
-    ("og-image",        "26-08-12 09-56-00 7594.jpg", "outdoor", 1.91,  1200, (0.00, 0.33, 1.00, 0.90), (0.50, 0.55)),
+    # Hero: die drei Gastgeberinnen von hinten. Erzeugt, weil es kein echtes
+    # Gruppenfoto gibt — Herkunft, Prompt und Prüfschritte in tools/hero-drei/.
+    # Profil "outdoor_haut", nicht "outdoor": sonst fleckt die Haut.
+    # Quer und hoch sind ZWEI Bilder, kein Ausschnitt voneinander: bei 3/4 aus
+    # dem Querformat fällt je eine der äußeren Frauen aus dem Rand.
+    ("hero-tall",       HERO_DIR + "final-hero-tall.png", "outdoor_haut",  3/4,  1500, (0, 0, 1, 1), (0.50, 0.50)),
+    ("hero-wide",       HERO_DIR + "final-hero-wide.png", "outdoor_haut", 16/9,  1920, (0, 0, 1, 1), (0.50, 0.50)),
+    ("og-image",        HERO_DIR + "final-hero-wide.png", "outdoor_haut", 1.91,  1200, (0, 0, 1, 1), (0.50, 0.20)),
 
     ("ablauf",          "26-08-12 09-54-42 7587.jpg", "outdoor",  3/4,  1000, (0.00, 0.35, 1.00, 1.00), (0.55, 0.60)),
 
@@ -238,7 +252,12 @@ JOBS = [
     ("christina",       "IMG_3146.jpeg",              "portrait_beton", 4/5, 900, (0.00, 0.20, 1.00, 0.85), (0.40, 0.35)),
 
     ("buchung-bg",      "1e0a5675-f83e-4eb0-bb69-73a290f60e68.jpeg", "sunset", 16/9, 1600, (0.00, 0.00, 1.00, 0.75), (0.50, 0.45)),
-    ("abschluss",       "d6480b05-dfee-4543-be97-a6e2f68ea848.jpeg", "sunset", 16/9, 1920, (0.00, 0.12, 1.00, 0.87), (0.50, 0.50)),
+    # Abschluss: die Drei in der RECHTEN Bilddrittel, links bleibt ruhig. Der
+    # Verlauf in .abschluss__bg::after ist waagerecht (links .66 dunkel, ab 80 %
+    # ganz frei) — ein mittig stehendes Motiv verschwände unter der Schrift.
+    # Profil "sunset", nicht "outdoor_haut": es lässt den rosa Himmel stehen
+    # (sky=1.00) und dämpft Rot nicht, also bleibt die Haut sauber.
+    ("abschluss",       HERO_DIR + "abschluss-drei.png", "sunset", 16/9, 1920, (0, 0, 1, 1), (0.50, 0.50)),
     # --- Nachtrag: die Seite hatte zu viel Leerraum, das Material gab mehr her ---
     ("detail-kerze",    "26-08-12 10-00-12 7608.jpg", "detail",   4/5,   900, (0.00, 0.06, 1.00, 1.00), (0.50, 0.55)),
     ("bms-fries",       "26-08-12 09-54-18 7585.jpg", "outdoor",  2.6,  1920, (0.00, 0.28, 1.00, 0.94), (0.50, 0.55)),
@@ -251,5 +270,8 @@ JOBS = [
 ]
 
 if __name__ == "__main__":
+    import sys
+    only = set(sys.argv[1:])          # ohne Argument: alles neu backen
     for job in JOBS:
-        build(*job)
+        if not only or job[0] in only:
+            build(*job)

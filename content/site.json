@@ -6,7 +6,7 @@
     "og": {
       "site_name": "B³ Retreats",
       "title": "B³ Retreat – Be free to be you. | 08.–11. Oktober 2026, Spabrücken",
-      "description": "Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst. Yin Yoga, Breathwork, Astrologie und Struktur – für maximal neun Frauen.",
+      "description": "Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst. Yin Yoga, Breathwork, Astrologie und Struktur – für maximal 11 Frauen.",
       "image": "assets/img/og-image.webp"
     },
     "jsonld": {
@@ -54,7 +54,7 @@
     "lead": "Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst.",
     "cta": {
       "label": "Meinen Platz sichern",
-      "note": "Max. neun Teilnehmerinnen &middot; Ratenzahlung möglich"
+      "note": "Max. 11 Frauen &middot; 3 Coaches &middot; Ratenzahlung möglich"
     },
     "image": {
       "wide": {
@@ -62,10 +62,10 @@
       },
       "tall": {
         "src": "assets/img/hero-tall.webp",
-        "alt": "Feld und Waldrand rund um das Retreat-Anwesen bei Spabrücken"
+        "alt": "Drei Frauen von hinten am Feldrand oberhalb des Retreat-Anwesens bei Spabrücken"
       }
     },
-    "belt": "Vier Tage &nbsp;·&nbsp; Max. 9 Frauen &nbsp;·&nbsp; Spabrücken, Rheinland-Pfalz"
+    "belt": "Vier Tage &nbsp;·&nbsp; Max. 11 Frauen &nbsp;·&nbsp; 3 Coaches &nbsp;·&nbsp; Spabrücken, Rheinland-Pfalz"
   },
   "einladung": {
     "rail": "Kapitel 01",
@@ -132,13 +132,7 @@
         "text": "Genau aus dieser Verbindung ist B³ entstanden."
       }
     ],
-    "sign": "Body. Mind. Soul. Be free.",
-    "frieze": {
-      "image": {
-        "src": "assets/img/bms-fries.webp",
-        "alt": "Blick vom Anwesen über Felder und Waldränder"
-      }
-    }
+    "sign": "Body. Mind. Soul. Be free."
   },
   "ablauf": {
     "rail": "Kapitel 03",
@@ -398,7 +392,7 @@
       },
       "label": "Shared House",
       "headline": "Gemeinsam wohnen, gemeinsam erleben.",
-      "text": "Unser ca. 150 m² großer Neubau verbindet moderne Einrichtung mit rustikaler Holzoptik und bietet Platz für bis zu neun Teilnehmerinnen.",
+      "text": "Unser ca. 150 m² großer Neubau verbindet moderne Einrichtung mit rustikaler Holzoptik und bietet Platz für bis zu 11 Frauen.",
       "feats": [
         {
           "text": "4 Schlafzimmer"
@@ -462,10 +456,6 @@
   "inkl": {
     "eyebrow": "Im Preis enthalten",
     "headline": "Was ist inklusive?",
-    "image": {
-      "src": "assets/img/inkl-bad.webp",
-      "alt": "Badezimmer mit bodengleicher Dusche"
-    },
     "intro": "Mit deiner Buchung ist fast alles abgedeckt, was du während der gemeinsamen Tage brauchst:",
     "items": [
       {

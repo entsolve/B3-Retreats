@@ -1,50 +1,11 @@
 @import url('fonts.css');
+@import url('tokens.css');
 
 /* ==========================================================================
    B³ RETREATS
    Trennung passiert über drei Mittel: Haarlinie, Tonwechsel des Grundes, Luft.
    Keine Schatten, keine Rahmen-Container, keine Karten.
    ========================================================================== */
-
-:root {
-  /* Farbe — Verteilung 60/20/10/5/5 aus dem Brandboard */
-  --ivory:        #F7F4EF;
-  --white:        #FCFBF9;
-  --sand:         #E8E0D5;
-  --sand-warm:    #EDE4D7;
-  --olive:        #454B40;
-  --sage:         #7D8174;
-  --taupe:        #9A846C;
-  --taupe-deep:   #65584C;
-  --ink:          #292824;
-  --ink-invert:   #F7F4EF;
-  --on-olive-mut: #BFC3B6;   /* Sage selbst käme auf Oliv nur auf 2,6:1 */
-
-  --rule:         rgba(154, 132, 108, .30);
-  --rule-strong:  #9A846C;
-  --rule-invert:  rgba(125, 129, 116, .35);
-
-  --veil-olive:   rgba(69, 75, 64, .22);
-  --veil-warm:    rgba(247, 244, 239, .16);
-
-  /* Raster */
-  --maxw:   1440px;
-  --pad:    clamp(20px, 5vw, 72px);
-  --gutter: clamp(16px, 2vw, 32px);
-
-  /* Rhythmus — bewusst ungleich, damit die Seite nicht durchgetaktet wirkt.
-     Die Untergrenzen sind bewusst klein: auf dem Telefon stossen zwei Abstaende
-     aneinander, aus 2 x 72px wird ein Loch von anderthalb Handbreit. Unterhalb
-     von rund 530px Breite uebernimmt darum wieder der vw-Anteil. */
-  --space-s:  clamp(32px,  6vw,  80px);
-  --space-m:  clamp(48px,  9vw, 128px);
-  --space-l:  clamp(64px, 12vw, 176px);
-
-  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --sans:  'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
-
-  --ease: cubic-bezier(.22, .61, .36, 1);
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -410,8 +371,15 @@ section { position: relative; }
 }
 
 /* Groß über dem Hero, beim Mitscrollen etwas zurückgenommen */
-.site-head__logo .mark { transition: width .3s var(--ease), height .3s var(--ease); }
-.site-head.is-stuck .site-head__logo .mark { width: 58px; height: 58px; }
+/* Ueber dem Aufmacher darf das Zeichen gross stehen — dort ist es die Marke,
+   nicht die Navigation. Die Groesse kommt aus dem Blatt, nicht aus dem
+   width-Attribut im HTML, damit sie an einer Stelle liegt. */
+.site-head__logo .mark {
+  width: 104px;
+  height: 104px;
+  transition: width .3s var(--ease), height .3s var(--ease);
+}
+.site-head.is-stuck .site-head__logo .mark { width: 62px; height: 62px; }
 
 .site-head__in {
   display: flex;
@@ -507,7 +475,9 @@ section { position: relative; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(120px, 15vh, 190px) clamp(28px, 4.5vw, 76px) clamp(64px, 8vh, 96px) var(--pad);
+  /* Oben muss das groessere Markenzeichen im Kopf Platz finden UND danach noch
+     Luft stehen — sonst klebt die Datumszeile am Logo. */
+  padding: clamp(168px, 21vh, 264px) clamp(28px, 4.5vw, 76px) clamp(64px, 8vh, 96px) var(--pad);
 }
 
 .hero__meta {
@@ -519,7 +489,10 @@ section { position: relative; }
   margin-bottom: clamp(1.6rem, 3vh, 2.6rem);
 }
 
-.hero h1 { margin-bottom: clamp(1.5rem, 3vh, 2.2rem); }
+/* Cormorant hat kleine Mittellaenge bei langen Ober- und Unterlaengen: bei 1.02
+   klaffen die Zeilen optisch weiter als die Zahl vermuten laesst. Im Aufmacher
+   steht die Zeile riesig, dort faellt das auf. */
+.hero h1 { line-height: .92; margin-bottom: clamp(1.5rem, 3vh, 2.2rem); }
 
 .hero .lead { margin-bottom: clamp(2rem, 4vh, 3rem); }
 
@@ -572,7 +545,9 @@ section { position: relative; }
 
 /* --- 03 Body. Mind. Soul. ------------------------------------------------- */
 
-.bms { padding: var(--space-l) 0 0; }
+/* Unten stand frueher ein Fries und schloss den Abschnitt ab. Ohne ihn braucht
+   der Sandblock einen eigenen Rand — sonst klebt die Signatur am naechsten Ton. */
+.bms { padding: var(--space-l) 0 var(--space-m); }
 .bms__head { grid-column: 3 / span 6; }
 
 .bms__cols {
@@ -928,8 +903,6 @@ section { position: relative; }
 .inkl__head { grid-column: 1 / span 3; position: sticky; top: 96px; align-self: start; }
 .inkl__list { grid-column: 5 / span 8; }
 
-.inkl__ph { margin: var(--space-s) 0 0; }
-.inkl__ph .ph { aspect-ratio: 4 / 5; }
 
 .inkl__list ul {
   list-style: none;
@@ -1185,7 +1158,13 @@ section { position: relative; }
 }
 
 .abschluss__bg { position: absolute; inset: 0; z-index: 0; }
-.abschluss__bg img { width: 100%; height: 100%; object-fit: cover; }
+
+/* object-position rechts statt mittig: die drei Frauen stehen im rechten
+   Bilddrittel, weil der Verlauf darunter links die Schrift traegt. Bei einem
+   hohen, schmalen Fenster schneidet ein mittiger cover-Ausschnitt genau dort
+   ab — bei 1024x1366 fehlte die halbe Gruppe. Mit 78 % frisst der Ausschnitt
+   stattdessen das leere Feld links auf. */
+.abschluss__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 78% center; }
 
 /* Ohne eigenes mix-blend-mode erbt dieses ::after das soft-light von .ph::after.
    Dann verpufft der Schleier ueber dem hellen Abendhimmel und die Zeilen stehen
@@ -1398,14 +1377,6 @@ body { --consent-h: 0px; --bar-h: 0px; }
    einem Vorhang freigegeben, Haarlinien zeichnen sich. Kein Federn, kein
    Drehen, kein Stagger über ganze Abschnitte.
    ========================================================================== */
-
-/* Lange, flach auslaufende Kurve — daher wirkt die Bewegung ruhig statt flott */
-:root {
-  --ease-soft: cubic-bezier(.16, 1, .3, 1);
-  --dur-s: .5s;
-  --dur-m: .9s;
-  --dur-l: 1.4s;
-}
 
 /* --- Grundeinblendung ----------------------------------------------------- */
 
@@ -1649,6 +1620,14 @@ body { --consent-h: 0px; --bar-h: 0px; }
     grid-column: 1 / -1;
   }
 
+  /* Ab hier laeuft .abschluss__tx ueber die ganze Breite (siehe grid-column
+     oben), also darf der Schleier nicht mehr nur das linke Drittel decken.
+     Diese Regel stand vorher erst bei 860 px — dazwischen lag die Schrift
+     ueber dem ungedeckten Teil des Bildes und verlor den Kontrast. */
+  .abschluss__bg::after {
+    background: linear-gradient(180deg, rgba(41, 40, 36, .72) 0%, rgba(41, 40, 36, .80) 55%, rgba(41, 40, 36, .88) 100%);
+  }
+
   .inkl__head { position: static; }
   .faq__list { grid-template-columns: 1fr; }
   .faq__col + .faq__col { border-top: 0; }
@@ -1657,7 +1636,6 @@ body { --consent-h: 0px; --bar-h: 0px; }
 
   /* Gestapelt braucht keine der Bildspalten mehr ihren Versatz */
   .invite__ph, .fuerwen__ph { grid-row: auto; margin-top: var(--space-s); max-width: 420px; }
-  .inkl__ph { max-width: 360px; }
   .ablauf__ph { margin-top: var(--space-s); max-width: 460px; }
   .neumond__q, .neumond__outro { margin-top: var(--space-s); }
 
@@ -1709,6 +1687,11 @@ body { --consent-h: 0px; --bar-h: 0px; }
 
   .ticket__when, .ticket__prices { grid-template-columns: 1fr; }
   .ticket__prices > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1.2rem; }
+
+  /* Gross wirkt das Zeichen erst neben viel Weissraum. Auf dem Telefon steht
+     es ueber dem Bild und wuerde bei 104px den halben Ausschnitt zudecken. */
+  .site-head__logo .mark { width: 76px; height: 76px; }
+  .site-head.is-stuck .site-head__logo .mark { width: 54px; height: 54px; }
 
   /* --- Menü als eigene Fläche, nicht als gequetschte Zeile --- */
   .burger { display: block; }
@@ -1795,11 +1778,6 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .totop { width: 44px; height: 44px; }
 
   .sun, .sprig { display: none; }
-
-  /* Der Text liegt hier ueber der ganzen Bildbreite, nicht nur ueber dem dunklen Drittel */
-  .abschluss__bg::after {
-    background: linear-gradient(180deg, rgba(41, 40, 36, .72) 0%, rgba(41, 40, 36, .80) 55%, rgba(41, 40, 36, .88) 100%);
-  }
 
   .abschluss { min-height: 0; }
 }
