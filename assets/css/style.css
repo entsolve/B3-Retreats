@@ -32,10 +32,13 @@
   --pad:    clamp(20px, 5vw, 72px);
   --gutter: clamp(16px, 2vw, 32px);
 
-  /* Rhythmus — bewusst ungleich, damit die Seite nicht durchgetaktet wirkt */
-  --space-s:  clamp(48px,  6vw,  80px);
-  --space-m:  clamp(72px,  9vw, 128px);
-  --space-l:  clamp(96px, 12vw, 176px);
+  /* Rhythmus — bewusst ungleich, damit die Seite nicht durchgetaktet wirkt.
+     Die Untergrenzen sind bewusst klein: auf dem Telefon stossen zwei Abstaende
+     aneinander, aus 2 x 72px wird ein Loch von anderthalb Handbreit. Unterhalb
+     von rund 530px Breite uebernimmt darum wieder der vw-Anteil. */
+  --space-s:  clamp(32px,  6vw,  80px);
+  --space-m:  clamp(48px,  9vw, 128px);
+  --space-l:  clamp(64px, 12vw, 176px);
 
   --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans:  'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -403,8 +406,12 @@ section { position: relative; }
   position: fixed;
   background: var(--ivory);
   border-bottom-color: var(--rule);
-  padding: 14px 0;
+  padding: 10px 0;
 }
+
+/* Groß über dem Hero, beim Mitscrollen etwas zurückgenommen */
+.site-head__logo .mark { transition: width .3s var(--ease), height .3s var(--ease); }
+.site-head.is-stuck .site-head__logo .mark { width: 58px; height: 58px; }
 
 .site-head__in {
   display: flex;
@@ -464,7 +471,7 @@ section { position: relative; }
 .totop {
   position: fixed;
   right: clamp(20px, 3vw, 40px);
-  bottom: clamp(20px, 3vw, 40px);
+  bottom: calc(clamp(20px, 3vw, 40px) + var(--consent-h) + var(--bar-h));
   z-index: 25;
   display: grid;
   place-items: center;
@@ -482,6 +489,7 @@ section { position: relative; }
 }
 
 .totop.is-on { opacity: 1; visibility: visible; transform: none; }
+.totop { transition-property: opacity, transform, visibility, background-color, color, bottom; }
 .totop:hover { background: var(--olive); color: var(--ivory); border-color: var(--olive); }
 .totop svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.3; }
 
@@ -524,11 +532,22 @@ section { position: relative; }
 /* --- 02 Einladung --------------------------------------------------------- */
 
 .invite { padding: var(--space-l) 0; }
-.invite__head { grid-column: 2 / span 7; }
-.invite__body { grid-column: 2 / span 6; margin-top: var(--space-s); }
+.invite__head { grid-column: 2 / span 6; grid-row: 1; }
+.invite__body { grid-column: 2 / span 5; grid-row: 2; margin-top: var(--space-s); }
+
+/* Die rechte Hälfte stand über anderthalb Bildschirme leer */
+.invite__ph {
+  grid-column: 9 / span 4;
+  grid-row: 1 / span 2;
+  align-self: start;
+  margin: clamp(130px, 17vw, 280px) 0 0;
+}
+
+.invite__ph .ph { aspect-ratio: 4 / 5; }
 
 .accent-block {
   grid-column: 1 / -1;
+  grid-row: 3;
   text-align: center;
   margin-top: var(--space-m);
   font-family: var(--serif);
@@ -553,7 +572,7 @@ section { position: relative; }
 
 /* --- 03 Body. Mind. Soul. ------------------------------------------------- */
 
-.bms { padding: var(--space-l) 0; }
+.bms { padding: var(--space-l) 0 0; }
 .bms__head { grid-column: 3 / span 6; }
 
 .bms__cols {
@@ -664,8 +683,8 @@ section { position: relative; }
 /* --- 05 Neumond ----------------------------------------------------------- */
 
 .neumond { padding: var(--space-m) 0; overflow: hidden; }
-.neumond__head { grid-column: 2 / span 5; }
-.neumond__q { grid-column: 8 / span 5; }
+.neumond__head { grid-column: 2 / span 5; grid-row: 1; }
+.neumond__q { grid-column: 8 / span 5; grid-row: 1 / span 2; }
 
 .neumond__q li {
   list-style: none;
@@ -679,7 +698,7 @@ section { position: relative; }
 
 .neumond__q ul { margin: 0; padding: 0; border-top: 1px solid var(--rule-invert); }
 
-.neumond__outro { grid-column: 8 / span 5; margin-top: var(--space-s); }
+.neumond__outro { grid-column: 2 / span 5; grid-row: 2; margin-top: var(--space-s); }
 .neumond__outro p { color: rgba(247, 244, 239, .76); }
 
 .neumond__moon {
@@ -714,7 +733,6 @@ section { position: relative; }
 .exp__item--flip .ph      { grid-column: 7 / span 5; grid-row: 1; }
 .exp__item--flip .exp__tx { grid-column: 2 / span 4; grid-row: 1; }
 
-.exp__item--wide .exp__tx { grid-column: 4 / span 7; }
 
 .exp__who {
   display: block;
@@ -730,16 +748,6 @@ section { position: relative; }
 }
 
 .exp__tx h3 { margin-bottom: 1.2rem; }
-
-.exp__cube {
-  font-family: var(--serif);
-  font-weight: 300;
-  font-size: clamp(5rem, 3rem + 7vw, 9rem);
-  line-height: .8;
-  color: var(--taupe);
-  opacity: .35;
-  margin-bottom: 1.5rem;
-}
 
 /* Strahlensonne als Textur, vom rechten Rand angeschnitten — einmal pro Seite */
 .sun {
@@ -757,6 +765,8 @@ section { position: relative; }
 /* --- 07 Freie Zeit -------------------------------------------------------- */
 
 .frieze .ph { aspect-ratio: 2.4 / 1; }
+.frieze--tight { margin-top: var(--space-m); }
+.frieze--tight .ph { aspect-ratio: 2.6 / 1; }
 
 .freizeit { padding: var(--space-m) 0 var(--space-l); }
 .freizeit__head { grid-column: 2 / span 4; }
@@ -775,7 +785,7 @@ section { position: relative; }
 
 /* --- 08 Retreat-Ort ------------------------------------------------------- */
 
-.ort { padding: var(--space-l) 0 var(--space-m); }
+.ort { padding: var(--space-l) 0 var(--space-s); }
 .ort__head { grid-column: 1 / span 4; }
 .ort__body { grid-column: 6 / span 6; }
 
@@ -789,11 +799,14 @@ section { position: relative; }
 }
 
 .mosaic .ph { border-radius: 0; }
-.mosaic .m1 { grid-column: span 2; grid-row: span 2; }
-.mosaic .m2 { grid-column: 3; grid-row: span 2; }
-.mosaic .m3 { grid-column: 1; }
-.mosaic .m4 { grid-column: 2; }
-.mosaic .m5 { grid-column: 3; }
+.mosaic .m1 { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+.mosaic .m2 { grid-column: 3;          grid-row: 1 / span 2; }
+.mosaic .m3 { grid-column: 1;          grid-row: 3; }
+.mosaic .m4 { grid-column: 2;          grid-row: 3; }
+.mosaic .m5 { grid-column: 3;          grid-row: 3; }
+.mosaic .m6 { grid-column: 1;          grid-row: 4 / span 2; }
+.mosaic .m7 { grid-column: 2;          grid-row: 4 / span 2; }
+.mosaic .m8 { grid-column: 3;          grid-row: 4 / span 2; }
 
 .ort__map { grid-column: 1 / span 4; margin-top: 2rem; display: flex; align-items: center; gap: 1rem; }
 .ort__map svg { width: 82px; flex: none; }
@@ -807,7 +820,9 @@ section { position: relative; }
 .kulinarik__ph .ph { aspect-ratio: 1; }
 .kulinarik__tx { grid-column: 8 / span 5; }
 
-.kulinarik__extra { margin-top: 1.6rem; width: 45%; }
+/* Rechtsbündig unter dem Quadrat, gleicher Steg wie im Mosaik —
+   sonst baumelt das kleine Bild ohne Bezug in der Spalte. */
+.kulinarik__extra { margin: 10px 0 0 auto; width: 62%; }
 .kulinarik__extra .ph { aspect-ratio: 4 / 5; }
 
 .tagline-rule {
@@ -913,6 +928,9 @@ section { position: relative; }
 .inkl__head { grid-column: 1 / span 3; position: sticky; top: 96px; align-self: start; }
 .inkl__list { grid-column: 5 / span 8; }
 
+.inkl__ph { margin: var(--space-s) 0 0; }
+.inkl__ph .ph { aspect-ratio: 4 / 5; }
+
 .inkl__list ul {
   list-style: none;
   margin: 0;
@@ -934,10 +952,25 @@ section { position: relative; }
 
 .inkl__out {
   grid-column: 5 / span 8;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .8rem 2.5rem;
   margin-top: 2.5rem;
-  background: var(--sand);
-  padding: 1.6rem 1.9rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
 }
+
+.inkl__out b {
+  flex: none;
+  font-weight: 500;
+  font-size: .6875rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.inkl__out .small { flex: 1 1 24rem; margin: 0; }
 
 /* --- 12 Team -------------------------------------------------------------- */
 
@@ -991,10 +1024,19 @@ section { position: relative; }
 /* --- 13 Für wen ----------------------------------------------------------- */
 
 .fuerwen { padding: var(--space-l) 0; }
-.fuerwen__head { grid-column: 3 / span 6; }
-.fuerwen__body { grid-column: 3 / span 6; margin-top: var(--space-s); }
+.fuerwen__head { grid-column: 3 / span 6; grid-row: 1; }
+.fuerwen__body { grid-column: 3 / span 6; grid-row: 2; margin-top: var(--space-s); }
 
-.fuerwen__q { grid-column: 3 / span 8; margin-top: var(--space-m); list-style: none; padding: 0; border-top: 1px solid var(--rule-invert); }
+.fuerwen__ph {
+  grid-column: 10 / span 3;
+  grid-row: 1 / span 2;
+  align-self: start;
+  margin: clamp(20px, 4vw, 70px) 0 0;
+}
+
+.fuerwen__ph .ph { aspect-ratio: 4 / 5; }
+
+.fuerwen__q { grid-column: 3 / span 8; grid-row: 3; margin-top: var(--space-m); list-style: none; padding: 0; border-top: 1px solid var(--rule-invert); }
 
 .fuerwen__q li {
   font-family: var(--serif);
@@ -1005,8 +1047,14 @@ section { position: relative; }
   border-bottom: 1px solid var(--rule-invert);
 }
 
-.fuerwen__end { grid-column: 3 / span 6; margin-top: var(--space-m); }
-.fuerwen__cta { grid-column: 3 / span 6; margin-top: var(--space-s); }
+.fuerwen__end { grid-column: 3 / span 5; grid-row: 4; margin-top: var(--space-m); }
+
+.fuerwen__cta {
+  grid-column: 9 / span 4;
+  grid-row: 4;
+  align-self: end;
+  margin-top: var(--space-m);
+}
 .fuerwen__cta .small { margin-top: 1.1rem; color: var(--on-olive-mut); }
 
 /* --- 14 Buchung ----------------------------------------------------------- */
@@ -1016,10 +1064,13 @@ section { position: relative; }
 .buchung__bg { position: absolute; inset: 0; z-index: 0; }
 .buchung__bg img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Hier liegt der Text auf einer eigenen hellen Karte, das Bild darf also offen
+   bleiben: soft-light aus .ph::after ist gewollt und deshalb ausgeschrieben. */
 .buchung__bg::after {
   content: '';
   position: absolute;
   inset: 0;
+  mix-blend-mode: soft-light;
   background: linear-gradient(180deg, rgba(69, 75, 64, .55), rgba(69, 75, 64, .78));
 }
 
@@ -1077,8 +1128,17 @@ section { position: relative; }
 /* --- 15 FAQ --------------------------------------------------------------- */
 
 .faq { padding: var(--space-l) 0; }
-.faq__head { grid-column: 3 / span 6; }
-.faq__list { grid-column: 3 / span 7; margin-top: var(--space-s); border-top: 1px solid var(--rule); }
+.faq__head { grid-column: 2 / span 6; }
+
+.faq__list {
+  grid-column: 2 / span 11;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(32px, 4vw, 72px);
+  margin-top: var(--space-s);
+}
+
+.faq__col { border-top: 1px solid var(--rule); }
 
 .faq details { border-bottom: 1px solid var(--rule); }
 
@@ -1127,13 +1187,18 @@ section { position: relative; }
 .abschluss__bg { position: absolute; inset: 0; z-index: 0; }
 .abschluss__bg img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Ohne eigenes mix-blend-mode erbt dieses ::after das soft-light von .ph::after.
+   Dann verpufft der Schleier ueber dem hellen Abendhimmel und die Zeilen stehen
+   praktisch ohne Kontrast. Deckend gemischt traegt der Verlauf die Schrift links
+   und laesst das Bild nach rechts frei. */
 .abschluss__bg::after {
   content: '';
   position: absolute;
   inset: 0;
+  mix-blend-mode: normal;
   background:
-    linear-gradient(92deg, rgba(41, 40, 36, .90) 0%, rgba(41, 40, 36, .78) 34%, rgba(69, 75, 64, .46) 66%, rgba(69, 75, 64, .28) 100%),
-    linear-gradient(180deg, rgba(69, 75, 64, .30), rgba(41, 40, 36, .34));
+    linear-gradient(96deg, rgba(28, 30, 26, .66) 0%, rgba(28, 30, 26, .54) 28%, rgba(38, 42, 35, .20) 58%, rgba(38, 42, 35, 0) 80%),
+    linear-gradient(180deg, rgba(28, 30, 26, .05), rgba(28, 30, 26, .16));
 }
 
 .abschluss .wrap { position: relative; z-index: 1; padding-block: var(--space-l); }
@@ -1171,19 +1236,144 @@ section { position: relative; }
 
 /* --- Fußzeile ------------------------------------------------------------- */
 
-.site-foot { background: var(--olive); color: var(--ink-invert); padding: var(--space-m) 0 3rem; }
-.site-foot__in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem 3rem; }
-.site-foot a { color: var(--sand); text-decoration: none; transition: color .25s var(--ease); }
-.site-foot a:hover { color: var(--ivory); }
+/* Vier Spalten statt einer umbrechenden Zeile: sonst rutscht der längste
+   Eintrag allein in die zweite Reihe und die Fußzeile fällt auseinander. */
+.site-foot { background: var(--olive); color: var(--ink-invert); padding: var(--space-m) 0 2.5rem; }
 
-.site-foot nav { display: flex; flex-wrap: wrap; gap: 1.6rem 2.2rem; font-size: .8125rem; letter-spacing: .06em; }
-.site-foot__legal { width: 100%; border-top: 1px solid var(--rule-invert); padding-top: 1.6rem; font-size: .8125rem; color: var(--on-olive-mut); }
+.site-foot__in {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+  align-items: start;
+  column-gap: clamp(24px, 3vw, 56px);
+  row-gap: clamp(40px, 4vw, 64px);
+}
+
+.site-foot__brand .mark { margin-bottom: 1.4rem; }
+
+/* .small traegt sonst --taupe-deep und kommt auf Oliv nur auf 1,3:1 */
+.site-foot__brand p { margin-bottom: .9rem; color: var(--on-olive-mut); }
+
+.site-foot__col { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
+
+.site-foot__label {
+  width: 100%;
+  margin: 0 0 .5rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid var(--rule-invert);
+  font-weight: 500;
+  font-size: .6875rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--on-olive-mut);
+}
+
+/* :not(.btn) ist hier Pflicht: der Selektor ist spezifischer als .btn--invert
+   und faerbte den Knopf sonst sandfarben auf elfenbein — also unsichtbar. */
+.site-foot a:not(.btn),
+.site-foot .linklike {
+  color: var(--sand);
+  text-decoration: none;
+  font-size: .8125rem;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  transition: color .25s var(--ease);
+}
+
+.site-foot a:not(.btn):hover, .site-foot .linklike:hover { color: var(--ivory); }
+
+.site-foot__book .small { color: var(--on-olive-mut); margin-bottom: .5rem; }
+.site-foot__book .btn { margin-top: .35rem; }
+
+.site-foot__legal {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .6rem 2rem;
+  padding: 1.5rem clamp(0px, 6vw, 96px) 0 0;
+  border-top: 1px solid var(--rule-invert);
+  font-size: .8125rem;
+  color: var(--on-olive-mut);
+}
+
+@media (max-width: 1080px) {
+  .site-foot__in { grid-template-columns: 1fr 1fr; }
+  .site-foot__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .site-foot__in { grid-template-columns: 1fr; }
+  .site-foot__legal { flex-direction: column; }
+}
+
+/* --- Einwilligung --------------------------------------------------------- */
+
+/* Kein Overlay, keine Modal-Falle: die Seite bleibt bedienbar, weil außer der
+   Entscheidung selbst nichts gespeichert wird. */
+.consent {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 35;
+  background: var(--ivory);
+  border-top: 1px solid var(--rule-strong);
+  transform: translateY(100%);
+  transition: transform .4s var(--ease);
+}
+
+.consent.is-on { transform: none; }
+.consent[hidden] { display: none; }
+
+.consent__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  padding: 1.4rem 0;
+}
+
+.consent__tx { flex: 1 1 32rem; }
+.consent__tx .eyebrow { margin-bottom: .7rem; }
+.consent__tx .eyebrow::before { width: 32px; margin-bottom: .7rem; }
+.consent__tx p:last-child { font-size: .875rem; line-height: 1.65; max-width: 68ch; color: var(--taupe-deep); }
+
+.consent__btns { display: flex; flex-wrap: wrap; gap: .8rem; }
+.consent__btns .btn { padding: 1em 1.9em; }
+
+@media (max-width: 860px) {
+  .consent__in { padding: 1.1rem 0; gap: 1rem; }
+  .consent__tx { flex: 1 1 100%; }
+  .consent__tx .eyebrow { display: none; }
+  .consent__tx p:last-child { font-size: .8125rem; line-height: 1.5; }
+  .consent__btns { width: 100%; gap: .6rem; }
+  .consent__btns .btn { flex: 1 1 0; padding: .95em .8em; }
+}
+
+/* Der untere Rand ist ein Stapel: Consent trägt die Buchungsleiste,
+   die Buchungsleiste trägt den Pfeil. Höhen meldet das Skript. */
+body { --consent-h: 0px; --bar-h: 0px; }
+
+/* Der Schalter darf sich nicht als Formularelement verraten — Browser setzen
+   auf <button> unter anderem letter-spacing: normal zurück. */
+.linklike {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
 
 /* --- Mobile Buchungsleiste ------------------------------------------------ */
 
 .bar {
   position: fixed;
-  inset: auto 0 0;
+  inset: auto 0 var(--consent-h) 0;
   z-index: 30;
   display: none;
   align-items: center;
@@ -1200,23 +1390,237 @@ section { position: relative; }
 .bar span { font-size: .8125rem; letter-spacing: .04em; color: var(--taupe-deep); font-variant-numeric: tabular-nums; }
 .bar .btn { padding: .95em 1.6em; }
 
-/* --- Bewegung ------------------------------------------------------------- */
+/* ==========================================================================
+   BEWEGUNG
 
-.rise { opacity: 0; transform: translateY(6px); }
+   Leitgedanke: Satz und Bild verhalten sich wie im Druck, nicht wie eine
+   Web-Vorlage. Zeilen kommen hinter einer Maske hervor, Bilder werden von
+   einem Vorhang freigegeben, Haarlinien zeichnen sich. Kein Federn, kein
+   Drehen, kein Stagger über ganze Abschnitte.
+   ========================================================================== */
+
+/* Lange, flach auslaufende Kurve — daher wirkt die Bewegung ruhig statt flott */
+:root {
+  --ease-soft: cubic-bezier(.16, 1, .3, 1);
+  --dur-s: .5s;
+  --dur-m: .9s;
+  --dur-l: 1.4s;
+}
+
+/* --- Grundeinblendung ----------------------------------------------------- */
+
+.rise { opacity: 0; transform: translateY(14px); }
 
 .rise.is-in {
   opacity: 1;
   transform: none;
-  transition: opacity .45s var(--ease), transform .45s var(--ease);
+  transition: opacity var(--dur-m) var(--ease-soft), transform var(--dur-m) var(--ease-soft);
 }
 
-.ph img { transform: scale(1.04); transition: transform 1.2s var(--ease); }
+/* --- Zeilen hinter der Maske ---------------------------------------------- */
+
+.ln {
+  display: block;
+  overflow: hidden;
+  padding-block: .11em;
+  margin-block: -.11em;
+}
+
+.ln__i {
+  display: block;
+  transform: translateY(108%);
+  transition: transform var(--dur-m) var(--ease-soft);
+  transition-delay: calc(var(--i, 0) * 75ms);
+  will-change: transform;
+}
+
+.is-in .ln__i { transform: none; }
+.is-in .ln__i { will-change: auto; }
+
+/* --- Bildvorhang ---------------------------------------------------------- */
+
+/* Der Ausschnitt fährt von unten auf, das Bild fährt gleichzeitig zurück —
+   zwei Geschwindigkeiten, deshalb wirkt es nach Kamera und nicht nach CSS. */
+.ph {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-l) var(--ease-soft);
+}
+
+.ph.is-in, .rise.is-in .ph { clip-path: inset(0 0 0 0); }
+
+.ph img {
+  transform: scale(1.1);
+  transition: transform 1.8s var(--ease-soft);
+}
+
 .ph.is-in img, .rise.is-in .ph img { transform: none; }
+
+/* Bögen und Vollbildhintergründe bleiben ungeschnitten */
+.arch, .hero__ph, .buchung__bg, .abschluss__bg { clip-path: none; }
+.arch img { transition-duration: 1.6s; }
+
+/* --- Haarlinien zeichnen sich --------------------------------------------- */
+
+.ruler, .eyebrow::before, .tier__label, .exp__who, .member__craft,
+.feats li, .inkl__list li, .fuerwen__q li, .neumond__q li, .faq details {
+  --line-origin: left;
+}
+
+.ruler { transform: scaleX(0); transform-origin: left; transition: transform var(--dur-l) var(--ease-soft); }
+.is-in .ruler, .ruler.is-in { transform: none; }
+
+.eyebrow::before { transform: scaleX(0); transform-origin: left; transition: transform var(--dur-m) var(--ease-soft) .1s; }
+.is-in .eyebrow::before { transform: none; }
+.eyebrow--center::before, .abschluss .eyebrow::before { transform-origin: center; }
+
+/* --- Zeilenlisten: kurzer Versatz, weil es echte Zeilen sind --------------
+   Der Behälter selbst trägt .stagger und .is-in. Ein Selektor der Form
+   `.is-in .liste li` würde verlangen, dass die Liste INNERHALB des
+   eingeblendeten Elements liegt — sie ist aber selbst das eingeblendete
+   Element, und die Zeilen blieben für immer unsichtbar. */
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.stagger.is-in > *,
+.is-in .stagger > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--dur-s) var(--ease-soft), transform var(--dur-s) var(--ease-soft);
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* --- Mondphasen füllen sich nacheinander ---------------------------------- */
+
+.moons i { transform: scale(0); transition: transform .55s var(--ease-soft); }
+.moons.is-in i { transform: none; transition-delay: calc(var(--i, 0) * 90ms); }
+
+/* --- Medaillon ------------------------------------------------------------ */
+
+.medallion { transition: transform 1.1s var(--ease-soft), opacity .8s var(--ease-soft); }
+.medallion:not(.is-in) { opacity: 0; transform: translate(-50%, 50%) scale(.82); }
+
+/* --- Parallaxe ------------------------------------------------------------ */
+
+/* Bewusst klein: das Bild atmet, es fliegt nicht. */
+/* Das Bild ist absichtlich groesser als sein Ausschnitt und haengt oben ueber,
+   damit die Parallaxe nach beiden Seiten Luft hat. Ohne position: absolute
+   greift top nicht: das 118 % hohe Bild sitzt dann buendig oben, die Parallaxe
+   schiebt es nach unten und die Sandflaeche des Ausschnitts blitzt als heller
+   Streifen an der Oberkante hervor. */
+.px img { position: absolute; inset-inline: 0; height: 118%; top: -9%; will-change: transform; }
+.px { overflow: hidden; }
+
+/* --- Lesefortschritt ------------------------------------------------------ */
+
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 60;
+  width: 100%;
+  height: 1px;
+  background: var(--taupe);
+  opacity: .7;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* --- Zustände ------------------------------------------------------------- */
+
+/* Vorhang von unten statt Farbsprung */
+.btn { position: relative; overflow: hidden; z-index: 0; }
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateY(101%);
+  transition: transform .5s var(--ease-soft);
+}
+
+.btn:hover::before { transform: none; }
+.btn--primary::before { background: var(--ink); }
+.btn--primary:hover { background: var(--olive); }
+.btn--ghost::before { background: rgba(154, 132, 108, .12); }
+.btn--invert::before { background: var(--sand); }
+.btn--outline-light::before { background: rgba(247, 244, 239, .14); }
+
+/* Unterstrich wächst von links */
+.site-nav a:not(.is-cta) { position: relative; }
+
+.site-nav a:not(.is-cta)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--rule-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s var(--ease-soft);
+}
+
+.site-nav a:not(.is-cta):hover::after { transform: none; }
+
+.link { background-image: none; }
+.mosaic .ph { transition: clip-path var(--dur-l) var(--ease-soft), opacity .5s var(--ease-soft); }
+.mosaic .ph img { transition: transform 1.8s var(--ease-soft), filter .6s var(--ease-soft); }
+.mosaic .ph:hover img { transform: scale(1.03); }
+
+/* --- Menütafel ------------------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .site-nav a, .site-nav__meta {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .5s var(--ease-soft), transform .5s var(--ease-soft);
+  }
+
+  .site-nav.is-open a, .site-nav.is-open .site-nav__meta {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i, 0) * 55ms + 120ms);
+  }
+}
+
+/* --- FAQ: auch das Schließen läuft weich ---------------------------------- */
+
+.faq details > div {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows .42s var(--ease-soft), opacity .3s var(--ease-soft);
+}
+
+.faq details > div > * { overflow: hidden; }
+.faq details.is-closing > div { grid-template-rows: 0fr; opacity: 0; }
+
+/* --- Abschalter ----------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rise, .rise.is-in { opacity: 1; transform: none; transition: none; }
-  .ph img { transform: none; transition: none; }
+
+  .rise, .rise.is-in,
+  .stagger > *,
+  .site-nav a, .site-nav__meta {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ln__i, .ruler, .eyebrow::before, .moons i, .medallion, .btn::before,
+  .site-nav a::after, .ph img {
+    transform: none;
+    transition: none;
+  }
+
+  .medallion:not(.is-in) { opacity: 1; transform: translate(-50%, 50%); }
+  .ph, .ph.is-in { clip-path: none; transition: none; }
+  .px img { height: 100%; top: 0; }
+  .progress { display: none; }
   * { animation: none !important; }
 }
 
@@ -1237,6 +1641,8 @@ section { position: relative; }
   .fuerwen__head, .fuerwen__body, .fuerwen__q, .fuerwen__end, .fuerwen__cta,
   .faq__head, .faq__list,
   .abschluss__tx,
+  .neumond__outro,
+  .invite__ph, .fuerwen__ph,
   .kulinarik__ph, .kulinarik__tx,
   .inkl__head, .inkl__list, .inkl__out,
   .bms__cols, .timeline, .ablauf__ph {
@@ -1244,6 +1650,14 @@ section { position: relative; }
   }
 
   .inkl__head { position: static; }
+  .faq__list { grid-template-columns: 1fr; }
+  .faq__col + .faq__col { border-top: 0; }
+  .neumond__outro, .neumond__q { grid-row: auto; }
+  .fuerwen__end, .fuerwen__cta { grid-column: 1 / -1; grid-row: auto; margin-top: var(--space-s); }
+
+  /* Gestapelt braucht keine der Bildspalten mehr ihren Versatz */
+  .invite__ph, .fuerwen__ph { grid-row: auto; margin-top: var(--space-s); max-width: 420px; }
+  .inkl__ph { max-width: 360px; }
   .ablauf__ph { margin-top: var(--space-s); max-width: 460px; }
   .neumond__q, .neumond__outro { margin-top: var(--space-s); }
 
@@ -1266,8 +1680,9 @@ section { position: relative; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
   .hero__copy { order: 2; padding: var(--space-s) var(--pad) var(--space-m); }
+  /* Das Bild bleibt auch hier absolut im Ausschnitt (siehe .px img) — statisch
+     verliert es seinen Ueberhang und die Parallaxe legt oben Sand frei. */
   .hero__ph { order: 1; aspect-ratio: 16 / 9; }
-  .hero__ph img { position: static; }
   .medallion { left: 50%; }
 
   .bms__cols { grid-template-columns: 1fr; row-gap: 2.5rem; }
@@ -1281,15 +1696,16 @@ section { position: relative; }
   /* Ein Mosaik aus fünf Bildern geht in zwei Spalten nie sauber auf —
      also gestapelt, jedes Bild in seinem eigenen Format. */
   .mosaic { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .mosaic .m1, .mosaic .m2, .mosaic .m3,
-  .mosaic .m4, .mosaic .m5 { grid-column: 1; grid-row: auto; }
-  .mosaic .m1, .mosaic .m3, .mosaic .m4 { aspect-ratio: 16 / 9; }
-  .mosaic .m2, .mosaic .m5 { aspect-ratio: 4 / 5; }
+  .mosaic > .ph { grid-column: 1; grid-row: auto; }
+  .mosaic .m1, .mosaic .m3, .mosaic .m4, .mosaic .m5 { aspect-ratio: 16 / 9; }
+  .mosaic .m2, .mosaic .m6, .mosaic .m7, .mosaic .m8 { aspect-ratio: 4 / 5; }
 
   .tier__ph, .tier__tx, .tier__buy { grid-column: 1 / -1; }
   .tier__ph { max-width: 300px; margin-bottom: 2rem; }
 
-  .kulinarik__extra { width: 62%; }
+  /* Gestapelt fehlt die Textspalte als Gegengewicht: der versetzte Ausschnitt
+     liest sich dann nicht als Collage, sondern als verrutschtes Bild. */
+  .kulinarik__extra { width: 100%; margin: 1.25rem 0 0; }
 
   .ticket__when, .ticket__prices { grid-template-columns: 1fr; }
   .ticket__prices > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1.2rem; }
@@ -1376,8 +1792,7 @@ section { position: relative; }
 
   .bar { display: flex; }
 
-  /* Die Buchungsleiste sitzt unten — der Pfeil rückt darüber */
-  .totop { bottom: calc(clamp(20px, 3vw, 40px) + 68px); width: 44px; height: 44px; }
+  .totop { width: 44px; height: 44px; }
 
   .sun, .sprig { display: none; }
 

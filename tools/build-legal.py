@@ -37,7 +37,7 @@ HEAD = """<!DOCTYPE html>
 <header class="site-head site-head--solid">
   <div class="wrap site-head__in">
     <a href="index.html" aria-label="B³ Retreats – Startseite">
-      <svg class="mark" viewBox="0 0 120 120" width="58" height="58"><use href="#b3mark"/></svg>
+      <svg class="mark" viewBox="0 0 120 120" width="76" height="76"><use href="#b3mark"/></svg>
     </a>
     <nav class="site-nav">
       <a href="index.html">Zurück zur Startseite</a>
@@ -59,20 +59,59 @@ HEAD = """<!DOCTYPE html>
 
 <footer class="site-foot">
   <div class="wrap site-foot__in">
-    <div>
+    <div class="site-foot__brand">
       <svg class="mark mark--invert" viewBox="0 0 120 120" width="96" height="96"><use href="#b3mark"/></svg>
+      <p class="small">Body. Mind. Soul.<br>Yoga &middot; Astro &middot; Business</p>
+      <p class="small">08.&ndash;11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz</p>
     </div>
-    <nav aria-label="Rechtliches">
+
+    <nav class="site-foot__col" aria-label="Retreat">
+      <p class="site-foot__label">Retreat</p>
       <a href="index.html">Startseite</a>
+      <a href="index.html#experiences">Programm</a>
+      <a href="index.html#ort">Der Ort</a>
+      <a href="index.html#unterkunft">Unterkunft &amp; Preise</a>
+      <a href="index.html#team">Über uns</a>
+      <a href="index.html#faq">Häufige Fragen</a>
+    </nav>
+
+    <nav class="site-foot__col" aria-label="Rechtliches">
+      <p class="site-foot__label">Rechtliches</p>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
       <a href="agb.html">AGB</a>
+      <a href="impressum.html#kontakt">Kontakt</a>
+      <button class="linklike" type="button" data-consent-open>Cookie-Einstellungen</button>
     </nav>
+
+    <div class="site-foot__col site-foot__book">
+      <p class="site-foot__label">Buchung</p>
+      <p class="small">Shared House ab 1.549 &euro; pro Person<br>Friends Special 3.950 &euro; für zwei</p>
+      <a class="btn btn--invert" href="index.html#buchung" data-booking>Meinen Platz sichern</a>
+    </div>
+
     <p class="small site-foot__legal">
       B³ Retreats &middot; Christina Brumm &middot; An den Nahewiesen 20, 55450 Langenlonsheim
+      <span>Buchung und Zahlungsabwicklung über Tentary</span>
     </p>
   </div>
 </footer>
+
+<aside class="consent" id="consent" hidden aria-label="Hinweis zu Cookies">
+  <div class="wrap consent__in">
+    <div class="consent__tx">
+      <p class="eyebrow">Cookies</p>
+      <p>Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing
+         erst mit deiner Zustimmung — mehr dazu in der <a class="link" href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    </div>
+    <div class="consent__btns">
+      <button class="btn btn--ghost" type="button" data-consent="necessary">Nur notwendige</button>
+      <button class="btn btn--primary" type="button" data-consent="all">Alle akzeptieren</button>
+    </div>
+  </div>
+</aside>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
 """
@@ -85,6 +124,15 @@ def inline(text):
     out = TODO.sub(lambda m: f'<span class="todo">Bitte ergänzen:{m.group(1)}</span>',
                    out.replace("[BITTE ERG&#xC4;NZEN:", "[BITTE ERGÄNZEN:"))
     return out
+
+
+UML = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss",
+                     "Ä": "ae", "Ö": "oe", "Ü": "ue"})
+
+
+def slug(text):
+    out = re.sub(r"[^a-z0-9]+", "-", text.lower().translate(UML))
+    return out.strip("-")[:48]
 
 
 def join_para(lines):
@@ -109,7 +157,8 @@ def blocks_to_html(lines, level=2):
         line = raw.rstrip()
         if line.startswith("## "):
             flush()
-            out.append(f"      <h{level}>{inline(line[3:])}</h{level}>")
+            head = line[3:]
+            out.append(f'      <h{level} id="{slug(head)}">{inline(head)}</h{level}>')
         elif line.lstrip().startswith(("- ", "• ", "•\t")):
             if para:
                 flush()
@@ -154,7 +203,7 @@ def build_agb(text):
         line = raw.strip()
         if re.match(r"^§\s*\d+", line):
             flush()
-            out.append(f"      <h2>{inline(line)}</h2>")
+            out.append(f'      <h2 id="{slug(line)}">{inline(line)}</h2>')
         elif line.startswith("•"):
             if para:
                 flush()
@@ -170,7 +219,7 @@ def build_agb(text):
 
 
 def drop_echo(body, h1):
-    first = f"      <h2>{h1}</h2>\n"
+    first = f'      <h2 id="{slug(h1)}">{h1}</h2>\n' 
     return body[len(first):] if body.startswith(first) else body
 
 

@@ -42,6 +42,70 @@ const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
     console.info('[B³] BOOKING_URL ist noch ein Platzhalter — assets/js/main.js, Zeile 11.');
   }
 
+  // --- Einwilligung ---------------------------------------------------------
+  // Aktuell gibt es nichts einzuwilligen: die Seite lädt nichts von fremden
+  // Servern und setzt keine Cookies. Gespeichert wird nur die Entscheidung.
+  // Kommt später ein Statistik- oder Marketing-Dienst dazu, gehört er in
+  // loadOptional() — dann trägt der Banner ohne weiteren Umbau.
+  const CONSENT_KEY = 'b3-consent';
+  const consent = document.getElementById('consent');
+
+  function readConsent() {
+    try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch (e) { return null; }
+  }
+
+  function loadOptional() {
+    // Hier später Statistik-/Marketing-Skripte einhängen. Bewusst leer.
+  }
+
+  window.b3Consent = {
+    get: readConsent,
+    optionalAllowed: function () { const c = readConsent(); return !!(c && c.optional); },
+    reopen: function () { showConsent(); }
+  };
+
+  function measureStack() {
+    const c = consent && consent.classList.contains('is-on') ? consent.offsetHeight : 0;
+    document.body.style.setProperty('--consent-h', c + 'px');
+    const barEl = document.getElementById('bar');
+    const visible = barEl && barEl.classList.contains('is-on') && getComputedStyle(barEl).display !== 'none';
+    document.body.style.setProperty('--bar-h', visible ? barEl.offsetHeight + 'px' : '0px');
+  }
+
+  function showConsent() {
+    if (!consent) return;
+    consent.hidden = false;
+    requestAnimationFrame(function () {
+      consent.classList.add('is-on');
+      document.body.classList.add('consent-open');
+      measureStack();
+    });
+  }
+
+  function decide(optional) {
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify({ necessary: true, optional: optional, ts: Date.now() }));
+    } catch (e) { /* privater Modus: dann fragen wir beim nächsten Besuch erneut */ }
+    if (optional) loadOptional();
+    if (!consent) return;
+    consent.classList.remove('is-on');
+    document.body.classList.remove('consent-open');
+    measureStack();
+    setTimeout(function () { consent.hidden = true; }, 450);
+  }
+
+  if (consent) {
+    consent.querySelectorAll('[data-consent]').forEach(function (el) {
+      el.addEventListener('click', function () { decide(el.dataset.consent === 'all'); });
+    });
+    if (!readConsent()) showConsent();
+    else if (readConsent().optional) loadOptional();
+  }
+
+  document.querySelectorAll('[data-consent-open]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); showConsent(); });
+  });
+
   // --- Menü -----------------------------------------------------------------
   const burger = document.getElementById('burger');
   const menu = document.getElementById('menu');
@@ -94,6 +158,7 @@ const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
       const stop = ticket.getBoundingClientRect().top < window.innerHeight;
       bar.classList.toggle('is-on', start && !stop);
     }
+    measureStack();
     ticking = false;
   }
 
@@ -102,11 +167,77 @@ const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
   }, { passive: true });
 
   onScroll();
+  window.addEventListener('resize', measureStack, { passive: true });
 
-  // --- Einblenden -----------------------------------------------------------
-  // Bewegungsbudget: Deckkraft + 6px, einmalig. Kein Stagger, kein Parallax.
+  // ==========================================================================
+  // BEWEGUNG
+  // ==========================================================================
+
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const targets = document.querySelectorAll('.rise, .ph');
+
+  // --- Zeilen für die Maske zerlegen ----------------------------------------
+  // Nur reine Textelemente: Auszeichnungen im Inneren würden verloren gehen.
+  const LINE_SEL = 'h1, h2, .serif-line, .member__accent, .ablauf__note, .bms__sign, .abschluss__lines p';
+
+  function splitLines(el) {
+    const raw = el.dataset.text || el.textContent.trim();
+    el.dataset.text = raw;
+
+    // Wörter einzeln setzen, damit der Browser den Umbruch selbst bestimmt
+    el.textContent = '';
+    const probes = raw.split(' ').map(function (word, i) {
+      const w = document.createElement('span');
+      w.textContent = word;
+      el.appendChild(w);
+      if (i < raw.split(' ').length - 1) el.appendChild(document.createTextNode(' '));
+      return w;
+    });
+
+    // Nach der Oberkante gruppieren — das ergibt die tatsächlichen Zeilen
+    const lines = [];
+    let top = null;
+    probes.forEach(function (w) {
+      const t = Math.round(w.offsetTop);
+      if (top === null || Math.abs(t - top) > 3) { lines.push([]); top = t; }
+      lines[lines.length - 1].push(w.textContent);
+    });
+
+    el.textContent = '';
+    lines.forEach(function (words, i) {
+      const outer = document.createElement('span');
+      outer.className = 'ln';
+      outer.style.setProperty('--i', i);
+      const inner = document.createElement('span');
+      inner.className = 'ln__i';
+      // Leerzeichen am Zeilenende: sonst liest der Screenreader „Be freeto be you“
+      inner.textContent = words.join(' ') + (i < lines.length - 1 ? ' ' : '');
+      outer.appendChild(inner);
+      el.appendChild(outer);
+    });
+  }
+
+  const lineEls = [].filter.call(document.querySelectorAll(LINE_SEL), function (el) {
+    return el.children.length === 0 && el.textContent.trim().length > 0;
+  });
+
+  if (!reduce.matches) lineEls.forEach(splitLines);
+
+  // --- Reihenweiser Versatz in Listen ---------------------------------------
+  // .stagger markiert den Behälter; er bekommt später selbst .is-in.
+  const STAGGER = '.feats, .inkl__list ul, .fuerwen__q, .neumond__q ul, .faq__col, .timeline';
+
+  document.querySelectorAll(STAGGER).forEach(function (list) {
+    list.classList.add('stagger');
+    [].forEach.call(list.children, function (el, i) { el.style.setProperty('--i', i); });
+  });
+
+  document.querySelectorAll('.moons, .site-nav').forEach(function (list) {
+    const kids = list.matches('.site-nav') ? list.querySelectorAll('a, .site-nav__meta') : list.children;
+    [].forEach.call(kids, function (el, i) { el.style.setProperty('--i', i); });
+  });
+
+  // --- Einblenden ------------------------------------------------------------
+  const targets = document.querySelectorAll('.rise, .ph, .moons, .medallion, .stagger, ' + LINE_SEL);
 
   if (reduce.matches || !('IntersectionObserver' in window)) {
     targets.forEach(function (el) { el.classList.add('is-in'); });
@@ -117,11 +248,74 @@ const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
         e.target.classList.add('is-in');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
 
     targets.forEach(function (el) { io.observe(el); });
   }
 
-  // Der Hero soll nie auf den Observer warten
-  document.querySelectorAll('.hero .ph, .hero .rise').forEach(function (el) { el.classList.add('is-in'); });
+  // Der Hero wartet auf niemanden
+  document.querySelectorAll('.hero .ph, .hero .rise, .hero h1, .hero .medallion')
+    .forEach(function (el) { el.classList.add('is-in'); });
+
+  // Umbrüche ändern sich mit der Breite — dann neu zerlegen
+  let lastW = window.innerWidth, splitTimer;
+  window.addEventListener('resize', function () {
+    if (reduce.matches || window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(splitTimer);
+    splitTimer = setTimeout(function () {
+      lineEls.forEach(function (el) {
+        const wasIn = el.classList.contains('is-in');
+        splitLines(el);
+        if (wasIn) el.classList.add('is-in');
+      });
+    }, 220);
+  }, { passive: true });
+
+  // --- Parallaxe und Lesefortschritt ----------------------------------------
+  // Eine einzige rAF-Schleife, ausschließlich Transformationen.
+  const pxEls = [].slice.call(document.querySelectorAll('[data-px]')).map(function (el) {
+    return { wrap: el, img: el.querySelector('img'), amp: parseFloat(el.dataset.px) || 8 };
+  }).filter(function (o) { return o.img; });
+
+  const progress = document.getElementById('progress');
+  let frameQueued = false;
+
+  function paint() {
+    const vh = window.innerHeight;
+
+    pxEls.forEach(function (o) {
+      const r = o.wrap.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      // -0.5 … +0.5, während das Element durch den Ausschnitt wandert
+      const p = ((vh - r.top) / (vh + r.height)) - 0.5;
+      o.img.style.transform = 'translate3d(0,' + (-p * o.amp).toFixed(2) + '%,0)';
+    });
+
+    if (progress) {
+      const max = document.documentElement.scrollHeight - vh;
+      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    }
+    frameQueued = false;
+  }
+
+  if (!reduce.matches && (pxEls.length || progress)) {
+    window.addEventListener('scroll', function () {
+      if (!frameQueued) { frameQueued = true; requestAnimationFrame(paint); }
+    }, { passive: true });
+    window.addEventListener('resize', paint, { passive: true });
+    paint();
+  }
+
+  // --- FAQ: das Schließen soll genauso weich laufen wie das Öffnen ----------
+  document.querySelectorAll('.faq details').forEach(function (d) {
+    const sum = d.querySelector('summary');
+    if (!sum) return;
+    sum.addEventListener('click', function (e) {
+      if (reduce.matches || !d.open) return;   // Öffnen macht der Browser selbst
+      e.preventDefault();
+      d.classList.add('is-closing');
+      setTimeout(function () { d.open = false; d.classList.remove('is-closing'); }, 420);
+    });
+  });
 })();

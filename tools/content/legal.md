@@ -95,7 +95,7 @@ Wir freuen uns über Ihr Interesse an B³ Retreats. Der Schutz Ihrer personenbez
 - Diese Website ist eine reine Informations- und Buchungsseite. Sie können sie besuchen, ohne von sich aus personenbezogene Daten anzugeben.
 - Beim bloßen Aufruf der Seite werden lediglich die technisch erforderlichen Zugriffsdaten (Server-Log-Dateien) verarbeitet.
 - Personenbezogene Daten verarbeiten wir darüber hinaus insbesondere dann, wenn Sie uns per E-Mail kontaktieren oder ein Retreat über unsere Buchungsplattform buchen.
-- Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt. Verwendete Cookies sind ausschließlich technisch notwendig.
+- Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt. Verwendete Cookies sind ausschließlich technisch notwendig. Ihre Auswahl im Cookie-Hinweis wird nur lokal in Ihrem Browser gespeichert.
 - Schriften (Web Fonts) werden lokal von unserem Server ausgeliefert. Es besteht keine Verbindung zu Servern von Google.
 - Ihre Daten werden nicht zum Zweck von Profiling oder automatisierter Entscheidungsfindung verwendet.
 
@@ -239,21 +239,33 @@ Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies i
 
 Hinweis: Im Rahmen des Buchungsvorgangs über Tentary können auf der Plattform von Tentary weitere Cookies gesetzt werden. Hierfür gelten die Datenschutz- und Cookie-Hinweise von Tentary.
 
-[BITTE ERGÄNZEN: Falls künftig doch einwilligungspflichtige Dienste eingesetzt werden (z. B. Google Analytics, Meta-Pixel, YouTube-Videos, eingebettete Instagram-Feeds, Calendly, Chat-Tools), ist ein rechtskonformes Consent-Banner erforderlich und dieser Abschnitt muss überarbeitet werden.]
+## 10. Einwilligungsbanner und lokale Speicherung Ihrer Entscheidung
 
-## 10. SSL- bzw. TLS-Verschlüsselung
+Beim ersten Aufruf unserer Website erhalten Sie einen Hinweis zu Cookies mit den Auswahlmöglichkeiten „Nur notwendige“ und „Alle akzeptieren“.
+
+Zum Zeitpunkt der Veröffentlichung dieser Erklärung setzen wir keine einwilligungspflichtigen Dienste ein. Die Auswahl „Alle akzeptieren“ hat daher derzeit keine zusätzliche Datenverarbeitung zur Folge. Wir zeigen den Hinweis dennoch an, damit Sie Ihre Entscheidung von Anfang an selbst treffen und jederzeit ändern können.
+
+Ihre Entscheidung wird ausschließlich lokal in Ihrem Browser gespeichert (Local Storage, Schlüssel „b3-consent“), damit wir Sie nicht bei jedem Besuch erneut fragen müssen. Gespeichert werden lediglich die getroffene Auswahl und der Zeitpunkt der Entscheidung. Es werden dabei keine personenbezogenen Daten an uns oder an Dritte übertragen.
+
+Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG. Die Speicherung der Entscheidung ist unbedingt erforderlich, um Ihre Auswahl umzusetzen.
+
+Sie können Ihre Entscheidung jederzeit ändern. Nutzen Sie hierfür den Link „Cookie-Einstellungen“ im Fußbereich jeder Seite. Alternativ können Sie den Local Storage Ihres Browsers für diese Website löschen; beim nächsten Aufruf werden Sie dann erneut gefragt.
+
+[BITTE ERGÄNZEN: Sobald einwilligungspflichtige Dienste hinzukommen (z. B. Google Analytics, Meta-Pixel, YouTube-Videos, eingebettete Instagram-Feeds, Calendly, Chat-Tools), müssen diese ausschließlich nach Auswahl von „Alle akzeptieren“ geladen werden, und dieser Abschnitt sowie Abschnitt 9 sind um Anbieter, Zweck, Speicherdauer und Empfänger zu ergänzen.]
+
+## 11. SSL- bzw. TLS-Verschlüsselung
 
 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
 
 Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
 
-## 11. Speicherdauer
+## 12. Speicherdauer
 
 Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wird, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.
 
 Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben. Zu solchen Gründen zählen insbesondere gesetzliche Aufbewahrungsfristen nach Handels- und Steuerrecht (§ 257 HGB, § 147 AO) sowie die Erforderlichkeit zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen. Im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.
 
-## 12. Ihre Rechte als betroffene Person (Art. 15 bis 21 DSGVO)
+## 13. Ihre Rechte als betroffene Person (Art. 15 bis 21 DSGVO)
 
 Ihnen stehen im Hinblick auf die Verarbeitung Ihrer personenbezogenen Daten die folgenden Rechte zu:
 
@@ -267,7 +279,7 @@ Ihnen stehen im Hinblick auf die Verarbeitung Ihrer personenbezogenen Daten die 
 
 Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung an die unter „Verantwortliche Stelle“ genannten Kontaktdaten. Die Ausübung Ihrer Rechte ist für Sie grundsätzlich kostenfrei. Zur Prüfung Ihrer Identität können wir zusätzliche Informationen anfordern.
 
-## 13. Beschwerderecht bei der zuständigen Aufsichtsbehörde
+## 14. Beschwerderecht bei der zuständigen Aufsichtsbehörde
 
 Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher oder gerichtlicher Rechtsbehelfe.
 
@@ -286,17 +298,17 @@ Website: https://www.datenschutz.rlp.de
 
 [BITTE ERGÄNZEN: Kontaktdaten vor Veröffentlichung auf der Website der Behörde gegenprüfen.]
 
-## 14. Keine automatisierte Entscheidungsfindung
+## 15. Keine automatisierte Entscheidungsfindung
 
 Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne des Art. 22 Abs. 1 und 4 DSGVO findet nicht statt.
 
-## 15. Änderungen dieser Datenschutzerklärung
+## 16. Änderungen dieser Datenschutzerklärung
 
 Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z. B. bei der Einführung neuer Angebote, Funktionen oder eingesetzter Dienste.
 
 Für Ihren erneuten Besuch gilt dann die jeweils aktuelle, auf dieser Seite veröffentlichte Fassung. Wir empfehlen Ihnen daher, diese Datenschutzerklärung von Zeit zu Zeit erneut zu lesen.
 
-## 16. Stand
+## 17. Stand
 
 Stand dieser Datenschutzerklärung: [BITTE ERGÄNZEN: Monat und Jahr der Veröffentlichung, z. B. August 2026]
 
