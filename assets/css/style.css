@@ -286,8 +286,12 @@ section { position: relative; }
   object-fit: cover;
 }
 
-/* Bogen = Mensch und Innenraum. Rechteck = Ort. Nie im selben Block gemischt. */
-.arch { border-radius: 50% 50% 0 0 / 32% 32% 0 0; }
+/* Bogen = Mensch und Innenraum. Rechteck = Ort. Nie im selben Block gemischt.
+   Der senkrechte Radius ist die halbe Bildhoehe: der Bogen beginnt damit auf
+   halber Hoehe und laeuft sichtbar an den Seiten herunter. Bei den vorherigen
+   32 % sass die Rundung nur als flache Kappe obendrauf — von der Seite war
+   vom Bogen nichts zu sehen. */
+.arch { border-radius: 50% 50% 0 0 / 50% 50% 0 0; }
 
 .veil::before {
   content: '';
@@ -467,7 +471,12 @@ section { position: relative; }
   position: relative;
   display: grid;
   grid-template-columns: 42fr 58fr;
-  min-height: 88vh;
+  /* Vorher 88vh. Der Aufmacher schob damit den Seitenanfang fast komplett aus
+     dem ersten Bildschirm; jetzt bleibt unten ein Streifen des naechsten
+     Abschnitts sichtbar und zeigt, dass es weitergeht. Wird die Zahl weiter
+     gesenkt, ist nicht mehr sie die Untergrenze, sondern der Text in
+     .hero__copy — dann muss dort das Polster mitgehen. */
+  min-height: 72vh;
   background: var(--sand);
 }
 
@@ -477,7 +486,7 @@ section { position: relative; }
   justify-content: center;
   /* Oben muss das groessere Markenzeichen im Kopf Platz finden UND danach noch
      Luft stehen — sonst klebt die Datumszeile am Logo. */
-  padding: clamp(168px, 21vh, 264px) clamp(28px, 4.5vw, 76px) clamp(64px, 8vh, 96px) var(--pad);
+  padding: clamp(140px, 16vh, 208px) clamp(28px, 4.5vw, 76px) clamp(56px, 6vh, 80px) var(--pad);
 }
 
 .hero__meta {
@@ -702,11 +711,34 @@ section { position: relative; }
   margin-top: var(--space-m);
 }
 
-.exp__item .ph      { grid-column: 2 / span 5; }
+/* Der Weg vom Inhalt der .wrap bis zur Fensterkante: unter 1440 px ist es das
+   Seitenpolster, darueber kommt die Haelfte des ueberschuessigen Randes dazu.
+   Damit laeuft das Bild aus dem Raster heraus bis an den Bildschirmrand.
+   .exp hat overflow:hidden — die Scrollbalkenbreite in 100vw kann also keinen
+   waagerechten Scroll ausloesen. */
+.exp {
+  --bleed: max(var(--pad), (100vw - var(--maxw)) / 2 + var(--pad));
+}
+
+.exp__item .ph      { grid-column: 1 / span 6; margin-left: calc(-1 * var(--bleed)); }
 .exp__item .exp__tx { grid-column: 8 / span 5; }
 
-.exp__item--flip .ph      { grid-column: 7 / span 5; grid-row: 1; }
+.exp__item--flip .ph      { grid-column: 7 / span 6; grid-row: 1;
+                            margin-left: 0; margin-right: calc(-1 * var(--bleed)); }
 .exp__item--flip .exp__tx { grid-column: 2 / span 4; grid-row: 1; }
+
+/* Das Bild kommt seitlich ins Bild und ist zur Textspalte hin oval geschnitten:
+   der senkrechte Radius laeuft ueber die volle Hoehe, also ist die Innenkante
+   eine halbe Ellipse und keine abgerundete Ecke. Aussen bleibt es gerade —
+   dort ist die Bildschirmkante. Ueberschreibt .arch (zwei Klassen schlagen
+   eine), damit die Vorlage weiter class="ph arch" schreiben kann. */
+.exp__item .ph       { border-radius: 0 42% 42% 0 / 0 50% 50% 0; }
+.exp__item--flip .ph { border-radius: 42% 0 0 42% / 50% 0 0 50%; }
+
+/* Eine Experience ohne Bild: der Text ruecht auf die Kante der Kapitelspalte
+   und wird zur Atempause zwischen den Bildbloecken — nicht an den rechten
+   Rand geklebt, wo er ohne Bild danebensteht. */
+.exp__item .exp__tx:only-child { grid-column: 2 / span 6; }
 
 
 .exp__who {
@@ -791,14 +823,13 @@ section { position: relative; }
 /* --- 09 Kulinarik --------------------------------------------------------- */
 
 .kulinarik { padding: var(--space-m) 0; }
-.kulinarik__ph { grid-column: 2 / span 5; }
-.kulinarik__ph .ph { aspect-ratio: 1; }
-.kulinarik__tx { grid-column: 8 / span 5; }
 
-/* Rechtsbündig unter dem Quadrat, gleicher Steg wie im Mosaik —
-   sonst baumelt das kleine Bild ohne Bezug in der Spalte. */
-.kulinarik__extra { margin: 10px 0 0 auto; width: 62%; }
-.kulinarik__extra .ph { aspect-ratio: 4 / 5; }
+/* Kapitel ohne Bild. Nicht links buendig wie ein Abschnittskopf — dann steht
+   das rechte Drittel des Bandes leer. Stattdessen eingerueckt wie .bms__outro:
+   beidseitig Luft, damit die Spalte gewollt wirkt und nicht angeschnitten.
+   Auch nicht als Kopf/Text-Paar wie Kapitel 06 und 07 — dreimal dasselbe
+   Raster hintereinander nimmt der Seite den Wechsel. */
+.kulinarik__tx { grid-column: 3 / span 7; }
 
 .tagline-rule {
   margin-top: 2rem;
@@ -1614,7 +1645,7 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .abschluss__tx,
   .neumond__outro,
   .invite__ph, .fuerwen__ph,
-  .kulinarik__ph, .kulinarik__tx,
+  .kulinarik__tx,
   .inkl__head, .inkl__list, .inkl__out,
   .bms__cols, .timeline, .ablauf__ph {
     grid-column: 1 / -1;
@@ -1641,7 +1672,7 @@ body { --consent-h: 0px; --bar-h: 0px; }
 
   .exp__item .ph, .exp__item .exp__tx,
   .exp__item--flip .ph, .exp__item--flip .exp__tx,
-  .exp__item--wide .exp__tx,
+  .exp__item .exp__tx:only-child,
   .member .ph, .member__tx,
   .member--flip .ph, .member--flip .member__tx {
     grid-column: 1 / -1;

@@ -13,6 +13,9 @@ SRC = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/materials- in/B3 Retr
 # Nicht aus dem Kundenordner: das erzeugte Hero-Motiv liegt getrennt, damit
 # Material der Kundin und Erzeugtes nicht durcheinandergeraten.
 HERO_DIR = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei/out/"
+# Die Porträts der drei: ihre echten Fotos, aber alle in dieselbe Umgebung und
+# dasselbe Licht gesetzt — Herkunft und Prompts in tools/portraets/.
+PORT_DIR = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/tools/portraets/out/"
 OUT = "/Users/llashutko/Documents/entsolve/GIT/B3-Retreats/assets/img"
 os.makedirs(OUT, exist_ok=True)
 
@@ -247,9 +250,25 @@ JOBS = [
     ("haus-schlafen",   "26-08-12 10-11-25 7622.jpg", "interior", 4/5,   900, (0.15, 0.15, 0.90, 0.93), (0.55, 0.45), 84, 24),
     ("haus-wohnen",     "26-08-12 10-14-26 7627.jpg", "interior", 4/5,   900, (0.46, 0.10, 1.00, 1.00), (0.50, 0.50)),
 
-    ("sophie",          "Sophie2.png",                "portrait", 4/5,   900, (0.12, 0.00, 1.00, 0.85), (0.45, 0.35)),
-    ("sarah",           "72 - 261A9399.jpg",          "portrait", 4/5,   900, (0.00, 0.00, 1.00, 0.88), (0.50, 0.40)),
-    ("christina",       "IMG_3146.jpeg",              "portrait_beton", 4/5, 900, (0.00, 0.20, 1.00, 0.85), (0.40, 0.35)),
+    # Die drei Porträts stammen aus ihren eigenen Fotos, stehen aber jetzt alle
+    # am selben Feldrand im selben Abendlicht — vorher waren es drei Welten
+    # (Innenraum, Vorhang, Betontreppe) und drei Profile. Deshalb hier auch nur
+    # noch ein Profil: "portrait_beton" wird nicht mehr gebraucht, der Beton ist
+    # weg. Ausschnitt (0,0,1,1): die Vorlagen sind bereits 4:5 gebaut.
+    ("sophie",          PORT_DIR + "p-sophie_1.png",    "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
+    ("sarah",           PORT_DIR + "p-sarah_1.png",     "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
+    # Enger als die anderen zwei, und zwar mit Absicht: Christina lehnte auf der
+    # Vorlage an einem Treppengelaender. Ohne Gelaender muss das Modell BEIDE
+    # Haende neu erfinden, und genau daran erkennt man das Bild als erzeugt.
+    # Der Schnitt endet oberhalb der Haende — was nicht im Bild ist, kann auch
+    # nicht falsch sein. Sarah und Sophie behalten ihre echten Arme, die
+    # brauchen den Schnitt nicht.
+    ("christina",       PORT_DIR + "p-christina-v2_3.png", "portrait", 4/5,   900, (0.10, 0.04, 0.95, 0.66), (0.50, 0.50)),
+
+    # Dieselben drei noch einmal, als Bild zur jeweiligen Experience.
+    ("exp-sarah",       PORT_DIR + "e-sarah.png",       "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
+    ("exp-sophie",      PORT_DIR + "e-sophie.png",      "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
+    ("exp-christina",   PORT_DIR + "e-christina.png",   "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
 
     ("buchung-bg",      "1e0a5675-f83e-4eb0-bb69-73a290f60e68.jpeg", "sunset", 16/9, 1600, (0.00, 0.00, 1.00, 0.75), (0.50, 0.45)),
     # Abschluss: die Drei in der RECHTEN Bilddrittel, links bleibt ruhig. Der

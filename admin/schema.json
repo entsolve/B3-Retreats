@@ -711,13 +711,7 @@
     "path": "ort.map.line1",
     "label": "Karte – Zeile 1",
     "type": "text",
-    "hint": "Erste Zeile neben der Kartengrafik (Ort und Landkreis)."
-  },
-  {
-    "path": "ort.map.line2",
-    "label": "Karte – Zeile 2",
-    "type": "text",
-    "hint": "Zweite Zeile neben der Kartengrafik (Anfahrt), steht nach dem Zeilenumbruch."
+    "hint": "Zeile neben der Kartengrafik (Ort und Landkreis)."
   },
   {
     "path": "ort.p1",
@@ -844,30 +838,6 @@
     "label": "Kapitelnummer Kulinarik",
     "type": "text",
     "hint": "Randbeschriftung, z.B. \"Kapitel 08\"."
-  },
-  {
-    "path": "kulinarik.image.src",
-    "label": "Kulinarik – Hauptbild",
-    "type": "image",
-    "hint": "Quadratisches Bild 1000×1000 px (Essen)."
-  },
-  {
-    "path": "kulinarik.image.alt",
-    "label": "Kulinarik – Hauptbild Alternativtext",
-    "type": "text",
-    "hint": "Bildbeschreibung für Screenreader."
-  },
-  {
-    "path": "kulinarik.grill.src",
-    "label": "Kulinarik – Zweitbild (Grill)",
-    "type": "image",
-    "hint": "Kleineres Bild 800×1000 px, versetzt neben dem Hauptbild."
-  },
-  {
-    "path": "kulinarik.grill.alt",
-    "label": "Kulinarik – Zweitbild Alternativtext",
-    "type": "text",
-    "hint": "Bildbeschreibung für Screenreader."
   },
   {
     "path": "kulinarik.eyebrow",

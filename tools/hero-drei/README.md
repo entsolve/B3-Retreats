@@ -34,6 +34,82 @@ Beide laufen auf Vorkasse — eine hinterlegte Karte lädt das Guthaben nicht vo
 selbst auf. Fehlt Guthaben, kommt `429 prepayment credits are depleted` (Gemini)
 bzw. `403 User is locked, exhausted balance` (fal, schon beim CDN-Upload).
 
+## Offen: Neuaufnahme statt Retusche (17.08.2026)
+
+Die Kundin hat die Retusche vom 16.08. abgelehnt — zu Recht: der Kader ist dabei
+enger geworden und die Fuesse sind angeschnitten. Gewuenscht ist eine **neue
+Generierung von Grund auf**, die den freigegebenen Kader und die Koerpergroessen
+aus `out/final-hero-wide-v1.png` uebernimmt und nur Haare (Locken) und Hut
+aendert. Der Prompt dafuer liegt fertig als `prompt-v2.txt`.
+
+Beide Wege waren am 17.08. gesperrt — Gemini `429 prepayment credits are
+depleted`, fal `403 User is locked, exhausted balance`. Nach dem Aufladen laeuft
+es ohne weitere Vorarbeit:
+
+```bash
+S=~/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei
+P=~/Documents/entsolve/GIT/B3-Retreats/tools/portraets
+G=~/Documents/entsolve/GIT/polarholz-3drenders/generate.py
+
+# 1 — Hero quer, neu erzeugt (nicht retuschiert)
+python3 $G --prompt-file $S/prompt-v2.txt \
+  --ref $S/ref/christina.png --ref $S/ref/sarah.png --ref $S/ref/sophie.png \
+  --ref $S/ref/hero-wide.png --ref $S/out/final-hero-wide-v1.png \
+  --out $S/out/n1 --n 3 --aspect 16:9 --size 2K --model gemini-3-pro-image-preview
+
+# 2 — Christina, Kapitel 10, mit dem strengen Gesichtsblock
+python3 $G --image $P/IMG_3146.jpeg --prompt-file $P/p-christina.txt \
+  --out $P/out/p-christina-v3 --n 3 --aspect 4:5 --size 2K --model gemini-3-pro-image-preview
+
+# 3 — Christina, Kapitel 05
+python3 $G --image $P/IMG_3145.jpeg --prompt-file $P/e-christina.txt \
+  --out $P/out/e-christina-v2 --n 3 --aspect 4:5 --size 2K --model gemini-3-pro-image-preview
+```
+
+Ueber fal statt Gemini: derselbe Prompt, `falimg.py --model nbpro`, Referenzen
+in derselben Reihenfolge.
+
+Danach pruefen (Arme zaehlen, Fuesse im Bild, kein Hut, Locken), Sieger nach
+`final-hero-wide.png` kopieren und backen:
+`python3 tools/build-assets.py hero-wide hero-tall og-image christina exp-christina`.
+
+Das Hochformat braucht denselben Durchgang mit `--aspect 3:4` — quer und hoch
+sind zwei Bilder, eines traegt die Korrektur nicht ins andere.
+
+## Nachbesserung, 16.08.2026
+
+Die Kundin hat drei Dinge angestrichen: die drei Frauen lesen sich wie drei
+verschiedene Maßstäbe in einem Bild, die Haare der Mittleren stimmen nicht, und
+der Strohhut in der Hand der Linken soll weg. `fix2.txt` erledigt genau diese
+drei — wieder als **Retusche des freigegebenen Kaders**, mit
+`ref/sarah.png` als Haarvorlage:
+
+```bash
+S=~/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei
+python3 ~/Documents/entsolve/GIT/polarholz-3drenders/generate.py \
+  --image $S/out/final-hero-wide.png --prompt-file $S/fix2.txt \
+  --ref $S/ref/sarah.png --out $S/out/v3 --n 3 --aspect 16:9 --size 2K \
+  --model gemini-3-pro-image-preview
+```
+
+Endfassungen: `out/v3_1.png` (quer) und `out/v3tall_1.png` (hoch), kopiert nach
+`final-hero-wide.png` / `final-hero-tall.png`. Der Stand vom 15.08. liegt
+daneben als `final-hero-wide-v1.png` und `final-hero-tall-v1.png`.
+
+Drei Beobachtungen aus diesem Durchgang:
+
+* **Quer und hoch müssen getrennt nachgebessert werden.** Es sind zwei erzeugte
+  Bilder (siehe unten), also trägt eine Korrektur am Querformat nicht ins
+  Hochformat. Wer nur eines anfasst, hat den Hut am Telefon noch drin.
+* **`v3_2` fiel durch**: der Hut war zwar weg, aber an der Hand der Linken hing
+  ein schmaler Riemen weiter herunter — der Rest des Bandes. Beim Entfernen von
+  Gegenständen immer die Stelle prüfen, an der sie die Hand berührt haben, nicht
+  nur den Platz, an dem sie lagen.
+* **Der Ausschnitt wandert.** Trotz „do not re-frame“ steht die Gruppe im
+  Querformat jetzt näher an der Kamera als vorher, die Füße sind angeschnitten.
+  Das Hochformat hat den Kader gehalten. Wenn beide Formate zusammenpassen
+  müssen, ist das die Stelle zum Hinsehen.
+
 ## Ergebnis, 15.08.2026
 
 `out/final-hero-wide.png` (2752×1536) und `out/final-hero-tall.png` (4:5,

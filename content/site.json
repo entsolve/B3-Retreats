@@ -209,8 +209,8 @@
     "items": [
       {
         "image": {
-          "src": "assets/img/exp-yoga.webp",
-          "alt": "Yogamatte mit Blöcken, Decke und Bolster im Morgenlicht",
+          "src": "assets/img/exp-sarah.webp",
+          "alt": "Sarah Bernhard mit gefalteten Händen auf der Terrasse am Feldrand",
           "height": 1250
         },
         "who": "Mit Sarah",
@@ -230,9 +230,9 @@
       },
       {
         "image": {
-          "src": "assets/img/exp-kerzen.webp",
-          "alt": "Kerzen und Lavendel auf einem Holzhocker",
-          "height": 1000
+          "src": "assets/img/exp-sophie.webp",
+          "alt": "Sophie Christin Braun am Feldrand im späten Nachmittagslicht",
+          "height": 1250
         },
         "who": "Mit Sophie",
         "title": "Astro Energy Reading",
@@ -251,8 +251,8 @@
       },
       {
         "image": {
-          "src": "assets/img/exp-makro.webp",
-          "alt": "Kerzenlicht, Detailaufnahme im Retreat-Raum",
+          "src": "",
+          "alt": "",
           "height": 1250
         },
         "who": "Mit Sophie",
@@ -269,8 +269,8 @@
       },
       {
         "image": {
-          "src": "assets/img/exp-struktur.webp",
-          "alt": "Holzbank auf der Terrasse im Nachmittagslicht",
+          "src": "assets/img/exp-christina.webp",
+          "alt": "Christina am Feldrand im späten Nachmittagslicht",
           "height": 1250
         },
         "who": "Mit Christina",
@@ -314,8 +314,7 @@
     "eyebrow": "Spabrücken | Rheinland-Pfalz",
     "headline": "Unser Retreat-Ort",
     "map": {
-      "line1": "Spabrücken, Landkreis Bad Kreuznach.",
-      "line2": "Rund 15 km bis zur A61."
+      "line1": "Spabrücken, Landkreis Bad Kreuznach."
     },
     "p1": "Unser Retreat findet auf einem großzügigen Anwesen in Spabrücken statt. Abgelegen vom Trubel und umgeben von Feldern, Wald und kleinen Wegen ist es ein Ort, an dem man erstaunlich schnell ein bisschen langsamer wird.",
     "p2": "Das Herzstück unseres Retreats ist eine große, moderne Remise. Hier finden viele unserer Experiences statt, hier essen wir gemeinsam und wahrscheinlich entstehen hier auch einige der Gespräche, die man vorher nicht planen kann.",
@@ -358,14 +357,6 @@
   },
   "kulinarik": {
     "kapitel": "Kapitel 08",
-    "image": {
-      "src": "assets/img/essen.webp",
-      "alt": "Frisch zubereitetes Gericht vom Holzgrill"
-    },
-    "grill": {
-      "src": "assets/img/essen-grill.webp",
-      "alt": "Holzgrill auf dem Gelände"
-    },
     "eyebrow": "Frühstück &amp; Holzgrill",
     "headline": "Gutes Essen und lange Abende",
     "ruler": "Am Tisch",
@@ -506,7 +497,7 @@
     "sophie": {
       "image": {
         "src": "assets/img/sophie.webp",
-        "alt": "Sophie Christin Braun"
+        "alt": "Sophie Christin Braun am Feldrand"
       },
       "name": "Sophie Christin Braun",
       "craft": "Astrologie | Energiearbeit | spirituelle &amp; mediale Impulse",
@@ -519,7 +510,7 @@
     "sarah": {
       "image": {
         "src": "assets/img/sarah.webp",
-        "alt": "Sarah Bernhard"
+        "alt": "Sarah Bernhard am Feldrand"
       },
       "name": "Sarah Bernhard",
       "craft": "Yin Yoga | Breathwork | Bodywork",
@@ -529,7 +520,7 @@
     "christina": {
       "image": {
         "src": "assets/img/christina.webp",
-        "alt": "Christina"
+        "alt": "Christina am Feldrand"
       },
       "name": "Christina",
       "craft": "Strategie | Business | Struktur",

@@ -126,7 +126,7 @@
       <p><a class="link" href="#experiences">{{ einladung.link.label }}</a></p>
     </div>
     <figure class="invite__ph rise">
-      <div class="ph"><img src="{{ einladung.image.src }}" width="900" height="1125" alt="{{ einladung.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="ph arch"><img src="{{ einladung.image.src }}" width="900" height="1125" alt="{{ einladung.image.alt }}" loading="lazy" decoding="async"></div>
     </figure>
     <div class="accent-block rise">
       <strong>{{ einladung.accent.title }}</strong>
@@ -268,7 +268,9 @@
 {{# exp.items }}
 
     <article class="exp__item{{ .flip }} rise">
-      <div class="ph"><img src="{{ .image.src }}" width="1000" height="{{ .image.height }}" alt="{{ .image.alt }}" loading="lazy" decoding="async"></div>
+{{? .image.src }}
+      <div class="ph arch"><img src="{{ .image.src }}" width="1000" height="{{ .image.height }}" alt="{{ .image.alt }}" loading="lazy" decoding="async"></div>
+{{/? .image.src }}
       <div class="exp__tx">
         <span class="exp__who">{{ .who }}</span>
         <h3>{{ .title }}</h3>
@@ -321,7 +323,7 @@
           <path d="M30 2 V16 M30 44 V58 M2 30 H16 M44 30 H58"/>
           <circle class="pin" cx="30" cy="30" r="3.2"/>
         </svg>
-        <span class="small">{{ ort.map.line1 }}<br>{{ ort.map.line2 }}</span>
+        <span class="small">{{ ort.map.line1 }}</span>
       </div>
     </div>
     <div class="ort__body rise">
@@ -350,12 +352,6 @@
 <section class="kulinarik band-warm">
   <div class="wrap grid">
     <div class="rail">{{ kulinarik.kapitel }}</div>
-    <div class="kulinarik__ph rise">
-      <div class="ph"><img src="{{ kulinarik.image.src }}" width="1000" height="1000" alt="{{ kulinarik.image.alt }}" loading="lazy" decoding="async"></div>
-      <div class="kulinarik__extra">
-        <div class="ph"><img src="{{ kulinarik.grill.src }}" width="800" height="1000" alt="{{ kulinarik.grill.alt }}" loading="lazy" decoding="async"></div>
-      </div>
-    </div>
     <div class="kulinarik__tx rise">
       <p class="eyebrow">{{ kulinarik.eyebrow }}</p>
       <h2>{{ kulinarik.headline }}</h2>
