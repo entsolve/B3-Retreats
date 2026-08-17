@@ -35,19 +35,91 @@ function h(?string $s): string
     return htmlspecialchars((string) $s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+/**
+ * Die Anweisungen aus db/schema.sql, einzeln.
+ *
+ * Kommentare werden VORHER entfernt, und das ist nicht Kosmetik: in schema.sql
+ * steht in einem Kommentar der Satz „Gezaehlt wird je IP; ueberschreitet …".
+ * Ein blosses explode(';') zerschneidet die Datei an diesem Semikolon mitten im
+ * Kommentar und schickt zwei Bruchstuecke an die Datenbank.
+ *
+ * Mehr als das braucht es hier nicht: die Datei ist reines DDL, ohne DELIMITER,
+ * ohne Trigger, ohne Prozeduren und ohne Semikolon in Anfuehrungszeichen —
+ * nachgesehen, nicht angenommen.
+ */
+function schema_anweisungen(string $sql): array
+{
+    $sql = preg_replace('#/\*.*?\*/#s', '', $sql);        // Blockkommentare
+    $sql = preg_replace('/^\s*--[^\n]*$/m', '', $sql);    // Zeilenkommentare
+    $teile = array_map('trim', explode(';', (string) $sql));
+    return array_values(array_filter($teile, static fn($t) => $t !== ''));
+}
+
+/**
+ * Legt die Tabellen an. Gibt [Anzahl, Fehlertext|null] zurueck.
+ *
+ * Ohne Risiko wiederholbar: jede Anweisung in schema.sql ist ein
+ * CREATE TABLE IF NOT EXISTS, ein zweiter Durchlauf aendert also nichts und
+ * loescht nichts. Ausgefuehrt wird ausschliesslich die mitgelieferte Datei,
+ * niemals etwas aus einem Formular.
+ */
+function schema_anwenden(PDO $pdo, string $datei): array
+{
+    if (!is_file($datei)) {
+        return [0, 'db/schema.sql liegt nicht auf dem Server. Die Datei gehoert '
+            . 'in den Ordner db/ neben index.html.'];
+    }
+    $sql = (string) file_get_contents($datei);
+    $anweisungen = schema_anweisungen($sql);
+    if (!$anweisungen) {
+        return [0, 'db/schema.sql enthaelt keine ausfuehrbare Anweisung.'];
+    }
+
+    $n = 0;
+    try {
+        foreach ($anweisungen as $anweisung) {
+            $pdo->exec($anweisung);
+            $n++;
+        }
+    } catch (Throwable $e) {
+        error_log('B3 setup.php Schema: ' . $e->getMessage());
+        // Der haeufigste echte Grund, und er ist von aussen nicht zu erraten:
+        // der Datenbankbenutzer darf keine Tabellen anlegen.
+        return [$n, 'Die Tabellen konnten nicht angelegt werden (Anweisung '
+            . ($n + 1) . ' von ' . count($anweisungen) . '). Meist fehlt dem '
+            . 'Datenbankbenutzer das Recht CREATE: im cPanel unter '
+            . '"MySQL-Datenbanken" dem Benutzer ALL PRIVILEGES auf diese '
+            . 'Datenbank geben. Der genaue Fehler steht im Fehlerprotokoll.'];
+    }
+    return [$n, null];
+}
+
 // --- Lage pruefen, bevor irgendein Formular gezeigt wird -------------------
 
 $pdo = db();
 $blocker = null;      // harter Grund, warum es gar nicht weitergeht
 $fertig = false;      // Konto wurde in diesem Aufruf angelegt
 $fehler = [];         // Eingabefehler, Formular bleibt stehen
+$schema_fehlt = false;   // Tabellen sind noch nicht da
+$schema_meldung = null;  // Ergebnis eines Anlege-Versuchs
+$schema_datei = __DIR__ . '/../db/schema.sql';
+
+// Tabellen auf Wunsch selbst anlegen, statt den Weg ueber phpMyAdmin zu
+// verlangen. Das ist derselbe Inhalt aus derselben Datei — nur ohne Handarbeit.
+if ($pdo !== null
+    && ($_SERVER['REQUEST_METHOD'] === 'POST')
+    && (($_POST['aktion'] ?? '') === 'schema')
+    && hash_equals($_SESSION['setup_token'], (string) ($_POST['token'] ?? ''))
+    && !db_has_table($pdo, 'admin_users')) {
+    [$n, $fehlertext] = schema_anwenden($pdo, $schema_datei);
+    $schema_meldung = $fehlertext ?? "$n Tabellen angelegt.";
+}
 
 if ($pdo === null) {
     $blocker = db_error();
 } elseif (!db_has_table($pdo, 'admin_users')) {
-    $blocker = 'Die Tabelle "admin_users" fehlt — db/schema.sql ist noch nicht '
-        . 'importiert. In phpMyAdmin: Datenbank waehlen, Reiter "Importieren", '
-        . 'die Datei db/schema.sql hochladen. Danach diese Seite neu laden.';
+    // Kein Blocker mehr, sondern ein Schritt: die Seite kann das selbst.
+    $schema_fehlt = true;
 } else {
     $vorhanden = (int) $pdo->query('SELECT COUNT(*) FROM admin_users')->fetchColumn();
     if ($vorhanden > 0) {
@@ -61,7 +133,8 @@ if ($pdo === null) {
 
 // --- Formular verarbeiten -------------------------------------------------
 
-if ($blocker === null && $_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($blocker === null && !$schema_fehlt && $_SERVER['REQUEST_METHOD'] === 'POST'
+    && ($_POST['aktion'] ?? '') !== 'schema') {
     if (!hash_equals($_SESSION['setup_token'], (string) ($_POST['token'] ?? ''))) {
         $fehler[] = 'Das Formular ist abgelaufen. Bitte die Seite neu laden.';
     }
@@ -188,7 +261,29 @@ header('X-Robots-Tag: noindex, nofollow');
     <p style="margin:0"><?= h($blocker) ?></p>
   </div>
 
+<?php elseif ($schema_fehlt): ?>
+  <?php if ($schema_meldung !== null): ?>
+    <div class="box stop"><p style="margin:0"><?= h($schema_meldung) ?></p></div>
+  <?php endif; ?>
+  <div class="box warn">
+    <p><strong>Die Datenbank ist erreichbar, aber noch leer.</strong> Es fehlen die
+      sechs Tabellen des Panels.</p>
+    <p style="margin-bottom:0">Diese Seite kann sie selbst anlegen — es ist derselbe
+      Inhalt aus <code>db/schema.sql</code>, den man sonst in phpMyAdmin von Hand
+      importiert. Nichts wird dabei geloescht: jede Anweisung ist ein
+      <code>CREATE TABLE IF NOT EXISTS</code>.</p>
+  </div>
+  <form method="post">
+    <input type="hidden" name="token" value="<?= h($_SESSION['setup_token'] ?? '') ?>">
+    <input type="hidden" name="aktion" value="schema">
+    <button type="submit">Tabellen jetzt anlegen</button>
+  </form>
+
 <?php else: ?>
+  <?php if ($schema_meldung !== null): ?>
+    <div class="box ok"><p style="margin:0"><?= h($schema_meldung) ?>
+      Jetzt noch das Konto anlegen.</p></div>
+  <?php endif; ?>
   <?php if ($fehler): ?>
     <div class="box warn">
       <strong>Bitte noch korrigieren:</strong>
