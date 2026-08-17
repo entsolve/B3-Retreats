@@ -59,6 +59,21 @@ dusty gold on the far hillside, a long dark-green line of oaks and hazels, dry s
 and pale wild grasses in the near foreground, a hazy grey-blue late-summer sky with almost no cloud.
 Central German hill country in August. The horizon sits low and is not perfectly level.
 
+THE NEAR FOREGROUND IS OUT OF FOCUS. This is the single most important thing about the bottom of the
+frame, and it is not a stylistic choice — it follows from the lens. Focus is on the three women. The
+grasses and thistles in the lowest part of the frame and along the left edge are only a step from the
+camera, far outside the depth of field of an 85 mm lens at f/2.8, so they dissolve into soft, broad,
+unreadable shapes. A couple of blades cross the very front of the frame, soft and out of focus. The
+blur grows steadily towards the bottom edge, and the ground under the women's feet is the last thing
+still sharp.
+  · Individual stalks are NOT separable down there. You cannot follow one blade with your eye.
+  · Seed heads and thistles are soft blots of tone, not spiky drawn objects.
+  · There are NO fine bright hairs, awns or thread-like highlights anywhere in the foreground. That
+    single detail is what makes a rendered picture look engraved instead of photographed.
+  · The foreground also has real ground in it: bare earth, shadow between the clumps, dead brown
+    leaves, plants of different species at different heights — not one uniform lawn of identical
+    stalks all leaning the same way.
+
 REALISM MARKERS — these are what separate a photograph from AI:
 skin with actual texture — pores, freckles, a mole, faint sun-lines across the back, an uneven tan
 line under a strap; single flyaway hairs catching the light; linen that creases and hangs heavily,
@@ -68,8 +83,10 @@ grasses in the same direction; slight sensor grain; a hair-thin amount of chroma
 the brightest edges; imperfect handheld framing.
 
 STRICTLY FORBIDDEN — every one of these reads instantly as AI:
-no straw hat and no hat of any kind, no object held in anybody's hand, no long sharp line or stalk
-drawn across the middle of the frame in front of the women, no zip or bright seam painted onto a
+no sharp foreground, no field of identical evenly spaced stalks all leaning the same way, no fine
+bright hairs or awns drawn onto the grasses, no etched or engraved look in the lower part of the
+frame, no straw hat and no hat of any kind, no object held in anybody's hand, no long sharp line or
+stalk drawn across the middle of the frame in front of the women, no zip or bright seam painted onto a
 dress, no uniform orange glow bath over the whole picture, no warm haze or bloom, no halo of light
 around every hair, no lens flare, no sun star, no glossy airbrushed plastic skin, no symmetrical
 composition, no three identical heights or identical postures, no matching outfits, no extra arm,

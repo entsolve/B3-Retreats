@@ -1,0 +1,40 @@
+This is a finished photograph. Retouch it so that it reads as a real snapshot instead of a staged
+picture. Do not change who is in it, where they stand, what they wear or how the frame is cut.
+
+UNCHANGED — the same three women seen from behind, faces out of frame. Same framing, same field of
+view, same distance, same horizon and treeline, same relative heights with the middle woman the
+tallest, same clothes (champagne satin slip dress, cream linen dress with short sleeves, brown
+ribbed top with oat linen trousers), same hair colours and the same level bottom edge of the copper
+curls, same arms and hands, the same hand resting on the right woman's shoulder, the same mandala
+tattoo, the same field, sky, grasses and thistles, the same warm low light from behind and to the
+right, the same colour grade and the same film grain.
+
+WHAT IS WRONG NOW — everything is too even, too arranged, too clean. Three people standing equally
+spaced, equally still, equally lit, with clothes that hang without a single accident. Nobody
+photographs like that. Fix it with the small physical imperfections a real frame has:
+
+1. MOVEMENT. They are walking, not posing. Give the woman on the LEFT a real mid-step: her back foot
+   lifting slightly off the ground with a hint of motion blur on that foot and the hem above it,
+   while the rest of the picture stays sharp. Her dress swings a little to one side because of it.
+2. WIND. The air is moving. Several strands of the right woman's long hair blow across and away from
+   her shoulder, a few copper curls of the middle woman lift, and the dry grasses in the foreground
+   bend in the SAME direction as the hair. Not a storm — a summer evening breeze.
+3. SPACING. They do not stand at equal distances. Make the gap between the left and the middle woman
+   noticeably wider than the gap between the middle and the right one, and let the left woman be
+   half a step further forward than she is now.
+4. FABRIC. Real cloth misbehaves. The satin slip dress on the left creases where it sits on the hip
+   and one thin strap has slipped a little off the shoulder. The linen dress in the middle is
+   wrinkled across the back from sitting, with one deeper fold. The oat trousers on the right bunch
+   slightly over the ankle.
+5. THE FRAME ITSELF. The horizon is not perfectly level — tilt the whole scene by about half a
+   degree. One dry stalk crosses the very bottom edge of the frame, close to the lens and therefore
+   thick and soft and out of focus.
+
+TEXTURE — keep the grain at the same strength, keep skin as skin with pores and freckles, keep the
+weave of the linen and the individual stalks. Do NOT smooth, do NOT denoise, do NOT beautify. If the
+result looks cleaner or glossier than the input, the retouch has failed.
+
+STRICTLY FORBIDDEN — no new people, no visible face, no hat, no new objects, no extra limb, no
+missing or merged limb, no impossible hand, no text, no logo, no watermark, no crop, no zoom, no
+change of the colour grade, no orange glow bath, no bloom, no lens flare, no sun star, no motion
+blur anywhere except the one lifting foot and its hem.

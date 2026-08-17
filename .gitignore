@@ -15,3 +15,7 @@ config.php
 
 # Vom Panel hochgeladene Bilder gehoeren dem Server, nicht dem Verlauf.
 img/uploads/
+
+# Verworfene Render-Varianten: lokal als Beleg nuetzlich, im Verlauf
+# waeren es hunderte Megabyte.
+_verworfen/

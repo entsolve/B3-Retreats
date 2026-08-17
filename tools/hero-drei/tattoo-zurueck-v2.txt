@@ -1,0 +1,54 @@
+This is a finished photograph. Retouch it. Change exactly ONE thing: the size of the tattoo on the
+right woman's left arm. Everything else stays pixel-identical.
+
+FRAMING — the output must be the SAME photograph with the SAME field of view. Do not zoom, do not
+crop, do not re-frame, do not move the camera, do not tilt the horizon. The treeline stays on exactly
+the same line. All three women keep exactly the same size, the same places and the same relative
+heights — the middle woman stays the tallest, the top of her copper hair stays exactly as high as it
+is now. Their legs and bare feet stay exactly where they are and stay fully inside the frame. If any
+of that moves, the retouch has failed.
+
+UNCHANGED, AND THIS IS THE PART THAT MATTERS MOST — the pose. All three keep their arms exactly where
+they are, every arm and every hand, every finger, every knuckle, every nail edge and every skin fold.
+Do not re-draw a single hand. Do not move a single finger. The hand that lies on the left woman's
+shoulder stays exactly there. The hand that lies on the middle woman's lower back stays exactly there,
+including the ring on it. The hand on the right woman's hip stays exactly there. The two arms hanging
+at the outer edges of the group stay exactly as they hang.
+
+Also unchanged: all three seen from behind, no face visible; the low twisted blonde bun, the long
+copper-red curls with the wind in them, the long straight light-brown hair. The clothes stay exactly
+as they are — the champagne satin slip dress on the left, the CLOSED cream silk dress with SHORT
+SLEEVES and a fully covered back in the middle (it is not a slip dress: her shoulders and her back
+stay covered, no straps, no bare back, and its silk sheen and its soft folds stay exactly as they
+are), the brown ribbed tank top and the oat linen trousers on the right. The field, the stubble, the
+treeline, the sky, the light, the shadows, the colour grade and the film grain all stay identical.
+
+And the foreground stays sharp: the dry grasses, teasels and thistles in the lower part of the frame
+and along the left edge keep exactly their present sharpness, every stalk its own edge. Do not soften
+them, do not blur them, do not smooth them.
+
+THE ONE CHANGE — the right woman's left arm currently carries a large dark ornamental tattoo that runs
+from her upper arm down over her forearm as a half-sleeve. Because that forearm lies across the middle
+woman's back, the ink reads as if it belonged to the middle woman. Reduce it to a single mandala on
+her UPPER arm only:
+
+  · one round mandala, roughly the size of a palm, on the outer side of her left UPPER arm, between
+    her own shoulder and her own elbow, close to her own body — fine grey-black linework with dotwork
+    shading, not a solid black mass;
+  · below the elbow her forearm is completely bare, clean skin, nothing on it at all — no ornament,
+    no lines, no faded remains, no grey shadow of the removed ink. The part of her forearm that
+    crosses the middle woman's back is plain skin;
+  · the skin of that forearm matches her other arm exactly: same tone, same tan, same pores, same
+    fine hairs, lit from the same direction;
+  · the arm keeps exactly the same shape, thickness, position and foreshortening. Only the ink on it
+    changes, not the arm.
+
+IT MUST STILL READ AS A REAL PHOTOGRAPH. Keep the film grain at exactly its current strength on the
+retouched skin — the cleaned forearm must carry the same grain as the rest of the frame and must not
+become a smooth, grainless patch. Do NOT smooth, do NOT denoise, do NOT beautify, do NOT sharpen.
+
+STRICTLY FORBIDDEN: no change to any hand or arm position, no re-drawn hand, no missing finger, no
+extra arm, no visible face, no cropped feet, no levelling of the three heights, no change to the
+clothes, no bare shoulders on the middle woman, no change to the hair, the sky, the field, the light,
+the shadows or the framing, no softened foreground, no new tattoo anywhere else on any of the three,
+no text, no logo, no watermark, no vignette, no change of contrast or saturation.

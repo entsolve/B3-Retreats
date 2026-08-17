@@ -1,0 +1,57 @@
+This is a finished, approved photograph. Retouch it in ONE pass. Five changes are listed below;
+everything not listed stays exactly as it is.
+
+TEXTURE — read this first, it matters more than any single change. This is a grainy, unretouched
+reportage photograph and it must still look like one. Keep the existing film grain across the whole
+frame at the same strength. Keep skin as skin: visible pores, freckles, fine lines, small
+irregularities, the slightly uneven tan. Keep the weave of the linen, the crease pattern of the
+satin, the individual dry stalks and seed heads in the foreground, the separate leaves in the
+treeline. Do NOT smooth, do NOT denoise, do NOT soften, do NOT beautify, do NOT airbrush, do NOT
+render skin as an even matte surface, do NOT turn fabric into a flat gradient. If the result looks
+cleaner or glossier than the input, the retouch has failed.
+
+CHANGE 1 — the group stands further away. Add scenery on all four sides so the three women become
+clearly SMALLER in the frame: they should take up roughly HALF the height they take up now, with a
+lot more sky above them and much more field to the left and to the right. This is an outpaint — the
+women themselves are not redrawn, only shown from further back. Their proportions and the
+perspective stay correct for the greater distance, their feet stay on the same ground line, and
+their three cast shadows continue forward towards the camera. The new scenery is more of the same:
+the same harvested wheat field of dusty gold, the same long dark-green line of oaks and hazels on
+the same horizon, the same hazy grey-blue sky with no new clouds, the same mown grass path with dry
+seed heads and thistles. No seam and no brightness step where new meets old.
+
+CHANGE 2 — the straw hat goes. The woman on the LEFT holds a straw sun hat down by her thigh.
+Remove it completely — no brim, no ribbon, no strap, no fragment, no shadow of it on her dress, her
+leg or the grass. Her arm keeps the same position; her hand hangs relaxed and empty, fingers
+slightly curled, anatomically correct, daylight visible between hand and dress. Rebuild the grass
+and the fold of her dress underneath.
+
+CHANGE 3 — the middle woman's hair. She currently has long, smooth, loosely waved copper hair. Give
+her the hair she really has: naturally CURLY copper-red hair with defined spiral curls and ringlets,
+visible separation, real volume, springy rather than combed, a little frizz, single flyaway strands
+catching the low sun. Same colour, same parting, same hairline at the nape. The bottom edge of the
+hair ends on ONE clear, level line across her back, the same height left and right — not ragged, no
+single strands hanging far below the rest.
+
+CHANGE 4 — the middle woman is taller. Make her clearly the tallest of the three: the top of her
+head sits noticeably above both neighbours, by roughly the height of her own forehead. She grows
+upwards from the ground — her feet stay in the same spot on the same ground plane, and the length
+comes from legs and torso in normal human proportion. Do not change her build or her width. Her
+right arm still reaches across to the right woman's shoulder, hand open on it, all five fingers
+readable; the arm simply starts a little higher.
+
+CHANGE 5 — her shoulders are covered. Her cream linen dress is sleeveless. Give the same dress short
+sleeves in exactly the same cream linen, covering the whole shoulder and the top of the upper arm,
+ending about a hand's width above the elbow, plain hem, soft natural creases, same weave and colour
+as the rest of the dress. Nothing else about the dress changes.
+
+UNCHANGED — the woman on the LEFT and the woman on the RIGHT keep their hair, clothes, skin, arms,
+hands and posture exactly as they are. The light stays the same: low sun from behind and to the
+right, roughly 25° above the horizon. The colour grade, the contrast and the white balance stay the
+same. Faces stay out of the frame.
+
+STRICTLY FORBIDDEN — no smoothing, no denoise, no beauty filter, no plastic skin, no new people, no
+new objects, no hat, no building, no fence, no animals, no text, no logo, no watermark, no border,
+no vignette, no visible face, no extra limb, no missing or merged limb, no impossible hand, no
+orange glow bath, no bloom, no lens flare, no sun star, no long sharp stalk drawn across the middle
+of the frame in front of the women.

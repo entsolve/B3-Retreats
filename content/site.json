@@ -38,10 +38,8 @@
   },
   "nav": {
     "programm": "Programm",
-    "ort": "Der Ort",
     "unterkunft": "Unterkunft &amp; Preise",
     "team": "Über uns",
-    "faq": "Fragen",
     "cta": "Platz sichern",
     "meta": {
       "dates": "08.–11. Oktober 2026",
@@ -51,7 +49,7 @@
   "hero": {
     "meta": "08.–11. Oktober 2026 &nbsp;|&nbsp; Spabrücken",
     "headline": "Be free to be&nbsp;you.",
-    "lead": "Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst.",
+    "lead": "Vier Tage zurück zu dir und dem, was du wirklich willst.",
     "cta": {
       "label": "Meinen Platz sichern",
       "note": "Max. 11 Frauen &middot; 3 Coaches &middot; Ratenzahlung möglich"
@@ -73,16 +71,16 @@
     "headline": "Wann hast du dir das letzte Mal wirklich Zeit für dich genommen?",
     "body": [
       {
-        "text": "Nicht, um etwas abzuarbeiten, eine Entscheidung zu treffen oder das nächste Ziel zu erreichen. Sondern einfach, um wieder ein bisschen genauer hinzuhören."
+        "text": "Nicht, um etwas abzuarbeiten oder das nächste Ziel zu erreichen. Sondern einfach, um wieder genauer hinzuhören."
       },
       {
-        "text": "B³ ist eine Einladung, für vier Tage Abstand vom Alltag zu nehmen und wieder näher zu dir zu kommen. Zu deinem Körper, deinen Gedanken, deiner Intuition und den Wünschen, die zwischen all dem, was jeden Tag passiert, manchmal ein bisschen leiser werden."
+        "text": "B³ ist eine Einladung, für vier Tage Abstand vom Alltag zu nehmen: zu deinem Körper, deinen Gedanken, deiner Intuition und den Wünschen, die dabei manchmal leiser werden."
       },
       {
-        "text": "Vom 08.–11. Oktober schaffen wir inmitten der Natur einen Raum für Frauen, die grundsätzlich wissen, wo sie stehen und wo sie hinwollen – und sich trotzdem bewusst die Zeit nehmen möchten, sich selbst wieder ein Stück näherzukommen."
+        "text": "Vom 08.–11. Oktober schaffen wir inmitten der Natur einen Raum für Frauen, die wissen, wo sie stehen – und sich trotzdem bewusst Zeit für sich nehmen möchten."
       },
       {
-        "text": "Dich erwarten Yin Yoga und Breathwork, Astrologie und Frequenzarbeit, Reflexion, Klarheit und Struktur. Dazu gutes Essen, Natur, Gemeinschaft und vor allem genügend freie Zeit, in der du einfach das tun kannst, was dir gerade guttut."
+        "text": "Dich erwarten Yin Yoga und Breathwork, Astrologie und Frequenzarbeit, Reflexion und Struktur. Dazu gutes Essen, Natur, Gemeinschaft und genügend freie Zeit für das, was dir guttut."
       }
     ],
     "link": {
@@ -226,7 +224,12 @@
           {
             "text": "Dabei geht es nicht darum, etwas zu erzwingen oder „wegzumachen“, sondern einen Raum zu schaffen, in dem du deinen Körper wieder wahrnehmen, zur Ruhe kommen und dich selbst ein Stück tiefer erfahren kannst."
           }
-        ]
+        ],
+        "second": {
+          "who": "",
+          "title": "",
+          "paragraphs": []
+        }
       },
       {
         "image": {
@@ -247,30 +250,24 @@
           {
             "text": "Dabei geht es nicht darum, vorherzusagen, was passieren wird, sondern darum, welche Themen und Qualitäten wir gerade bewusst wahrnehmen und für uns nutzen dürfen."
           }
-        ]
-      },
-      {
-        "image": {
-          "src": "",
-          "alt": "",
-          "height": 1250
-        },
-        "who": "Mit Sophie",
-        "title": "Solfeggio-Frequenz-Erinnerungs-Reise",
-        "flip": "",
-        "paragraphs": [
-          {
-            "text": "Sophie nimmt uns außerdem mit auf eine Reise zum Loslassen, Ankommen und Stillwerden. Begleitet von Solfeggio-Frequenzen und Energiearbeit entsteht ein Raum, in dem du dich zurücklehnen, wahrnehmen und wieder mehr bei dir und in der Verbindung zur Quelle ankommen darfst."
-          },
-          {
-            "text": "Denn manchmal brauchen wir keine weitere Antwort von außen, sondern die Ruhe, um wieder wahrzunehmen, was in uns längst da ist."
-          }
-        ]
+        ],
+        "second": {
+          "who": "Mit Sophie",
+          "title": "Solfeggio-Frequenz-Erinnerungs-Reise",
+          "paragraphs": [
+            {
+              "text": "Sophie nimmt uns außerdem mit auf eine Reise zum Loslassen, Ankommen und Stillwerden. Begleitet von Solfeggio-Frequenzen und Energiearbeit entsteht ein Raum, in dem du dich zurücklehnen, wahrnehmen und wieder mehr bei dir und in der Verbindung zur Quelle ankommen darfst."
+            },
+            {
+              "text": "Denn manchmal brauchen wir keine weitere Antwort von außen, sondern die Ruhe, um wieder wahrzunehmen, was in uns längst da ist."
+            }
+          ]
+        }
       },
       {
         "image": {
           "src": "assets/img/exp-christina.webp",
-          "alt": "Christina",
+          "alt": "Christina am Feldrand im späten Nachmittagslicht",
           "height": 1250
         },
         "who": "Mit Christina",
@@ -289,7 +286,12 @@
           {
             "text": "Eine Struktur, die dich unterstützt, statt dich einzuengen – und dadurch mehr Leichtigkeit möglich macht."
           }
-        ]
+        ],
+        "second": {
+          "who": "",
+          "title": "",
+          "paragraphs": []
+        }
       }
     ]
   },
@@ -407,7 +409,25 @@
       "note": "Die Zimmer und Betten werden von uns zugeteilt. Eine Vorauswahl ist nicht möglich.",
       "price": "1.549&nbsp;€",
       "price_note": "pro Person &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.",
-      "cta": "Meinen Platz sichern"
+      "cta": "Meinen Platz sichern",
+      "galerie": [
+        {
+          "src": "assets/img/haus-g1.webp",
+          "alt": "Schlafzimmer mit gepolstertem Kopfteil und bodentiefem Fenster"
+        },
+        {
+          "src": "assets/img/haus-g2.webp",
+          "alt": "Zweites Schlafzimmer mit Blick ins Grüne"
+        },
+        {
+          "src": "assets/img/haus-g3.webp",
+          "alt": "Gemeinschaftsraum mit Küchenzeile, Essplatz und Sitzlandschaft"
+        },
+        {
+          "src": "assets/img/haus-g4.webp",
+          "alt": "Badezimmer mit ebenerdiger Dusche"
+        }
+      ]
     },
     "friends": {
       "image": {
@@ -441,7 +461,25 @@
       "note": "Ihr seid bei allen gemeinsamen Experiences und Mahlzeiten dabei und könnt euch zwischendurch jederzeit in eure eigenen vier Wände zurückziehen.",
       "price": "3.950&nbsp;€",
       "price_note": "für 2 Personen &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.",
-      "cta": "Friends Special sichern"
+      "cta": "Friends Special sichern",
+      "galerie": [
+        {
+          "src": "assets/img/friends-g1.webp",
+          "alt": "Schlafzimmer des Apartments mit Doppelbett"
+        },
+        {
+          "src": "assets/img/friends-g2.webp",
+          "alt": "Wohnzimmer des Apartments mit eigener Küchenzeile"
+        },
+        {
+          "src": "assets/img/friends-g3.webp",
+          "alt": "Balkon mit weitem Blick über die Landschaft"
+        },
+        {
+          "src": "assets/img/friends-g4.webp",
+          "alt": "Überdachter Außenbereich am Apartment"
+        }
+      ]
     }
   },
   "inkl": {
@@ -520,7 +558,7 @@
     "christina": {
       "image": {
         "src": "assets/img/christina.webp",
-        "alt": "Christina"
+        "alt": "Christina am Feldrand"
       },
       "name": "Christina",
       "craft": "Strategie | Business | Struktur",

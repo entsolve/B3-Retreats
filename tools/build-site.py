@@ -24,6 +24,7 @@ Aufruf:
     python3 tools/build-site.py            # index.html schreiben
     python3 tools/build-site.py --check    # nur pruefen, nichts schreiben
 """
+import hashlib
 import json
 import pathlib
 import re
@@ -33,6 +34,15 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content" / "site.json"
 TEMPLATE = ROOT / "tools" / "templates" / "index.html"
 TARGET = ROOT / "index.html"
+
+# Dateinamen aendern sich nie: assets/img/hero-tall.webp heisst nach jeder
+# Neuberechnung wieder genauso. Der Browser hat sie dann laengst im Cache und
+# zeigt weiter die alte Fassung — dieselbe Datei, anderer Inhalt. Das kostete in
+# der Abstimmung eine ganze Runde ("du hast das Bild ja gar nicht geaendert").
+# Deshalb bekommt jede oertliche Datei im erzeugten HTML ein ?v= mit den ersten
+# acht Stellen ihres Inhalts-Hashes: gleicher Inhalt -> gleiche URL -> Cache
+# greift wie vorher; geaenderter Inhalt -> neue URL -> Browser laedt neu.
+VERSIONIERT = re.compile(r'(?:src|href|srcset)="(assets/[^"?]+\.(?:webp|css|js|woff2))"')
 
 VALUE = re.compile(r"\{\{\s*([^#/?][^}]*?)\s*\}\}")
 OPEN_LIST = re.compile(r"^(\s*)\{\{#\s*([^}]+?)\s*\}\}\s*$")
@@ -236,6 +246,22 @@ def first_difference(a, b):
     return None
 
 
+def versionieren(html):
+    """?v=<Inhalts-Hash> an jede oertliche Datei haengen (siehe VERSIONIERT).
+
+    Fehlt eine Datei, bleibt ihre URL unveraendert — ein fehlendes Bild soll
+    hier keinen Seitenbau abbrechen, das meldet build-assets.py an seiner
+    Stelle deutlicher.
+    """
+    def ersetzen(treffer):
+        pfad = ROOT / treffer.group(1)
+        if not pfad.exists():
+            return treffer.group(0)
+        h = hashlib.sha256(pfad.read_bytes()).hexdigest()[:8]
+        return treffer.group(0).replace(treffer.group(1), f"{treffer.group(1)}?v={h}")
+    return VERSIONIERT.sub(ersetzen, html)
+
+
 def build(check_only=False):
     for path in (CONTENT, TEMPLATE):
         if not path.exists():
@@ -250,6 +276,8 @@ def build(check_only=False):
     except TemplateError as exc:
         print(f"Vorlage: {exc}", file=sys.stderr)
         return 1
+
+    result = versionieren(result)
 
     if check_only:
         if not TARGET.exists():

@@ -1,0 +1,35 @@
+This is a finished photograph. Retouch it. Change exactly ONE thing: the sharpness and the detail of
+the dry vegetation in the FOREGROUND.
+
+FRAMING — the output must be the SAME photograph with the SAME field of view. Do not zoom, do not
+crop, do not re-frame, do not move the camera, do not tilt the horizon. The treeline stays on exactly
+the same line. All three women keep exactly the same size, the same places, the same distances, the
+same relative heights with the middle woman the tallest. If any of that moves, the retouch has failed.
+
+UNCHANGED — the three women from behind, faces out of frame, same clothes, same hair including the
+wind in it and the level bottom edge of the copper curls, same arms and hands, the same hand on the
+right woman's shoulder with five readable fingers, same tattoo, same skin. Same field, same treeline,
+same sky, same light, same three cast shadows, same colour grade, same grain.
+
+THE ONE CHANGE — the dry grasses, teasels and thistles in the lower part and along the left edge of
+the frame are currently a soft brown mush: the stalks melt into one another, the seed heads have no
+structure, and it reads as a smear rather than as plants. Render them as real plants, sharply in
+focus:
+  · every stalk is a separate stalk with its own edge, its own thickness and its own direction —
+    stalks cross each other and you can follow each one;
+  · the teasel and thistle heads have visible structure: individual spines, the dry bracts curving
+    outwards, small shadows between them;
+  · fine seed hairs and awns catch the low sun as separate bright lines, not as a glow;
+  · the plants closest to the very bottom edge of the frame may stay slightly out of focus because
+    they are nearest to the lens, but even they keep a readable shape — no smear.
+
+Keep the same plants in the same places, the same species, the same amount of them and the same
+colour. They are not rearranged and not multiplied — only resolved. The women, the middle distance
+and the treeline keep exactly the sharpness they have now; do not sharpen them and do not add
+detail there.
+
+Keep the film grain at the same strength. Do NOT smooth anything, do NOT denoise, do NOT beautify.
+
+Nothing else changes. No new plants at the top, no new objects, no new people, no visible face, no
+extra limb, no impossible hand, no text, no logo, no watermark, no vignette, no change of contrast
+or saturation.

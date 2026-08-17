@@ -492,7 +492,11 @@ section { position: relative; }
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: 42fr 58fr;
+  /* Vorher 42fr 58fr. Die Textspalte war fuer die riesige Zeile im Aufmacher zu
+     schmal — „to be you." stand gequetscht unter „Be free". Die vier Punkte
+     kosten das Bild nichts Sichtbares: seine linke Kante ist jetzt ein Oval und
+     gibt die Ecken ohnehin an den Sand ab. */
+  grid-template-columns: 46fr 54fr;
   /* Vorher 88vh. Der Aufmacher schob damit den Seitenanfang fast komplett aus
      dem ersten Bildschirm; jetzt bleibt unten ein Streifen des naechsten
      Abschnitts sichtbar und zeigt, dass es weitergeht. Wird die Zahl weiter
@@ -508,7 +512,9 @@ section { position: relative; }
   justify-content: center;
   /* Oben muss das groessere Markenzeichen im Kopf Platz finden UND danach noch
      Luft stehen — sonst klebt die Datumszeile am Logo. */
-  padding: clamp(140px, 16vh, 208px) clamp(28px, 4.5vw, 76px) clamp(56px, 6vh, 80px) var(--pad);
+  /* Rechts weniger Polster als vorher (war 4.5vw/76px): das Oval des Bildes
+     haelt den Abstand jetzt selbst, die Zeile darf dafuer laenger laufen. */
+  padding: clamp(140px, 16vh, 208px) clamp(24px, 3vw, 52px) clamp(56px, 6vh, 80px) var(--pad);
 }
 
 .hero__meta {
@@ -531,23 +537,71 @@ section { position: relative; }
 
 .hero__ph { position: relative; }
 .hero__ph picture { display: contents; }
-.hero__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* object-position: beide Zahlen sind im Browser nachgemessen, nicht geschaetzt.
+   WAAGERECHT 62 % — Folge der Rundung: das Oval frisst die linke Haelfte der
+   Ober- und Unterkante; stand die Gruppe mittig, lief sie in die Kurve.
+   SENKRECHT 54 % — die Bildspalte ist am Desktop querformatig, `cover` schneidet
+   also oben und unten weg, und davor schneidet schon `.hero__ph` das 118 % hohe
+   Parallaxenbild. Die drei stehen in hero-tall.webp bei 0,315–0,725. Durchgemessen
+   ueber 14 Fenstergroessen x drei Scrollstaende haelt sie jeder Wert aus
+   [0,50 … 0,58] vollstaendig im Bild; die engste Groesse ist 1920x900. 54 % liegt
+   in der Mitte dieses Fensters. Einzige Ausnahme ist ein extrem breites, flaches
+   Fenster (2560x900, 2,8:1) — dort ist der sichtbare Streifen niedriger als die
+   Gruppe hoch ist, das war beim vorherigen Bild schon so.
+   Wer die Gruppe im Bild verschiebt, muss diese Zahl neu messen:
+   scratchpad/objpos.py macht genau das. */
+.hero__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% 54%; }
+
+/* Dieselbe Sprache wie .exp__item--flip: das Bild laeuft rechts aus dem Raster
+   an die Fensterkante und ist zur Schrift hin als halbe Ellipse geschnitten —
+   senkrechter Radius = halbe Hoehe, also eine durchgehende Kurve und keine
+   abgerundete Ecke. Aussen bleibt es gerade, dort ist der Bildschirmrand. */
+.hero__ph { border-radius: 34% 0 0 34% / 50% 0 0 50%; }
 
 /* --- 02 Einladung --------------------------------------------------------- */
 
-.invite { padding: var(--space-l) 0; }
-.invite__head { grid-column: 2 / span 6; grid-row: 1; }
-.invite__body { grid-column: 2 / span 5; grid-row: 2; margin-top: var(--space-s); }
+/* Derselbe Weg von der .wrap bis zur Fensterkante wie in .exp — damit das Bild
+   aus dem Raster heraus an den Bildschirmrand laufen kann. overflow:hidden
+   verhindert, dass die Scrollbalkenbreite in 100vw waagerecht scrollen laesst. */
+.invite {
+  padding: var(--space-l) 0;
+  overflow: hidden;
+  --bleed: max(var(--pad), (100vw - var(--maxw)) / 2 + var(--pad));
+}
 
-/* Die rechte Hälfte stand über anderthalb Bildschirme leer */
+/* Vorher span 6 bzw. span 5. Die Frage brach damit auf vier kurze Zeilen um und
+   stand als schmale Saeule neben viel leerem Papier. Eine Spalte mehr macht drei
+   Zeilen daraus; das Bild beginnt weiter rechts und verliert nichts. */
+.invite__head { grid-column: 2 / span 7; grid-row: 1; }
+
+/* Die breitere Spalte allein aendert nichts — h2 ist global auf 18ch gedeckelt,
+   und genau dieser Deckel, nicht das Raster, hat die Frage auf vier Zeilen
+   gebrochen. 25ch passen in die sieben Spalten und machen drei Zeilen daraus. */
+.invite__head h2 { max-width: 25ch; }
+.invite__body { grid-column: 2 / span 6; grid-row: 2; margin-top: var(--space-s); }
+
+/* Die rechte Hälfte stand über anderthalb Bildschirme leer. Das Bild greift
+   deshalb ueber beide Zeilen und laeuft rechts aus dem Raster an die
+   Fensterkante — wie .exp__item--flip. */
 .invite__ph {
   grid-column: 9 / span 4;
   grid-row: 1 / span 2;
   align-self: start;
-  margin: clamp(130px, 17vw, 280px) 0 0;
+  margin: clamp(130px, 17vw, 280px) calc(-1 * var(--bleed)) 0 0;
 }
 
-.invite__ph .ph { aspect-ratio: 4 / 5; }
+/* Zur Schrift hin eine halbe Ellipse, aussen gerade — dort ist der
+   Bildschirmrand. Ueberschreibt .arch (zwei Klassen schlagen eine), damit die
+   Vorlage weiter class="ph arch" schreiben kann. Das Hochformat wird dafuer
+   flacher: 4/5 waere neben der Rundung eine Nadel geworden. */
+.invite__ph .ph {
+  aspect-ratio: 5 / 6;
+  border-radius: 42% 0 0 42% / 50% 0 0 50%;
+}
+
+/* Die Kerze steht im rechten Drittel des Bildes — der Ausschnitt darf links
+   fressen, wo jetzt die Rundung liegt. */
+.invite__ph .ph img { object-position: 68% center; }
 
 .accent-block {
   grid-column: 1 / -1;
@@ -762,6 +816,17 @@ section { position: relative; }
    Rand geklebt, wo er ohne Bild danebensteht. */
 .exp__item .exp__tx:only-child { grid-column: 2 / span 6; }
 
+/* Sophie leitet zwei Experiences. Als zwei Artikel untereinander riss das
+   zweite ein Loch: das hohe Bild des ersten bestimmt die Zeilenhoehe, und der
+   Text darunter fing erst nach dem Bildende an. Jetzt stehen beide Texte in
+   derselben Spalte neben dem einen Bild — die Trennlinie macht deutlich, dass
+   es zwei Sessions sind. */
+.exp__second {
+  margin-top: 2.6rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--rule);
+}
+
 
 .exp__who {
   display: block;
@@ -867,7 +932,13 @@ section { position: relative; }
 
 /* --- 10 Unterkunft & Preise ----------------------------------------------- */
 
-.haus { padding: var(--space-l) 0 var(--space-m); }
+/* overflow + --bleed wie in .exp: der Schieber der Positionszeilen laeuft links
+   aus dem Raster heraus bis an die Fensterkante. */
+.haus {
+  padding: var(--space-l) 0 var(--space-m);
+  overflow: hidden;
+  --bleed: max(var(--pad), (100vw - var(--maxw)) / 2 + var(--pad));
+}
 .haus__head { grid-column: 2 / span 6; }
 .haus__sub  { grid-column: 2 / span 5; margin-top: 1.5rem; }
 
@@ -884,9 +955,41 @@ section { position: relative; }
 .tier:last-of-type { border-bottom: 1px solid var(--rule); }
 .tier--exklusiv { border-top-color: var(--rule-strong); }
 
-.tier__ph  { grid-column: 1 / span 3; }
-.tier__ph .ph { aspect-ratio: 3 / 4; }
-.tier__tx  { grid-column: 5 / span 4; }
+/* Eine Spalte breiter als frueher: als einzelnes Standbild reichten drei
+   Spalten, zum Blaettern ist das Bild darin nur noch gut 170 px hoch. */
+/* Der Schieber laeuft links aus dem Raster an die Fensterkante und ist zur
+   Schrift hin oval geschnitten — die Gegenrichtung zu .invite und .hero, wie
+   .exp__item es zwischen den Experiences abwechselt. Die Rundung sitzt auf
+   .galerie__spur und nicht auf .galerie: nur die Spur ist die Bildflaeche,
+   Unterschrift und Balken darunter bleiben gerade. Die Spur hat schon
+   overflow-x, schneidet also von sich aus. */
+/* Fuenf Spalten plus Ueberhang statt vier ohne: als Galerie zum Blaettern war
+   das Bild vorher nur gut 270 px hoch und stand als Briefmarke neben einer
+   langen Merkmalsliste. Jetzt rund 600 px breit — die Textspalte und die
+   Preisspalte behalten dabei ihre Breite, es verschiebt sich nur die Grenze. */
+.tier__ph  { grid-column: 1 / span 5; margin-left: calc(-1 * var(--bleed)); }
+
+/* 18 %, nicht die 42 % der Portraitbilder: der waagerechte Radius zaehlt von der
+   Breite, der senkrechte von der Hoehe. Bei einem 3:2-Bild ist die Hoehe klein,
+   und 42 % Breite gegen 50 % Hoehe ergeben keine Bogenkante, sondern eine
+   Blattform. 18 % geben die runde Aussenkante, ohne das Motiv anzuschneiden. */
+.tier__ph .galerie__spur { border-radius: 0 18% 18% 0 / 0 50% 50% 0; }
+
+/* Der Bogen jedes einzelnen Bildes muss hier weg. `.galerie__bild` traegt
+   `50% 50% 0 0 / 22% 22% 0 0` — eine Kappe oben. Zusammen mit der Rundung der
+   Spur ergab das links oben doch eine gebogene Ecke, obwohl die Spur dort auf 0
+   steht: geschnitten wird zweimal, und die innere Kappe war die engere Form.
+   Die Kontur macht jetzt allein die Spur — links schnurgerade, rechts rund. */
+.tier__ph .galerie__bild { border-radius: 0; }
+
+/* Der Pfeil sass 12 px vom Rand — in der Rundung haengt er im Sand. */
+.tier__ph .galerie__pfeil--vor { right: 4%; }
+
+/* Der Ueberhang gilt nur fuer die Bildflaeche. Unterschrift und Balken gehoeren
+   zur Textspalte und wuerden sonst links aus dem Fenster rutschen. */
+.tier__ph .galerie__fuss { padding-left: var(--bleed); }
+
+.tier__tx  { grid-column: 6 / span 4; }
 .tier__buy { grid-column: 10 / span 3; align-self: start; }
 
 .tier__label {
@@ -1049,18 +1152,32 @@ section { position: relative; }
 
 /* --- 13 Für wen ----------------------------------------------------------- */
 
-.fuerwen { padding: var(--space-l) 0; }
+.fuerwen {
+  padding: var(--space-l) 0;
+  overflow: hidden;
+  --bleed: max(var(--pad), (100vw - var(--maxw)) / 2 + var(--pad));
+}
 .fuerwen__head { grid-column: 3 / span 6; grid-row: 1; }
 .fuerwen__body { grid-column: 3 / span 6; grid-row: 2; margin-top: var(--space-s); }
 
+/* Vorher drei Spalten und mit Abstand zum Rand: ein Briefmarkenbild, das im
+   olivgruenen Feld verloren stand. Jetzt eine Spalte breiter und rechts aus dem
+   Raster heraus bis an die Fensterkante, zur Schrift hin oval — dieselbe
+   Sprache wie .invite und .exp__item--flip. */
 .fuerwen__ph {
-  grid-column: 10 / span 3;
+  grid-column: 9 / span 4;
   grid-row: 1 / span 2;
   align-self: start;
-  margin: clamp(20px, 4vw, 70px) 0 0;
+  margin: clamp(20px, 4vw, 70px) calc(-1 * var(--bleed)) 0 0;
 }
 
-.fuerwen__ph .ph { aspect-ratio: 4 / 5; }
+.fuerwen__ph .ph {
+  aspect-ratio: 5 / 6;
+  border-radius: 42% 0 0 42% / 50% 0 0 50%;
+}
+/* Kein object-position: das Bild ist 4:5, der Rahmen 5:6 — `cover` skaliert also
+   nach der Breite und schneidet nur senkrecht, waagerecht gibt es keinen Spielraum
+   zu verschieben. Den engeren Kader macht darum die Pipeline (fuerwen-blick). */
 
 .fuerwen__q { grid-column: 3 / span 8; grid-row: 3; margin-top: var(--space-m); list-style: none; padding: 0; border-top: 1px solid var(--rule-invert); }
 
@@ -1688,7 +1805,16 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .fuerwen__end, .fuerwen__cta { grid-column: 1 / -1; grid-row: auto; margin-top: var(--space-s); }
 
   /* Gestapelt braucht keine der Bildspalten mehr ihren Versatz */
+  /* Gestapelt steht das Bild links unter dem Text und beruehrt keine
+     Fensterkante mehr. Dann ist die halbe Ellipse keine Innenkante, sondern eine
+     schiefe Ecke — also zurueck zum Bogen des uebrigen Satzes. */
   .invite__ph, .fuerwen__ph { grid-row: auto; margin-top: var(--space-s); max-width: 420px; }
+  .invite__ph, .fuerwen__ph { margin-right: 0; }
+  .invite__ph .ph, .fuerwen__ph .ph {
+    aspect-ratio: 4 / 5;
+    border-radius: 50% 50% 0 0 / 50% 50% 0 0;
+  }
+  .invite__ph .ph img, .fuerwen__ph .ph img { object-position: center; }
   .ablauf__ph { margin-top: var(--space-s); max-width: 460px; }
   .neumond__q, .neumond__outro { margin-top: var(--space-s); }
 
@@ -1708,12 +1834,27 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .tier__buy { grid-column: 7 / span 6; margin-top: 2rem; }
 }
 
+/* Gestapelt steht der Schieber mittig und beruehrt keine Fensterkante mehr —
+   dann ist die halbe Ellipse keine Innenkante, sondern eine schiefe Ecke. */
+@media (max-width: 860px) {
+  .tier__ph { margin-left: 0; }
+  .tier__ph .galerie__spur { border-radius: 2px; }
+  .tier__ph .galerie__bild { border-radius: 50% 50% 0 0 / 22% 22% 0 0; }
+  .tier__ph .galerie__pfeil--vor { right: 12px; }
+  .tier__ph .galerie__fuss { padding-left: 0; }
+}
+
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
   .hero__copy { order: 2; padding: var(--space-s) var(--pad) var(--space-m); }
   /* Das Bild bleibt auch hier absolut im Ausschnitt (siehe .px img) — statisch
      verliert es seinen Ueberhang und die Parallaxe legt oben Sand frei. */
-  .hero__ph { order: 1; aspect-ratio: 16 / 9; }
+  /* Gestapelt liegt das Bild als Band ueber der Schrift und beruehrt beide
+     Fensterkanten. Eine Rundung nur links waere hier keine Innenkante mehr,
+     sondern eine schiefe Ecke — und sie schnitte die Linke an. Also gerade,
+     und die Gruppe zurueck in die Mitte. */
+  .hero__ph { order: 1; aspect-ratio: 16 / 9; border-radius: 0; }
+  .hero__ph img { object-position: center; }
   .medallion { left: 50%; }
 
   .bms__cols { grid-template-columns: 1fr; row-gap: 2.5rem; }
@@ -1871,4 +2012,172 @@ body { --consent-h: 0px; --bar-h: 0px; }
 
 @media (max-width: 1080px) {
   .legal__head, .legal__body { grid-column: 1 / -1; }
+}
+
+/* --- Bildergalerie der Unterkuenfte (Kapitel 09) --------------------------- */
+
+/* Waagerechter Schieber mit Scroll-Snap statt eines Karussells in JavaScript:
+   ohne Skript blaettert man mit dem Finger oder dem Trackpad weiter, die Pfeile
+   sind nur die Bequemlichkeit obendrauf. Faellt JS aus, bleibt die Galerie
+   benutzbar — bei einem selbst gebauten Karussell waere sie dann eingefroren. */
+.galerie { position: relative; }
+
+.galerie__spur {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: 2px;
+}
+.galerie__spur::-webkit-scrollbar { display: none; }
+
+.galerie__bild {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  padding: 0;
+  border: 0;
+  background: var(--sand);
+  cursor: zoom-in;
+  overflow: hidden;
+  /* Innenraum bekommt den Bogen — dieselbe Regel wie bei Menschen und
+     Zimmern auf der uebrigen Seite. Flacher als dort, weil das Bild hier
+     quer liegt und ein hoher Bogen die Decke abschneiden wuerde. */
+  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+}
+.galerie__bild img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+}
+.galerie__bild:hover img { transform: scale(1.03); }
+
+.galerie__pfeil {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(247, 244, 239, .86);
+  cursor: pointer;
+  transition: background-color .25s var(--ease), opacity .25s var(--ease);
+}
+.galerie__pfeil:hover { background: var(--ivory); }
+.galerie__pfeil[disabled] { opacity: 0; pointer-events: none; }
+.galerie__pfeil--zurueck { left: 12px; }
+.galerie__pfeil--vor     { right: 12px; }
+
+/* Der Pfeil selbst ist ein gedrehtes Winkelstueck — dieselbe Haarlinie wie
+   im Menue und im Raster, damit kein fremdes Icon-Set dazukommt. */
+.galerie__pfeil::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 9px;
+  height: 9px;
+  border-left: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.galerie__pfeil--zurueck::before { transform: translateX(2px) rotate(45deg); }
+.galerie__pfeil--vor::before     { transform: translateX(-2px) rotate(-135deg); }
+
+
+/* --- Lupe ----------------------------------------------------------------- */
+
+.lupe {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 56px);
+  background: rgba(41, 40, 36, .92);
+  cursor: zoom-out;
+}
+.lupe[hidden] { display: none; }
+.lupe img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  cursor: default;
+}
+
+.lupe__zu {
+  position: absolute;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.lupe__zu::before, .lupe__zu::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 20px;
+  height: 1px;
+  background: var(--ink-invert);
+}
+.lupe__zu::before { transform: rotate(45deg); }
+.lupe__zu::after  { transform: rotate(-45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .galerie__spur { scroll-behavior: auto; }
+  .galerie__bild img { transition: none; }
+}
+
+/* Fuss der Galerie: links steht, was zu sehen ist, rechts die Haarlinie als
+   Stand. Ein Balken aus Segmenten statt Punkten — Punkte sind ein fremdes
+   Vokabular, die Haarlinie benutzt die Seite ohnehin ueberall. */
+.galerie__fuss {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  margin-top: 1rem;
+}
+
+.galerie__unterschrift {
+  flex: 1;
+  margin: 0;
+  min-height: 2.6em;
+  font-size: .8125rem;
+  line-height: 1.45;
+  color: var(--taupe-deep);
+}
+
+.galerie__balken {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 5px;
+  align-self: center;
+}
+.galerie__balken i {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--rule);
+  transition: background-color .35s var(--ease);
+}
+.galerie__balken i.ist-da { background: var(--rule-strong); }
+
+/* Die Pfeile erscheinen erst, wenn man das Bild anfasst — im Ruhezustand
+   soll die Flaeche ein Foto sein und keine Bedienoberflaeche. */
+.galerie__pfeil { opacity: 0; }
+.galerie:hover .galerie__pfeil,
+.galerie__pfeil:focus-visible { opacity: 1; }
+.galerie__pfeil[disabled] { opacity: 0 !important; }
+
+@media (hover: none) {
+  .galerie__pfeil { opacity: 1; }
 }

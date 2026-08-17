@@ -34,6 +34,120 @@ Beide laufen auf Vorkasse — eine hinterlegte Karte lädt das Guthaben nicht vo
 selbst auf. Fehlt Guthaben, kommt `429 prepayment credits are depleted` (Gemini)
 bzw. `403 User is locked, exhausted balance` (fal, schon beim CDN-Upload).
 
+## Endstand 17.08.2026 (abends) — die Umarmung, `montage.py`
+
+**Gueltig sind `final-hero-tall.png` = `out/m3tall.png` und `final-hero-wide.png`
+= `out/m3wide.png`.** Beides sind *Montagen*, keine reinen Generierungen: die
+Frauen kommen aus der Retusche, alles andere aus dem vorher freigegebenen Bild.
+
+Auftrag der Kundin: die drei sollen sich umarmen, und die Mittlere soll ein
+seidenes Kleid tragen statt des Leinensacks („sonst wie bei einer Oma").
+
+Der erste Durchgang (`umarmung-seide.txt`, `out/u1*`, `out/t1*`) wurde abgelehnt,
+und die Kundin hat **vier** Fehler benannt — jeder einzelne ist eine Falle, die
+bei einer Posen-Retusche zuverlaessig zuschnappt:
+
+| Beanstandung | Ursache | Gegenmittel |
+|---|---|---|
+| Tattoo von einer Person zur anderen gewandert | der Unterarm der Rechten liegt jetzt auf dem Ruecken der Mittleren; das Modell fuellt ihn mit Tinte und die Tinte liegt optisch auf der Mittleren | `tattoo-zurueck-v2.txt` als eigener Durchgang: Mandala nur auf ihren Oberarm, Unterarm blanke Haut |
+| Koerpergroesse verringert | beide Arme der Mittleren nach oben auf die Schultern der Nachbarinnen zu legen hebt ihre Schultern und nimmt ihr Hoehe | Pose umgedreht: die **Aeusseren** greifen hoch, die **Mittlere** haelt unten an den Huften. Dazu ein eigener Absatz `THE THREE HEIGHTS` im Prompt |
+| Kleid von geschlossen auf offen geaendert | „Seide" allein liest das Modell als Trägerkleid | `umarmung-v2.txt` schreibt Seide **und** Deckung getrennt vor: Schultern und Ruecken bleiben bedeckt, kurze Ärmel bleiben, nur Stoff und Schnitt aendern sich |
+| Gras unscharf / „wie im Maerchen" | das Modell rechnet die **ganze** Bodenflaeche neu und macht daraus eine gestochene Textur aus leuchtenden Haarlinien | `montage.py` — Prompts helfen hier nicht |
+
+### Die Gradientenfalle
+
+Der Vordergrund wurde zuerst mit Gradientenenergie geprueft, und die stieg
+gegenueber dem Original (16,6 → 19,3). Das sah nach „schaerfer" aus und war der
+Fehler: die erfundenen Haarlinien und das Punktmuster heben die Kennzahl genauso
+wie echte Halme. **Die Zahl allein entscheidet nicht** — der Vordergrund muss
+im Ausschnitt bei 100 % neben dem Original liegen. Erst dort sieht man die
+Radierung. Nach der Montage steht die Zahl wieder bei 16,75 (quer 18,86).
+
+### Warum montiert und nicht nachgeprompt
+
+Das Differenzbild der beiden Fassungen zeigt es: Himmel und Baumkante sind
+schwarz, die Frauen hell — und der **ganze Boden** flaechig aufgerauscht. Das
+Modell laesst die Flaeche nicht in Ruhe, gleich wie oft man es ihm verbietet.
+`montage.py` nimmt darum die geblurrte Differenz als Maske: wo die Retusche
+wirklich etwas geaendert hat (Arme, Kleid), kommt das neue Bild, sonst das alte.
+
+Drei Dinge, die dabei nicht offensichtlich sind:
+
+* **Die Maske braucht eine raeumliche Sperre (`--box`).** Der Schattenstreifen im
+  Feld und die Disteln am linken Rand aendern sich stark genug, um jede Schwelle
+  zu reissen — und das sind genau die Stellen, die aus dem Original kommen
+  sollen.
+* **Die Sperre endet oberhalb der Fuesse** (`y1 = 0.70` hoch, `0.82` quer). Beine,
+  Fuesse und Schatten sind in beiden Fassungen gleich; nimmt man sie aus dem
+  Original, verschwinden die Flickenmuster, die eine weiter heruntergezogene
+  Maske rings um die Fuesse hinterlaesst.
+* **Harte Schwelle plus Aufweitung, keine weiche Rampe.** Eine Rampe quer ueber
+  einen Arm laesst den Hintergrund durch die halbdurchsichtige Kante scheinen —
+  die Arme bekamen davon einen Doppelrand. Jetzt wird geschwellt, um 0,7 % der
+  Bildbreite aufgeweitet und nur schmal gefedert: der Maskenrand liegt im Feld
+  ringsum, wo beide Bilder ohnehin gleich sind.
+
+### Nachzufahren
+
+```bash
+S=~/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei
+G=~/Documents/entsolve/GIT/polarholz-3drenders/generate.py
+
+# 1 — quer: Umarmung + Seide auf den freigegebenen Kader
+python3 $G --image $S/out/final-hero-wide.png --prompt-file $S/umarmung-v2.txt \
+  --ref $S/out/v2ttall_1.png --out $S/out/v2wide --n 3 --aspect 16:9 --size 2K \
+  --model gemini-3-pro-image-preview
+# 2 — Tattoo zurueck auf den Oberarm
+python3 $G --image $S/out/v2wide_3.png --prompt-file $S/tattoo-zurueck-v2.txt \
+  --out $S/out/v2twide --n 2 --aspect 16:9 --size 2K --model gemini-3-pro-image-preview
+# 3 — hoch: dasselbe, mit dem Sieger von quer als Posen-Referenz, --aspect 3:4
+# 4 — Montage: Frauen aus der Retusche, Rest aus dem Freigegebenen
+python3 $S/montage.py $S/out/_verworfen/vor-umarmung-tall.png \
+  $S/out/v3ttall_2.png $S/out/m3tall.png --box 0.20,0.74,0.26,0.70
+python3 $S/montage.py $S/out/_verworfen/vor-umarmung-wide.png \
+  $S/out/v2twide_1.png $S/out/m3wide.png --box 0.24,0.73,0.08,0.82
+python3 tools/build-assets.py hero-wide hero-tall og-image
+```
+
+Die freigegebene Vorstufe liegt als `out/_verworfen/vor-umarmung-{wide,tall}.png`
+daneben — ohne sie laesst sich die Montage nicht wiederholen.
+
+### Die Pose, Arm fuer Arm
+
+Sechs Arme, sechs Haende, nichts kreuzt sich: die **Linke** legt ihren rechten
+Arm hoch auf den Ruecken der Mittleren; die **Rechte** legt ihren linken Arm
+(mit dem Mandala am Oberarm) tiefer auf deren Kreuz; die **Mittlere** haelt beide
+Nachbarinnen an der aeusseren Huefte und behaelt ihre Arme dabei unten, damit
+ihre Hoehe bleibt. Die aeusseren Arme haengen frei.
+
+Ein Zwischenstand hatte den inneren Arm der Linken haengen — sie wurde gehalten,
+hielt aber nicht mit. `arm-links.txt` sollte das nachtraeglich richten und war der
+falsche Weg: die Hand landete auf dem Gesaess der Mittleren, und der dritte
+Generierungsdurchgang legte ein Rasterpunktmuster ueber Himmel und Haut. Statt
+nachzuretuschieren wurde das Hochformat mit dem Querformat als Referenz **neu**
+erzeugt (`out/v3tall_1`) — zwei Durchgaenge, nicht drei.
+
+### Was im CSS dazu noetig war
+
+`assets/css/style.css`, Abschnitt `01 Hero`:
+
+* **`.hero__ph` ist jetzt links oval und laeuft rechts aus dem Bild**
+  (`border-radius: 34% 0 0 34% / 50% 0 0 50%`) — dieselbe Sprache wie
+  `.exp__item--flip`. Am Telefon wieder gerade, dort ist es ein Band ueber der
+  Schrift und die Rundung waere eine schiefe Ecke.
+* **`object-position: 62% 54%`** und beide Zahlen sind nachgemessen. Waagerecht,
+  weil das Oval die linke Haelfte der Ober- und Unterkante frisst. Senkrecht,
+  weil erst `.hero__ph` das 118 % hohe Parallaxenbild schneidet und dann
+  `object-fit: cover` — die Gruppe steht bei 0,315–0,725, und nur Werte aus
+  `[0,50 … 0,58]` halten sie ueber 14 Fenstergroessen x drei Scrollstaende
+  vollstaendig im Bild. Engste Groesse ist 1920x900. Ausnahme bleibt ein extrem
+  flaches Fenster (2560x900, 2,8:1); das war vorher schon so.
+* **Textspalte 46fr statt 42fr**, rechtes Polster kleiner: „to be you." stand
+  gequetscht unter „Be free".
+
+Wer die Gruppe im Bild verschiebt, muss `object-position` neu messen — nicht
+schaetzen. Die Rechnung steht als Kommentar an der Regel.
+
 ## Endstand 17.08.2026 — Retusche des Originals, `fix4.txt`
 
 **Die gueltige Fassung ist eine Retusche von `final-hero-wide-v1.png`**, nicht

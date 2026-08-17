@@ -319,3 +319,85 @@ const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
     });
   });
 })();
+
+/* --- Bildergalerie der Unterkuenfte + Lupe ---------------------------------
+   Die Galerie blaettert von Haus aus per Scroll-Snap; hier kommen nur die
+   Pfeile, der Zaehler und die Vergroesserung dazu. Faellt dieses Skript aus,
+   bleibt sie mit dem Finger bedienbar. */
+(function () {
+  var lupe = document.getElementById('lupe');
+  if (!lupe) return;
+  var lupenBild = lupe.querySelector('img');
+  var zuletzt = null;                       // Fokus zurueckgeben, wo er herkam
+
+  function oeffnen(quelle, text) {
+    zuletzt = document.activeElement;
+    lupenBild.src = quelle;
+    lupenBild.alt = text || '';
+    lupe.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lupe.querySelector('.lupe__zu').focus();
+  }
+  function schliessen() {
+    lupe.hidden = true;
+    lupenBild.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (zuletzt) zuletzt.focus();
+  }
+
+  lupe.addEventListener('click', function (e) {
+    if (e.target !== lupenBild) schliessen();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!lupe.hidden && e.key === 'Escape') schliessen();
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-galerie]'), function (g) {
+    var spur    = g.querySelector('.galerie__spur');
+    var bilder  = g.querySelectorAll('.galerie__bild');
+    var zurueck = g.querySelector('.galerie__pfeil--zurueck');
+    var vor     = g.querySelector('.galerie__pfeil--vor');
+    var unter  = g.querySelector('.galerie__unterschrift');
+    var balken = g.querySelector('.galerie__balken');
+    if (!spur || !bilder.length) return;
+
+    if (balken) {
+      for (var k = 0; k < bilder.length; k++) balken.appendChild(document.createElement('i'));
+    }
+
+    function stand() {
+      // Die Breite eines Bildes plus Abstand — nicht fest verdrahtet, damit
+      // die Rechnung auch nach einer Aenderung im CSS stimmt.
+      var schritt = bilder[0].getBoundingClientRect().width + 10;
+      return Math.round(spur.scrollLeft / schritt);
+    }
+    function nachfuehren() {
+      var i = Math.min(bilder.length - 1, Math.max(0, stand()));
+      if (unter) unter.textContent = bilder[i].querySelector('img').alt;
+      if (balken) {
+        Array.prototype.forEach.call(balken.children, function (strich, n) {
+          strich.className = n === i ? 'ist-da' : '';
+        });
+      }
+      zurueck.disabled = i <= 0;
+      vor.disabled     = i >= bilder.length - 1;
+    }
+    function blaettern(richtung) {
+      var schritt = bilder[0].getBoundingClientRect().width + 10;
+      spur.scrollBy({ left: richtung * schritt, behavior: 'smooth' });
+    }
+
+    zurueck.addEventListener('click', function () { blaettern(-1); });
+    vor.addEventListener('click', function () { blaettern(1); });
+    spur.addEventListener('scroll', function () {
+      window.clearTimeout(spur._t);
+      spur._t = window.setTimeout(nachfuehren, 90);
+    });
+    Array.prototype.forEach.call(bilder, function (b) {
+      b.addEventListener('click', function () {
+        oeffnen(b.getAttribute('data-gross'), b.querySelector('img').alt);
+      });
+    });
+    nachfuehren();
+  });
+})();

@@ -132,28 +132,16 @@
     "hint": "Beschriftung des ersten Navigationspunktes (führt zum Programm). Ein bis zwei Wörter."
   },
   {
-    "path": "nav.ort",
+    "path": "nav.unterkunft",
     "label": "Menüpunkt 02",
     "type": "text",
-    "hint": "Beschriftung des zweiten Navigationspunktes (führt zum Ort)."
-  },
-  {
-    "path": "nav.unterkunft",
-    "label": "Menüpunkt 03",
-    "type": "text",
-    "hint": "Beschriftung des dritten Navigationspunktes (führt zu Unterkunft und Preisen). Ein Und-Zeichen muss als &amp; geschrieben werden."
+    "hint": "Beschriftung des zweiten Navigationspunktes (führt zu Unterkunft und Preisen). Ein Und-Zeichen muss als &amp; geschrieben werden."
   },
   {
     "path": "nav.team",
-    "label": "Menüpunkt 04",
+    "label": "Menüpunkt 03",
     "type": "text",
-    "hint": "Beschriftung des vierten Navigationspunktes (führt zur Vorstellung des Teams)."
-  },
-  {
-    "path": "nav.faq",
-    "label": "Menüpunkt 05",
-    "type": "text",
-    "hint": "Beschriftung des fünften Navigationspunktes (führt zu den häufigen Fragen)."
+    "hint": "Beschriftung des dritten Navigationspunktes (führt zur Vorstellung des Teams)."
   },
   {
     "path": "nav.cta",
@@ -968,6 +956,27 @@
     "hint": "Kleingedruckter Hinweis unter der Ausstattungsliste (Zimmerzuteilung)"
   },
   {
+    "path": "haus.shared.galerie",
+    "type": "list",
+    "label": "Shared House — Bildergalerie",
+    "itemLabel": "alt",
+    "hint": "Reihenfolge und Anzahl frei. Beim Klick öffnet sich das Bild groß.",
+    "fields": [
+      {
+        "path": "src",
+        "label": "Bild",
+        "type": "image",
+        "hint": "Querformat 3:2 — im Reiter „Bilder“ anlegen."
+      },
+      {
+        "path": "alt",
+        "label": "Bildbeschreibung",
+        "type": "text",
+        "hint": "Welcher Raum ist zu sehen? Steht auch als Beschriftung in der Lupe."
+      }
+    ]
+  },
+  {
     "path": "haus.shared.price",
     "label": "Preis Shared House",
     "type": "text",
@@ -1040,6 +1049,27 @@
     "label": "Hinweis Friends Special",
     "type": "textarea",
     "hint": "Kleingedruckter Hinweis unter der Ausstattungsliste (Teilnahme an gemeinsamen Programmpunkten)"
+  },
+  {
+    "path": "haus.friends.galerie",
+    "type": "list",
+    "label": "Friends Special — Bildergalerie",
+    "itemLabel": "alt",
+    "hint": "Reihenfolge und Anzahl frei. Beim Klick öffnet sich das Bild groß.",
+    "fields": [
+      {
+        "path": "src",
+        "label": "Bild",
+        "type": "image",
+        "hint": "Querformat 3:2 — im Reiter „Bilder“ anlegen."
+      },
+      {
+        "path": "alt",
+        "label": "Bildbeschreibung",
+        "type": "text",
+        "hint": "Welcher Raum ist zu sehen? Steht auch als Beschriftung in der Lupe."
+      }
+    ]
   },
   {
     "path": "haus.friends.price",

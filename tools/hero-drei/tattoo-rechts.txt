@@ -1,0 +1,51 @@
+This is a finished photograph. Retouch it. Change exactly ONE thing: which arm of the right-hand
+woman carries the mandala tattoo. Everything else stays pixel-identical.
+
+FRAMING — the output must be the SAME photograph with the SAME field of view. Do not zoom, do not
+crop, do not re-frame, do not move the camera, do not tilt the horizon. The treeline stays on exactly
+the same line. All three women keep exactly the same size, the same places and the same relative
+heights — the middle woman stays the tallest. Their legs and bare feet stay exactly where they are
+and stay fully inside the frame. If any of that moves, the retouch has failed.
+
+UNCHANGED, AND THIS IS THE PART THAT MATTERS MOST — the pose. All three keep their arms exactly
+where they are, every arm, every hand, every finger, every knuckle, every nail edge, every skin fold.
+Do not re-draw a single hand. Do not move a single finger. The hand on the left woman's shoulder
+stays. The hand on the middle woman's lower back stays, including the ring on it. The hand on the
+right woman's hip stays. The two arms hanging at the outer edges of the group keep hanging exactly
+as they hang.
+
+Also unchanged: all three seen from behind, no face visible; the low twisted blonde bun, the long
+copper-red curls, the long straight light-brown hair; the champagne satin slip dress on the left, the
+CLOSED cream silk dress with SHORT SLEEVES and a fully covered back in the middle (not a slip dress —
+her shoulders and back stay covered, no straps, no bare back), the brown ribbed tank top and oat
+linen trousers on the right. The field, the stubble, the treeline, the sky, the light, the shadows,
+the colour grade and the film grain all stay identical.
+
+THE ONE CHANGE — the mandala moves from her LEFT arm to her RIGHT arm.
+
+  · Her LEFT upper arm — the inner one, the arm that reaches across to the middle woman — becomes
+    completely bare, clean skin. No ornament, no lines, no faded remains, no grey shadow where the
+    ink was. That skin matches her other arm exactly: same tone, same tan, same pores, same fine
+    hairs, lit from the same direction, carrying the same film grain as the rest of the frame. It
+    must not become a smooth, grainless patch.
+  · Her RIGHT upper arm — the outer one, the arm hanging relaxed at her side at the right edge of the
+    group — now carries the mandala: one round tattoo about the size of a palm, on the outer side of
+    that upper arm between her own shoulder and her own elbow, fine grey-black linework with dotwork
+    shading, not a solid black mass. It sits flat on the skin, follows the curve of the arm, and is
+    lit by the same low sun from the same direction as everything else.
+  · Her right forearm below the elbow stays bare skin. No ink anywhere else on any of the three.
+  · The arm itself does not change shape, thickness or position. Only the ink moves.
+
+IT MUST STILL READ AS A REAL PHOTOGRAPH. Do NOT smooth, do NOT denoise, do NOT beautify, do NOT
+sharpen anything, do NOT change the exposure.
+
+AND DO NOT TOUCH THE FOREGROUND. The dry grasses and thistles in the lower part of the frame and
+along the left edge stay exactly as they are, at exactly their present softness. Do not sharpen them,
+do not add stalks, do not resolve them into separate blades, do not draw fine bright hairs or awns on
+them, do not re-render that area at all.
+
+STRICTLY FORBIDDEN: no change to any hand or arm position, no re-drawn hand, no missing finger, no
+extra arm, no visible face, no cropped feet, no levelling of the three heights, no change to the
+clothes or the hair, no bare shoulders on the middle woman, no second tattoo, no change to the sky,
+the field, the treeline, the light, the shadows, the foreground or the framing, no text, no logo, no
+watermark, no vignette, no change of contrast or saturation.

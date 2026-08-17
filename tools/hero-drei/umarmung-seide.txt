@@ -1,0 +1,90 @@
+This is a finished photograph. Retouch it. Change exactly TWO things: the three women now hold each
+other, and the middle woman wears a silk dress instead of the boxy linen one. Everything else stays
+as it is.
+
+FRAMING — the output must be the SAME photograph with the SAME field of view. Do not zoom, do not
+crop, do not re-frame, do not move the camera, do not tilt the horizon. The treeline stays on exactly
+the same line. The three women keep exactly the same size, the same places in the frame, the same
+distances from the camera and the same relative heights with the middle woman the tallest. Their
+legs and their bare feet stay exactly where they are, on the same spots of the mown grass path, and
+the feet stay fully inside the frame. The three long cast shadows keep their length and direction.
+If any of that moves, the retouch has failed.
+
+UNCHANGED — all three seen from behind, no face visible, faces out of frame. Same hair on all three:
+the low twisted blonde bun on the left, the long copper-red curls in the middle with the wind in
+them and the level bottom edge of the curls, the long straight light-brown hair on the right blown
+out to the right. Same clothes on the two outer women: champagne satin slip dress with spaghetti
+straps and a low back on the left, brown ribbed tank top with oat linen wide trousers on the right.
+Same mandala tattoo on the right woman's left upper arm. Same field, same stubble, same treeline,
+same sky, same light and sun direction, same colour grade, same film grain, same sharp dry teasels
+and thistles in the foreground and along the left edge.
+
+FIRST CHANGE — THE POSE. The three now walk on with their arms around each other, still away from
+the camera. Read this literally, arm by arm. There are three people, six arms and six hands, and
+every single hand has its own separate place. No hand may be hidden, doubled, merged or invented.
+
+  · LEFT woman, her LEFT arm (the outer one, towards the left edge): hangs relaxed at her side,
+    fully visible from shoulder to fingertips, hand open — exactly as it hangs now.
+  · LEFT woman, her RIGHT arm (the inner one): reaches around the middle woman's waist. The forearm
+    lies low, across the small of the middle woman's back, and the hand rests on the NEAR side of
+    the middle woman's waist — the middle woman's left side, the side facing the left woman. Five
+    fingers, separated and readable, lying on the silk.
+  · RIGHT woman, her RIGHT arm (the outer one, towards the right edge): hangs relaxed at her side,
+    fully visible from shoulder to fingertips.
+  · RIGHT woman, her LEFT arm (the inner one): reaches around the middle woman's waist from the
+    other side. The forearm lies low, across the small of the middle woman's back, and the hand
+    rests on the NEAR side of the middle woman's waist — the middle woman's right side, the side
+    facing the right woman. Five fingers, separated and readable. The mandala tattoo on this upper
+    arm stays visible.
+  · MIDDLE woman, her LEFT arm: raised and laid over the LEFT woman's shoulders. The forearm rests
+    across the left woman's bare upper back, and the hand cups the left woman's outer LEFT shoulder,
+    five fingers readable on bare skin, the fingertips curving over the top of that shoulder.
+  · MIDDLE woman, her RIGHT arm: raised and laid over the RIGHT woman's shoulders. The forearm rests
+    across the right woman's upper back, lying ON TOP of her long straight hair, and the hand cups
+    the right woman's outer RIGHT shoulder, five fingers readable.
+
+So: the two hands of the outer women are LOW, on the middle woman's waist, one on each side, about a
+forearm's width apart, with the small of her back clear and empty between them. The two hands of the
+middle woman are HIGH, on the outer shoulders. The low arms and the high arms are at completely
+different heights and never touch each other. Nothing crosses anything. There is no third arm on the
+middle woman's back and no hand anywhere on her shoulders.
+
+Because they hold each other, their shoulders now nearly touch and the group closes up a little. The
+group keeps the same centre and the same place in the frame, and their feet stay on the same spots —
+they lean into each other from the shoulders and the waist, they do not step sideways. The middle
+woman's shoulders lift slightly because both her arms are raised. Their heads lean a little towards
+each other. Bodies stay upright, all three mid-stride as they are now.
+
+SECOND CHANGE — THE MIDDLE WOMAN'S DRESS. She currently wears a boxy, shapeless linen dress with
+short sleeves and a side slit; it reads as matronly and it must go. Replace it with a silk dress, in
+the SAME length as now, ending at the same point on her mid-calf, so nothing about her legs, her
+ankles or her feet changes:
+
+  · warm ivory silk, a shade warmer and creamier than the cooler champagne satin of the left woman's
+    dress, so the two dresses are clearly two different dresses and not a uniform;
+  · sleeveless, with narrow shoulder straps, so her shoulders, her shoulder blades and her upper
+    back are bare and the copper curls fall onto bare skin;
+  · cut on the bias, so the silk follows her body and falls from the shoulder blades in long soft
+    vertical folds — a slim, fluid silhouette, no box, no gathering at the waist, no side slit;
+  · real silk behaviour: broad soft specular highlights where the low sun runs along the folds and
+    cool shadow in the hollows between them, the fabric slightly translucent where it is stretched
+    over her back, a few genuine creases from wear, and the hem stirring in the same wind that moves
+    her hair.
+
+The left woman's hand lies on this silk at the waist and its fingers press small soft dents into the
+fabric — the silk reacts to the hand.
+
+IT MUST READ AS A REAL PHOTOGRAPH. Keep everything that says camera and not render: the visible film
+grain at exactly its current strength, the existing colour grade, the slight softness of the middle
+distance, the real skin of all three — pores, faint tan lines at the straps, fine hairs on the
+forearms, small moles, slightly reddened elbows and heels, uneven natural skin tone. Arms and
+shoulders show real muscle and bone under the skin where they are raised. Do NOT smooth skin, do NOT
+denoise, do NOT beautify, do NOT add glow, halo, bloom or a warm wash, do NOT retouch the skin
+even and do NOT sharpen the women beyond what they are now.
+
+STRICTLY FORBIDDEN: no extra arm, no extra hand, no arm without a shoulder, no hand without an arm,
+no hand appearing on the wrong side of a body, no fused or overlapping forearms, no crossed forearms,
+no fist or mushy blob where a hand belongs, no hand hidden in hair, no visible face, no cropped feet,
+no change to the sky, the field, the treeline, the light, the shadows or the framing, no change to
+the two outer women's clothes or to anyone's hair, no straw hat, no strap or band hanging from any
+hand, no jewellery, no text, no logo, no watermark, no vignette, no change of contrast or saturation.

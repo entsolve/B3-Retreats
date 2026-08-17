@@ -69,10 +69,8 @@
 
     <nav class="site-nav" id="menu" aria-label="Hauptnavigation">
       <a href="#experiences"><i>01</i>{{ nav.programm }}</a>
-      <a href="#ort"><i>02</i>{{ nav.ort }}</a>
-      <a href="#unterkunft"><i>03</i>{{ nav.unterkunft }}</a>
-      <a href="#team"><i>04</i>{{ nav.team }}</a>
-      <a href="#faq"><i>05</i>{{ nav.faq }}</a>
+      <a href="#unterkunft"><i>02</i>{{ nav.unterkunft }}</a>
+      <a href="#team"><i>03</i>{{ nav.team }}</a>
       <a class="is-cta" href="#buchung" data-booking>{{ nav.cta }}</a>
       <p class="site-nav__meta">{{ nav.meta.dates }}<br>{{ nav.meta.location }}</p>
     </nav>
@@ -277,6 +275,15 @@
 {{# .paragraphs }}
         <p>{{ .text }}</p>
 {{/ .paragraphs }}
+{{? .second.title }}
+        <div class="exp__second">
+          <span class="exp__who">{{ .second.who }}</span>
+          <h3>{{ .second.title }}</h3>
+{{# .second.paragraphs }}
+          <p>{{ .text }}</p>
+{{/ .second.paragraphs }}
+        </div>
+{{/? .second.title }}
       </div>
     </article>
 {{/ exp.items }}
@@ -382,7 +389,21 @@
   <div class="wrap grid" style="margin-top:var(--space-m)">
     <article class="tier rise">
       <div class="tier__ph">
-        <div class="ph arch"><img src="{{ haus.shared.image.src }}" width="900" height="1125" alt="{{ haus.shared.image.alt }}" loading="lazy" decoding="async"></div>
+        <div class="galerie" data-galerie>
+          <div class="galerie__spur">
+{{# haus.shared.galerie }}
+            <button class="galerie__bild" type="button" data-gross="{{ .src }}" aria-label="{{ .alt }} — vergrößern">
+              <img src="{{ .src }}" width="1200" height="800" alt="{{ .alt }}" loading="lazy" decoding="async">
+            </button>
+{{/ haus.shared.galerie }}
+          </div>
+          <button class="galerie__pfeil galerie__pfeil--zurueck" type="button" aria-label="Vorheriges Bild"></button>
+          <button class="galerie__pfeil galerie__pfeil--vor" type="button" aria-label="Nächstes Bild"></button>
+          <div class="galerie__fuss">
+            <p class="galerie__unterschrift"></p>
+            <div class="galerie__balken" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
       <div class="tier__tx">
         <p class="tier__label"><span>{{ haus.shared.label }}</span></p>
@@ -405,7 +426,21 @@
 
     <article class="tier tier--exklusiv rise">
       <div class="tier__ph">
-        <div class="ph arch"><img src="{{ haus.friends.image.src }}" width="900" height="1125" alt="{{ haus.friends.image.alt }}" loading="lazy" decoding="async"></div>
+        <div class="galerie" data-galerie>
+          <div class="galerie__spur">
+{{# haus.friends.galerie }}
+            <button class="galerie__bild" type="button" data-gross="{{ .src }}" aria-label="{{ .alt }} — vergrößern">
+              <img src="{{ .src }}" width="1200" height="800" alt="{{ .alt }}" loading="lazy" decoding="async">
+            </button>
+{{/ haus.friends.galerie }}
+          </div>
+          <button class="galerie__pfeil galerie__pfeil--zurueck" type="button" aria-label="Vorheriges Bild"></button>
+          <button class="galerie__pfeil galerie__pfeil--vor" type="button" aria-label="Nächstes Bild"></button>
+          <div class="galerie__fuss">
+            <p class="galerie__unterschrift"></p>
+            <div class="galerie__balken" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
       <div class="tier__tx">
         <p class="tier__label"><span>{{ haus.friends.label }}</span><em>{{ haus.friends.badge }}</em></p>
@@ -630,6 +665,13 @@
 </section>
 
 </main>
+
+<!-- Lupe fuer die Wohnungsbilder. Ein einziges Element fuer beide Galerien —
+     zwei Overlays waeren zwei Fokusfallen. -->
+<div class="lupe" id="lupe" role="dialog" aria-modal="true" aria-label="Bild vergrößert" hidden>
+  <button class="lupe__zu" type="button" aria-label="Schließen"></button>
+  <img alt="">
+</div>
 
 <footer class="site-foot">
   <div class="wrap site-foot__in">

@@ -44,6 +44,27 @@ P = {
     # Flecken durch. Himmel und Grün werden dafür etwas weniger hart gezogen,
     # sonst kippt der Hautton mit.
     "outdoor_haut": dict(hi=0.78, wb=(1.045, 1.005, 0.938), sky=0.52, green=0.82, red=1.00, sat=0.92, vig=0.14, sharp=False),
+
+    # --- Fuer erzeugte Aufnahmen ------------------------------------------
+    # Gleiche Farbe wie ihre Vorbilder, aber mehr Korn und eine leichte
+    # Nachschaerfung. Beides zusammen holt die Mikrostruktur zurueck, die das
+    # Bildmodell wegrechnet — ohne sie wirken die Bilder wie Illustrationen
+    # neben den echten Fotos derselben Seite.
+    "portrait_ki":     dict(hi=0.86, wb=(1.025, 1.005, 0.972), sky=0.88, green=0.92, red=1.00, sat=0.95, vig=0.08, sharp=True,  korn=1.45, halo=0.045, ca=1.1),
+    "outdoor_haut_ki": dict(hi=0.78, wb=(1.045, 1.005, 0.938), sky=0.52, green=0.82, red=1.00, sat=0.92, vig=0.14, sharp=True,  korn=1.35, halo=0.055, ca=1.4),
+
+    # Der Aufmacher. Wie "outdoor_haut_ki", aber ohne den rosa Schleier: bei einem
+    # Bild, das zu einem Drittel aus Himmel besteht, addieren sich vier warme
+    # Griffe zu einer Farbfolie, und das Foto sieht gefiltert aus statt fotografiert.
+    # Zurueckgenommen sind genau diese vier:
+    #   wb      1.045/0.938 -> 1.012/0.988   Rot rauf, Blau runter war der groesste Anteil
+    #   weiss   Elfenbein -> fast neutral    der Weisspunkt faerbt die ganze helle Flaeche
+    #   sky     0.52 -> 0.80                 der Himmel bleibt blassblau statt rosa zu kippen
+    #   halo    0.055 -> 0.015               der warme Lichthof lief ueber den ganzen Himmel
+    # Korn, Schaerfe und Farbquerfehler bleiben: die tragen die Mikrostruktur und
+    # die Objektivspuren, an denen das Bild als Aufnahme gelesen wird.
+    "hero_klar": dict(hi=0.80, wb=(1.012, 1.002, 0.988), sky=0.80, green=0.88, red=1.00, sat=0.94, vig=0.08, sharp=True,  korn=1.35, halo=0.015, ca=1.4,
+                      weiss=(246, 245, 243), schwarz=(12, 12, 13)),
 }
 
 
@@ -129,9 +150,17 @@ def selective(a, sky, green, red):
     return np.clip(hsv_to_rgb(h, s, v), 0, 255)
 
 
-def matte(a):
-    """Schwarzpunkt auf warmes #0E0C08, Weißpunkt auf Elfenbein #F7F3EC."""
-    black, white = np.array([14, 12, 8.0]), np.array([247, 243, 236.0])
+def matte(a, weiss=None, schwarz=None):
+    """Schwarzpunkt auf warmes #0E0C08, Weißpunkt auf Elfenbein #F7F3EC.
+
+    Beides ist warm, und auf einer grossen hellen Flaeche — einem Himmel, der
+    ueber ein Drittel des Bildes einnimmt — wird daraus ein rosa Schleier ueber
+    dem ganzen Bild. Fuer solche Bilder kann ein Profil beide Punkte selbst
+    setzen (`weiss` / `schwarz`); ohne Angabe bleibt es beim warmen Satz, den die
+    31 Innen- und Detailaufnahmen brauchen.
+    """
+    black = np.array(schwarz if schwarz else [14, 12, 8.0], dtype=float)
+    white = np.array(weiss if weiss else [247, 243, 236.0], dtype=float)
     return black + a * (white - black) / 255
 
 
@@ -142,11 +171,48 @@ def scurve(a):
     return lut[np.clip(a, 0, 255).astype(np.uint8)]
 
 
-def grain(a, sigma=3.5):
+def grain(a, sigma=3.5, wuerfel=None):
     h, w = a.shape[:2]
-    n = rng.normal(0, sigma, (h, w, 1))
+    n = (wuerfel or rng).normal(0, sigma, (h, w, 1))
     weight = 1 - 0.45 * (a.mean(axis=2, keepdims=True) / 255)  # in Lichtern schwächer
     return a + n * weight
+
+
+def halation(a, strength, schwelle=205):
+    """Lichthof um die hellsten Kanten — der Streifen Himmel hinter dem Haar.
+
+    Auf echtem Material entsteht er im Film oder an der Sensorabdeckung und
+    ist warm, weil Rot am weitesten streut. Erzeugte Bilder haben ihn nie: dort
+    endet ein heller Bereich hart an der Kante. Genau daran erkennt man sie im
+    Gegenlicht, und genau das holt diese Funktion zurueck.
+    """
+    if strength <= 0:
+        return a
+    hell = np.clip((a.mean(axis=2) - schwelle) / (255.0 - schwelle), 0, 1)
+    hof = np.asarray(Image.fromarray((hell * 255).astype(np.uint8))
+                     .filter(ImageFilter.GaussianBlur(radius=9))) / 255.0
+    warm = np.array([1.00, 0.62, 0.34])           # Rot streut am weitesten
+    return a + hof[..., None] * warm * (255 * strength)
+
+
+def aberration(a, px):
+    """Farbquerfehler: Rot nach aussen, Blau nach innen, staerker zum Rand hin.
+
+    Jedes reale Objektiv hat ihn, kein Bildmodell erfindet ihn. Der Betrag ist
+    absichtlich klein — sichtbar wird er erst an harten Hell-Dunkel-Kanten,
+    also am Horizont und an den Haaren gegen den Himmel.
+    """
+    if px <= 0:
+        return a
+    h, w = a.shape[:2]
+    out = a.copy()
+    for kanal, richtung in ((0, 1.0), (2, -1.0)):
+        faktor = 1.0 + richtung * px / max(w, h)
+        bild = Image.fromarray(np.clip(a[..., kanal], 0, 255).astype(np.uint8))
+        gross = bild.resize((int(w * faktor), int(h * faktor)), Image.BICUBIC)
+        dx, dy = (gross.width - w) // 2, (gross.height - h) // 2
+        out[..., kanal] = np.asarray(gross.crop((dx, dy, dx + w, dy + h)), dtype=np.float64)
+    return out
 
 
 def vignette(a, strength):
@@ -198,14 +264,32 @@ def build(name, src, profile, aspect, width, crop=(0, 0, 1, 1), bias=(0.5, 0.5),
     im = ImageEnhance.Color(im).enhance(p["sat"])
 
     a = np.asarray(im, dtype=np.float64)
-    a = matte(a)
+    a = matte(a, p.get("weiss"), p.get("schwarz"))
     a = scurve(a)
-    a = grain(a)
+    # Erzeugte Bilder kommen glatt aus dem Modell: die Haut hat keine Poren mehr,
+    # der Leinenstoff keinen Faden. Fuer sie liegt "korn" ueber 1 — dann traegt
+    # das Korn wieder Mikrostruktur ein und das Bild steht neben den echten
+    # Fotos, statt daneben zu glaenzen. Echtes Material bleibt bei 1.0.
+    # Eigener Zufallsstrom je Bild, aus dem Namen abgeleitet. Vorher zogen alle
+    # Bilder aus EINEM Strom: dann haengt das Korn davon ab, wie viele Bilder im
+    # selben Lauf vorher dran waren, und dieselbe Vorlage ergibt zwei
+    # verschiedene Dateien. Der Kommentar oben verspricht reproduzierbares Korn —
+    # jetzt stimmt das auch bei einzeln gebackenen Bildern.
+    wuerfel = np.random.default_rng(20261008 + sum(name.encode()))
+    a = grain(a, sigma=3.5 * p.get("korn", 1.0), wuerfel=wuerfel)
+    a = halation(a, p.get("halo", 0.0))
+    a = aberration(a, p.get("ca", 0.0))
     a = vignette(a, p["vig"])
     im = Image.fromarray(np.clip(a, 10, 248).astype(np.uint8))
 
     if p["sharp"]:
         im = im.filter(ImageFilter.UnsharpMask(radius=0.8, percent=40, threshold=3))
+        # Die Maske hebt Kanten ueber die Grenzen hinaus, die eine Zeile weiter
+        # oben gerade gesetzt wurden: aus dem warmen Schwarz #0E0C08 wird wieder
+        # reines 0, aus dem Elfenbein reines 255. Damit faellt der Matt-Lift
+        # genau bei den geschaerften Bildern weg — deshalb hier noch einmal
+        # zurueckholen, nach dem Schaerfen und nicht davor.
+        im = Image.fromarray(np.clip(np.asarray(im, dtype=np.float64), 10, 248).astype(np.uint8))
 
     path = os.path.join(OUT, name + ".webp")
     im.save(path, "WEBP", quality=quality, method=6)
@@ -225,9 +309,12 @@ JOBS = [
     # Profil "outdoor_haut", nicht "outdoor": sonst fleckt die Haut.
     # Quer und hoch sind ZWEI Bilder, kein Ausschnitt voneinander: bei 3/4 aus
     # dem Querformat fällt je eine der äußeren Frauen aus dem Rand.
-    ("hero-tall",       HERO_DIR + "final-hero-tall.png", "outdoor_haut",  3/4,  1500, (0, 0, 1, 1), (0.50, 0.50)),
-    ("hero-wide",       HERO_DIR + "final-hero-wide.png", "outdoor_haut", 16/9,  1920, (0, 0, 1, 1), (0.50, 0.50)),
-    ("og-image",        HERO_DIR + "final-hero-wide.png", "outdoor_haut", 1.91,  1200, (0, 0, 1, 1), (0.50, 0.20)),
+    # Korn kostet in WebP Bytes. Das Hero ist das erste und groesste Bild
+    # der Seite — hier lieber etwas weniger Qualitaetsreserve als eine
+    # halbe Sekunde Ladezeit. 76 traegt das Korn noch sichtbar.
+    ("hero-tall",       HERO_DIR + "final-hero-tall.png", "hero_klar",  3/4,  1500, (0, 0, 1, 1), (0.50, 0.50), 76),
+    ("hero-wide",       HERO_DIR + "final-hero-wide.png", "hero_klar", 16/9,  1920, (0, 0, 1, 1), (0.50, 0.50), 76),
+    ("og-image",        HERO_DIR + "final-hero-wide.png", "hero_klar", 1.91,  1200, (0, 0, 1, 1), (0.50, 0.20)),
 
     ("ablauf",          "26-08-12 09-54-42 7587.jpg", "outdoor",  3/4,  1000, (0.00, 0.35, 1.00, 1.00), (0.55, 0.60)),
 
@@ -255,24 +342,29 @@ JOBS = [
     # (Innenraum, Vorhang, Betontreppe) und drei Profile. Deshalb hier auch nur
     # noch ein Profil: "portrait_beton" wird nicht mehr gebraucht, der Beton ist
     # weg. Ausschnitt (0,0,1,1): die Vorlagen sind bereits 4:5 gebaut.
-    ("sophie",          PORT_DIR + "p-sophie_1.png",    "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
-    ("sarah",           PORT_DIR + "p-sarah_1.png",     "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
-    # Christina bleibt als EINZIGE bei ihren echten Fotos. Vier Durchgaenge
-    # haben ihr Gesicht jedes Mal neu gezeichnet: ihre Vorlagen sind die
-    # einzigen, auf denen die Person an einem Gelaender lehnt — ohne Gelaender
-    # muss das Modell beide Arme und damit halbe Koerperhaltung neu erfinden,
-    # und dabei geht das Gesicht mit. Ein fremdes Gesicht unter ihrem Namen
-    # waere schlimmer als ein Hintergrund, der nicht zum Feld passt.
-    # Sarah und Sophie behalten ihre erzeugten Feld-Aufnahmen, dort hielt die
-    # Identitaet, weil nur der Hintergrund getauscht wurde.
-    ("christina",       "IMG_3146.jpeg",  "portrait", 4/5,   900, (0.02, 0.02, 0.98, 0.62), (0.42, 0.30)),
+    ("sophie",          PORT_DIR + "p-sophie_1.png",    "portrait_ki", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
+    ("sarah",           PORT_DIR + "p-sarah_1.png",     "portrait_ki", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
+    # Christina: fuenfter Anlauf, und der erste, der sitzt. Der Unterschied ist
+    # das Verfahren — KEINE Vorlage, ihre beiden Fotos gehen nur als Referenz
+    # hinein, die Szene entsteht neu. Bei den vier Versuchen davor war ihr Foto
+    # die Vorlage; dabei muss das Modell den alten Hintergrund und ihre Haltung
+    # am Gelaender ueberschreiben und zeichnet das Gesicht gleich mit neu.
+    # Prompt: tools/portraets/c-neu.txt
+    ("christina",       PORT_DIR + "c-neu_3.png",  "portrait_ki", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
 
     # Dieselben drei noch einmal, als Bild zur jeweiligen Experience.
-    ("exp-sarah",       PORT_DIR + "e-sarah.png",       "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
-    ("exp-sophie",      PORT_DIR + "e-sophie.png",      "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
-    ("exp-christina",   "IMG_3145.jpeg",  "portrait", 4/5,  1000, (0.10, 0.04, 1.00, 0.66), (0.55, 0.30)),
+    ("exp-sarah",       PORT_DIR + "e-sarah.png",       "portrait_ki", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
+    ("exp-sophie",      PORT_DIR + "e-sophie.png",      "portrait_ki", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
+    ("exp-christina",   PORT_DIR + "c-neu_1.png",  "portrait_ki", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
 
-    ("buchung-bg",      "1e0a5675-f83e-4eb0-bb69-73a290f60e68.jpeg", "sunset", 16/9, 1600, (0.00, 0.00, 1.00, 0.75), (0.50, 0.45)),
+    # Vorher der blassrosa Abendhimmel ueber der Dachterrasse
+    # (1e0a5675-…jpeg, Profil "sunset"). Unter der elfenbeinfarbenen Karte blieb
+    # davon eine rosa Flaeche ohne Motiv — der Abschnitt sah aus wie ein Fehler
+    # im Verlauf, nicht wie ein Foto. Jetzt der Blick ins Tal, den auch der
+    # Grundstuecksrand zeigt: dunkle Baumkante links unter der Schrift, das
+    # abgeerntete Feld rechts, Tiefe bis zum Horizont. Dasselbe Original wie
+    # bms-fries, dort aber als 2,6:1-Fries — der liegt nicht auf der Seite.
+    ("buchung-bg",      "26-08-12 09-54-18 7585.jpg", "outdoor", 16/9, 1600, (0.00, 0.28, 1.00, 0.94), (0.50, 0.55)),
     # Abschluss: die Drei in der RECHTEN Bilddrittel, links bleibt ruhig. Der
     # Verlauf in .abschluss__bg::after ist waagerecht (links .66 dunkel, ab 80 %
     # ganz frei) — ein mittig stehendes Motiv verschwände unter der Schrift.
@@ -284,10 +376,26 @@ JOBS = [
     ("bms-fries",       "26-08-12 09-54-18 7585.jpg", "outdoor",  2.6,  1920, (0.00, 0.28, 1.00, 0.94), (0.50, 0.55)),
     ("exp-struktur",    "26-08-12 10-07-43 7616.jpg", "interior", 4/5,  1000, (0.05, 0.08, 1.00, 1.00), (0.55, 0.55)),
     ("inkl-bad",        "26-08-12 10-09-06 7618.jpg", "interior", 4/5,   900, (0.06, 0.04, 1.00, 0.98), (0.50, 0.50)),
-    ("fuerwen-blick",   "26-08-12 10-08-02 7617.jpg", "outdoor",  4/5,   900, (0.00, 0.22, 1.00, 1.00), (0.50, 0.60)),
+    # Kader enger als vorher (war 0.22/0.60): oben standen ueber ein Drittel leerer
+    # Himmel. Seit das Bild in der Sektion gross rechts heraushaengt, ist das
+    # keine Randnotiz mehr — jetzt traegt es Baumkante, Feld und Horizont.
+    ("fuerwen-blick",   "26-08-12 10-08-02 7617.jpg", "outdoor",  4/5,   900, (0.00, 0.28, 1.00, 1.00), (0.50, 0.42)),
     ("ort-terrasse2",   "26-08-12 10-07-10 7613.jpg", "outdoor", 16/9,  1100, (0.00, 0.10, 1.00, 0.94), (0.50, 0.55)),
     ("ort-eingang",     "26-08-12 09-51-59 7581.jpg", "outdoor",  4/5,  1000, (0.20, 0.10, 1.00, 0.96), (0.55, 0.50)),
     ("ort-haus",        "26-08-12 10-07-18 7614.jpg", "outdoor",  4/5,  1000, (0.00, 0.14, 1.00, 1.00), (0.50, 0.55)),
+
+    # --- Galerie der beiden Unterkuenfte (Kapitel 09) --------------------
+    # Vier Aufnahmen je Block, alle 3:2, damit der Schieber beim Blaettern
+    # nicht springt. WELCHER Raum zu WELCHER Wohnung gehoert, geht aus den
+    # Dateinamen nicht hervor — die Zuordnung muss die Kundin bestaetigen.
+    ("haus-g1",         "26-08-12 10-11-10 7620.jpg", "interior", 3/2,  1200, (0.00, 0.10, 1.00, 0.92), (0.50, 0.50)),
+    ("haus-g2",         "26-08-12 10-11-25 7622.jpg", "interior", 3/2,  1200, (0.00, 0.08, 1.00, 0.94), (0.50, 0.50)),
+    ("haus-g3",         "26-08-12 10-13-49 7624.jpg", "interior", 3/2,  1200, (0.00, 0.06, 1.00, 0.96), (0.50, 0.50)),
+    ("haus-g4",         "26-08-12 10-09-06 7618.jpg", "interior", 3/2,  1200, (0.00, 0.06, 1.00, 0.96), (0.50, 0.50)),
+    ("friends-g1",      "26-08-12 10-11-15 7621.jpg", "interior", 3/2,  1200, (0.00, 0.08, 1.00, 0.94), (0.50, 0.50)),
+    ("friends-g2",      "26-08-12 10-14-18 7626.jpg", "interior", 3/2,  1200, (0.00, 0.06, 1.00, 0.96), (0.50, 0.50)),
+    ("friends-g3",      "26-08-12 10-07-10 7613.jpg", "outdoor",  3/2,  1200, (0.00, 0.10, 1.00, 0.94), (0.50, 0.50)),
+    ("friends-g4",      "26-08-12 10-08-02 7617.jpg", "outdoor",  3/2,  1200, (0.00, 0.10, 1.00, 1.00), (0.50, 0.55)),
 ]
 
 if __name__ == "__main__":

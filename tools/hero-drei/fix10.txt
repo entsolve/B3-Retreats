@@ -1,0 +1,32 @@
+This is a finished photograph. Retouch it. Change exactly ONE thing: the wind.
+
+FRAMING — read this first. The output must be the SAME photograph with the SAME field of view. Do
+not zoom, do not crop, do not re-frame, do not move the camera, do not tilt the horizon. The treeline
+stays on exactly the same line. All three women keep exactly the same size, the same places, the same
+distances between them and the same relative heights, with the middle woman the tallest. Their feet
+stay exactly where they are. If any of that moves, the retouch has failed.
+
+UNCHANGED — the same three women from behind, faces out of frame. Same clothes: champagne satin slip
+dress, cream linen dress with short sleeves, brown ribbed top with oat linen trousers. Same hair
+colours, same copper curls with their level bottom edge, same bun with the brown scrunchie. Same
+arms and hands in exactly the same positions — including the hand resting open on the right woman's
+shoulder with all five fingers. Same mandala tattoo, same skin, same freckles. Same field, treeline,
+sky, thistles. Same light, same three cast shadows, same colour grade, same film grain.
+
+THE ONE CHANGE — air is moving through the picture, and right now nothing shows it. Add a summer
+evening breeze, blowing from the right side of the frame towards the left:
+  · several strands of the right woman's long light-brown hair lift and blow across, away from her
+    shoulder and towards the left, thin and separated against the bright field;
+  · a few of the middle woman's copper curls lift at the top of her head in the same direction —
+    the bottom edge of her hair stays exactly as level as it is now;
+  · a few loose strands escape at the nape of the left woman's bun;
+  · the dry seed heads, thistles and pale grasses in the foreground and along the left edge all bend
+    in the SAME direction as the hair, not in different directions.
+
+The wind is gentle: hair strands and grass stalks move, but the dresses hang as they do now and
+nothing is blurred. Keep the grain, the pores, the linen weave. Do NOT smooth, do NOT denoise, do
+NOT beautify.
+
+Nothing else changes. No new people, no new objects, no visible face, no extra limb, no missing or
+merged limb, no impossible hand, no text, no logo, no watermark, no vignette, no motion blur, no
+change of contrast or saturation.
