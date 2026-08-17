@@ -1,24 +1,26 @@
-# B³ Retreats — /admin/ ist auf dem Server (noch) gesperrt.
+# B³ Retreats — /admin/ auf dem Server.
 #
-# WARUM: die Dateien in diesem Ordner sind nur die OBERFLAECHE der Redaktion.
-# Ihr Gegenstueck — /api/state, /api/content, /api/upload, /api/restore,
-# /api/legal — liegt in tools/admin-server.py und ist ein Python-Werkzeug fuer
-# den eigenen Rechner. Auf dem Hosting laeuft PHP, nicht Python: die Aufrufe
-# gehen dort ins Leere (404), das Panel zeigt Menue und Knoepfe, aber kein
-# einziges Feld, und in die Seite rutscht der Text der Fehlerseite. Genau so
-# ist es in der Abstimmung aufgefallen.
+# Frueher stand hier eine Vollsperre: der Ordner enthielt nur die OBERFLAECHE
+# der oertlichen Redaktion (index.html + admin.js), deren Gegenstueck
+# (/api/state, /api/content …) in tools/admin-server.py liegt — ein Python-
+# Werkzeug fuer den eigenen Rechner. Auf dem Hosting laeuft PHP: die Aufrufe
+# gingen ins Leere, das Panel zeigte Menue und Knoepfe, aber kein Feld.
 #
-# Solange das so ist, hat der Ordner im Netz nichts zu suchen: er waere ein
-# kaputtes Panel UND eine Landkarte der Redaktionsstruktur (schema.json nennt
-# jedes Feld der Seite).
+# Jetzt gibt es das serverseitige Panel in PHP (login.php, index.php). Die
+# Sperre ist deshalb keine Vollsperre mehr, sondern eine Liste: erlaubt ist,
+# was zum PHP-Panel gehoert. Alles andere bleibt zu — vor allem:
 #
-# Inhalte werden bis dahin oertlich gepflegt:
-#     python3 tools/admin-server.py     ->  http://127.0.0.1:8790/admin/
-#
-# WANN DAS HIER WEG DARF: sobald die serverseitige Panel-Oberflaeche steht
-# (login.php und die PHP-Seiten dazu). Dann diese Datei loeschen oder auf die
-# neuen Dateien zuschneiden — aber NICHT vorher, sonst steht die leere Huelle
-# wieder offen.
+#   index.html / admin.js   die oertliche Oberflaeche. Wuerde sie hier
+#                           ausgeliefert, waere man wieder bei „nichts laesst
+#                           sich bearbeiten".
+#   schema.json             die Landkarte aller bearbeitbaren Felder der Seite.
+#                           Sie gehoert nicht ins Netz. (Die Wurzel-.htaccess
+#                           sperrt .json ohnehin, hier steht es zusaetzlich.)
+
+# Auf dem Server soll /admin/ die PHP-Seite oeffnen, nicht die HTML-Huelle.
+# Der oertliche Python-Server liest kein .htaccess und liefert weiter
+# index.html — beide Wege bleiben also nebeneinander benutzbar.
+DirectoryIndex index.php
 
 <IfModule mod_authz_core.c>
   Require all denied
@@ -28,10 +30,10 @@
   Deny from all
 </IfModule>
 
-# Einzige Ausnahme: die einmalige Einrichtung. Sie braucht kein Panel und
-# funktioniert eigenstaendig — und nach dem Anlegen des Kontos wird die Datei
-# ohnehin vom Server geloescht.
-<Files "setup.php">
+# Erlaubt: das PHP-Panel, seine Stile und sein Skript.
+#   setup.php  einmalige Einrichtung; wird nach dem Anlegen des Kontos
+#              vom Server geloescht.
+<FilesMatch "^(index|login|logout|setup)\.php$">
   <IfModule mod_authz_core.c>
     Require all granted
   </IfModule>
@@ -39,4 +41,25 @@
     Order allow,deny
     Allow from all
   </IfModule>
-</Files>
+</FilesMatch>
+
+# Stile und Skript des Panels. Sie liegen in admin/assets/, und eine .htaccess
+# gilt auch fuer Unterordner — ohne diese Ausnahme kaeme das Panel ohne
+# Gestaltung und ohne die mitwachsenden Textfelder.
+# Nur diese zwei Namen, nicht pauschal *.css/*.js: sonst waere auch admin.js
+# der oertlichen Oberflaeche wieder erreichbar.
+<FilesMatch "^panel\.(css|js)$">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+  </IfModule>
+</FilesMatch>
+
+# _header.php und _footer.php werden nur eingebunden, nie direkt aufgerufen —
+# sie bleiben deshalb in der Sperre. config.php ebenso: dort stehen die
+# Sitzungs- und CSRF-Helfer.
+
+Options -Indexes
