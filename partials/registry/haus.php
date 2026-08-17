@@ -47,20 +47,6 @@ return [
         'hint' => 'Kurzer Satz unter der Überschrift, erklärt die zwei Wohnoptionen',
         'default' => 'Du kannst zwischen zwei Möglichkeiten der Unterbringung wählen.',
     ],
-    'haus.shared.image.src' => [
-        'group' => '12 Unterkunft und Preise',
-        'label' => 'Bild Shared House',
-        'type' => 'image',
-        'hint' => 'Hochformat 900x1125, zeigt das Gemeinschaftshaus',
-        'default' => 'assets/img/haus-schlafen.webp',
-    ],
-    'haus.shared.image.alt' => [
-        'group' => '12 Unterkunft und Preise',
-        'label' => 'Bildbeschreibung Shared House',
-        'type' => 'text',
-        'hint' => 'Alternativtext des Bildes',
-        'default' => 'Schlafzimmer mit bodentiefem Fenster',
-    ],
     'haus.shared.label' => [
         'group' => '12 Unterkunft und Preise',
         'label' => 'Name der Option',
@@ -182,20 +168,6 @@ return [
         'type' => 'text',
         'hint' => 'Beschriftung des Buchungsbuttons',
         'default' => 'Meinen Platz sichern',
-    ],
-    'haus.friends.image.src' => [
-        'group' => '12 Unterkunft und Preise',
-        'label' => 'Bild Friends Special',
-        'type' => 'image',
-        'hint' => 'Hochformat 900x1125, zeigt das exklusive Apartment',
-        'default' => 'assets/img/haus-wohnen.webp',
-    ],
-    'haus.friends.image.alt' => [
-        'group' => '12 Unterkunft und Preise',
-        'label' => 'Bildbeschreibung Friends Special',
-        'type' => 'text',
-        'hint' => 'Alternativtext des Bildes',
-        'default' => 'Wohnbereich mit Vorhängen und Tageslicht',
     ],
     'haus.friends.label' => [
         'group' => '12 Unterkunft und Preise',

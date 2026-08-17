@@ -184,13 +184,29 @@ require __DIR__ . '/_header.php';
 
       <?php foreach ($abschnitte[$aktuell] ?? [] as $key => $def):
         $typ = (string) ($def['type'] ?? 'text');
-        $eigen = array_key_exists($key, $werte) && trim($werte[$key]) !== '';
+
+        /* „geaendert" heisst: WEICHT VOM URSPRUNG AB — nicht bloss „hat eine
+           Zeile in der Datenbank". Seit der Bestand eingespielt ist, hat jedes
+           Feld eine Zeile; die bisherige Pruefung haette alle 217 Felder als
+           geaendert markiert und die Marke damit wertlos gemacht. */
+        $hatZeile = array_key_exists($key, $werte) && trim($werte[$key]) !== '';
+
         if ($typ === 'list') {
-            $wert = $eigen ? $werte[$key]
-                : json_encode($def['default'] ?? [], JSON_PRETTY_PRINT
-                    | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            // Listen werden verglichen, NACHDEM beide Seiten dieselbe Form
+            // haben: in der Datenbank steht kompaktes JSON, im Register ein
+            // Array. Ohne das Dekodieren waere jede Liste „geaendert".
+            $roh = $hatZeile ? json_decode((string) $werte[$key], true) : null;
+            if (!is_array($roh)) {
+                $roh = $def['default'] ?? [];
+                $hatZeile = false;
+            }
+            $eigen = $hatZeile && $roh != ($def['default'] ?? []);
+            $wert = json_encode($roh, JSON_PRETTY_PRINT
+                | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } else {
-            $wert = $eigen ? $werte[$key] : (string) ($def['default'] ?? '');
+            $standard = (string) ($def['default'] ?? '');
+            $wert  = $hatZeile ? (string) $werte[$key] : $standard;
+            $eigen = $hatZeile && $wert !== $standard;
         }
         $id = 'f_' . md5($key);
       ?>

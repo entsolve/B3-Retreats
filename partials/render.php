@@ -82,13 +82,51 @@ function b3_site_json(): array
  * Legt fehlende Zwischenebenen an. Steht auf dem Weg etwas, das kein Array
  * ist, wird NICHT ueberschrieben: eine Zeile in `content` soll keine
  * Struktur zertreten, die die Vorlage als Liste erwartet.
+ *
+ * DER INDEX MUSS MIT. 16 Schluessel im Register sehen so aus:
+ *
+ *     ort.mosaic[0].src
+ *
+ * Das Mosaik im Abschnitt „Der Ort" hat acht feste Plaetze mit je eigenem
+ * CSS-Klassennamen, ist also keine frei wachsende Liste, sondern acht
+ * einzelne Felder. Ohne die Klammer-Behandlung hier legte eine Aenderung
+ * einen Schluessel namens „mosaic[0]" NEBEN dem echten Mosaik an: in der
+ * Datenbank stand die neue Adresse, die Seite zeigte weiter das alte Bild,
+ * und niemand haette gewusst, wo es haengt.
  */
 function b3_set_path(array &$ziel, string $pfad, $wert): bool
 {
     $teile = explode('.', $pfad);
     $knoten = &$ziel;
+
     foreach ($teile as $i => $teil) {
-        if ($i === count($teile) - 1) {
+        $letzter = ($i === count($teile) - 1);
+
+        // 'mosaic[0]' — erst in den benannten Zweig, dann auf den Platz.
+        if (preg_match('/^(.+)\[(\d+)\]$/', $teil, $t)) {
+            $name = $t[1];
+            $pos  = (int) $t[2];
+
+            if (!isset($knoten[$name]) || !is_array($knoten[$name])) {
+                return false;               // die Liste gibt es nicht — nichts erfinden
+            }
+            $knoten = &$knoten[$name];
+
+            if (!array_key_exists($pos, $knoten)) {
+                return false;               // Platz gibt es nicht
+            }
+            if ($letzter) {
+                $knoten[$pos] = $wert;
+                return true;
+            }
+            if (!is_array($knoten[$pos])) {
+                return false;
+            }
+            $knoten = &$knoten[$pos];
+            continue;
+        }
+
+        if ($letzter) {
             $knoten[$teil] = $wert;
             return true;
         }

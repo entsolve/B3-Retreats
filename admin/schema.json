@@ -918,18 +918,6 @@
     "hint": "Kurzer Satz unter der Überschrift, erklärt die zwei Wohnoptionen"
   },
   {
-    "path": "haus.shared.image.src",
-    "label": "Bild Shared House",
-    "type": "image",
-    "hint": "Hochformat 900x1125, zeigt das Gemeinschaftshaus"
-  },
-  {
-    "path": "haus.shared.image.alt",
-    "label": "Bildbeschreibung Shared House",
-    "type": "text",
-    "hint": "Alternativtext des Bildes"
-  },
-  {
     "path": "haus.shared.label",
     "label": "Name der Option",
     "type": "text",
@@ -1005,18 +993,6 @@
     "label": "Button Shared House",
     "type": "text",
     "hint": "Beschriftung des Buchungsbuttons"
-  },
-  {
-    "path": "haus.friends.image.src",
-    "label": "Bild Friends Special",
-    "type": "image",
-    "hint": "Hochformat 900x1125, zeigt das exklusive Apartment"
-  },
-  {
-    "path": "haus.friends.image.alt",
-    "label": "Bildbeschreibung Friends Special",
-    "type": "text",
-    "hint": "Alternativtext des Bildes"
   },
   {
     "path": "haus.friends.label",

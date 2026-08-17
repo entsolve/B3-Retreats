@@ -28,6 +28,34 @@ DirectoryIndex index.php index.html
   </IfModule>
 </FilesMatch>
 
+# --- Ins Leere laufende Adressen fuehren zur Startseite --------------------
+#
+# Eine Seite mit genau einer Adresse braucht keine eigene Fehlerseite: wer
+# einen alten Link, einen Tippfehler oder eine geratene Adresse erwischt, soll
+# vorne landen statt vor einer Meldung des Servers zu stehen.
+#
+# ZWEI DINGE, DIE HIER BEWUSST SO STEHEN:
+#
+#   * Nur was es NICHT gibt, wird umgeleitet (!-f und !-d). Vorhandene Dateien
+#     laufen unveraendert weiter — sonst haette die Umleitung Vorrang vor den
+#     Sperren weiter unten, und eine gesperrte Datei waere ploetzlich eine
+#     Umleitung statt einer Absage.
+#   * 302, nicht 301. Eine 301 merkt sich der Browser dauerhaft; taucht die
+#     Adresse spaeter doch auf (eine neue Seite, ein neues Bild), zeigt er
+#     trotzdem weiter die Startseite, und niemand findet den Grund.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ / [R=302,L]
+</IfModule>
+
+# Fuer alles, was die Regel oben nicht erwischt (gesperrte, aber vorhandene
+# Dateien), fuehrt derselbe Weg zur Startseite. Die volle Adresse macht daraus
+# eine echte Umleitung statt einer Fehlerseite mit fremdem Inhalt.
+ErrorDocument 404 https://b3-retreats.de/
+ErrorDocument 403 https://b3-retreats.de/
+
 # content/site.json ist der gesamte Redaktionsinhalt und admin/schema.json die
 # Struktur der Oberflaeche. Beides gehoert nicht ins Netz — die fertige Seite
 # baut index.php daraus. Der Ausschluss oben trifft sie ueber die Endung .json

@@ -383,10 +383,6 @@
     "headline": "Dein Zuhause für diese vier Tage",
     "sub": "Du kannst zwischen zwei Möglichkeiten der Unterbringung wählen.",
     "shared": {
-      "image": {
-        "src": "assets/img/haus-schlafen.webp",
-        "alt": "Schlafzimmer mit bodentiefem Fenster"
-      },
       "label": "Shared House",
       "headline": "Gemeinsam wohnen, gemeinsam erleben.",
       "text": "Unser ca. 150 m² großer Neubau verbindet moderne Einrichtung mit rustikaler Holzoptik und bietet Platz für bis zu 11 Frauen.",
@@ -434,10 +430,6 @@
       ]
     },
     "friends": {
-      "image": {
-        "src": "assets/img/haus-wohnen.webp",
-        "alt": "Wohnbereich mit Vorhängen und Tageslicht"
-      },
       "label": "Friends Special",
       "badge": "Exklusiv",
       "headline": "Euer eigener Rückzugsort.",
