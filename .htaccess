@@ -30,11 +30,31 @@ DirectoryIndex index.php index.html
 
 # content/site.json ist der gesamte Redaktionsinhalt und admin/schema.json die
 # Struktur der Oberflaeche. Beides gehoert nicht ins Netz — die fertige Seite
-# steht ja in index.html. Der Ausschluss oben trifft sie ueber die Endung .json
+# baut index.php daraus. Der Ausschluss oben trifft sie ueber die Endung .json
 # bereits; dieser Block sperrt zusaetzlich die ganzen Ordner.
+#
+# „materials- in" ist NEU in dieser Liste, und zwar nach einem Fund: der Ordner
+# mit den Rohunterlagen der Kundin liegt mit auf dem Server, und waehrend das
+# Verzeichnis selbst nicht aufgelistet wurde, war die einzelne Datei darin
+# ueber ihre volle Adresse abrufbar — die AGB-Vorlage kam mit HTTP 200 heraus.
+# Der Ordner gehoert nicht auf einen Webserver; bis er dort verschwindet, ist
+# er wenigstens gesperrt. Das Leerzeichen im Namen steht in der Adresse als
+# %20, deshalb beide Schreibweisen.
 <IfModule mod_alias.c>
-  RedirectMatch 404 ^/(content|tools|db|partials|admin/schema\.json)(/|$)
+  RedirectMatch 404 ^/(content|tools|db|partials|materials-(%20|\s)in|admin/schema\.json)(/|$)
 </IfModule>
+
+# Guertel zum Hosentraeger: Buero- und Rohdateien haben auf der Seite nichts
+# verloren, egal in welchem Ordner sie liegen.
+<FilesMatch "\.(docx?|xlsx?|pptx?|pages|numbers|psd|ai|sketch|zip|rar|7z|tar|gz)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
 
 # Verzeichnisse ohne index-Datei nicht auflisten.
 Options -Indexes
