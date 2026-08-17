@@ -1,0 +1,42 @@
+# B³ Retreats — /admin/ ist auf dem Server (noch) gesperrt.
+#
+# WARUM: die Dateien in diesem Ordner sind nur die OBERFLAECHE der Redaktion.
+# Ihr Gegenstueck — /api/state, /api/content, /api/upload, /api/restore,
+# /api/legal — liegt in tools/admin-server.py und ist ein Python-Werkzeug fuer
+# den eigenen Rechner. Auf dem Hosting laeuft PHP, nicht Python: die Aufrufe
+# gehen dort ins Leere (404), das Panel zeigt Menue und Knoepfe, aber kein
+# einziges Feld, und in die Seite rutscht der Text der Fehlerseite. Genau so
+# ist es in der Abstimmung aufgefallen.
+#
+# Solange das so ist, hat der Ordner im Netz nichts zu suchen: er waere ein
+# kaputtes Panel UND eine Landkarte der Redaktionsstruktur (schema.json nennt
+# jedes Feld der Seite).
+#
+# Inhalte werden bis dahin oertlich gepflegt:
+#     python3 tools/admin-server.py     ->  http://127.0.0.1:8790/admin/
+#
+# WANN DAS HIER WEG DARF: sobald die serverseitige Panel-Oberflaeche steht
+# (login.php und die PHP-Seiten dazu). Dann diese Datei loeschen oder auf die
+# neuen Dateien zuschneiden — aber NICHT vorher, sonst steht die leere Huelle
+# wieder offen.
+
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
+
+# Einzige Ausnahme: die einmalige Einrichtung. Sie braucht kein Panel und
+# funktioniert eigenstaendig — und nach dem Anlegen des Kontos wird die Datei
+# ohnehin vom Server geloescht.
+<Files "setup.php">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+  </IfModule>
+</Files>
