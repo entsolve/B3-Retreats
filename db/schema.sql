@@ -2,8 +2,19 @@
 -- B³ Retreats — Datenbank-Schema (MySQL / MariaDB, cPanel)
 -- Aufbau nach Vorbild "matern_website" / "krakusband": CMS-lite + Panel.
 --
--- Import: phpMyAdmin -> Reiter "Importieren" -> diese Datei waehlen.
--- Danach  db/seed.sql  importieren (fuellt alle Inhalte aus site.json).
+-- Import, der einfache Weg: admin/setup.php im Browser aufrufen und dort
+-- "Tabellen jetzt anlegen" druecken. Die Seite liest genau diese Datei und
+-- fuehrt sie aus — keine Handarbeit in phpMyAdmin noetig.
+-- Import von Hand, falls gewuenscht: phpMyAdmin -> LINKS DIE DATENBANK WAEHLEN
+-- (sonst "No database selected") -> Reiter "Importieren" -> diese Datei.
+--
+-- Beides ist ohne Risiko wiederholbar: jede Anweisung unten ist ein
+-- CREATE TABLE IF NOT EXISTS, ein zweiter Durchlauf aendert und loescht nichts.
+--
+-- HINWEIS: frueher stand hier "danach db/seed.sql importieren". Diese Datei
+-- gibt es noch nicht — der Generator, der die Inhalte aus site.json in die
+-- content-Tabelle schreibt, ist offen (siehe RESUME.md). Fuer setup.php ist das
+-- ohne Belang: gebraucht wird dort nur admin_users.
 -- Zeichensatz: utf8mb4 — deutsche Umlaute ae oe ue ss und „ " brauchen ihn.
 --
 -- KEINE leads-Tabelle: B³ hat kein Kontaktformular, die Buchung laeuft
