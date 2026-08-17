@@ -367,6 +367,28 @@ section { position: relative; }
   border-bottom: 1px solid transparent;
 }
 
+/* Die rechte Haelfte des Menues liegt ueber dem Hero-Foto. Seit dort ein helles
+   Stoppelfeld steht statt Himmel, fielen "Unterkunft & Preise" und "Fragen"
+   auf unter 3:1 Kontrast. Ein warmer Verlauf von oben, in der Farbe des Bandes
+   daneben: ueber dem Sandfeld links ist er unsichtbar, ueber dem Foto rechts
+   traegt er die Schrift. Liegt hinter dem Inhalt, nicht darueber. */
+.site-head::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 190px;
+  z-index: -1;
+  background: linear-gradient(180deg,
+    rgba(247, 244, 239, .82) 0%,
+    rgba(247, 244, 239, .58) 45%,
+    rgba(247, 244, 239, 0) 100%);
+  pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+
+/* Ist die Leiste eingerastet, deckt ihr eigener Grund schon alles ab. */
+.site-head.is-stuck::before { opacity: 0; }
+
 .site-head.is-stuck {
   position: fixed;
   background: var(--ivory);

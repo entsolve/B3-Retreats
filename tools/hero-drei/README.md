@@ -34,17 +34,69 @@ Beide laufen auf Vorkasse — eine hinterlegte Karte lädt das Guthaben nicht vo
 selbst auf. Fehlt Guthaben, kommt `429 prepayment credits are depleted` (Gemini)
 bzw. `403 User is locked, exhausted balance` (fal, schon beim CDN-Upload).
 
-## Offen: Neuaufnahme statt Retusche (17.08.2026)
+## Endstand 17.08.2026 — Retusche des Originals, `fix4.txt`
 
-Die Kundin hat die Retusche vom 16.08. abgelehnt — zu Recht: der Kader ist dabei
-enger geworden und die Fuesse sind angeschnitten. Gewuenscht ist eine **neue
-Generierung von Grund auf**, die den freigegebenen Kader und die Koerpergroessen
-aus `out/final-hero-wide-v1.png` uebernimmt und nur Haare (Locken) und Hut
-aendert. Der Prompt dafuer liegt fertig als `prompt-v2.txt`.
+**Die gueltige Fassung ist eine Retusche von `final-hero-wide-v1.png`**, nicht
+die Neugenerierung darunter. Die Kundin hat beides gesehen und den ersten Kader
+als den richtigen bestaetigt: die Neugenerierung liefert ein anderes, schwaecheres
+Bild, gebraucht wurden nur drei Korrekturen am vorhandenen.
 
-Beide Wege waren am 17.08. gesperrt — Gemini `429 prepayment credits are
-depleted`, fal `403 User is locked, exhausted balance`. Nach dem Aufladen laeuft
-es ohne weitere Vorarbeit:
+```bash
+S=~/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei
+python3 ~/Documents/entsolve/GIT/polarholz-3drenders/generate.py \
+  --image $S/out/final-hero-wide-v1.png --prompt-file $S/fix4.txt \
+  --ref $S/ref/sarah.png --out $S/out/f4 --n 3 --aspect 16:9 --size 2K \
+  --model gemini-3-pro-image-preview
+# Hochformat: dasselbe mit final-hero-tall-v1.png und --aspect 3:4
+```
+
+Endfassungen: `out/f4_1.png` → `final-hero-wide.png`, `out/f4tall_1.png` →
+`final-hero-tall.png`.
+
+**Was `fix4.txt` anders macht als die frueheren Versuche:** der Kader steht als
+erster Absatz und wird einzeln beschrieben — Baumkante, Groesse der Frauen,
+Grasstreifen unter den Fuessen, Disteln am linken Rand — mit dem Satz, dass die
+Retusche gescheitert ist, wenn sich daran etwas aendert. `fix2.txt` hatte den
+Kader nur pauschal geschuetzt („do not re-frame"), und genau das hat das Modell
+ignoriert: die Gruppe rueckte naeher, die Fuesse fielen aus dem Bild.
+
+**Kader nachmessen, nicht nur ansehen.** Die Verschiebung faellt im Vergleich
+zweier Vollbilder kaum auf. Verlaesslich ist die Zeile, in der am linken Rand der
+Himmel in die Baumkante uebergeht:
+
+```python
+a = np.asarray(Image.open(p).convert("RGB").resize((688,384))).astype(float)
+c = a[:, 60:120].mean(1).mean(1)
+zeile = int(np.argmax(np.abs(np.diff(c)) > 6))   # muss gleich der von v1 sein
+```
+
+Bei `f4_1` und `f4tall_1` ist die Abweichung 0. Bei den verworfenen Durchgaengen
+lag sie deutlich darueber.
+
+## Verworfen: Neuaufnahme statt Retusche (17.08.2026)
+
+Die Kundin hat die Retusche vom 16.08. abgelehnt — zu Recht: der Kader war dabei
+enger geworden und die Fuesse angeschnitten. Ersetzt durch eine **neue
+Generierung von Grund auf** (`prompt-v2.txt`), die den freigegebenen Kader und
+die Koerpergroessen aus `out/final-hero-wide-v1.png` als Referenz nimmt und nur
+Haare und Hut aendert.
+
+Endfassungen: `out/n1_1.png` (quer) → `final-hero-wide.png`, und daraus per
+Outpaint `out/n1tall_1.png` (`extend-v2.txt`) → `final-hero-tall.png`. Das
+Hochformat entsteht bewusst als Outpaint des Siegers und nicht als zweite
+Generierung: so stehen in beiden Formaten garantiert dieselben drei Frauen.
+
+Drei Beobachtungen aus diesem Durchgang:
+
+* **`n1_2` hatte den Strohhut wieder in der Hand**, obwohl der Prompt ihn an drei
+  Stellen verbietet. Das Referenzbild zeigt ihn eben noch. Bei jedem neuen
+  Durchgang zuerst auf die linke Hand sehen.
+* **Die Fuesse fallen als Erstes aus dem Kader.** Deshalb steht `no cropped feet`
+  in der Verbotsliste und der Kader ist im Prompt eigens beschrieben.
+* **Der Outpaint macht die Gruppe klein.** Im 3:4 lagen ueber ihnen zwei Drittel
+  Himmel; der Job `hero-tall` schneidet darum mit `(0, 0.18, 1, 0.86)` nach.
+
+Zum Nachfahren, falls es noch einmal gebraucht wird:
 
 ```bash
 S=~/Documents/entsolve/GIT/B3-Retreats/tools/hero-drei

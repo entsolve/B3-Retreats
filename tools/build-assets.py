@@ -257,18 +257,20 @@ JOBS = [
     # weg. Ausschnitt (0,0,1,1): die Vorlagen sind bereits 4:5 gebaut.
     ("sophie",          PORT_DIR + "p-sophie_1.png",    "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
     ("sarah",           PORT_DIR + "p-sarah_1.png",     "portrait", 4/5,   900, (0, 0, 1, 1), (0.50, 0.50)),
-    # Enger als die anderen zwei, und zwar mit Absicht: Christina lehnte auf der
-    # Vorlage an einem Treppengelaender. Ohne Gelaender muss das Modell BEIDE
-    # Haende neu erfinden, und genau daran erkennt man das Bild als erzeugt.
-    # Der Schnitt endet oberhalb der Haende — was nicht im Bild ist, kann auch
-    # nicht falsch sein. Sarah und Sophie behalten ihre echten Arme, die
-    # brauchen den Schnitt nicht.
-    ("christina",       PORT_DIR + "p-christina-v2_3.png", "portrait", 4/5,   900, (0.10, 0.04, 0.95, 0.66), (0.50, 0.50)),
+    # Christina bleibt als EINZIGE bei ihren echten Fotos. Vier Durchgaenge
+    # haben ihr Gesicht jedes Mal neu gezeichnet: ihre Vorlagen sind die
+    # einzigen, auf denen die Person an einem Gelaender lehnt — ohne Gelaender
+    # muss das Modell beide Arme und damit halbe Koerperhaltung neu erfinden,
+    # und dabei geht das Gesicht mit. Ein fremdes Gesicht unter ihrem Namen
+    # waere schlimmer als ein Hintergrund, der nicht zum Feld passt.
+    # Sarah und Sophie behalten ihre erzeugten Feld-Aufnahmen, dort hielt die
+    # Identitaet, weil nur der Hintergrund getauscht wurde.
+    ("christina",       "IMG_3146.jpeg",  "portrait", 4/5,   900, (0.02, 0.02, 0.98, 0.62), (0.42, 0.30)),
 
     # Dieselben drei noch einmal, als Bild zur jeweiligen Experience.
     ("exp-sarah",       PORT_DIR + "e-sarah.png",       "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
     ("exp-sophie",      PORT_DIR + "e-sophie.png",      "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
-    ("exp-christina",   PORT_DIR + "e-christina.png",   "portrait", 4/5,  1000, (0, 0, 1, 1), (0.50, 0.50)),
+    ("exp-christina",   "IMG_3145.jpeg",  "portrait", 4/5,  1000, (0.10, 0.04, 1.00, 0.66), (0.55, 0.30)),
 
     ("buchung-bg",      "1e0a5675-f83e-4eb0-bb69-73a290f60e68.jpeg", "sunset", 16/9, 1600, (0.00, 0.00, 1.00, 0.75), (0.50, 0.45)),
     # Abschluss: die Drei in der RECHTEN Bilddrittel, links bleibt ruhig. Der

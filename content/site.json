@@ -270,7 +270,7 @@
       {
         "image": {
           "src": "assets/img/exp-christina.webp",
-          "alt": "Christina am Feldrand im späten Nachmittagslicht",
+          "alt": "Christina",
           "height": 1250
         },
         "who": "Mit Christina",
@@ -520,7 +520,7 @@
     "christina": {
       "image": {
         "src": "assets/img/christina.webp",
-        "alt": "Christina am Feldrand"
+        "alt": "Christina"
       },
       "name": "Christina",
       "craft": "Strategie | Business | Struktur",

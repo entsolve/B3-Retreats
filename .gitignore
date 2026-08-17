@@ -8,3 +8,10 @@ __pycache__/
 # content/site.json selbst liegt bewusst IM Verlauf, das ist die Historie.
 content/backups/
 tools/content/*.bak
+
+# Secrets: existieren NUR auf dem Server. Vorlage ist config.example.php,
+# der HTTP-Zugriff ist zusaetzlich in .htaccess gesperrt.
+config.php
+
+# Vom Panel hochgeladene Bilder gehoeren dem Server, nicht dem Verlauf.
+img/uploads/
