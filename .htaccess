@@ -24,7 +24,7 @@
 # steht ja in index.html. Der Ausschluss oben trifft sie ueber die Endung .json
 # bereits; dieser Block sperrt zusaetzlich die ganzen Ordner.
 <IfModule mod_alias.c>
-  RedirectMatch 404 ^/(content|tools|db|admin/schema\.json)(/|$)
+  RedirectMatch 404 ^/(content|tools|db|partials|admin/schema\.json)(/|$)
 </IfModule>
 
 # Verzeichnisse ohne index-Datei nicht auflisten.
