@@ -26,6 +26,20 @@ return [
         'hint' => 'Die eine offizielle Adresse dieser Seite für Suchmaschinen. Nur ändern, wenn die Domain wechselt.',
         'default' => 'https://b3-retreats.de/',
     ],
+    'meta.favicon.src' => [
+        'group' => '01 Suchmaschine und Vorschau',
+        'label' => 'Seitensymbol (Favicon im Browser-Tab)',
+        'type' => 'image',
+        'hint' => 'Das kleine Zeichen im Browser-Tab, in den Lesezeichen und im Verlauf. Quadratisch. Am besten eine SVG-Datei oder ein PNG ab 512 × 512 Pixel.',
+        'default' => 'assets/img/favicon.svg',
+    ],
+    'meta.favicon.apple' => [
+        'group' => '01 Suchmaschine und Vorschau',
+        'label' => 'Seitensymbol für iPhone und iPad',
+        'type' => 'image',
+        'hint' => 'Wird verwendet, wenn jemand die Seite auf den Home-Bildschirm legt. Quadratisches PNG, 180 × 180 Pixel.',
+        'default' => 'assets/img/favicon-180.png',
+    ],
     'meta.og.site_name' => [
         'group' => '01 Suchmaschine und Vorschau',
         'label' => 'Website-Name beim Teilen',

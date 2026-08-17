@@ -30,6 +30,15 @@ return [
         'group' => '13 Inklusive',
         'label' => 'Enthaltene Leistungen',
         'type' => 'list',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Leistung',
+                'type' => 'text',
+                'hint' => 'Eine im Preis enthaltene Leistung, z. B. „3 Übernachtungen“',
+            ],
+        ],
         'default' => [
             [
                 'text' => '3 Übernachtungen',

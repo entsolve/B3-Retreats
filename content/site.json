@@ -3,6 +3,10 @@
     "title": "B³ Retreat für Frauen | 08.–11. Oktober 2026 in Spabrücken",
     "description": "Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom 08.–11. Oktober 2026 in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.",
     "canonical": "https://b3-retreats.de/",
+    "favicon": {
+      "src": "assets/img/favicon.svg",
+      "apple": "assets/img/favicon-180.png"
+    },
     "og": {
       "site_name": "B³ Retreats",
       "title": "B³ Retreat – Be free to be you. | 08.–11. Oktober 2026, Spabrücken",

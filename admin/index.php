@@ -199,10 +199,47 @@ require __DIR__ . '/_header.php';
             <?= esc($def['label'] ?? $key) ?>
             <?php if ($eigen): ?><em class="marker">geaendert</em><?php endif; ?>
           </label>
-          <?php if ($typ === 'textarea' || $typ === 'html' || $typ === 'list'): ?>
-            <textarea id="<?= $id ?>" name="feld[<?= esc($key) ?>]"
-                      rows="<?= $typ === 'list' ? 12 : 4 ?>"
-                      spellcheck="<?= $typ === 'list' ? 'false' : 'true' ?>"><?= esc($wert) ?></textarea>
+          <?php if ($typ === 'image'): ?>
+            <?php /* Bildfeld: Vorschau, Pfad und zwei Knoepfe. Der Pfad bleibt
+                     ein normales Eingabefeld — wer ihn kennt, tippt ihn weiter
+                     von Hand, und ohne JavaScript funktioniert das Feld genauso
+                     wie vorher. assets/panel.js haengt die Auswahl nur davor. */ ?>
+            <div class="bildfeld" data-bildfeld>
+              <img class="bildfeld__vorschau" alt=""
+                   src="<?= esc('../' . $wert) ?>"<?= trim($wert) === '' ? ' hidden' : '' ?>>
+              <div class="bildfeld__steuer">
+                <input id="<?= $id ?>" name="feld[<?= esc($key) ?>]" type="text"
+                       class="bildfeld__pfad" value="<?= esc($wert) ?>"
+                       spellcheck="false" autocapitalize="none">
+                <div class="bildfeld__knoepfe">
+                  <button type="button" class="knopf-leise" data-bild-waehlen>Bild wählen</button>
+                  <button type="button" class="knopf-leise" data-bild-hochladen>Neues Bild hochladen</button>
+                </div>
+              </div>
+            </div>
+          <?php elseif ($typ === 'html'): ?>
+            <?php /* Sichtbarer Editor. Das textarea bleibt bestehen und bleibt
+                     das, was abgeschickt wird — assets/panel.js blendet es aus
+                     und schreibt bei jeder Aenderung zurueck. Ohne JavaScript
+                     steht hier weiterhin das rohe HTML, und Speichern geht. */ ?>
+            <textarea id="<?= $id ?>" name="feld[<?= esc($key) ?>]" rows="4"
+                      spellcheck="true" data-editor="html"><?= esc($wert) ?></textarea>
+          <?php elseif ($typ === 'list'): ?>
+            <?php /* Wiederholung. Im textarea steht JSON — das bleibt auch so,
+                     denn genau das wird abgeschickt und beim Speichern geprueft.
+                     Daneben liegt die Beschreibung der Unterfelder aus dem
+                     Register; assets/panel.js baut daraus je Eintrag eine Karte
+                     mit beschrifteten Feldern und blendet das JSON weg.
+                     Ohne JavaScript bleibt der Kasten mit JSON — unschoen, aber
+                     vollstaendig bedienbar. */ ?>
+            <textarea id="<?= $id ?>" name="feld[<?= esc($key) ?>]" rows="12"
+                      spellcheck="false" data-editor="liste"
+                      data-felder="<?= esc(json_encode($def['fields'] ?? [],
+                          JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) ?>"
+                      data-eintrag-label="<?= esc($def['itemLabel'] ?? '') ?>"><?= esc($wert) ?></textarea>
+          <?php elseif ($typ === 'textarea'): ?>
+            <textarea id="<?= $id ?>" name="feld[<?= esc($key) ?>]" rows="4"
+                      spellcheck="true"><?= esc($wert) ?></textarea>
           <?php else: ?>
             <input id="<?= $id ?>" name="feld[<?= esc($key) ?>]"
                    type="<?= $typ === 'number' ? 'text' : 'text' ?>"
@@ -222,4 +259,28 @@ require __DIR__ . '/_header.php';
       </div>
     </form>
   </div>
+
+<?php /* --- Bildauswahl -------------------------------------------------
+     Steht EINMAL auf der Seite und wird von jedem Bildfeld benutzt; das
+     Feld, aus dem heraus geoeffnet wurde, merkt sich assets/panel.js.
+
+     Die Marke unten ist dieselbe CSRF-Marke wie im Formular: media.php
+     nimmt einen Upload nur mit ihr an. Sie steht in einem data-Attribut,
+     weil die CSP des Panels kein Inline-Skript zulaesst (siehe config.php)
+     — das Skript kann sie also nicht als Variable mitbekommen. */ ?>
+<dialog class="bildwahl" data-bildwahl data-csrf="<?= esc(csrf_token()) ?>">
+  <div class="bildwahl__kopf">
+    <h2>Bild wählen</h2>
+    <button type="button" class="knopf-leise" data-bildwahl-schliessen>Schließen</button>
+  </div>
+  <p class="bildwahl__meldung" data-bildwahl-meldung hidden></p>
+  <div class="bildwahl__raster" data-bildwahl-raster>
+    <p class="hinweis">Bilder werden geladen …</p>
+  </div>
+</dialog>
+
+<?php /* Ein einziges Dateifeld fuer die ganze Seite, unsichtbar. Der Knopf
+     „Neues Bild hochladen" loest es aus. */ ?>
+<input type="file" accept="image/webp,image/jpeg,image/png" hidden data-bild-datei>
+
 <?php require __DIR__ . '/_footer.php'; ?>

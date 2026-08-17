@@ -1,0 +1,43 @@
+# B³ Retreats — hier liegen NUR Bilder, die die Redaktion hochgeladen hat.
+#
+# Der Zweck dieser Datei in einem Satz: was hier landet, darf ein Bild sein
+# und sonst nichts. admin/media.php prueft schon beim Annehmen (Dateikopf,
+# erlaubte Typen, neu gebildeter Name) — diese Sperre ist die zweite Reihe
+# fuer den Fall, dass dort einmal etwas durchrutscht oder jemand auf anderem
+# Weg eine Datei hierher bekommt.
+#
+# Ohne sie waere ein hochgeladenes .php in diesem Ordner ein Programm auf der
+# eigenen Domain. Mit ihr ist es eine Datei, die der Server ausliefert, aber
+# nicht ausfuehrt.
+
+# Keine Skriptsprache in diesem Ordner ausfuehren.
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+  php_flag engine off
+</IfModule>
+
+# Bei PHP als FastCGI/LiteSpeed greift php_flag nicht — dort zieht die
+# Handler-Zuweisung. Deshalb beides.
+<IfModule mod_mime.c>
+  RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .cgi .pl .py
+  RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .cgi .pl .py
+  AddType text/plain .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .cgi .pl .py
+</IfModule>
+
+# Und zusaetzlich: alles sperren, was nach Programm aussieht.
+<FilesMatch "\.(php|phtml|php[0-9]|phps|cgi|pl|py|sh|htaccess)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+Options -Indexes -ExecCGI

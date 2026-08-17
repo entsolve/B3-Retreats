@@ -31,6 +31,15 @@ return [
         'label' => 'Schlussabsaetze (normal)',
         'type' => 'list',
         'hint' => 'Die ruhigen Absaetze vor der Schlusspointe. Reihenfolge frei, Anzahl beliebig.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatz',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz Fliesstext, ohne HTML.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Vielleicht geht es in diesen vier Tagen gar nicht darum, Antworten auf jede Frage zu finden.',
@@ -48,6 +57,15 @@ return [
         'label' => 'Schlussabsaetze (hervorgehoben)',
         'type' => 'list',
         'hint' => 'Die letzten, groesser gesetzten Saetze des Abschnitts.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatz',
+                'type' => 'textarea',
+                'hint' => 'Ein hervorgehobener Absatz, ohne HTML.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Und vielleicht fährst du am Sonntag nicht als eine andere Frau nach Hause.',

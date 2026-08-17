@@ -30,6 +30,21 @@ return [
         'group' => '17 Häufige Fragen',
         'label' => 'Fragen – linke Spalte',
         'type' => 'list',
+        'itemLabel' => 'frage',
+        'fields' => [
+            [
+                'path' => 'frage',
+                'label' => 'Frage',
+                'type' => 'text',
+                'hint' => 'Sichtbare Frage, die aufgeklappt werden kann.',
+            ],
+            [
+                'path' => 'antwort',
+                'label' => 'Antwort',
+                'type' => 'html',
+                'hint' => 'Antworttext. Jeder Absatz steht in eigenen <p>-Tags, Links sind erlaubt.',
+            ],
+        ],
         'default' => [
             [
                 'frage' => 'Muss ich an allen Experiences teilnehmen?',
@@ -68,6 +83,21 @@ return [
         'group' => '17 Häufige Fragen',
         'label' => 'Fragen – rechte Spalte',
         'type' => 'list',
+        'itemLabel' => 'frage',
+        'fields' => [
+            [
+                'path' => 'frage',
+                'label' => 'Frage',
+                'type' => 'text',
+                'hint' => 'Sichtbare Frage, die aufgeklappt werden kann.',
+            ],
+            [
+                'path' => 'antwort',
+                'label' => 'Antwort',
+                'type' => 'html',
+                'hint' => 'Antworttext. Jeder Absatz steht in eigenen <p>-Tags, Links sind erlaubt.',
+            ],
+        ],
         'default' => [
             [
                 'frage' => 'Kann ich auch alleine kommen?',

@@ -148,14 +148,26 @@ def bauen():
             wert = [] if feld["type"] == "list" else ""
 
         nummer, name = ABSCHNITTE[praefix]
-        nach_abschnitt.setdefault(praefix, []).append({
+        eintrag = {
             "path": pfad,
             "group": f"{nummer} {name}",
             "label": feld["label"],
             "type": feld["type"],
             "hint": feld.get("hint", ""),
             "default": wert,
-        })
+        }
+
+        # Bei Wiederholungen wandert die Beschreibung der Unterfelder mit ins
+        # Register. Ohne sie bliebe im Panel nur ein Kasten mit rohem JSON —
+        # und das ist genau die Sorte Feld, an der eine Redaktion aufgibt.
+        # Damit baut assets/panel.js je Eintrag eine Karte mit beschrifteten
+        # Feldern, statt geschweifte Klammern zu zeigen.
+        if feld["type"] == "list":
+            eintrag["fields"] = feld.get("fields", [])
+            if feld.get("itemLabel"):
+                eintrag["itemLabel"] = feld["itemLabel"]
+
+        nach_abschnitt.setdefault(praefix, []).append(eintrag)
 
         # seed.sql: Listen als JSON, alles andere als Text.
         if feld["type"] == "list":
@@ -186,6 +198,10 @@ def bauen():
             zeilen.append("        'type' => " + php_str(f["type"]) + ",")
             if f["hint"]:
                 zeilen.append("        'hint' => " + php_str(f["hint"]) + ",")
+            if f.get("itemLabel"):
+                zeilen.append("        'itemLabel' => " + php_str(f["itemLabel"]) + ",")
+            if f.get("fields"):
+                zeilen.append("        'fields' => " + php_literal(f["fields"], 8) + ",")
             zeilen.append("        'default' => " + php_literal(f["default"]) + ",")
             zeilen.append("    ],")
         zeilen.append("];")

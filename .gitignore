@@ -11,10 +11,18 @@ tools/content/*.bak
 
 # Secrets: existieren NUR auf dem Server. Vorlage ist config.example.php,
 # der HTTP-Zugriff ist zusaetzlich in .htaccess gesperrt.
-config.php
+#
+# DER SCHRAEGSTRICH VORNE IST WICHTIG. Ohne ihn gilt das Muster auf JEDER
+# Ebene — und damit auch fuer admin/config.php, die kein Geheimnis enthaelt,
+# sondern Sitzung, CSRF und Anmeldung des Panels. Genau so ist sie nie ins
+# Git und nie auf den Server gekommen: jeder Aufruf von /admin/ endete in
+# „Failed opening required 'admin/config.php'" und einer leeren HTTP 500.
+/config.php
 
-# Vom Panel hochgeladene Bilder gehoeren dem Server, nicht dem Verlauf.
-img/uploads/
+# Vom Panel hochgeladene Bilder gehoeren dem Server, nicht dem Verlauf —
+# die Sperre fuer diesen Ordner aber schon, sonst faehrt sie nie mit.
+img/uploads/*
+!img/uploads/.htaccess
 
 # Verworfene Render-Varianten: lokal als Beleg nuetzlich, im Verlauf
 # waeren es hunderte Megabyte.

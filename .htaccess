@@ -1,8 +1,17 @@
 # B³ Retreats — Schutz fuer Dateien, die niemand aus dem Netz sehen darf.
 #
-# Bewusst minimal: hier steht KEIN Rewriting, KEIN Caching und KEINE
-# Umleitung. Die Seite ist statisch und braucht davon nichts; jede Regel mehr
-# waere eine Fehlerquelle, die niemand vermutet, wenn spaeter etwas klemmt.
+# Bewusst minimal: hier steht KEIN Rewriting und KEINE Umleitung. Jede Regel
+# mehr waere eine Fehlerquelle, die niemand vermutet, wenn spaeter etwas klemmt.
+
+# Die Startseite kommt aus index.php (Vorlage + Datenbank), nicht mehr aus der
+# statischen index.html. DIESE ZEILE IST NOETIG, WEIL DAS HOSTING index.html
+# ZUERST NIMMT: liegen beide Dateien nebeneinander und fehlt die Zeile, sieht
+# die Besucherin weiter die alte, erzeugte Fassung — und im Panel gespeicherte
+# Aenderungen tauchen nie auf.
+#
+# index.html bleibt trotzdem liegen: index.php faellt auf sie zurueck, wenn die
+# Vorlage einmal nicht gebaut werden kann.
+DirectoryIndex index.php index.html
 #
 # Der einzige Zweck: config.php enthaelt das Datenbank-Passwort. Solange PHP
 # laeuft, liefert der Server sie ohnehin nicht im Klartext aus — aber genau

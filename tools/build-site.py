@@ -42,7 +42,7 @@ TARGET = ROOT / "index.html"
 # Deshalb bekommt jede oertliche Datei im erzeugten HTML ein ?v= mit den ersten
 # acht Stellen ihres Inhalts-Hashes: gleicher Inhalt -> gleiche URL -> Cache
 # greift wie vorher; geaenderter Inhalt -> neue URL -> Browser laedt neu.
-VERSIONIERT = re.compile(r'(?:src|href|srcset)="(assets/[^"?]+\.(?:webp|css|js|woff2))"')
+VERSIONIERT = re.compile(r'(?:src|href|srcset)="(assets/[^"?]+\.(?:webp|css|js|woff2|svg|png|ico))"')
 
 VALUE = re.compile(r"\{\{\s*([^#/?][^}]*?)\s*\}\}")
 OPEN_LIST = re.compile(r"^(\s*)\{\{#\s*([^}]+?)\s*\}\}\s*$")

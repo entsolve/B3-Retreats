@@ -30,6 +30,15 @@ return [
         'group' => '15 Für wen',
         'label' => 'Einleitungsabsätze',
         'type' => 'list',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatz',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz des Einleitungstextes. Jeder Eintrag wird ein eigener Absatz.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'B³ ist für Frauen, die grundsätzlich wissen, wer sie sind und wohin sie möchten. Frauen mit Wünschen, Zielen und Ideen, die sich ganz bewusst ein paar Tage Zeit nehmen möchten, um wieder genauer hinzuhören.',
@@ -57,6 +66,15 @@ return [
         'group' => '15 Für wen',
         'label' => 'Fragen an dich',
         'type' => 'list',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Frage',
+                'type' => 'text',
+                'hint' => 'Eine Frage der Aufzählung, kurz und in Du-Ansprache.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Was will ich gerade wirklich?',

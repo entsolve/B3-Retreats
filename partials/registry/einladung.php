@@ -31,6 +31,15 @@ return [
         'label' => 'Absätze der Einladung',
         'type' => 'list',
         'hint' => 'Fließtext des Abschnitts. Jeder Eintrag wird ein eigener Absatz.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatztext',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz Fließtext.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Nicht, um etwas abzuarbeiten oder das nächste Ziel zu erreichen. Sondern einfach, um wieder genauer hinzuhören.',

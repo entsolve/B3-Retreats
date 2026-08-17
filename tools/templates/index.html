@@ -8,6 +8,14 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{{ meta.canonical }}">
 
+<!-- Seitensymbol. Ohne type-Angabe mit Absicht: das Feld im Panel darf eine
+     SVG- ODER eine PNG-Datei enthalten, und der Server meldet den Typ ohnehin
+     selbst. Die .ico bleibt fest verdrahtet — sie ist der Rueckfall fuer aeltere
+     Browser, und eine .ico kann die Redaktion nicht erzeugen. -->
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="{{ meta.favicon.src }}">
+<link rel="apple-touch-icon" href="{{ meta.favicon.apple }}">
+
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="{{ meta.og.site_name }}">

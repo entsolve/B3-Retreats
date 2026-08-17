@@ -38,6 +38,15 @@ return [
         'label' => 'Einleitungsabsätze',
         'type' => 'list',
         'hint' => 'Absätze über der Zeitleiste.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatztext',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz Fließtext.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Wir möchten diese vier Tage nicht wie ein klassisches Seminar gestalten, bei dem ein Programmpunkt auf den nächsten folgt.',
@@ -66,6 +75,21 @@ return [
         'label' => 'Zeitleiste der vier Tage',
         'type' => 'list',
         'hint' => 'Ein Eintrag je Tag, in der Reihenfolge der Anzeige.',
+        'itemLabel' => 'tag',
+        'fields' => [
+            [
+                'path' => 'tag',
+                'label' => 'Tag',
+                'type' => 'text',
+                'hint' => 'Wochentag, fett vorangestellt.',
+            ],
+            [
+                'path' => 'text',
+                'label' => 'Beschreibung des Tages',
+                'type' => 'textarea',
+                'hint' => 'Was an diesem Tag passiert, inklusive Uhrzeiten.',
+            ],
+        ],
         'default' => [
             [
                 'tag' => 'Donnerstag',

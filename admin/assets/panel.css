@@ -215,3 +215,232 @@ button:hover { background: #363B31; }
 .meldung--ok       { background: var(--gut);     border: 1px solid var(--gut-linie); }
 .meldung--warnung  { background: var(--warnung); border: 1px solid var(--warnung-linie); }
 .meldung--fehler   { background: var(--fehler);  border: 1px solid var(--fehler-linie); }
+
+/* --- Leise Knoepfe --------------------------------------------------------
+   Der gefuellte olivgruene Knopf oben ist „Speichern". Alles, was im Formular
+   nur etwas oeffnet oder umsortiert, darf nicht genauso laut sein — sonst
+   sucht man den einen Knopf, auf den es ankommt, zwischen zwanzig gleichen. */
+
+.knopf-leise {
+  padding: .42rem .8rem;
+  background: transparent;
+  color: var(--olive);
+  border: 1px solid var(--linie-stark);
+  border-radius: 3px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.knopf-leise:hover { background: var(--sand); color: var(--tinte); }
+.knopf-leise--breit { display: block; width: 100%; margin-top: .9rem; }
+
+.knopf-winzig {
+  padding: .2rem .5rem;
+  background: transparent;
+  color: var(--grau);
+  border: 1px solid var(--linie);
+  border-radius: 3px;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.knopf-winzig:hover:not(:disabled) { background: var(--sand); color: var(--tinte); }
+.knopf-winzig:disabled { opacity: .35; cursor: default; }
+.knopf-winzig--warnung { color: #A8442A; }
+.knopf-winzig--warnung:hover { background: var(--fehler); color: #A8442A; }
+
+/* --- Sichtbarer Editor ---------------------------------------------------- */
+
+.editor {
+  border: 1px solid var(--linie-stark);
+  border-radius: 3px;
+  background: #fff;
+  overflow: hidden;
+}
+.editor__leiste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  padding: .35rem;
+  background: var(--sand);
+  border-bottom: 1px solid var(--linie);
+}
+.editor__knopf {
+  padding: .25rem .5rem;
+  background: transparent;
+  color: var(--tinte);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.editor__knopf:hover { background: var(--papier); border-color: var(--linie-stark); }
+
+.editor__flaeche {
+  padding: .6rem .7rem;
+  min-height: 3.4rem;
+  outline: none;
+}
+.editor__flaeche:focus-visible { outline: 2px solid #7A8C6B; outline-offset: -2px; }
+/* Der Inhalt soll sich lesen wie auf der Seite, nur ohne deren Groessen. */
+.editor__flaeche p { margin: 0 0 .6rem; }
+.editor__flaeche p:last-child { margin-bottom: 0; }
+.editor__flaeche h2, .editor__flaeche h3, .editor__flaeche h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: .2rem 0 .5rem;
+}
+.editor__flaeche ul, .editor__flaeche ol { margin: 0 0 .6rem; padding-left: 1.4rem; }
+.editor__flaeche blockquote {
+  margin: 0 0 .6rem;
+  padding-left: .8rem;
+  border-left: 2px solid var(--linie-stark);
+  color: var(--grau);
+}
+.editor__flaeche a { color: var(--olive); }
+
+/* --- Wiederholungen als Karten -------------------------------------------- */
+
+.eintraege { display: flex; flex-direction: column; gap: .8rem; }
+
+.eintrag {
+  border: 1px solid var(--linie);
+  border-left: 3px solid var(--linie-stark);
+  border-radius: 3px;
+  background: var(--sand);
+  padding: .9rem 1rem 1rem;
+}
+.eintrag__kopf {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: .9rem;
+}
+.eintrag__name {
+  font-size: .875rem;
+  line-height: 1.3;
+  overflow: hidden;
+}
+.eintrag__werkzeug { display: flex; gap: .3rem; margin-left: auto; flex-shrink: 0; }
+
+.eintrag__feld { margin-bottom: .9rem; }
+.eintrag__feld:last-child { margin-bottom: 0; }
+.eintrag__feld > label { font-size: .8rem; font-weight: 600; color: var(--grau); }
+
+/* Eine Wiederholung IN einer Wiederholung (die Absaetze der Experiences)
+   bekommt einen helleren Grund, damit die Schachtelung sichtbar bleibt. */
+.eintrag .eintrag { background: var(--papier); }
+
+select {
+  width: 100%;
+  padding: .6rem .7rem;
+  border: 1px solid var(--linie-stark);
+  border-radius: 3px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+select:focus { outline: 2px solid #7A8C6B; outline-offset: 1px; }
+
+/* --- Bildfeld ------------------------------------------------------------- */
+
+.bildfeld { display: flex; gap: .9rem; align-items: flex-start; flex-wrap: wrap; }
+.bildfeld__vorschau {
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border: 1px solid var(--linie-stark);
+  border-radius: 3px;
+  background: var(--sand);
+  flex-shrink: 0;
+}
+.bildfeld__steuer { flex: 1 1 16rem; min-width: 0; }
+.bildfeld__pfad {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: .8rem;
+}
+.bildfeld__knoepfe { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .45rem; }
+.bildfeld__meldung { flex-basis: 100%; margin: .4rem 0 0; font-size: .82rem; color: var(--grau); }
+.bildfeld__meldung--ok { color: var(--olive); }
+.bildfeld__meldung--fehler { color: #A8442A; }
+
+/* --- Fenster der Bildauswahl ---------------------------------------------- */
+
+.bildwahl {
+  width: min(62rem, 92vw);
+  max-height: 86vh;
+  padding: 0;
+  border: 1px solid var(--linie-stark);
+  border-radius: 5px;
+  background: var(--papier);
+  color: inherit;
+  overflow: hidden;
+}
+.bildwahl::backdrop { background: rgba(42, 39, 34, .45); }
+
+.bildwahl__kopf {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 1.1rem;
+  border-bottom: 1px solid var(--linie);
+  background: var(--sand);
+}
+.bildwahl__kopf h2 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.bildwahl__kopf button { margin-left: auto; }
+
+.bildwahl__meldung { margin: 0; padding: .7rem 1.1rem; font-size: .85rem; background: var(--sand); }
+.bildwahl__meldung--ok { background: var(--gut); }
+.bildwahl__meldung--fehler { background: var(--fehler); }
+
+.bildwahl__raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: .8rem;
+  padding: 1.1rem;
+  overflow-y: auto;
+  max-height: calc(86vh - 4rem);
+}
+
+.kachel {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: .45rem;
+  background: #fff;
+  color: inherit;
+  border: 1px solid var(--linie);
+  border-radius: 3px;
+  font: inherit;
+  letter-spacing: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.kachel:hover { border-color: var(--olive); background: var(--sand); }
+.kachel img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  background: var(--sand);
+}
+.kachel__name {
+  font-size: .72rem;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  color: var(--grau);
+  overflow-wrap: anywhere;
+}
+.kachel__marke {
+  font-style: normal;
+  font-size: .64rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--olive);
+}

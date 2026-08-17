@@ -30,6 +30,21 @@ return [
         'group' => '16 Buchung',
         'label' => 'An- und Abreise',
         'type' => 'list',
+        'itemLabel' => 'label',
+        'fields' => [
+            [
+                'path' => 'label',
+                'label' => 'Bezeichnung',
+                'type' => 'text',
+                'hint' => 'Zum Beispiel Anreise oder Abreise.',
+            ],
+            [
+                'path' => 'zeit',
+                'label' => 'Datum und Uhrzeit',
+                'type' => 'text',
+                'hint' => 'Wochentag, Datum und Uhrzeit als ein Text.',
+            ],
+        ],
         'default' => [
             [
                 'label' => 'Anreise',
@@ -45,6 +60,27 @@ return [
         'group' => '16 Buchung',
         'label' => 'Preise',
         'type' => 'list',
+        'itemLabel' => 'label',
+        'fields' => [
+            [
+                'path' => 'label',
+                'label' => 'Bezeichnung',
+                'type' => 'text',
+                'hint' => 'Name der Buchungsvariante, z. B. Shared House.',
+            ],
+            [
+                'path' => 'preis',
+                'label' => 'Preis',
+                'type' => 'text',
+                'hint' => 'Preis inklusive Währungszeichen, z. B. 1.549 €.',
+            ],
+            [
+                'path' => 'hinweis',
+                'label' => 'Preis-Zusatz',
+                'type' => 'text',
+                'hint' => 'Kleiner Zusatz unter dem Preis, z. B. pro Person.',
+            ],
+        ],
         'default' => [
             [
                 'label' => 'Shared House',

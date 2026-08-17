@@ -45,6 +45,69 @@ return [
         'label' => 'Die einzelnen Experiences',
         'type' => 'list',
         'hint' => 'Reihenfolge, Anzahl und Inhalt frei. Die Seite des Bildes bitte abwechseln lassen.',
+        'itemLabel' => 'title',
+        'fields' => [
+            [
+                'path' => 'title',
+                'label' => 'Überschrift',
+                'type' => 'text',
+                'hint' => 'Name der Session, z. B. „Yin Yoga & Breathwork“',
+            ],
+            [
+                'path' => 'who',
+                'label' => 'Wer leitet sie',
+                'type' => 'text',
+                'hint' => 'Steht klein über der Überschrift, z. B. „Mit Sarah“',
+            ],
+            [
+                'path' => 'image.src',
+                'label' => 'Bild',
+                'type' => 'image',
+                'hint' => 'Hochformat 4:5 — im Reiter „Bilder“ anlegen',
+            ],
+            [
+                'path' => 'image.alt',
+                'label' => 'Bildbeschreibung',
+                'type' => 'text',
+                'hint' => 'Für Screenreader und Suchmaschinen. Was ist zu sehen?',
+            ],
+            [
+                'path' => 'image.height',
+                'label' => 'Bildhöhe in Pixeln',
+                'type' => 'number',
+                'hint' => '1250 bei Hochformat 4:5, 1000 bei quadratisch. Verhindert das Springen beim Laden.',
+            ],
+            [
+                'path' => 'flip',
+                'label' => 'Bild auf welcher Seite',
+                'type' => 'choice',
+                'hint' => 'Abwechselnd links und rechts — sonst kippt der Rhythmus des Abschnitts.',
+                'choices' => [
+                    [
+                        'value' => '',
+                        'label' => 'Bild links',
+                    ],
+                    [
+                        'value' => ' exp__item--flip',
+                        'label' => 'Bild rechts',
+                    ],
+                ],
+            ],
+            [
+                'path' => 'paragraphs',
+                'type' => 'list',
+                'label' => 'Absätze',
+                'itemLabel' => 'text',
+                'fields' => [
+                    [
+                        'path' => 'text',
+                        'label' => 'Absatz',
+                        'type' => 'textarea',
+                        'hint' => '',
+                    ],
+                ],
+            ],
+        ],
         'default' => [
             [
                 'image' => [

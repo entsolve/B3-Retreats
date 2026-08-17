@@ -45,6 +45,15 @@ return [
         'label' => 'Reflexionsfragen',
         'type' => 'list',
         'hint' => 'Aufzählung der Fragen, die das Wochenende begleiten.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Frage',
+                'type' => 'text',
+                'hint' => 'Eine Frage pro Eintrag.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Was brauche ich gerade wirklich?',
@@ -65,6 +74,15 @@ return [
         'label' => 'Schlussabsätze Neumond',
         'type' => 'list',
         'hint' => 'Absätze unter den Fragen.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatztext',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz Fließtext.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Diese Fragen werden nicht in einer einzigen Session beantwortet. Sie dürfen sich durch unsere gemeinsamen Tage ziehen und aus ganz unterschiedlichen Perspektiven betrachtet werden.',

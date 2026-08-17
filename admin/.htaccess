@@ -33,7 +33,10 @@ DirectoryIndex index.php
 # Erlaubt: das PHP-Panel, seine Stile und sein Skript.
 #   setup.php  einmalige Einrichtung; wird nach dem Anlegen des Kontos
 #              vom Server geloescht.
-<FilesMatch "^(index|login|logout|setup)\.php$">
+#   media.php  Bildverwaltung. Wird vom Formular im Hintergrund gerufen
+#              (Liste der Bilder, Hochladen) und prueft selbst Anmeldung
+#              und CSRF-Marke — die Freigabe hier oeffnet also nichts.
+<FilesMatch "^(index|login|logout|setup|media)\.php$">
   <IfModule mod_authz_core.c>
     Require all granted
   </IfModule>

@@ -45,6 +45,33 @@ return [
         'label' => 'Die drei Zugänge',
         'type' => 'list',
         'hint' => 'Je Eintrag eine Spalte: Ebene, Person und Beschreibung.',
+        'itemLabel' => 'title',
+        'fields' => [
+            [
+                'path' => 'title',
+                'label' => 'Ebene',
+                'type' => 'text',
+                'hint' => 'Body, Mind oder Soul.',
+            ],
+            [
+                'path' => 'sup',
+                'label' => 'Hochgestellte Ziffer',
+                'type' => 'text',
+                'hint' => 'Kleine Zahl neben der Ebene (1, 2, 3).',
+            ],
+            [
+                'path' => 'who',
+                'label' => 'Name',
+                'type' => 'text',
+                'hint' => 'Wer diese Ebene begleitet.',
+            ],
+            [
+                'path' => 'text',
+                'label' => 'Beschreibung',
+                'type' => 'textarea',
+                'hint' => 'Was diese Person einbringt.',
+            ],
+        ],
         'default' => [
             [
                 'title' => 'Body',
@@ -71,6 +98,15 @@ return [
         'label' => 'Schlussabsätze',
         'type' => 'list',
         'hint' => 'Abschließende Absätze des Abschnitts.',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Absatztext',
+                'type' => 'textarea',
+                'hint' => 'Ein Absatz Fließtext.',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Für uns gehören diese Ebenen zusammen. Denn das, was wir fühlen, was wir denken und wie wir unser Leben gestalten, lässt sich nicht immer voneinander trennen.',

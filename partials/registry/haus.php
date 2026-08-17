@@ -86,6 +86,15 @@ return [
         'group' => '12 Unterkunft und Preise',
         'label' => 'Ausstattung Shared House',
         'type' => 'list',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Ausstattungspunkt',
+                'type' => 'text',
+                'hint' => 'Ein Stichpunkt der Ausstattungsliste, z. B. „4 Schlafzimmer“',
+            ],
+        ],
         'default' => [
             [
                 'text' => '4 Schlafzimmer',
@@ -119,6 +128,21 @@ return [
         'label' => 'Shared House — Bildergalerie',
         'type' => 'list',
         'hint' => 'Reihenfolge und Anzahl frei. Beim Klick öffnet sich das Bild groß.',
+        'itemLabel' => 'alt',
+        'fields' => [
+            [
+                'path' => 'src',
+                'label' => 'Bild',
+                'type' => 'image',
+                'hint' => 'Querformat 3:2 — im Reiter „Bilder“ anlegen.',
+            ],
+            [
+                'path' => 'alt',
+                'label' => 'Bildbeschreibung',
+                'type' => 'text',
+                'hint' => 'Welcher Raum ist zu sehen? Steht auch als Beschriftung in der Lupe.',
+            ],
+        ],
         'default' => [
             [
                 'src' => 'assets/img/haus-g1.webp',
@@ -205,6 +229,15 @@ return [
         'group' => '12 Unterkunft und Preise',
         'label' => 'Ausstattung Friends Special',
         'type' => 'list',
+        'itemLabel' => 'text',
+        'fields' => [
+            [
+                'path' => 'text',
+                'label' => 'Ausstattungspunkt',
+                'type' => 'text',
+                'hint' => 'Ein Stichpunkt der Ausstattungsliste, z. B. „großer Balkon mit weitem Ausblick“',
+            ],
+        ],
         'default' => [
             [
                 'text' => 'Schlafzimmer mit Doppelbett',
@@ -238,6 +271,21 @@ return [
         'label' => 'Friends Special — Bildergalerie',
         'type' => 'list',
         'hint' => 'Reihenfolge und Anzahl frei. Beim Klick öffnet sich das Bild groß.',
+        'itemLabel' => 'alt',
+        'fields' => [
+            [
+                'path' => 'src',
+                'label' => 'Bild',
+                'type' => 'image',
+                'hint' => 'Querformat 3:2 — im Reiter „Bilder“ anlegen.',
+            ],
+            [
+                'path' => 'alt',
+                'label' => 'Bildbeschreibung',
+                'type' => 'text',
+                'hint' => 'Welcher Raum ist zu sehen? Steht auch als Beschriftung in der Lupe.',
+            ],
+        ],
         'default' => [
             [
                 'src' => 'assets/img/friends-g1.webp',
