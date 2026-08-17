@@ -19,6 +19,12 @@
 
 declare(strict_types=1);
 
+/* Protesen fuer PHP 7.4 (str_contains, str_starts_with, str_ends_with).
+   MUSS hier stehen und nicht in den einzelnen Dateien: db.php haengt an jedem
+   Eingang, damit man es nirgends vergessen kann. Ohne diese Zeile antwortet das
+   Hosting mit HTTP 500 statt mit einer Seite — siehe compat.php. */
+require_once __DIR__ . '/compat.php';
+
 /** Zuletzt aufgetretener Verbindungsfehler, in Klartext fuer den Betreiber. */
 function db_error(): ?string
 {
