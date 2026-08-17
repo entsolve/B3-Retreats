@@ -24,6 +24,11 @@ require_once __DIR__ . '/../partials/content.php';
 security_headers();
 require_login();
 
+// MUSS vor dem Speichern stehen und nicht erst in _header.php: dort wird
+// $nutzer sonst zu spaet gesetzt, und in content.updated_by landet nichts —
+// dann sieht man in der Datenbank nicht mehr, wer einen Text geaendert hat.
+$nutzer = current_user();
+
 $pdo = db();
 $meldung = null;
 $meldungsart = 'ok';
