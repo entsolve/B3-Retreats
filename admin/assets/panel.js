@@ -339,7 +339,23 @@
     flaeche.setAttribute('role', 'textbox');
     flaeche.setAttribute('aria-multiline', 'true');
 
-    function melden() { beiAenderung(flaeche.innerHTML); }
+    /* Ein geleertes Feld MUSS als leer ankommen.
+
+       contentEditable hinterlaesst beim Leeren immer etwas: je nach Browser
+       ein <br> oder ein <p><br></p>. Das ist nicht dieselbe Zeichenkette wie
+       "", und deshalb ging genau das schief, was unter dem Formular als
+       Versprechen steht: „Ein Feld ganz leeren stellt den urspruenglichen
+       Text wieder her." Gespeichert wurde stattdessen ein <br> — auf der
+       Seite stand danach eine leere Zeile, und der alte Text war weg.
+
+       Bilder zaehlen als Inhalt, auch wenn sie keinen Text haben. */
+    function sichtbarLeer() {
+      if (flaeche.querySelector('img, hr')) return false;
+      // Geschuetztes Leerzeichen ist fuer den Browser Text, fuer das Auge nicht.
+      return flaeche.textContent.replace(/\u00a0/g, ' ').trim() === '';
+    }
+
+    function melden() { beiAenderung(sichtbarLeer() ? '' : flaeche.innerHTML); }
 
     BEFEHLE.forEach(function (b) {
       var k = el('button', 'editor__knopf');

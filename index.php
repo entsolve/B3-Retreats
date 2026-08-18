@@ -29,10 +29,19 @@ require_once __DIR__ . '/partials/render.php';
 /* Die Vorlage liefert vollstaendiges HTML inklusive <!DOCTYPE>. */
 header('Content-Type: text/html; charset=utf-8');
 
-/* Die Seite ist oeffentlich und aendert sich nur, wenn die Redaktion
-   speichert. Eine knappe Frist entlastet den Server, ohne dass die Kundin
-   nach dem Speichern lange auf ihre Aenderung wartet. */
-header('Cache-Control: public, max-age=300');
+/* KEIN Zwischenspeichern im Browser.
+
+   Hier stand `public, max-age=300`, und das war ein Fehler mit Ansage: die
+   Kundin speichert im Panel, laedt die Seite neu — und sieht bis zu fuenf
+   Minuten lang die alte Fassung. Aus ihrer Sicht ist die Aenderung einfach
+   nicht angekommen. Genau so wurde es gemeldet.
+
+   Eine Seite, die aus der Datenbank gebaut wird, darf nicht laenger gelten
+   als bis zur naechsten Aenderung — und wann die kommt, weiss niemand
+   vorher. Die Ersparnis waere ohnehin gering: die Seite wird in
+   Sekundenbruchteilen gebaut, und die schweren Teile (Bilder, Schriften,
+   Stile) tragen ihr ?v= und werden weiterhin lange zwischengespeichert. */
+header('Cache-Control: no-cache, must-revalidate');
 
 try {
     $html = b3_render_template(__DIR__ . '/tools/templates/index.html');

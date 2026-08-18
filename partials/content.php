@@ -289,7 +289,26 @@ function b3_prepare_value(string $typ, string $wert): string
 
     switch ($typ) {
         case 'html':
-            return b3_sanitize_html($wert);
+            $sauber = b3_sanitize_html($wert);
+
+            /* Auszeichnung ohne jeden Text gilt als leer — und leer heisst
+               „zurueck zum Standard".
+
+               Der Grund steht in der Seite selbst: der sichtbare Editor
+               hinterlaesst beim Leeren eines Feldes ein <br>, je nach Browser
+               auch <p><br></p>. Ohne diese Stelle wird daraus eine gueltige
+               Ueberschreibung, und unter dem Buchungsknopf stand statt
+               „Max. 11 Frauen · 3 Coaches …" eine leere Zeile.
+
+               assets/panel.js faengt das bereits ab; hier steht es ein
+               zweites Mal, weil der Server sich auf kein JavaScript
+               verlassen darf. */
+            $text = html_entity_decode(strip_tags($sauber), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            $text = (string) preg_replace('/[\s\x{00A0}]+/u', '', $text);
+            if ($text === '' && stripos($sauber, '<img') === false) {
+                return '';
+            }
+            return $sauber;
         case 'url':
             return b3_url_is_safe($wert) ? $wert : '';
         case 'number':
