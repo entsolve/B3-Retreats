@@ -60,7 +60,7 @@
     },
     "image": {
       "wide": {
-        "src": "assets/img/hero-wide.webp"
+        "src": "assets/img/hero-tall.webp"
       },
       "tall": {
         "src": "assets/img/hero-tall.webp",
@@ -704,34 +704,6 @@
         "antwort": "\n            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class=\"link\" href=\"agb.html\">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>\n            <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>\n          "
       }
     ]
-  },
-  "abschluss": {
-    "bg": {
-      "src": "assets/img/abschluss.webp"
-    },
-    "eyebrow": "Be free",
-    "headline": "Be free to be you.",
-    "lines": [
-      {
-        "text": "Vielleicht geht es in diesen vier Tagen gar nicht darum, Antworten auf jede Frage zu finden."
-      },
-      {
-        "text": "Vielleicht geht es darum, dir genügend Zeit zu geben, damit du die richtigen Fragen überhaupt wieder hören kannst."
-      },
-      {
-        "text": "Zeit für deinen Körper, deine Gedanken, deine Wünsche und all das, was im Alltag manchmal ein bisschen zu kurz kommt."
-      }
-    ],
-    "lines_big": [
-      {
-        "text": "Und vielleicht fährst du am Sonntag nicht als eine andere Frau nach Hause."
-      },
-      {
-        "text": "Sondern einfach ein bisschen mehr als du selbst."
-      }
-    ],
-    "cta": "Ich bin dabei",
-    "stamp": "B³ Retreat &middot; 08.–11. Oktober 2026 &middot; Spabrücken"
   },
   "foot": {
     "brand": {

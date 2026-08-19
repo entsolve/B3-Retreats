@@ -105,8 +105,12 @@
   </div>
   <div class="hero__ph ph px" data-px="7">
     <picture>
-      <!-- Am Telefon steht das Bild quer über der Typo, nicht daneben -->
-      <source media="(max-width: 860px)" srcset="{{ hero.image.wide.src }}" width="1920" height="1080">
+      <!-- Am Telefon ist der Ausschnitt quadratisch (siehe .hero__ph im
+           Stylesheet), darueber hochkant. Beide Rahmen sind hoch bis sehr
+           hoch — deshalb steht in BEIDEN Faellen ein Hochformat drin. Ein
+           16:9-Bild in ein Quadrat zu schneiden kostete mehr als die halbe
+           Breite, und dabei fielen zuletzt die Koepfe aus dem Bild. -->
+      <source media="(max-width: 860px)" srcset="{{ hero.image.wide.src }}" width="1500" height="2000">
       <img src="{{ hero.image.tall.src }}" width="1500" height="2000" alt="{{ hero.image.tall.alt }}" fetchpriority="high">
     </picture>
   </div>
@@ -300,7 +304,64 @@
 
 <div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
-<!-- 07 ─ Freie Zeit ───────────────────────────────────────────────────── -->
+<!-- 07 ─ Team ─────────────────────────────────────────────────────────── -->
+<section class="team band-ivory" id="team">
+  <div class="wrap grid">
+    <div class="rail">{{ team.rail }}</div>
+    <div class="team__head rise">
+      <p class="eyebrow">{{ team.eyebrow }}</p>
+      <h2>{{ team.headline }}</h2>
+    </div>
+    <div class="team__intro rise">
+      <p>{{ team.intro }}</p>
+    </div>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="{{ team.sophie.image.src }}" width="900" height="1125" alt="{{ team.sophie.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.sophie.name }}</h3>
+        <span class="member__craft">{{ team.sophie.craft }}</span>
+        <p>{{ team.sophie.text1 }}</p>
+        <p>{{ team.sophie.text2 }}</p>
+        <p class="member__accent">{{ team.sophie.accent }}</p>
+        <p>{{ team.sophie.text3 }}</p>
+        <p>{{ team.sophie.text4 }}</p>
+      </div>
+    </article>
+
+    <article class="member member--flip rise">
+      <div class="ph arch"><img src="{{ team.sarah.image.src }}" width="900" height="1125" alt="{{ team.sarah.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.sarah.name }}</h3>
+        <span class="member__craft">{{ team.sarah.craft }}</span>
+        <p>{{ team.sarah.text1 }}</p>
+        <p>{{ team.sarah.text2 }}</p>
+      </div>
+    </article>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="{{ team.christina.image.src }}" width="900" height="1125" alt="{{ team.christina.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>{{ team.christina.name }}</h3>
+        <span class="member__craft">{{ team.christina.craft }}</span>
+        <p>{{ team.christina.text1 }}</p>
+        <p class="member__accent">{{ team.christina.accent }}</p>
+        <p>{{ team.christina.text2 }}</p>
+        <p>{{ team.christina.text3 }}</p>
+        <p>{{ team.christina.text4 }}</p>
+        <p>{{ team.christina.text5 }}</p>
+        <p>{{ team.christina.text6 }}</p>
+      </div>
+    </article>
+  </div>
+  <div class="team__seam">
+    <div class="medallion">
+      <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ─ Freie Zeit ───────────────────────────────────────────────────── -->
 <div class="frieze rise">
   <div class="ph px" data-px="8"><img src="{{ freizeit.frieze.src }}" width="1920" height="800" alt="{{ freizeit.frieze.alt }}" loading="lazy" decoding="async"></div>
 </div>
@@ -325,7 +386,7 @@
 
 <p class="belt">{{ freizeit.belt }}</p>
 
-<!-- 08 ─ Retreat-Ort ──────────────────────────────────────────────────── -->
+<!-- 09 ─ Retreat-Ort ──────────────────────────────────────────────────── -->
 <section class="ort band-sand" id="ort">
   <div class="wrap grid">
     <div class="rail">{{ ort.kapitel }}</div>
@@ -363,7 +424,7 @@
   </div>
 </section>
 
-<!-- 09 ─ Kulinarik ────────────────────────────────────────────────────── -->
+<!-- 10 ─ Kulinarik ────────────────────────────────────────────────────── -->
 <section class="kulinarik band-warm">
   <div class="wrap grid">
     <div class="rail">{{ kulinarik.kapitel }}</div>
@@ -379,7 +440,7 @@
   </div>
 </section>
 
-<!-- 10 ─ Unterkunft &amp; Preise ──────────────────────────────────────── -->
+<!-- 11 ─ Unterkunft &amp; Preise ──────────────────────────────────────── -->
 <div class="frieze rise">
   <div class="ph px" data-px="8"><img src="{{ haus.frieze.image.src }}" width="1600" height="1067" alt="{{ haus.frieze.image.alt }}" loading="lazy" decoding="async" style="aspect-ratio:3/2"></div>
 </div>
@@ -471,7 +532,7 @@
   </div>
 </section>
 
-<!-- 11 ─ Inklusive ────────────────────────────────────────────────────── -->
+<!-- 12 ─ Inklusive ────────────────────────────────────────────────────── -->
 <section class="inkl band-ivory">
   <div class="wrap grid">
     <div class="inkl__head rise">
@@ -494,63 +555,6 @@
 </section>
 
 <div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-
-<!-- 12 ─ Team ─────────────────────────────────────────────────────────── -->
-<section class="team band-ivory" id="team">
-  <div class="wrap grid">
-    <div class="rail">{{ team.rail }}</div>
-    <div class="team__head rise">
-      <p class="eyebrow">{{ team.eyebrow }}</p>
-      <h2>{{ team.headline }}</h2>
-    </div>
-    <div class="team__intro rise">
-      <p>{{ team.intro }}</p>
-    </div>
-
-    <article class="member rise">
-      <div class="ph arch"><img src="{{ team.sophie.image.src }}" width="900" height="1125" alt="{{ team.sophie.image.alt }}" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>{{ team.sophie.name }}</h3>
-        <span class="member__craft">{{ team.sophie.craft }}</span>
-        <p>{{ team.sophie.text1 }}</p>
-        <p>{{ team.sophie.text2 }}</p>
-        <p class="member__accent">{{ team.sophie.accent }}</p>
-        <p>{{ team.sophie.text3 }}</p>
-        <p>{{ team.sophie.text4 }}</p>
-      </div>
-    </article>
-
-    <article class="member member--flip rise">
-      <div class="ph arch"><img src="{{ team.sarah.image.src }}" width="900" height="1125" alt="{{ team.sarah.image.alt }}" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>{{ team.sarah.name }}</h3>
-        <span class="member__craft">{{ team.sarah.craft }}</span>
-        <p>{{ team.sarah.text1 }}</p>
-        <p>{{ team.sarah.text2 }}</p>
-      </div>
-    </article>
-
-    <article class="member rise">
-      <div class="ph arch"><img src="{{ team.christina.image.src }}" width="900" height="1125" alt="{{ team.christina.image.alt }}" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>{{ team.christina.name }}</h3>
-        <span class="member__craft">{{ team.christina.craft }}</span>
-        <p>{{ team.christina.text1 }}</p>
-        <p class="member__accent">{{ team.christina.accent }}</p>
-        <p>{{ team.christina.text2 }}</p>
-        <p>{{ team.christina.text3 }}</p>
-        <p>{{ team.christina.text4 }}</p>
-        <p>{{ team.christina.text5 }}</p>
-        <p>{{ team.christina.text6 }}</p>
-      </div>
-    </article>
-  </div>
-  <div class="team__seam">
-    <div class="medallion">
-      <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
-    </div>
-  </div>
-</section>
 
 <!-- 13 ─ Für wen ──────────────────────────────────────────────────────── -->
 <section class="fuerwen band-olive">
@@ -642,31 +646,6 @@
           <div>{{ .antwort }}</div>
         </details>
         {{/ faq.spalte2 }}
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 16 ─ Abschluss ────────────────────────────────────────────────────── -->
-<section class="abschluss">
-  <div class="abschluss__bg ph px" data-px="9">
-    <img src="{{ abschluss.bg.src }}" width="1920" height="1080" alt="" aria-hidden="true" loading="lazy" decoding="async">
-  </div>
-  <div class="wrap grid">
-    <div class="abschluss__tx">
-      <p class="eyebrow">{{ abschluss.eyebrow }}</p>
-      <h2>{{ abschluss.headline }}</h2>
-      <div class="abschluss__lines">
-        {{# abschluss.lines }}
-        <p>{{ .text }}</p>
-        {{/ abschluss.lines }}
-        {{# abschluss.lines_big }}
-        <p class="big">{{ .text }}</p>
-        {{/ abschluss.lines_big }}
-      </div>
-      <div class="abschluss__foot">
-        <a class="btn btn--outline-light" href="#" data-booking>{{ abschluss.cta }}</a>
-        <span class="abschluss__stamp">{{ abschluss.stamp }}</span>
       </div>
     </div>
   </div>

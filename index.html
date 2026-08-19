@@ -26,7 +26,7 @@
 
 <link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2?v=5d618c46" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-400-latin.woff2?v=e310b55a" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=599f7c2d">
+<link rel="stylesheet" href="assets/css/style.css?v=2eb1211b">
 
 <script type="application/ld+json">
 {
@@ -105,8 +105,12 @@
   </div>
   <div class="hero__ph ph px" data-px="7">
     <picture>
-      <!-- Am Telefon steht das Bild quer über der Typo, nicht daneben -->
-      <source media="(max-width: 860px)" srcset="assets/img/hero-wide.webp?v=e7447af2" width="1920" height="1080">
+      <!-- Am Telefon ist der Ausschnitt quadratisch (siehe .hero__ph im
+           Stylesheet), darueber hochkant. Beide Rahmen sind hoch bis sehr
+           hoch — deshalb steht in BEIDEN Faellen ein Hochformat drin. Ein
+           16:9-Bild in ein Quadrat zu schneiden kostete mehr als die halbe
+           Breite, und dabei fielen zuletzt die Koepfe aus dem Bild. -->
+      <source media="(max-width: 860px)" srcset="assets/img/hero-tall.webp?v=6442cfcc" width="1500" height="2000">
       <img src="assets/img/hero-tall.webp?v=6442cfcc" width="1500" height="2000" alt="Drei Frauen von hinten am Feldrand oberhalb des Retreat-Anwesens bei Spabrücken" fetchpriority="high">
     </picture>
   </div>
@@ -324,7 +328,64 @@
 
 <div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
-<!-- 07 ─ Freie Zeit ───────────────────────────────────────────────────── -->
+<!-- 07 ─ Team ─────────────────────────────────────────────────────────── -->
+<section class="team band-ivory" id="team">
+  <div class="wrap grid">
+    <div class="rail">Kapitel 10</div>
+    <div class="team__head rise">
+      <p class="eyebrow">Sophie &middot; Sarah &middot; Christina</p>
+      <h2>Die drei Frauen hinter B³</h2>
+    </div>
+    <div class="team__intro rise">
+      <p>Drei Persönlichkeiten, drei unterschiedliche Welten und ziemlich unterschiedliche Wege haben uns hierhergebracht. Was uns verbindet, ist die Überzeugung, dass wir uns und unser Leben nicht in einzelne Schubladen aufteilen müssen.</p>
+    </div>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="assets/img/sophie.webp?v=db123673" width="900" height="1125" alt="Sophie Christin Braun am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>Sophie Christin Braun</h3>
+        <span class="member__craft">Astrologie | Energiearbeit | spirituelle &amp; mediale Impulse</span>
+        <p>Ich bin Sophie – neugierig, intuitiv, manchmal ziemlich tiefgründig und definitiv ein kleiner Freigeist.</p>
+        <p>Ich war noch nie besonders gut darin, mich in Schubladen stecken zu lassen. Ich mag kein Schwarz-Weiß-Denken und keine fertigen Antworten.</p>
+        <p class="member__accent">Aber warum eigentlich? Muss das wirklich so sein?</p>
+        <p>Genau diese Freiheit, selbst zu denken, zu fühlen und den eigenen Weg zu gehen, möchte ich auch in meine Arbeit mitgeben. Meine Arbeit verbindet Astrologie, Energiearbeit und spirituelle sowie mediale Impulse. Im Mittelpunkt steht für mich dabei immer die Verbindung zur Quelle, zu Gott und zu unserer eigenen inneren Wahrheit.</p>
+        <p>Ich freue mich sehr auf echte Begegnungen, tiefe Gespräche, kleine Aha-Momente und darauf, diese besondere Zeit miteinander zu erleben.</p>
+      </div>
+    </article>
+
+    <article class="member member--flip rise">
+      <div class="ph arch"><img src="assets/img/sarah.webp?v=0bedbd36" width="900" height="1125" alt="Sarah Bernhard am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>Sarah Bernhard</h3>
+        <span class="member__craft">Yin Yoga | Breathwork | Bodywork</span>
+        <p>Ich bin Sarah und begleite Menschen dabei, wieder mehr in Kontakt mit sich selbst, ihrem Körper und dem eigenen Erleben zu kommen.</p>
+        <p>Mir geht es dabei nicht darum, etwas zu erzwingen oder „wegzumachen“, sondern einen Raum zu schaffen, in dem du deinen Körper wieder wahrnehmen, zur Ruhe kommen und dich selbst ein Stück tiefer erfahren kannst.</p>
+      </div>
+    </article>
+
+    <article class="member rise">
+      <div class="ph arch"><img src="assets/img/christina.webp?v=bc281095" width="900" height="1125" alt="Christina am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__tx">
+        <h3>Christina</h3>
+        <span class="member__craft">Strategie | Business | Struktur</span>
+        <p>Ich bin Christina – kreative Seele, Unternehmerin und ziemlich schlecht darin, mich mit einem „entweder oder“ zufriedenzugeben.</p>
+        <p class="member__accent">Ich will alles.</p>
+        <p>Ich möchte mich in meinem Business verwirklichen, meine Familie und Partnerschaft lieben und leben, erfolgreich sein, frei sein und trotzdem genügend Zeit für die Menschen und Dinge haben, die mir wichtig sind.</p>
+        <p>Mit klassischer Work-Life-Balance konnte ich deshalb noch nie besonders viel anfangen. Mein Business steht für mich nicht auf der einen und mein Leben auf der anderen Seite. Es ist ein Teil meines Lebens, den ich liebe und den ich genauso bewusst gestalten möchte wie alle anderen Bereiche.</p>
+        <p>Ich glaube daran, dass die Dinge, die uns wichtig sind, gleichzeitig Platz haben dürfen. Nicht immer zu gleichen Teilen und ganz sicher nicht immer perfekt. Aber ohne uns selbst dabei ständig auf später zu verschieben.</p>
+        <p>Dafür braucht es Struktur. Nur eben keine starren Regeln und keinen Kalender, der jede Minute kontrolliert. Ich arbeite mit einer intuitiven, lebendigen Struktur, die sich dem Leben anpassen darf und uns dabei hilft, unsere Prioritäten tatsächlich zu leben.</p>
+        <p>Denn Selbstverwirklichung bedeutet für mich nicht, immer mehr zu schaffen. Es bedeutet, ein Leben aufzubauen, das wirklich zu mir gehört.</p>
+      </div>
+    </article>
+  </div>
+  <div class="team__seam">
+    <div class="medallion">
+      <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ─ Freie Zeit ───────────────────────────────────────────────────── -->
 <div class="frieze rise">
   <div class="ph px" data-px="8"><img src="assets/img/fries-hof.webp?v=9e698c50" width="1920" height="800" alt="Zufahrt und Hof des Anwesens, gesäumt von Zypressen" loading="lazy" decoding="async"></div>
 </div>
@@ -349,7 +410,7 @@
 
 <p class="belt">Du kommst an. Du musst nichts mitbringen außer dir selbst.</p>
 
-<!-- 08 ─ Retreat-Ort ──────────────────────────────────────────────────── -->
+<!-- 09 ─ Retreat-Ort ──────────────────────────────────────────────────── -->
 <section class="ort band-sand" id="ort">
   <div class="wrap grid">
     <div class="rail">Kapitel 07</div>
@@ -387,7 +448,7 @@
   </div>
 </section>
 
-<!-- 09 ─ Kulinarik ────────────────────────────────────────────────────── -->
+<!-- 10 ─ Kulinarik ────────────────────────────────────────────────────── -->
 <section class="kulinarik band-warm">
   <div class="wrap grid">
     <div class="rail">Kapitel 08</div>
@@ -403,7 +464,7 @@
   </div>
 </section>
 
-<!-- 10 ─ Unterkunft &amp; Preise ──────────────────────────────────────── -->
+<!-- 11 ─ Unterkunft &amp; Preise ──────────────────────────────────────── -->
 <div class="frieze rise">
   <div class="ph px" data-px="8"><img src="assets/img/haus-fries.webp?v=31b395c1" width="1600" height="1067" alt="Gemeinschaftsbereich mit Essplatz und Sitzlandschaft" loading="lazy" decoding="async" style="aspect-ratio:3/2"></div>
 </div>
@@ -515,7 +576,7 @@
   </div>
 </section>
 
-<!-- 11 ─ Inklusive ────────────────────────────────────────────────────── -->
+<!-- 12 ─ Inklusive ────────────────────────────────────────────────────── -->
 <section class="inkl band-ivory">
   <div class="wrap grid">
     <div class="inkl__head rise">
@@ -547,63 +608,6 @@
 </section>
 
 <div class="moons band-ivory" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-
-<!-- 12 ─ Team ─────────────────────────────────────────────────────────── -->
-<section class="team band-ivory" id="team">
-  <div class="wrap grid">
-    <div class="rail">Kapitel 10</div>
-    <div class="team__head rise">
-      <p class="eyebrow">Sophie &middot; Sarah &middot; Christina</p>
-      <h2>Die drei Frauen hinter B³</h2>
-    </div>
-    <div class="team__intro rise">
-      <p>Drei Persönlichkeiten, drei unterschiedliche Welten und ziemlich unterschiedliche Wege haben uns hierhergebracht. Was uns verbindet, ist die Überzeugung, dass wir uns und unser Leben nicht in einzelne Schubladen aufteilen müssen.</p>
-    </div>
-
-    <article class="member rise">
-      <div class="ph arch"><img src="assets/img/sophie.webp?v=db123673" width="900" height="1125" alt="Sophie Christin Braun am Feldrand" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>Sophie Christin Braun</h3>
-        <span class="member__craft">Astrologie | Energiearbeit | spirituelle &amp; mediale Impulse</span>
-        <p>Ich bin Sophie – neugierig, intuitiv, manchmal ziemlich tiefgründig und definitiv ein kleiner Freigeist.</p>
-        <p>Ich war noch nie besonders gut darin, mich in Schubladen stecken zu lassen. Ich mag kein Schwarz-Weiß-Denken und keine fertigen Antworten.</p>
-        <p class="member__accent">Aber warum eigentlich? Muss das wirklich so sein?</p>
-        <p>Genau diese Freiheit, selbst zu denken, zu fühlen und den eigenen Weg zu gehen, möchte ich auch in meine Arbeit mitgeben. Meine Arbeit verbindet Astrologie, Energiearbeit und spirituelle sowie mediale Impulse. Im Mittelpunkt steht für mich dabei immer die Verbindung zur Quelle, zu Gott und zu unserer eigenen inneren Wahrheit.</p>
-        <p>Ich freue mich sehr auf echte Begegnungen, tiefe Gespräche, kleine Aha-Momente und darauf, diese besondere Zeit miteinander zu erleben.</p>
-      </div>
-    </article>
-
-    <article class="member member--flip rise">
-      <div class="ph arch"><img src="assets/img/sarah.webp?v=0bedbd36" width="900" height="1125" alt="Sarah Bernhard am Feldrand" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>Sarah Bernhard</h3>
-        <span class="member__craft">Yin Yoga | Breathwork | Bodywork</span>
-        <p>Ich bin Sarah und begleite Menschen dabei, wieder mehr in Kontakt mit sich selbst, ihrem Körper und dem eigenen Erleben zu kommen.</p>
-        <p>Mir geht es dabei nicht darum, etwas zu erzwingen oder „wegzumachen“, sondern einen Raum zu schaffen, in dem du deinen Körper wieder wahrnehmen, zur Ruhe kommen und dich selbst ein Stück tiefer erfahren kannst.</p>
-      </div>
-    </article>
-
-    <article class="member rise">
-      <div class="ph arch"><img src="assets/img/christina.webp?v=bc281095" width="900" height="1125" alt="Christina am Feldrand" loading="lazy" decoding="async"></div>
-      <div class="member__tx">
-        <h3>Christina</h3>
-        <span class="member__craft">Strategie | Business | Struktur</span>
-        <p>Ich bin Christina – kreative Seele, Unternehmerin und ziemlich schlecht darin, mich mit einem „entweder oder“ zufriedenzugeben.</p>
-        <p class="member__accent">Ich will alles.</p>
-        <p>Ich möchte mich in meinem Business verwirklichen, meine Familie und Partnerschaft lieben und leben, erfolgreich sein, frei sein und trotzdem genügend Zeit für die Menschen und Dinge haben, die mir wichtig sind.</p>
-        <p>Mit klassischer Work-Life-Balance konnte ich deshalb noch nie besonders viel anfangen. Mein Business steht für mich nicht auf der einen und mein Leben auf der anderen Seite. Es ist ein Teil meines Lebens, den ich liebe und den ich genauso bewusst gestalten möchte wie alle anderen Bereiche.</p>
-        <p>Ich glaube daran, dass die Dinge, die uns wichtig sind, gleichzeitig Platz haben dürfen. Nicht immer zu gleichen Teilen und ganz sicher nicht immer perfekt. Aber ohne uns selbst dabei ständig auf später zu verschieben.</p>
-        <p>Dafür braucht es Struktur. Nur eben keine starren Regeln und keinen Kalender, der jede Minute kontrolliert. Ich arbeite mit einer intuitiven, lebendigen Struktur, die sich dem Leben anpassen darf und uns dabei hilft, unsere Prioritäten tatsächlich zu leben.</p>
-        <p>Denn Selbstverwirklichung bedeutet für mich nicht, immer mehr zu schaffen. Es bedeutet, ein Leben aufzubauen, das wirklich zu mir gehört.</p>
-      </div>
-    </article>
-  </div>
-  <div class="team__seam">
-    <div class="medallion">
-      <svg class="mark" viewBox="0 0 120 120" width="86" height="86"><use href="#b3mark"/></svg>
-    </div>
-  </div>
-</section>
 
 <!-- 13 ─ Für wen ──────────────────────────────────────────────────────── -->
 <section class="fuerwen band-olive">
@@ -744,30 +748,6 @@
             <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>
           </div>
         </details>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 16 ─ Abschluss ────────────────────────────────────────────────────── -->
-<section class="abschluss">
-  <div class="abschluss__bg ph px" data-px="9">
-    <img src="assets/img/abschluss.webp?v=4549e8c8" width="1920" height="1080" alt="" aria-hidden="true" loading="lazy" decoding="async">
-  </div>
-  <div class="wrap grid">
-    <div class="abschluss__tx">
-      <p class="eyebrow">Be free</p>
-      <h2>Be free to be you.</h2>
-      <div class="abschluss__lines">
-        <p>Vielleicht geht es in diesen vier Tagen gar nicht darum, Antworten auf jede Frage zu finden.</p>
-        <p>Vielleicht geht es darum, dir genügend Zeit zu geben, damit du die richtigen Fragen überhaupt wieder hören kannst.</p>
-        <p>Zeit für deinen Körper, deine Gedanken, deine Wünsche und all das, was im Alltag manchmal ein bisschen zu kurz kommt.</p>
-        <p class="big">Und vielleicht fährst du am Sonntag nicht als eine andere Frau nach Hause.</p>
-        <p class="big">Sondern einfach ein bisschen mehr als du selbst.</p>
-      </div>
-      <div class="abschluss__foot">
-        <a class="btn btn--outline-light" href="#" data-booking>Ich bin dabei</a>
-        <span class="abschluss__stamp">B³ Retreat &middot; 08.–11. Oktober 2026 &middot; Spabrücken</span>
       </div>
     </div>
   </div>

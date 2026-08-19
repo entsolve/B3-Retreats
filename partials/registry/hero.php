@@ -42,10 +42,10 @@ return [
     ],
     'hero.image.wide.src' => [
         'group' => '03 Aufmacher',
-        'label' => 'Startbild mobil (Querformat)',
+        'label' => 'Startbild mobil (quadratischer Ausschnitt)',
         'type' => 'image',
-        'hint' => 'Wird auf Bildschirmen unter 860 px angezeigt. Seitenverhältnis 1920 × 1080.',
-        'default' => 'assets/img/hero-wide.webp',
+        'hint' => 'Wird auf Bildschirmen unter 860 px angezeigt. Der Rahmen ist dort quadratisch — am besten ein hochformatiges oder quadratisches Bild, die Personen mittig.',
+        'default' => 'assets/img/hero-tall.webp',
     ],
     'hero.image.tall.src' => [
         'group' => '03 Aufmacher',

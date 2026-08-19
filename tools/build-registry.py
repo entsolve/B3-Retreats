@@ -57,10 +57,9 @@ ABSCHNITTE = {
     "fuerwen":   ("15", "Für wen"),
     "buchung":   ("16", "Buchung"),
     "faq":       ("17", "Häufige Fragen"),
-    "abschluss": ("18", "Abschluss"),
-    "foot":      ("19", "Fußzeile"),
-    "bar":       ("20", "Mobile Buchungsleiste"),
-    "consent":   ("21", "Cookie-Hinweis"),
+    "foot":      ("18", "Fußzeile"),
+    "bar":       ("19", "Mobile Buchungsleiste"),
+    "consent":   ("20", "Cookie-Hinweis"),
 }
 
 

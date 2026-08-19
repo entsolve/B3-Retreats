@@ -291,7 +291,15 @@ section { position: relative; }
    halber Hoehe und laeuft sichtbar an den Seiten herunter. Bei den vorherigen
    32 % sass die Rundung nur als flache Kappe obendrauf — von der Seite war
    vom Bogen nichts zu sehen. */
-.arch { border-radius: 50% 50% 0 0 / 50% 50% 0 0; }
+/* Auf Wunsch der Kundin sind alle Bildkanten gerade. Die einzige
+   Ausnahme ist der Abschnitt „Ueber uns" — dort bleibt der Bogen,
+   siehe .team .ph.arch. */
+.arch { border-radius: 0; }
+
+/* Der Bogen lebt nur noch hier weiter: die drei Portraits im Abschnitt
+   „Ueber uns". Zwei Klassen schlagen eine, deshalb greift das gegen
+   .arch oben ohne !important. */
+.team .ph.arch { border-radius: 50% 50% 0 0 / 50% 50% 0 0; }
 
 .veil::before {
   content: '';
@@ -556,7 +564,7 @@ section { position: relative; }
    an die Fensterkante und ist zur Schrift hin als halbe Ellipse geschnitten —
    senkrechter Radius = halbe Hoehe, also eine durchgehende Kurve und keine
    abgerundete Ecke. Aussen bleibt es gerade, dort ist der Bildschirmrand. */
-.hero__ph { border-radius: 34% 0 0 34% / 50% 0 0 50%; }
+.hero__ph { border-radius: 0; }
 
 /* --- 02 Einladung --------------------------------------------------------- */
 
@@ -596,7 +604,7 @@ section { position: relative; }
    flacher: 4/5 waere neben der Rundung eine Nadel geworden. */
 .invite__ph .ph {
   aspect-ratio: 5 / 6;
-  border-radius: 42% 0 0 42% / 50% 0 0 50%;
+  border-radius: 0;
 }
 
 /* Die Kerze steht im rechten Drittel des Bildes — der Ausschnitt darf links
@@ -808,8 +816,8 @@ section { position: relative; }
    eine halbe Ellipse und keine abgerundete Ecke. Aussen bleibt es gerade —
    dort ist die Bildschirmkante. Ueberschreibt .arch (zwei Klassen schlagen
    eine), damit die Vorlage weiter class="ph arch" schreiben kann. */
-.exp__item .ph       { border-radius: 0 42% 42% 0 / 0 50% 50% 0; }
-.exp__item--flip .ph { border-radius: 42% 0 0 42% / 50% 0 0 50%; }
+.exp__item .ph       { border-radius: 0; }
+.exp__item--flip .ph { border-radius: 0; }
 
 /* Eine Experience ohne Bild: der Text ruecht auf die Kante der Kapitelspalte
    und wird zur Atempause zwischen den Bildbloecken — nicht an den rechten
@@ -973,7 +981,7 @@ section { position: relative; }
    Breite, der senkrechte von der Hoehe. Bei einem 3:2-Bild ist die Hoehe klein,
    und 42 % Breite gegen 50 % Hoehe ergeben keine Bogenkante, sondern eine
    Blattform. 18 % geben die runde Aussenkante, ohne das Motiv anzuschneiden. */
-.tier__ph .galerie__spur { border-radius: 0 18% 18% 0 / 0 50% 50% 0; }
+.tier__ph .galerie__spur { border-radius: 0; }
 
 /* Der Bogen jedes einzelnen Bildes muss hier weg. `.galerie__bild` traegt
    `50% 50% 0 0 / 22% 22% 0 0` — eine Kappe oben. Zusammen mit der Rundung der
@@ -1173,7 +1181,7 @@ section { position: relative; }
 
 .fuerwen__ph .ph {
   aspect-ratio: 5 / 6;
-  border-radius: 42% 0 0 42% / 50% 0 0 50%;
+  border-radius: 0;
 }
 /* Kein object-position: das Bild ist 4:5, der Rahmen 5:6 — `cover` skaliert also
    nach der Breite und schneidet nur senkrecht, waagerecht gibt es keinen Spielraum
@@ -1790,6 +1798,18 @@ body { --consent-h: 0px; --bar-h: 0px; }
     grid-column: 1 / -1;
   }
 
+  /* Gestapelt stiessen Ueberschrift und Text bei drei Kapiteln ohne jeden
+     Abstand aneinander — bei „Genug Zeit fuer dich" beruehrte die Unterlaenge
+     des Titels schon die erste Zeile. Nachgemessen: 0 px, waehrend Einladung,
+     Experiences, Ueber uns und FAQ 32 px hatten. Diese drei ziehen nach. */
+  .freizeit__body, .ort__body, .inkl__list { margin-top: 2rem; }
+
+  /* Der Kompass stand mit 82 px neben einer zweizeilig umbrechenden Ortsangabe
+     und lief optisch in den Absatz darunter. Kleiner, enger, mit Luft nach
+     unten. */
+  .ort__map { margin-top: 1.5rem; margin-bottom: 2.5rem; gap: .75rem; }
+  .ort__map svg { width: 44px; }
+
   /* Ab hier laeuft .abschluss__tx ueber die ganze Breite (siehe grid-column
      oben), also darf der Schleier nicht mehr nur das linke Drittel decken.
      Diese Regel stand vorher erst bei 860 px — dazwischen lag die Schrift
@@ -1812,7 +1832,7 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .invite__ph, .fuerwen__ph { margin-right: 0; }
   .invite__ph .ph, .fuerwen__ph .ph {
     aspect-ratio: 4 / 5;
-    border-radius: 50% 50% 0 0 / 50% 50% 0 0;
+    border-radius: 0;
   }
   .invite__ph .ph img, .fuerwen__ph .ph img { object-position: center; }
   .ablauf__ph { margin-top: var(--space-s); max-width: 460px; }
@@ -1838,8 +1858,8 @@ body { --consent-h: 0px; --bar-h: 0px; }
    dann ist die halbe Ellipse keine Innenkante, sondern eine schiefe Ecke. */
 @media (max-width: 860px) {
   .tier__ph { margin-left: 0; }
-  .tier__ph .galerie__spur { border-radius: 2px; }
-  .tier__ph .galerie__bild { border-radius: 50% 50% 0 0 / 22% 22% 0 0; }
+  .tier__ph .galerie__spur { border-radius: 0; }
+  .tier__ph .galerie__bild { border-radius: 0; }
   .tier__ph .galerie__pfeil--vor { right: 12px; }
   .tier__ph .galerie__fuss { padding-left: 0; }
 }
@@ -1853,7 +1873,10 @@ body { --consent-h: 0px; --bar-h: 0px; }
      Fensterkanten. Eine Rundung nur links waere hier keine Innenkante mehr,
      sondern eine schiefe Ecke — und sie schnitte die Linke an. Also gerade,
      und die Gruppe zurueck in die Mitte. */
-  .hero__ph { order: 1; aspect-ratio: 16 / 9; border-radius: 0; }
+  /* Quadratisch statt 16:9: auf Wunsch der Kundin reicht das Bild weiter
+     herunter, bis knapp ueber die Ueberschrift. Im Querformat blieb vom
+     Motiv — drei Frauen in ganzer Figur — nur ein Streifen. */
+  .hero__ph { order: 1; aspect-ratio: 1 / 1; border-radius: 0; }
   .hero__ph img { object-position: center; }
   .medallion { left: 50%; }
 
@@ -1873,7 +1896,18 @@ body { --consent-h: 0px; --bar-h: 0px; }
   .mosaic .m2, .mosaic .m6, .mosaic .m7, .mosaic .m8 { aspect-ratio: 4 / 5; }
 
   .tier__ph, .tier__tx, .tier__buy { grid-column: 1 / -1; }
-  .tier__ph { max-width: 300px; margin-bottom: 2rem; }
+  /* Die Galerie ging gestapelt auf 300 px Breite herunter und stand als
+     Briefmarke ueber einer breiten Textspalte. Auf Wunsch der Kundin nimmt sie
+     jetzt die volle Flaeche und laeuft bis an beide Fensterkanten — dieselbe
+     Sprache wie die uebrigen Bilder auf dem Telefon (siehe .frieze). */
+  .tier__ph {
+    max-width: none;
+    margin-inline: calc(-1 * var(--pad));
+    margin-bottom: 2rem;
+  }
+  /* Unterschrift und Balken gehoeren zur Schrift, nicht zum Bild: sie bekommen
+     den Seitenrand zurueck, sonst kleben sie an der Fensterkante. */
+  .tier__ph .galerie__fuss { padding-inline: var(--pad); }
 
   /* Gestapelt fehlt die Textspalte als Gegengewicht: der versetzte Ausschnitt
      liest sich dann nicht als Collage, sondern als verrutschtes Bild. */
@@ -2028,7 +2062,7 @@ body { --consent-h: 0px; --bar-h: 0px; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  border-radius: 2px;
+  border-radius: 0;
 }
 .galerie__spur::-webkit-scrollbar { display: none; }
 
@@ -2040,10 +2074,7 @@ body { --consent-h: 0px; --bar-h: 0px; }
   background: var(--sand);
   cursor: zoom-in;
   overflow: hidden;
-  /* Innenraum bekommt den Bogen — dieselbe Regel wie bei Menschen und
-     Zimmern auf der uebrigen Seite. Flacher als dort, weil das Bild hier
-     quer liegt und ein hoher Bogen die Decke abschneiden wuerde. */
-  border-radius: 50% 50% 0 0 / 22% 22% 0 0;
+  border-radius: 0;
 }
 .galerie__bild img {
   display: block;

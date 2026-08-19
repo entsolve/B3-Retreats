@@ -205,9 +205,9 @@
   },
   {
     "path": "hero.image.wide.src",
-    "label": "Startbild mobil (Querformat)",
+    "label": "Startbild mobil (quadratischer Ausschnitt)",
     "type": "image",
-    "hint": "Wird auf Bildschirmen unter 860 px angezeigt. Seitenverhältnis 1920 × 1080."
+    "hint": "Wird auf Bildschirmen unter 860 px angezeigt. Der Rahmen ist dort quadratisch — am besten ein hochformatiges oder quadratisches Bild, die Personen mittig."
   },
   {
     "path": "hero.image.tall.src",
@@ -605,6 +605,33 @@
         "path": "paragraphs",
         "type": "list",
         "label": "Absätze",
+        "itemLabel": "text",
+        "fields": [
+          {
+            "path": "text",
+            "label": "Absatz",
+            "type": "textarea",
+            "hint": ""
+          }
+        ]
+      },
+      {
+        "path": "second.who",
+        "label": "Zweiter Block: wer leitet ihn",
+        "type": "text",
+        "hint": "Nur ausfüllen, wenn dieselbe Person im selben Kasten eine zweite Experience anbietet. Leer lassen heißt: es gibt keinen zweiten Block."
+      },
+      {
+        "path": "second.title",
+        "label": "Zweiter Block: Überschrift",
+        "type": "text",
+        "hint": "Sobald hier etwas steht, erscheint unter dem ersten Text ein zweiter Abschnitt — mit derselben Person und demselben Bild, getrennt durch eine Linie. Leer = kein zweiter Block."
+      },
+      {
+        "path": "second.paragraphs",
+        "label": "Zweiter Block: Absätze",
+        "type": "list",
+        "hint": "Fließtext des zweiten Blocks. Jeder Eintrag wird ein eigener Absatz.",
         "itemLabel": "text",
         "fields": [
           {
@@ -1516,66 +1543,6 @@
         "hint": "Antworttext. Jeder Absatz steht in eigenen <p>-Tags, Links sind erlaubt."
       }
     ]
-  },
-  {
-    "path": "abschluss.bg.src",
-    "label": "Hintergrundbild Abschluss",
-    "type": "image",
-    "hint": "Grossflaechiges Bild hinter dem Schlussabschnitt. Pfad relativ zur Startseite, z. B. assets/img/abschluss.webp. Format 16:9 (1920x1080)."
-  },
-  {
-    "path": "abschluss.eyebrow",
-    "label": "Kleine Zeile ueber der Ueberschrift",
-    "type": "text",
-    "hint": "Kurzer Vorspann ueber der Schlussueberschrift, wenige Woerter."
-  },
-  {
-    "path": "abschluss.headline",
-    "label": "Schlussueberschrift",
-    "type": "text",
-    "hint": "Die grosse Aussage am Ende der Seite."
-  },
-  {
-    "path": "abschluss.lines",
-    "label": "Schlussabsaetze (normal)",
-    "type": "list",
-    "itemLabel": "text",
-    "hint": "Die ruhigen Absaetze vor der Schlusspointe. Reihenfolge frei, Anzahl beliebig.",
-    "fields": [
-      {
-        "path": "text",
-        "label": "Absatz",
-        "type": "textarea",
-        "hint": "Ein Absatz Fliesstext, ohne HTML."
-      }
-    ]
-  },
-  {
-    "path": "abschluss.lines_big",
-    "label": "Schlussabsaetze (hervorgehoben)",
-    "type": "list",
-    "itemLabel": "text",
-    "hint": "Die letzten, groesser gesetzten Saetze des Abschnitts.",
-    "fields": [
-      {
-        "path": "text",
-        "label": "Absatz",
-        "type": "textarea",
-        "hint": "Ein hervorgehobener Absatz, ohne HTML."
-      }
-    ]
-  },
-  {
-    "path": "abschluss.cta",
-    "label": "Knopfbeschriftung Abschluss",
-    "type": "text",
-    "hint": "Text des Buchungsknopfes am Seitenende, z. B. 'Ich bin dabei'."
-  },
-  {
-    "path": "abschluss.stamp",
-    "label": "Eckdaten neben dem Knopf",
-    "type": "text",
-    "hint": "Kurzzeile mit Name, Datum und Ort. Trennzeichen bitte als &middot; schreiben."
   },
   {
     "path": "foot.brand.tagline",

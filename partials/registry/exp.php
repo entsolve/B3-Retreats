@@ -107,6 +107,33 @@ return [
                     ],
                 ],
             ],
+            [
+                'path' => 'second.who',
+                'label' => 'Zweiter Block: wer leitet ihn',
+                'type' => 'text',
+                'hint' => 'Nur ausfüllen, wenn dieselbe Person im selben Kasten eine zweite Experience anbietet. Leer lassen heißt: es gibt keinen zweiten Block.',
+            ],
+            [
+                'path' => 'second.title',
+                'label' => 'Zweiter Block: Überschrift',
+                'type' => 'text',
+                'hint' => 'Sobald hier etwas steht, erscheint unter dem ersten Text ein zweiter Abschnitt — mit derselben Person und demselben Bild, getrennt durch eine Linie. Leer = kein zweiter Block.',
+            ],
+            [
+                'path' => 'second.paragraphs',
+                'label' => 'Zweiter Block: Absätze',
+                'type' => 'list',
+                'hint' => 'Fließtext des zweiten Blocks. Jeder Eintrag wird ein eigener Absatz.',
+                'itemLabel' => 'text',
+                'fields' => [
+                    [
+                        'path' => 'text',
+                        'label' => 'Absatz',
+                        'type' => 'textarea',
+                        'hint' => '',
+                    ],
+                ],
+            ],
         ],
         'default' => [
             [
