@@ -12,8 +12,26 @@
 # index.html bleibt trotzdem liegen: index.php faellt auf sie zurueck, wenn die
 # Vorlage einmal nicht gebaut werden kann.
 DirectoryIndex index.php index.html
+
+# Und der Vollstaendigkeit halber: /index.html direkt aufzurufen fuehrt zur
+# gebauten Notfassung — der Stand des letzten oertlichen Builds, ohne eine
+# einzige Aenderung aus dem Panel. Wer dort landet, sieht die alte Seite und
+# haelt sie fuer die aktuelle. Genau das ist passiert: im Fussbereich auf
+# Datenschutz, dort aufs Logo, und man war auf der alten Fassung.
 #
-# Der einzige Zweck: config.php enthaelt das Datenbank-Passwort. Solange PHP
+# Die Links in den Rechtsseiten zeigen jetzt auf / (siehe tools/build-legal.py);
+# diese Regel faengt zusaetzlich alte Lesezeichen und Suchmaschinen-Treffer ab.
+# 302, nicht 301 — eine dauerhafte Umleitung merkt sich der Browser fuer immer.
+#
+# index.php liest die Datei weiterhin selbst als Rueckfall (readfile). Das ist
+# ein Zugriff im Dateisystem und von dieser Regel nicht betroffen.
+<IfModule mod_alias.c>
+  RedirectMatch 302 ^/index\.html$ /
+</IfModule>
+
+# --- Dateien, die niemand aus dem Netz sehen darf -------------------------
+#
+# Der Zweck: config.php enthaelt das Datenbank-Passwort. Solange PHP
 # laeuft, liefert der Server sie ohnehin nicht im Klartext aus — aber genau
 # dann, wenn PHP einmal aussetzt (Update, falsche Handler-Zuordnung), wuerde
 # sie als reine Textdatei im Browser stehen. Diese Sperre gilt auch dann.
