@@ -106,6 +106,7 @@ An den Nahewiesen 20
 Deutschland
 
 E-Mail: hello@b3-retreats.de
+Telefon: auf Anfrage
 
 Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
 
@@ -124,7 +125,7 @@ Je nach Verarbeitungssituation stützen wir uns auf folgende Rechtsgrundlagen:
 
 Durch uns selbst findet keine Übermittlung personenbezogener Daten in ein Drittland außerhalb der EU bzw. des EWR statt.
 
-Eine Ausnahme kann die Zahlungsabwicklung über Tentary sein: Zu den dort eingesetzten Zahlungsdienstleistern gehört Stripe, Inc. mit Sitz in den USA (siehe Abschnitt 7). Soweit dabei Daten in die USA übermittelt werden, stützt sich die Übermittlung auf einen Angemessenheitsbeschluss der EU-Kommission (EU-US Data Privacy Framework), sofern der Anbieter dort zertifiziert ist, andernfalls auf die Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.
+Vertragspartner für Kundinnen und Kunden in der EU ist bei den eingesetzten Zahlungsdienstleistern jeweils eine Gesellschaft mit Sitz in der EU (siehe Abschnitt 7). Soweit im Rahmen der Zahlungsabwicklung dennoch Daten an Konzerngesellschaften in den USA übermittelt werden, stützt sich diese Übermittlung auf die Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO bzw. auf einen Angemessenheitsbeschluss (EU-US Data Privacy Framework), soweit der Anbieter dort zertifiziert ist.
 
 Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 
@@ -136,12 +137,12 @@ Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die perso
 
 Anbieter des Hostings ist:
 
-webhoster.de AG
-Zum Haunert 22
-59519 Möhnesee
+brumm Hosting & IT-Services
+An den Nahewiesen 20
+55450 Langenlonsheim
 Deutschland
 
-Die Server stehen in Deutschland.
+Die Server stehen in Deutschland. Die technische Infrastruktur wird dabei von der webhoster.de AG, Zum Haunert 22, 59519 Möhnesee, bereitgestellt.
 
 Der Einsatz des Hosters erfolgt zum Zweck der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Teilnehmerinnen (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
 
@@ -208,7 +209,7 @@ Zahlungsdienstleister: Für die eigentliche Zahlungsabwicklung können über Ten
 Nach den Angaben von Tentary werden für die Zahlungsabwicklung folgende Anbieter eingesetzt:
 
 - PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg – Datenschutzerklärung: https://www.paypal.com/de/webapps/mpp/ua/privacy-full
-- Stripe, Inc., 510 Townsend Street, San Francisco, CA 94103, USA – Datenschutzerklärung: https://stripe.com/de/privacy
+- Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland – Datenschutzerklärung: https://stripe.com/de/privacy
 - Mollie B.V., Keizersgracht 126, 1015 CW Amsterdam, Niederlande – Datenschutzerklärung: https://www.mollie.com/de/privacy
 
 Welcher dieser Anbieter im Einzelfall zum Einsatz kommt, hängt von der im Buchungsvorgang gewählten Zahlungsart ab.
