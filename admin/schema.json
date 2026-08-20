@@ -1185,6 +1185,18 @@
     "hint": "Gemeinsamer Einleitungsabsatz über die drei Gastgeberinnen"
   },
   {
+    "path": "team.link.insta",
+    "label": "Beschriftung Instagram-Link",
+    "type": "text",
+    "hint": "Steht neben dem Symbol unter allen drei Porträts."
+  },
+  {
+    "path": "team.link.web",
+    "label": "Beschriftung Website-Link",
+    "type": "text",
+    "hint": "Steht neben dem Symbol unter allen drei Porträts."
+  },
+  {
     "path": "team.sophie.image.src",
     "label": "Foto Sophie",
     "type": "image",
@@ -1207,6 +1219,18 @@
     "label": "Fachgebiete Sophie",
     "type": "text",
     "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
+  },
+  {
+    "path": "team.sophie.web",
+    "label": "Sophie – Website",
+    "type": "url",
+    "hint": "Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus."
+  },
+  {
+    "path": "team.sophie.insta",
+    "label": "Sophie – Instagram",
+    "type": "url",
+    "hint": "Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus."
   },
   {
     "path": "team.sophie.text1",
@@ -1263,6 +1287,18 @@
     "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
   },
   {
+    "path": "team.sarah.web",
+    "label": "Sarah – Website",
+    "type": "url",
+    "hint": "Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus."
+  },
+  {
+    "path": "team.sarah.insta",
+    "label": "Sarah – Instagram",
+    "type": "url",
+    "hint": "Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus."
+  },
+  {
     "path": "team.sarah.text1",
     "label": "Sarah Absatz 1",
     "type": "textarea",
@@ -1297,6 +1333,18 @@
     "label": "Fachgebiete Christina",
     "type": "text",
     "hint": "Arbeitsschwerpunkte, getrennt durch senkrechte Striche"
+  },
+  {
+    "path": "team.christina.web",
+    "label": "Christina – Website",
+    "type": "url",
+    "hint": "Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus."
+  },
+  {
+    "path": "team.christina.insta",
+    "label": "Christina – Instagram",
+    "type": "url",
+    "hint": "Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus."
   },
   {
     "path": "team.christina.text1",

@@ -65,6 +65,24 @@
     <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
           font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
   </g>
+
+  <!-- Website: Kugel mit Laengen- und Breitengrad. Bewusst dieselbe duenne
+       Linie wie der Pfeil „nach oben" (24er Feld, 1.3 Strichstaerke). -->
+  <g id="ic-web" fill="none" stroke="currentColor" stroke-width="1.3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 3c-3.1 3.2-3.1 14.6 0 18 3.1-3.4 3.1-14.8 0-18Z"/>
+    <path d="M3.3 9.2h17.4M3.3 14.8h17.4"/>
+  </g>
+
+  <!-- Instagram: die Wortmarke selbst waere geschuetzt, der Umriss des
+       Glyphs ist die uebliche Verlinkung auf ein eigenes Profil. -->
+  <g id="ic-insta" fill="none" stroke="currentColor" stroke-width="1.3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/>
+    <circle cx="12" cy="12" r="4.1"/>
+    <circle cx="17" cy="7" r="1.05" fill="currentColor" stroke="none"/>
+  </g>
 </defs></svg>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -317,7 +335,21 @@
     </div>
 
     <article class="member rise">
-      <div class="ph arch"><img src="{{ team.sophie.image.src }}" width="900" height="1125" alt="{{ team.sophie.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="{{ team.sophie.image.src }}" width="900" height="1125" alt="{{ team.sophie.image.alt }}" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+{{? team.sophie.web }}
+          <a class="member__link" href="{{ team.sophie.web }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.web }} — {{ team.sophie.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>{{ team.link.web }}</a>
+{{/? team.sophie.web }}
+{{? team.sophie.insta }}
+          <a class="member__link" href="{{ team.sophie.insta }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.insta }} — {{ team.sophie.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>{{ team.link.insta }}</a>
+{{/? team.sophie.insta }}
+        </p>
+      </div>
       <div class="member__tx">
         <h3>{{ team.sophie.name }}</h3>
         <span class="member__craft">{{ team.sophie.craft }}</span>
@@ -330,7 +362,21 @@
     </article>
 
     <article class="member member--flip rise">
-      <div class="ph arch"><img src="{{ team.sarah.image.src }}" width="900" height="1125" alt="{{ team.sarah.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="{{ team.sarah.image.src }}" width="900" height="1125" alt="{{ team.sarah.image.alt }}" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+{{? team.sarah.web }}
+          <a class="member__link" href="{{ team.sarah.web }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.web }} — {{ team.sarah.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>{{ team.link.web }}</a>
+{{/? team.sarah.web }}
+{{? team.sarah.insta }}
+          <a class="member__link" href="{{ team.sarah.insta }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.insta }} — {{ team.sarah.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>{{ team.link.insta }}</a>
+{{/? team.sarah.insta }}
+        </p>
+      </div>
       <div class="member__tx">
         <h3>{{ team.sarah.name }}</h3>
         <span class="member__craft">{{ team.sarah.craft }}</span>
@@ -340,7 +386,21 @@
     </article>
 
     <article class="member rise">
-      <div class="ph arch"><img src="{{ team.christina.image.src }}" width="900" height="1125" alt="{{ team.christina.image.alt }}" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="{{ team.christina.image.src }}" width="900" height="1125" alt="{{ team.christina.image.alt }}" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+{{? team.christina.web }}
+          <a class="member__link" href="{{ team.christina.web }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.web }} — {{ team.christina.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>{{ team.link.web }}</a>
+{{/? team.christina.web }}
+{{? team.christina.insta }}
+          <a class="member__link" href="{{ team.christina.insta }}" target="_blank" rel="noopener noreferrer me"
+             aria-label="{{ team.link.insta }} — {{ team.christina.name }}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>{{ team.link.insta }}</a>
+{{/? team.christina.insta }}
+        </p>
+      </div>
       <div class="member__tx">
         <h3>{{ team.christina.name }}</h3>
         <span class="member__craft">{{ team.christina.craft }}</span>

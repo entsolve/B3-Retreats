@@ -33,6 +33,20 @@ return [
         'hint' => 'Gemeinsamer Einleitungsabsatz über die drei Gastgeberinnen',
         'default' => 'Drei Persönlichkeiten, drei unterschiedliche Welten und ziemlich unterschiedliche Wege haben uns hierhergebracht. Was uns verbindet, ist die Überzeugung, dass wir uns und unser Leben nicht in einzelne Schubladen aufteilen müssen.',
     ],
+    'team.link.insta' => [
+        'group' => '14 Über uns',
+        'label' => 'Beschriftung Instagram-Link',
+        'type' => 'text',
+        'hint' => 'Steht neben dem Symbol unter allen drei Porträts.',
+        'default' => 'Instagram',
+    ],
+    'team.link.web' => [
+        'group' => '14 Über uns',
+        'label' => 'Beschriftung Website-Link',
+        'type' => 'text',
+        'hint' => 'Steht neben dem Symbol unter allen drei Porträts.',
+        'default' => 'Website',
+    ],
     'team.sophie.image.src' => [
         'group' => '14 Über uns',
         'label' => 'Foto Sophie',
@@ -60,6 +74,20 @@ return [
         'type' => 'text',
         'hint' => 'Arbeitsschwerpunkte, getrennt durch senkrechte Striche',
         'default' => 'Astrologie | Energiearbeit | spirituelle &amp; mediale Impulse',
+    ],
+    'team.sophie.web' => [
+        'group' => '14 Über uns',
+        'label' => 'Sophie – Website',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://www.sophiechristinbraun.de',
+    ],
+    'team.sophie.insta' => [
+        'group' => '14 Über uns',
+        'label' => 'Sophie – Instagram',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://www.instagram.com/sophiechristinbraun/',
     ],
     'team.sophie.text1' => [
         'group' => '14 Über uns',
@@ -124,6 +152,20 @@ return [
         'hint' => 'Arbeitsschwerpunkte, getrennt durch senkrechte Striche',
         'default' => 'Yin Yoga | Breathwork | Bodywork',
     ],
+    'team.sarah.web' => [
+        'group' => '14 Über uns',
+        'label' => 'Sarah – Website',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://atemraum-yoga.de',
+    ],
+    'team.sarah.insta' => [
+        'group' => '14 Über uns',
+        'label' => 'Sarah – Instagram',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://www.instagram.com/atemraum.yoga',
+    ],
     'team.sarah.text1' => [
         'group' => '14 Über uns',
         'label' => 'Sarah Absatz 1',
@@ -165,6 +207,20 @@ return [
         'type' => 'text',
         'hint' => 'Arbeitsschwerpunkte, getrennt durch senkrechte Striche',
         'default' => 'Strategie | Business | Struktur',
+    ],
+    'team.christina.web' => [
+        'group' => '14 Über uns',
+        'label' => 'Christina – Website',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse der eigenen Website, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://christina-brumm.com',
+    ],
+    'team.christina.insta' => [
+        'group' => '14 Über uns',
+        'label' => 'Christina – Instagram',
+        'type' => 'url',
+        'hint' => 'Vollständige Adresse des Instagram-Profils, inklusive https://. Leer lassen blendet den Link aus.',
+        'default' => 'https://www.instagram.com/christina.brumm',
     ],
     'team.christina.text1' => [
         'group' => '14 Über uns',

@@ -26,7 +26,7 @@
 
 <link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2?v=5d618c46" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-400-latin.woff2?v=e310b55a" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=d48a9f58">
+<link rel="stylesheet" href="assets/css/style.css?v=132a4b03">
 
 <script type="application/ld+json">
 {
@@ -64,6 +64,24 @@
           font-family="'Cormorant Garamond', Georgia, serif" font-weight="300">B<tspan font-size="25" dy="-17">3</tspan></text>
     <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
           font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
+  </g>
+
+  <!-- Website: Kugel mit Laengen- und Breitengrad. Bewusst dieselbe duenne
+       Linie wie der Pfeil „nach oben" (24er Feld, 1.3 Strichstaerke). -->
+  <g id="ic-web" fill="none" stroke="currentColor" stroke-width="1.3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 3c-3.1 3.2-3.1 14.6 0 18 3.1-3.4 3.1-14.8 0-18Z"/>
+    <path d="M3.3 9.2h17.4M3.3 14.8h17.4"/>
+  </g>
+
+  <!-- Instagram: die Wortmarke selbst waere geschuetzt, der Umriss des
+       Glyphs ist die uebliche Verlinkung auf ein eigenes Profil. -->
+  <g id="ic-insta" fill="none" stroke="currentColor" stroke-width="1.3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/>
+    <circle cx="12" cy="12" r="4.1"/>
+    <circle cx="17" cy="7" r="1.05" fill="currentColor" stroke="none"/>
   </g>
 </defs></svg>
 
@@ -341,7 +359,17 @@
     </div>
 
     <article class="member rise">
-      <div class="ph arch"><img src="assets/img/sophie.webp?v=db123673" width="900" height="1125" alt="Sophie Christin Braun am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="assets/img/sophie.webp?v=db123673" width="900" height="1125" alt="Sophie Christin Braun am Feldrand" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+          <a class="member__link" href="https://www.sophiechristinbraun.de" target="_blank" rel="noopener noreferrer me"
+             aria-label="Website — Sophie Christin Braun">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>Website</a>
+          <a class="member__link" href="https://www.instagram.com/sophiechristinbraun/" target="_blank" rel="noopener noreferrer me"
+             aria-label="Instagram — Sophie Christin Braun">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>Instagram</a>
+        </p>
+      </div>
       <div class="member__tx">
         <h3>Sophie Christin Braun</h3>
         <span class="member__craft">Astrologie | Energiearbeit | spirituelle &amp; mediale Impulse</span>
@@ -354,7 +382,17 @@
     </article>
 
     <article class="member member--flip rise">
-      <div class="ph arch"><img src="assets/img/sarah.webp?v=0bedbd36" width="900" height="1125" alt="Sarah Bernhard am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="assets/img/sarah.webp?v=0bedbd36" width="900" height="1125" alt="Sarah Bernhard am Feldrand" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+          <a class="member__link" href="https://atemraum-yoga.de" target="_blank" rel="noopener noreferrer me"
+             aria-label="Website — Sarah Bernhard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>Website</a>
+          <a class="member__link" href="https://www.instagram.com/atemraum.yoga" target="_blank" rel="noopener noreferrer me"
+             aria-label="Instagram — Sarah Bernhard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>Instagram</a>
+        </p>
+      </div>
       <div class="member__tx">
         <h3>Sarah Bernhard</h3>
         <span class="member__craft">Yin Yoga | Breathwork | Bodywork</span>
@@ -364,7 +402,17 @@
     </article>
 
     <article class="member rise">
-      <div class="ph arch"><img src="assets/img/christina.webp?v=bc281095" width="900" height="1125" alt="Christina am Feldrand" loading="lazy" decoding="async"></div>
+      <div class="member__ph">
+        <div class="ph arch"><img src="assets/img/christina.webp?v=bc281095" width="900" height="1125" alt="Christina am Feldrand" loading="lazy" decoding="async"></div>
+        <p class="member__links">
+          <a class="member__link" href="https://christina-brumm.com" target="_blank" rel="noopener noreferrer me"
+             aria-label="Website — Christina">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-web"/></svg>Website</a>
+          <a class="member__link" href="https://www.instagram.com/christina.brumm" target="_blank" rel="noopener noreferrer me"
+             aria-label="Instagram — Christina">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-insta"/></svg>Instagram</a>
+        </p>
+      </div>
       <div class="member__tx">
         <h3>Christina</h3>
         <span class="member__craft">Strategie | Business | Struktur</span>
