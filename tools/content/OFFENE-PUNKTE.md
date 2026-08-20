@@ -25,6 +25,34 @@ Die reinen „falls kuenftig …"-Hinweise stehen nicht mehr auf der Seite: sie
 waren an die Betreiberin gerichtet, nicht an Besucherinnen, und wurden von
 Besucherinnen mitgelesen.
 
+## Bildnachweise und KI-Aufnahmen (Stand 20.08.2026)
+
+Die Kundin hat mitgeteilt, dass die Personenaufnahmen mit generativer KI
+erzeugt wurden und dass darauf REALE Personen zu sehen sind (die drei
+Veranstalterinnen, erzeugt aus deren eigenen Referenzfotos).
+
+Daraus folgen drei Punkte, die eine juristische Pruefung braucht:
+
+1. KENNZEICHNUNGSPFLICHT. Art. 50 Abs. 4 KI-Verordnung (EU) 2024/1689
+   verpflichtet dazu, KI-erzeugte oder -manipulierte Bilder offenzulegen, die
+   real existierenden Personen aehneln („Deepfake" im Sinne von Art. 3 Nr. 60).
+   Die Transparenzpflichten gelten seit dem 02.08.2026 — also bereits jetzt.
+   Deshalb steht der Hinweis oben im Impressum. Ob die Platzierung dort
+   genuegt oder ob sie naeher am Bild stehen muss, sollte ein Anwalt beurteilen.
+
+2. RECHT AM EIGENEN BILD (§ 22 KUG). Erkennbare Personen duerfen nur mit
+   Einwilligung abgebildet werden. Da es die Veranstalterinnen selbst sind,
+   liegt sie faktisch vor — sie sollte aber SCHRIFTLICH dokumentiert sein,
+   und zwar ausdruecklich auch fuer die KI-erzeugten Fassungen, nicht nur fuer
+   die Originalfotos.
+
+3. URHEBERRECHT. Rein KI-erzeugte Bilder sind in Deutschland regelmaessig
+   NICHT urheberrechtlich geschuetzt (§ 2 Abs. 2 UrhG verlangt eine
+   persoenliche geistige Schoepfung). Ein „©" darauf traegt also nicht weit.
+   Getrennt davon: an den zugrunde liegenden Referenzfotos koennen Rechte
+   einer Fotografin bestehen — das ist zu klaeren, falls die Vorlagen nicht
+   von der Kundin selbst stammen.
+
 ## Noch offen — dafuer fehlen Angaben der Kundin
 
 1. Bildnachweise im Impressum (wer hat die Fotos gemacht).

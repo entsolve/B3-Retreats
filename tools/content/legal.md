@@ -71,7 +71,9 @@ Soweit die Inhalte auf dieser Seite nicht von der Betreiberin erstellt wurden, w
 
 ## Bildnachweise
 
-[BITTE ERGÄNZEN: Quellen und Urheberangaben für verwendete Fotos, Grafiken und Videos, z. B. „Fotos: © Christina Brumm“, „Fotos: © [Name der Fotografin], verwendet mit freundlicher Genehmigung“ oder Lizenzangaben von Stockportalen. Falls ausschließlich eigene Aufnahmen verwendet werden, genügt: „Alle Fotos: © Christina Brumm“.]
+Aufnahmen des Anwesens, der Räumlichkeiten und des Außengeländes: © Christina Brumm.
+
+Hinweis zu den Personenaufnahmen: Ein Teil der auf dieser Website gezeigten Aufnahmen von Personen wurde mit Hilfe generativer künstlicher Intelligenz erstellt oder bearbeitet. Abgebildet sind die Veranstalterinnen selbst; die Veröffentlichung erfolgt mit deren Einwilligung.
 
 ## Stand
 
@@ -120,7 +122,9 @@ Je nach Verarbeitungssituation stützen wir uns auf folgende Rechtsgrundlagen:
 - Art. 6 Abs. 1 lit. c DSGVO – rechtliche Verpflichtung: insbesondere zur Erfüllung handels- und steuerrechtlicher Aufbewahrungspflichten.
 - Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse: insbesondere am technisch fehlerfreien, sicheren und stabilen Betrieb dieser Website.
 
-Eine Übermittlung personenbezogener Daten in ein Drittland außerhalb der EU bzw. des EWR findet nach derzeitigem Stand nicht statt.
+Durch uns selbst findet keine Übermittlung personenbezogener Daten in ein Drittland außerhalb der EU bzw. des EWR statt.
+
+Eine Ausnahme kann die Zahlungsabwicklung über Tentary sein: Zu den dort eingesetzten Zahlungsdienstleistern gehört Stripe, Inc. mit Sitz in den USA (siehe Abschnitt 7). Soweit dabei Daten in die USA übermittelt werden, stützt sich die Übermittlung auf einen Angemessenheitsbeschluss der EU-Kommission (EU-US Data Privacy Framework), sofern der Anbieter dort zertifiziert ist, andernfalls auf die Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.
 
 Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 
@@ -201,9 +205,15 @@ Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Retreat-Vertrages b
 Rolle von Tentary und Auftragsverarbeitung: Tentary stellt uns die technische Infrastruktur für den Verkaufs-, Buchungs- und Zahlungsprozess zur Verfügung und verarbeitet die dabei anfallenden personenbezogenen Daten für uns. Mit Tentary besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO.
 
 Zahlungsdienstleister: Für die eigentliche Zahlungsabwicklung können über Tentary externe Zahlungsdienstleister eingebunden werden. Diese verarbeiten die für die Zahlung erforderlichen Daten in eigener datenschutzrechtlicher Verantwortung nach ihren jeweiligen Datenschutzbestimmungen. Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst nicht erhoben und nicht gespeichert.
-[BITTE ERGÄNZEN: Konkret eingesetzte Zahlungsdienstleister benennen (z. B. Stripe Payments Europe Ltd., PayPal (Europe) S.à r.l. et Cie, S.C.A., SEPA-Lastschrift, Klarna) einschließlich Anschrift und Link zur jeweiligen Datenschutzerklärung.]
+Nach den Angaben von Tentary werden für die Zahlungsabwicklung folgende Anbieter eingesetzt:
 
-Weitere Informationen zur Datenverarbeitung durch Tentary finden Sie in der Datenschutzerklärung von Tentary: [BITTE ERGÄNZEN: vollständiger Link zur Datenschutzerklärung von Tentary]
+- PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg – Datenschutzerklärung: https://www.paypal.com/de/webapps/mpp/ua/privacy-full
+- Stripe, Inc., 510 Townsend Street, San Francisco, CA 94103, USA – Datenschutzerklärung: https://stripe.com/de/privacy
+- Mollie B.V., Keizersgracht 126, 1015 CW Amsterdam, Niederlande – Datenschutzerklärung: https://www.mollie.com/de/privacy
+
+Welcher dieser Anbieter im Einzelfall zum Einsatz kommt, hängt von der im Buchungsvorgang gewählten Zahlungsart ab.
+
+Weitere Informationen zur Datenverarbeitung durch Tentary finden Sie in der Datenschutzerklärung von Tentary: https://tentary.com/de/privacy/
 
 Speicherdauer: Buchungs-, Vertrags- und Zahlungsdaten werden für die Dauer der Vertragsdurchführung sowie darüber hinaus im Rahmen der gesetzlichen Aufbewahrungsfristen gespeichert (insbesondere gemäß § 257 HGB und § 147 AO in der Regel sechs bzw. zehn Jahre). Nach Ablauf dieser Fristen werden die Daten gelöscht.
 
@@ -329,6 +339,34 @@ und die E-Mail-Adresse benannt. Damit sind eingetragen:
 Die reinen „falls kuenftig …"-Hinweise stehen nicht mehr auf der Seite: sie
 waren an die Betreiberin gerichtet, nicht an Besucherinnen, und wurden von
 Besucherinnen mitgelesen.
+
+## Bildnachweise und KI-Aufnahmen (Stand 20.08.2026)
+
+Die Kundin hat mitgeteilt, dass die Personenaufnahmen mit generativer KI
+erzeugt wurden und dass darauf REALE Personen zu sehen sind (die drei
+Veranstalterinnen, erzeugt aus deren eigenen Referenzfotos).
+
+Daraus folgen drei Punkte, die eine juristische Pruefung braucht:
+
+1. KENNZEICHNUNGSPFLICHT. Art. 50 Abs. 4 KI-Verordnung (EU) 2024/1689
+   verpflichtet dazu, KI-erzeugte oder -manipulierte Bilder offenzulegen, die
+   real existierenden Personen aehneln („Deepfake" im Sinne von Art. 3 Nr. 60).
+   Die Transparenzpflichten gelten seit dem 02.08.2026 — also bereits jetzt.
+   Deshalb steht der Hinweis oben im Impressum. Ob die Platzierung dort
+   genuegt oder ob sie naeher am Bild stehen muss, sollte ein Anwalt beurteilen.
+
+2. RECHT AM EIGENEN BILD (§ 22 KUG). Erkennbare Personen duerfen nur mit
+   Einwilligung abgebildet werden. Da es die Veranstalterinnen selbst sind,
+   liegt sie faktisch vor — sie sollte aber SCHRIFTLICH dokumentiert sein,
+   und zwar ausdruecklich auch fuer die KI-erzeugten Fassungen, nicht nur fuer
+   die Originalfotos.
+
+3. URHEBERRECHT. Rein KI-erzeugte Bilder sind in Deutschland regelmaessig
+   NICHT urheberrechtlich geschuetzt (§ 2 Abs. 2 UrhG verlangt eine
+   persoenliche geistige Schoepfung). Ein „©" darauf traegt also nicht weit.
+   Getrennt davon: an den zugrunde liegenden Referenzfotos koennen Rechte
+   einer Fotografin bestehen — das ist zu klaeren, falls die Vorlagen nicht
+   von der Kundin selbst stammen.
 
 ## Noch offen — dafuer fehlen Angaben der Kundin
 
