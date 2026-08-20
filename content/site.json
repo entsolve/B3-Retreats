@@ -747,5 +747,62 @@
     "text": "Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing\n         erst mit deiner Zustimmung — mehr dazu in der <a class=\"link\" href=\"datenschutz.html\">Datenschutzerklärung</a>.",
     "btn_necessary": "Nur notwendige",
     "btn_all": "Alle akzeptieren"
+  },
+  "danke": {
+    "meta": {
+      "title": "Du bist dabei! | B³ Retreats"
+    },
+    "eyebrow": "Buchung bestätigt",
+    "headline": "Du bist dabei! ♡",
+    "lead": "Dein Platz beim B³ Retreat ist für dich reserviert.",
+    "intro": [
+      {
+        "text": "Wie schön, dass du dich für diese besonderen Tage entschieden hast. Wir freuen uns riesig darauf, dich beim B³ Retreat willkommen zu heißen und gemeinsam eine unvergessliche Zeit zu erleben."
+      },
+      {
+        "text": "Jetzt darf die Vorfreude beginnen. ♡"
+      }
+    ],
+    "image": {
+      "src": "assets/img/hero-tall.webp",
+      "alt": "Christina, Sophie und Sarah vom B³ Retreat"
+    },
+    "next": {
+      "title": "Wie geht es jetzt weiter?",
+      "body": [
+        {
+          "text": "In den nächsten Stunden erhältst du von uns eine persönliche E-Mail mit allen wichtigen Informationen zu deinem Retreat."
+        },
+        {
+          "text": "Darin findest du alles, was du für die nächsten Schritte wissen musst."
+        }
+      ]
+    },
+    "ask": {
+      "title": "Eine kleine Sache brauchen wir noch von dir",
+      "text": "Bitte antworte direkt auf unsere E-Mail und teile uns mit, welche Verpflegung du während des Retreats möchtest:",
+      "options": [
+        {
+          "text": "Vegetarisch"
+        },
+        {
+          "text": "Mit Fleisch &amp; Fisch"
+        }
+      ],
+      "note": "So können wir deine Verpflegung entsprechend einplanen. Solltest du die E-Mail nicht direkt finden, wirf bitte auch einen Blick in deinen Spam-Ordner."
+    },
+    "outro": {
+      "title": "Das war’s für den Moment.",
+      "body": [
+        {
+          "text": "Alles Weitere bekommst du persönlich von uns per E-Mail. Bis dahin musst du nichts weiter tun – außer dich auf deine Auszeit zu freuen."
+        },
+        {
+          "text": "Wir freuen uns auf dich!"
+        }
+      ]
+    },
+    "sign": "Christina &amp; das B³ Retreat Team",
+    "cta": "Zur Startseite"
   }
 }

@@ -2212,3 +2212,66 @@ body { --consent-h: 0px; --bar-h: 0px; }
 @media (hover: none) {
   .galerie__pfeil { opacity: 1; }
 }
+
+/* ==========================================================================
+   DANKE-SEITE (/danke)
+   Eigene, ruhige Seite nach der Buchung. Sie benutzt die Bausteine der
+   Hauptseite (.wrap, .ph, .btn, .eyebrow, .feats) und fuegt nur das Raster
+   hinzu — zwei Spalten am Rechner, gestapelt am Telefon.
+   ========================================================================== */
+
+.danke { padding: var(--space-m) 0 var(--space-l); background: var(--ivory); }
+
+.danke__in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  gap: var(--gutter) clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+
+/* Kopf und Text stehen links untereinander, das Bild rechts daneben und
+   ueber beide Zeilen — so laeuft der Text nicht um ein schmales Hochformat. */
+.danke__kopf { grid-column: 1; }
+.danke__tx   { grid-column: 1; }
+.danke__ph   { grid-column: 2; grid-row: 1 / span 2; margin: 0; position: sticky; top: 6rem; }
+
+.danke__kopf h1 {
+  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem);
+  max-width: 14ch;
+  margin-bottom: .8rem;
+}
+.danke__kopf .lead { max-width: 34ch; }
+.danke__kopf p { max-width: 56ch; }
+
+.danke__ph .ph { aspect-ratio: 3 / 4; }
+
+.danke__block { margin-top: var(--space-s); max-width: 60ch; }
+.danke__block h2 {
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.125rem);
+  margin-bottom: .8rem;
+}
+.danke__block p + p { margin-top: 1rem; }
+
+/* Der Kasten mit der Rueckfrage ist das Einzige, was die Leserin JETZT tun
+   soll — er bekommt deshalb als einziger Block eine Kante. */
+.danke__block--betont {
+  border-left: 1px solid var(--rule-strong);
+  padding: .2rem 0 .2rem 1.4rem;
+}
+
+.danke__sign {
+  margin-top: 1.6rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+}
+
+.danke__cta { margin-top: var(--space-s); }
+
+@media (max-width: 860px) {
+  .danke__in { grid-template-columns: 1fr; }
+  /* Gestapelt kommt das Bild zwischen Begruessung und Ablauf zu stehen. */
+  .danke__kopf { grid-column: 1; grid-row: 1; }
+  .danke__ph   { grid-column: 1; grid-row: 2; position: static; margin-top: var(--space-s); }
+  .danke__tx   { grid-column: 1; grid-row: 3; }
+  .danke__ph .ph { aspect-ratio: 1 / 1; }
+}

@@ -60,6 +60,7 @@ ABSCHNITTE = {
     "foot":      ("18", "Fußzeile"),
     "bar":       ("19", "Mobile Buchungsleiste"),
     "consent":   ("20", "Cookie-Hinweis"),
+    "danke":     ("21", "Danke-Seite"),
 }
 
 

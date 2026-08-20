@@ -24,6 +24,8 @@ Es handelt sich um ein Einzelunternehmen. Eine Eintragung im Handelsregister bes
 
 E-Mail: hello@b3-retreats.de
 
+Telefon: auf Anfrage
+
 Website: www.b3-retreats.de
 
 ## Umsatzsteuer-Identifikationsnummer
@@ -164,7 +166,7 @@ Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenomm
 
 Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an der technisch fehlerfreien Darstellung, der Stabilität und der Sicherheit unserer Website – hierzu müssen die Server-Log-Dateien erfasst werden.
 
-Speicherdauer: Die Log-Dateien werden nach [BITTE ERGÄNZEN: Speicherdauer beim Hoster erfragen, üblich sind 7 bis 14 Tage] automatisch gelöscht, sofern sie nicht ausnahmsweise zur Aufklärung eines konkreten Sicherheitsvorfalls oder Missbrauchsfalls länger benötigt werden.
+Speicherdauer: Die Log-Dateien werden spätestens nach sieben Tagen automatisch gelöscht, sofern sie nicht ausnahmsweise zur Aufklärung eines konkreten Sicherheitsvorfalls oder Missbrauchsfalls länger benötigt werden.
 
 ## 6. Kontaktaufnahme per E-Mail
 

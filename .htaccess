@@ -63,6 +63,15 @@ DirectoryIndex index.php index.html
 #     trotzdem weiter die Startseite, und niemand findet den Grund.
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # /danke ist die Seite nach der Buchung. Sie liegt als danke.php vor, soll
+  # aber unter der kurzen Adresse erreichbar sein — mit und ohne Schraegstrich.
+  #
+  # DIESE REGEL MUSS VOR DER 404-UMLEITUNG STEHEN. Sonst greift die Regel
+  # darunter zuerst („die Datei /danke gibt es nicht"), und die Danke-Seite
+  # landet auf der Startseite.
+  RewriteRule ^danke/?$ danke.php [L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ / [R=302,L]

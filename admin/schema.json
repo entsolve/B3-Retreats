@@ -1693,5 +1693,143 @@
     "label": "Cookie-Hinweis: Knopf 'Alle akzeptieren'",
     "type": "text",
     "hint": "Beschriftung des Knopfes, der alle Cookies erlaubt."
+  },
+  {
+    "path": "danke.meta.title",
+    "label": "Seitentitel der Danke-Seite",
+    "type": "text",
+    "hint": "Steht im Browser-Tab. Die Seite wird für Suchmaschinen gesperrt."
+  },
+  {
+    "path": "danke.eyebrow",
+    "label": "Kleine Zeile über der Überschrift",
+    "type": "text",
+    "hint": "Kurz, in Großbuchstaben gesetzt."
+  },
+  {
+    "path": "danke.headline",
+    "label": "Überschrift",
+    "type": "html",
+    "hint": "Die große Begrüßung nach der Buchung."
+  },
+  {
+    "path": "danke.lead",
+    "label": "Satz unter der Überschrift",
+    "type": "html",
+    "hint": "Eine Zeile, die die Reservierung bestätigt."
+  },
+  {
+    "path": "danke.intro",
+    "label": "Einleitende Absätze",
+    "type": "list",
+    "hint": "Fließtext direkt unter der Begrüßung. Jeder Eintrag wird ein eigener Absatz.",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": ""
+      }
+    ]
+  },
+  {
+    "path": "danke.image.src",
+    "label": "Foto auf der Danke-Seite",
+    "type": "image",
+    "hint": "Das Bild von euch dreien."
+  },
+  {
+    "path": "danke.image.alt",
+    "label": "Bildbeschreibung",
+    "type": "text",
+    "hint": "Alternativtext für Screenreader."
+  },
+  {
+    "path": "danke.next.title",
+    "label": "Überschrift „Wie geht es weiter“",
+    "type": "text",
+    "hint": ""
+  },
+  {
+    "path": "danke.next.body",
+    "label": "Absätze zum weiteren Ablauf",
+    "type": "list",
+    "hint": "Jeder Eintrag wird ein eigener Absatz.",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": ""
+      }
+    ]
+  },
+  {
+    "path": "danke.ask.title",
+    "label": "Überschrift der Rückfrage",
+    "type": "text",
+    "hint": "Die Bitte um die Angabe zur Verpflegung."
+  },
+  {
+    "path": "danke.ask.text",
+    "label": "Text der Rückfrage",
+    "type": "html",
+    "hint": ""
+  },
+  {
+    "path": "danke.ask.options",
+    "label": "Auswahlmöglichkeiten",
+    "type": "list",
+    "hint": "Zum Beispiel „Vegetarisch“ und „Mit Fleisch & Fisch“.",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Möglichkeit",
+        "type": "text",
+        "hint": ""
+      }
+    ]
+  },
+  {
+    "path": "danke.ask.note",
+    "label": "Hinweis unter der Auswahl",
+    "type": "html",
+    "hint": "Zum Beispiel der Hinweis auf den Spam-Ordner."
+  },
+  {
+    "path": "danke.outro.title",
+    "label": "Überschrift des Abschlusses",
+    "type": "text",
+    "hint": ""
+  },
+  {
+    "path": "danke.outro.body",
+    "label": "Absätze des Abschlusses",
+    "type": "list",
+    "hint": "Jeder Eintrag wird ein eigener Absatz.",
+    "itemLabel": "text",
+    "fields": [
+      {
+        "path": "text",
+        "label": "Absatz",
+        "type": "textarea",
+        "hint": ""
+      }
+    ]
+  },
+  {
+    "path": "danke.sign",
+    "label": "Grußzeile",
+    "type": "html",
+    "hint": "Zum Beispiel „Christina & das B³ Retreat Team“."
+  },
+  {
+    "path": "danke.cta",
+    "label": "Beschriftung des Knopfes zurück zur Seite",
+    "type": "text",
+    "hint": ""
   }
 ]

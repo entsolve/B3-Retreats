@@ -242,5 +242,22 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('consent.text', 'Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing
          erst mit deiner Zustimmung — mehr dazu in der <a class="link" href="datenschutz.html">Datenschutzerklärung</a>.', 'html'),
 ('consent.btn_necessary', 'Nur notwendige', 'text'),
-('consent.btn_all', 'Alle akzeptieren', 'text')
+('consent.btn_all', 'Alle akzeptieren', 'text'),
+('danke.meta.title', 'Du bist dabei! | B³ Retreats', 'text'),
+('danke.eyebrow', 'Buchung bestätigt', 'text'),
+('danke.headline', 'Du bist dabei! ♡', 'html'),
+('danke.lead', 'Dein Platz beim B³ Retreat ist für dich reserviert.', 'html'),
+('danke.intro', '[{"text": "Wie schön, dass du dich für diese besonderen Tage entschieden hast. Wir freuen uns riesig darauf, dich beim B³ Retreat willkommen zu heißen und gemeinsam eine unvergessliche Zeit zu erleben."}, {"text": "Jetzt darf die Vorfreude beginnen. ♡"}]', 'json'),
+('danke.image.src', 'assets/img/hero-tall.webp', 'image'),
+('danke.image.alt', 'Christina, Sophie und Sarah vom B³ Retreat', 'text'),
+('danke.next.title', 'Wie geht es jetzt weiter?', 'text'),
+('danke.next.body', '[{"text": "In den nächsten Stunden erhältst du von uns eine persönliche E-Mail mit allen wichtigen Informationen zu deinem Retreat."}, {"text": "Darin findest du alles, was du für die nächsten Schritte wissen musst."}]', 'json'),
+('danke.ask.title', 'Eine kleine Sache brauchen wir noch von dir', 'text'),
+('danke.ask.text', 'Bitte antworte direkt auf unsere E-Mail und teile uns mit, welche Verpflegung du während des Retreats möchtest:', 'html'),
+('danke.ask.options', '[{"text": "Vegetarisch"}, {"text": "Mit Fleisch &amp; Fisch"}]', 'json'),
+('danke.ask.note', 'So können wir deine Verpflegung entsprechend einplanen. Solltest du die E-Mail nicht direkt finden, wirf bitte auch einen Blick in deinen Spam-Ordner.', 'html'),
+('danke.outro.title', 'Das war’s für den Moment.', 'text'),
+('danke.outro.body', '[{"text": "Alles Weitere bekommst du persönlich von uns per E-Mail. Bis dahin musst du nichts weiter tun – außer dich auf deine Auszeit zu freuen."}, {"text": "Wir freuen uns auf dich!"}]', 'json'),
+('danke.sign', 'Christina &amp; das B³ Retreat Team', 'html'),
+('danke.cta', 'Zur Startseite', 'text')
 ON DUPLICATE KEY UPDATE `v` = VALUES(`v`), `type` = VALUES(`type`);

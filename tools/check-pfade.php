@@ -26,15 +26,20 @@ $wurzel = dirname(__DIR__);
 require_once $wurzel . '/partials/render.php';
 
 $register = content_registry();
-$vorlage  = $wurzel . '/tools/templates/index.html';
-$text     = (string) file_get_contents($vorlage);
 
-$zeilen = [];
-foreach (explode("\n", $text) as $n => $z) {
-    $zeilen[] = [$n + 1, $z];
+/* ALLE Vorlagen, nicht nur die Startseite. Seit es /danke gibt, wohnt ein
+   Teil der Schluessel dort — und wer hier nur index.html prueft, meldet
+   dreizehn Felder als wirkungslos, die in Wahrheit sauber ankommen. */
+$vorlagen = [];
+foreach (glob($wurzel . '/tools/templates/*.html') ?: [] as $datei) {
+    $zeilen = [];
+    foreach (explode("\n", (string) file_get_contents($datei)) as $n => $z) {
+        $zeilen[] = [$n + 1, $z];
+    }
+    $vorlagen[basename($datei)] = $zeilen;
 }
 
-/** Die Seite mit genau einer Ueberschreibung bauen. */
+/** Eine Vorlage mit genau einer Ueberschreibung bauen. */
 function bauen_mit(array $zeilen, string $schluessel, $wert): string
 {
     $daten = b3_site_json();
@@ -44,6 +49,17 @@ function bauen_mit(array $zeilen, string $schluessel, $wert): string
     $aus = [];
     b3_render_block($zeilen, 0, count($zeilen), [$daten], $aus, false);
     return implode("\n", $aus);
+}
+
+/** Kommt der Wert in IRGENDEINER Vorlage an? */
+function irgendwo(array $vorlagen, string $schluessel, string $marke): bool
+{
+    foreach ($vorlagen as $zeilen) {
+        if (strpos(bauen_mit($zeilen, $schluessel, $marke), $marke) !== false) {
+            return true;
+        }
+    }
+    return false;
 }
 
 $geprueft = 0;
@@ -62,17 +78,15 @@ foreach ($register as $schluessel => $def) {
     }
 
     $marke = 'ZZPROBE' . $geprueft . 'ZZ';
-    $html = bauen_mit($zeilen, $schluessel, $marke);
     $geprueft++;
 
-    if (strpos($html, $marke) === false) {
-        $fehler[] = $schluessel . ($html === '<<PFAD NICHT SETZBAR>>'
-            ? '  (Pfad liess sich nicht setzen)'
-            : '  (gesetzt, aber nicht in der Seite)');
+    if (!irgendwo($vorlagen, $schluessel, $marke)) {
+        $fehler[] = $schluessel . '  (in keiner Vorlage angekommen)';
     }
 }
 
-printf("%d Schluessel geprueft, %d Listen uebersprungen.\n", $geprueft, count($uebersprungen));
+printf("%d Schluessel gegen %d Vorlagen geprueft, %d Listen uebersprungen.\n",
+    $geprueft, count($vorlagen), count($uebersprungen));
 
 if ($fehler) {
     echo "\nDiese Felder kommen auf der Seite NICHT an:\n";

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ danke.meta.title }}</title>
+
+<!-- Die Seite sieht nur, wer gebucht hat. Sie gehoert nicht in die Suche —
+     weder als Treffer noch als Ziel eines Links von aussen. -->
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="assets/img/favicon.ico" sizes="32x32">
+<link rel="icon" href="{{ meta.favicon.src }}">
+<link rel="apple-touch-icon" href="{{ meta.favicon.apple }}">
+
+<link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Wiederverwendbares Markenzeichen -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="b3mark">
+    <path d="M90.97 15.76 A54 54 0 1 1 73.98 7.84" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <path d="M94.71 18.64 A54 54 0 0 1 110.74 41.53" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <circle cx="82.82" cy="11.06" r="2.6" fill="currentColor"/>
+    <text x="58" y="74" text-anchor="middle" font-size="48" fill="currentColor"
+          font-family="'Cormorant Garamond', Georgia, serif" font-weight="300">B<tspan font-size="25" dy="-17">3</tspan></text>
+    <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
+          font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
+  </g>
+</defs></svg>
+
+<header class="site-head">
+  <div class="wrap site-head__in">
+    <a class="site-head__logo" href="/" aria-label="B³ Retreats – Startseite">
+      <svg class="mark" viewBox="0 0 120 120" width="76" height="76"><use href="#b3mark"/></svg>
+    </a>
+  </div>
+</header>
+
+<main class="danke">
+  <div class="wrap danke__in">
+
+    <div class="danke__kopf">
+      <p class="eyebrow">{{ danke.eyebrow }}</p>
+      <h1>{{ danke.headline }}</h1>
+      <p class="lead">{{ danke.lead }}</p>
+{{# danke.intro }}
+      <p>{{ .text }}</p>
+{{/ danke.intro }}
+    </div>
+
+    <figure class="danke__ph">
+      <div class="ph"><img src="{{ danke.image.src }}" width="1500" height="2000" alt="{{ danke.image.alt }}" fetchpriority="high"></div>
+    </figure>
+
+    <div class="danke__tx">
+      <section class="danke__block">
+        <h2>{{ danke.next.title }}</h2>
+{{# danke.next.body }}
+        <p>{{ .text }}</p>
+{{/ danke.next.body }}
+      </section>
+
+      <section class="danke__block danke__block--betont">
+        <h2>{{ danke.ask.title }}</h2>
+        <p>{{ danke.ask.text }}</p>
+        <ul class="feats">
+{{# danke.ask.options }}
+          <li>{{ .text }}</li>
+{{/ danke.ask.options }}
+        </ul>
+        <p class="small">{{ danke.ask.note }}</p>
+      </section>
+
+      <section class="danke__block">
+        <h2>{{ danke.outro.title }}</h2>
+{{# danke.outro.body }}
+        <p>{{ .text }}</p>
+{{/ danke.outro.body }}
+        <p class="danke__sign">{{ danke.sign }}</p>
+      </section>
+
+      <p class="danke__cta"><a class="btn btn--primary" href="/">{{ danke.cta }}</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-foot band-olive">
+  <div class="wrap">
+    <p class="small">{{ foot.legal.line }}</p>
+    <p class="small">
+      <a href="impressum.html">{{ foot.nav.legal.impressum }}</a> ·
+      <a href="datenschutz.html">{{ foot.nav.legal.datenschutz }}</a> ·
+      <a href="agb.html">{{ foot.nav.legal.agb }}</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
