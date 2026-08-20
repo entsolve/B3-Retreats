@@ -26,7 +26,7 @@
 
 <link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2?v=5d618c46" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-400-latin.woff2?v=e310b55a" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=d8e5c34c">
+<link rel="stylesheet" href="assets/css/style.css?v=d48a9f58">
 
 <script type="application/ld+json">
 {
@@ -665,13 +665,20 @@
       </div>
       <hr>
       <div class="ticket__prices">
-        <div><b>Shared House</b><span>1.549 €</span><p class="small">pro Person</p></div>
-        <div><b>Friends Special</b><span>3.950 €</span><p class="small">für 2 Personen</p></div>
+        <div>
+          <b>Shared House</b><span>1.549 €</span><p class="small">pro Person</p>
+          <a class="btn btn--primary btn--block ticket__btn" href="#buchung" data-booking
+             data-booking-url="">Meinen Platz sichern</a>
+        </div>
+        <div>
+          <b>Friends Special</b><span>3.950 €</span><p class="small">für 2 Personen</p>
+          <a class="btn btn--primary btn--block ticket__btn" href="#buchung" data-booking
+             data-booking-url="">Friends Special sichern</a>
+        </div>
       </div>
       <hr>
       <p class="small">Unterkunft, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.</p>
-      <p style="margin-top:2rem"><a class="btn btn--primary btn--block" href="#buchung" data-booking>Meinen Platz sichern</a></p>
-      <p class="small ticket__fine">Zahlung über unseren externen Anbieter Tentary. AGB und Stornierungsbedingungen sind vor Abschluss der Buchung vollständig einsehbar.</p>
+      <p class="small ticket__fine">Zahlung über unseren externen Zahlungsdienstleister Stripe. AGB und Stornierungsbedingungen sind vor Abschluss der Buchung vollständig einsehbar.</p>
     </div>
   </div>
 </section>
@@ -798,7 +805,7 @@
 
     <p class="small site-foot__legal">
       B³ Retreats &middot; Christina Brumm &middot; An den Nahewiesen 20, 55450 Langenlonsheim
-      <span>Buchung und Zahlungsabwicklung über Tentary</span>
+      <span>Buchung und Zahlungsabwicklung über Stripe</span>
     </p>
   </div>
 </footer>
@@ -829,6 +836,6 @@
   </div>
 </aside>
 
-<script src="assets/js/main.js?v=aed896cc"></script>
+<script src="assets/js/main.js?v=f757e445"></script>
 </body>
 </html>

@@ -32,7 +32,7 @@ Dort können insbesondere geregelt werden:
 § 3 Vertragsschluss
 (1) Die Darstellung eines Retreats auf einer Website, Landingpage oder Verkaufsplattform stellt grundsätzlich noch kein verbindliches Vertragsangebot dar.
 (2) Die Buchung erfolgt über den für das jeweilige Retreat bereitgestellten Buchungsprozess.
-(3) Die technische Buchungs- und Zahlungsabwicklung kann insbesondere über externe Verkaufs- und Zahlungsplattformen erfolgen. Derzeit wird hierfür unter anderem Tentary eingesetzt.
+(3) Die technische Buchungs- und Zahlungsabwicklung erfolgt über einen externen Zahlungsdienstleister. Derzeit wird hierfür Stripe eingesetzt.
 (4) Der konkrete technische Ablauf des Vertragsschlusses ergibt sich aus dem jeweiligen Buchungsprozess.
 (5) Mit erfolgreichem Abschluss des Buchungsvorgangs kommt der Vertrag über die Teilnahme am ausgewählten Retreat zwischen der Teilnehmerin und Christina Brumm zustande, soweit im Buchungsprozess nichts Abweichendes angegeben wird.
 (6) Die Teilnehmerin ist verpflichtet, die im Rahmen der Buchung abgefragten Angaben vollständig und wahrheitsgemäß zu machen.

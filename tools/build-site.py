@@ -35,6 +35,18 @@ CONTENT = ROOT / "content" / "site.json"
 TEMPLATE = ROOT / "tools" / "templates" / "index.html"
 TARGET = ROOT / "index.html"
 
+# Die Rechtstexte werden ebenfalls aus site.json gebaut, seit sie im Panel
+# stehen. Die erzeugten Dateien sind NICHT die ausgelieferte Seite — die
+# kommt aus impressum.php und Geschwistern und liest die Datenbank. Sie sind
+# der Notfallstand, auf den die PHP-Datei zurueckfaellt.
+#
+# Frueher schrieb tools/build-legal.py diese drei Dateien aus legal.md. Das
+# geht jetzt nicht mehr: es wuerde die Arbeit der Kundin ueberschreiben.
+# build-legal.py ist deshalb zum Importeur geworden (--import).
+WEITERE = [("impressum", "Impressum"),
+           ("datenschutz", "Datenschutz"),
+           ("agb", "AGB")]
+
 # Dateinamen aendern sich nie: assets/img/hero-tall.webp heisst nach jeder
 # Neuberechnung wieder genauso. Der Browser hat sie dann laengst im Cache und
 # zeigt weiter die alte Fassung — dieselbe Datei, anderer Inhalt. Das kostete in
@@ -262,6 +274,29 @@ def versionieren(html):
     return VERSIONIERT.sub(ersetzen, html)
 
 
+def bau_weitere(content, check_only):
+    """Impressum, Datenschutz und AGB — gleiche Vorlagensprache, gleiche Quelle."""
+    for schluessel, name in WEITERE:
+        vorlage = ROOT / "tools" / "templates" / f"{schluessel}.html"
+        ziel = ROOT / f"{schluessel}.html"
+        if not vorlage.exists():
+            print(f"fehlt: {vorlage.relative_to(ROOT)}", file=sys.stderr)
+            return 2
+        try:
+            ergebnis = versionieren(render(vorlage.read_text(encoding="utf-8"), content))
+        except TemplateError as exc:
+            print(f"{schluessel}: {exc}", file=sys.stderr)
+            return 1
+        if check_only:
+            if ziel.exists() and first_difference(ergebnis, ziel.read_text(encoding="utf-8")):
+                print(f"Abweichung in {ziel.name}", file=sys.stderr)
+                return 1
+            continue
+        ziel.write_text(ergebnis, encoding="utf-8")
+        print(f"{ziel.name} geschrieben ({len(ergebnis.splitlines())} Zeilen, {name})")
+    return 0
+
+
 def build(check_only=False):
     for path in (CONTENT, TEMPLATE):
         if not path.exists():
@@ -288,10 +323,14 @@ def build(check_only=False):
             print("Abweichung zum Bestand:\n" + diff, file=sys.stderr)
             return 1
         print("index.html ist zeichengleich mit der Vorlage — Rueckweg stimmt")
-        return 0
+        return bau_weitere(content, check_only=True)
 
     TARGET.write_text(result, encoding="utf-8")
     print(f"index.html geschrieben ({len(result.splitlines())} Zeilen)")
+
+    fehler = bau_weitere(content, check_only=False)
+    if fehler:
+        return fehler
 
     # Warnung, kein Abbruch: die Seite ist gebaut, sie stimmt nur womoeglich
     # nicht mit sich selbst ueberein.

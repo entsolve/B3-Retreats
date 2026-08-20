@@ -166,9 +166,9 @@ const B3_ALLOWED_ATTRS = [
     'ul'         => ['class'],
     'ol'         => ['class'],
     'li'         => ['class'],
-    'h2'         => ['class'],
-    'h3'         => ['class'],
-    'h4'         => ['class'],
+    'h2'         => ['class', 'id'],
+    'h3'         => ['class', 'id'],
+    'h4'         => ['class', 'id'],
     'blockquote' => ['class'],
 ];
 

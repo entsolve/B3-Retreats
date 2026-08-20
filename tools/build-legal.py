@@ -1,120 +1,35 @@
-"""Erzeugt impressum.html, datenschutz.html und agb.html.
+"""Importiert die Rechtstexte aus Klartext in den Panel-Bestand.
 
-Quelle sind zwei Klartextdateien, damit Christina die Rechtstexte pflegen kann,
-ohne HTML anzufassen: tools/content/legal.md und tools/content/agb.txt.
+FRUEHER schrieb dieses Skript impressum.html, datenschutz.html und agb.html.
+Das tut es nicht mehr. Die drei Seiten kommen jetzt aus dem Panel (Abschnitt
+„22 Rechtstexte", Schluessel recht.<seite>.body) und werden von
+tools/build-site.py gebaut wie jede andere Seite auch.
+
+Der Grund fuer den Umbau: die Klartextquelle war als Erleichterung gedacht
+(„Rechtstexte pflegen, ohne HTML anzufassen"), lag aber im Repo. Anfassen
+konnte sie damit nur, wer eine Arbeitskopie und einen Python-Lauf hat — also
+nicht die Kundin. Sie hatte ausgerechnet an den Seiten keinen Zugriff, fuer
+deren Inhalt sie persoenlich haftet.
+
+Was das Skript noch kann: den Klartext aus tools/content/legal.md und
+tools/content/agb.txt nach HTML uebersetzen und in content/site.json
+schreiben — der Weg, auf dem die Texte urspruenglich hineingekommen sind.
+
+    python3 tools/build-legal.py --import
+
+DAS UEBERSCHREIBT, WAS IM PANEL STEHT. Ohne --import passiert nichts, und das
+ist Absicht: ein versehentlicher Lauf wuerde die Arbeit der Kundin still
+zuruecksetzen. Der umgekehrte Weg — Panel-Stand zurueck in den Klartext —
+existiert nicht; nach dem Import ist das Panel die Wahrheit.
 """
 import html
 import pathlib
 import re
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "tools" / "content"
 
-HEAD = """<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} | B³ Retreats</title>
-<meta name="description" content="{desc}">
-<meta name="robots" content="{robots}">
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <g id="b3mark">
-    <path d="M90.97 15.76 A54 54 0 1 1 73.98 7.84" fill="none" stroke="currentColor" stroke-width="1.1"/>
-    <path d="M94.71 18.64 A54 54 0 0 1 110.74 41.53" fill="none" stroke="currentColor" stroke-width="1.1"/>
-    <circle cx="82.82" cy="11.06" r="2.6" fill="currentColor"/>
-    <text x="58" y="74" text-anchor="middle" font-size="48" fill="currentColor"
-          font-family="'Cormorant Garamond', Georgia, serif" font-weight="300">B<tspan font-size="25" dy="-17">3</tspan></text>
-    <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
-          font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
-  </g>
-</defs></svg>
-
-<header class="site-head site-head--solid">
-  <div class="wrap site-head__in">
-    <a href="/" aria-label="B³ Retreats – Startseite">
-      <svg class="mark" viewBox="0 0 120 120" width="76" height="76"><use href="#b3mark"/></svg>
-    </a>
-    <nav class="site-nav">
-      <a href="/">Zurück zur Startseite</a>
-    </nav>
-  </div>
-</header>
-
-<main class="legal band-ivory">
-  <div class="wrap grid">
-    <div class="legal__head">
-      <p class="eyebrow">Rechtliches</p>
-      <h1>{h1}</h1>
-    </div>
-    <div class="legal__body">
-{body}
-    </div>
-  </div>
-</main>
-
-<footer class="site-foot">
-  <div class="wrap site-foot__in">
-    <div class="site-foot__brand">
-      <svg class="mark mark--invert" viewBox="0 0 120 120" width="96" height="96"><use href="#b3mark"/></svg>
-      <p class="small">Body. Mind. Soul.<br>Yoga &middot; Astro &middot; Business</p>
-      <p class="small">08.&ndash;11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz</p>
-    </div>
-
-    <nav class="site-foot__col" aria-label="Retreat">
-      <p class="site-foot__label">Retreat</p>
-      <a href="/">Startseite</a>
-      <a href="/#experiences">Programm</a>
-      <a href="/#ort">Der Ort</a>
-      <a href="/#unterkunft">Unterkunft &amp; Preise</a>
-      <a href="/#team">Über uns</a>
-      <a href="/#faq">Häufige Fragen</a>
-    </nav>
-
-    <nav class="site-foot__col" aria-label="Rechtliches">
-      <p class="site-foot__label">Rechtliches</p>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="agb.html">AGB</a>
-      <a href="impressum.html#kontakt">Kontakt</a>
-      <button class="linklike" type="button" data-consent-open>Cookie-Einstellungen</button>
-    </nav>
-
-    <div class="site-foot__col site-foot__book">
-      <p class="site-foot__label">Buchung</p>
-      <p class="small">Shared House ab 1.549 &euro; pro Person<br>Friends Special 3.950 &euro; für zwei</p>
-      <a class="btn btn--invert" href="/#buchung" data-booking>Meinen Platz sichern</a>
-    </div>
-
-    <p class="small site-foot__legal">
-      B³ Retreats &middot; Christina Brumm &middot; An den Nahewiesen 20, 55450 Langenlonsheim
-      <span>Buchung und Zahlungsabwicklung über Tentary</span>
-    </p>
-  </div>
-</footer>
-
-<aside class="consent" id="consent" hidden aria-label="Hinweis zu Cookies">
-  <div class="wrap consent__in">
-    <div class="consent__tx">
-      <p class="eyebrow">Cookies</p>
-      <p>Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing
-         erst mit deiner Zustimmung — mehr dazu in der <a class="link" href="datenschutz.html">Datenschutzerklärung</a>.</p>
-    </div>
-    <div class="consent__btns">
-      <button class="btn btn--ghost" type="button" data-consent="necessary">Nur notwendige</button>
-      <button class="btn btn--primary" type="button" data-consent="all">Alle akzeptieren</button>
-    </div>
-  </div>
-</aside>
-
-<script src="assets/js/main.js"></script>
-</body>
-</html>
-"""
 
 TODO = re.compile(r"\[BITTE ERGÄNZEN:(.*?)\]", re.S)
 
@@ -223,30 +138,43 @@ def drop_echo(body, h1):
     return body[len(first):] if body.startswith(first) else body
 
 
-def write(path, title, h1, desc, body, robots="noindex, follow"):
-    body = drop_echo(body, h1)
-    (ROOT / path).write_text(
-        HEAD.format(title=title, h1=h1, desc=desc, body=body, robots=robots), encoding="utf-8")
-    print(f"{(ROOT / path).stat().st_size / 1024:6.1f} KB  {path}")
 
 
-if __name__ == "__main__":
+def importieren():
+    """Klartext -> HTML -> content/site.json. Ueberschreibt den Panel-Stand."""
+    import json
     md = split_md((SRC / "legal.md").read_text(encoding="utf-8"))
+    koerper = {
+        "impressum":   blocks_to_html(md["IMPRESSUM"]),
+        "datenschutz": blocks_to_html(md["DATENSCHUTZ"]),
+        "agb":         build_agb((SRC / "agb.txt").read_text(encoding="utf-8")),
+    }
+    # Die Ueberschrift der ersten Ebene wiederholt den Seitentitel — sie stand
+    # frueher im <h1> und darf im Rumpf nicht noch einmal auftauchen.
+    for schluessel, h1 in (("impressum", "Impressum"), ("datenschutz", "Datenschutz"), ("agb", "AGB")):
+        koerper[schluessel] = drop_echo(koerper[schluessel], h1)
 
-    write("impressum.html", "Impressum", "Impressum",
-          "Impressum und Anbieterkennzeichnung von B³ Retreats, Christina Brumm, Langenlonsheim.",
-          blocks_to_html(md["IMPRESSUM"]))
-
-    write("datenschutz.html", "Datenschutzerklärung", "Datenschutz",
-          "Informationen zur Verarbeitung personenbezogener Daten auf b3-retreats.de nach Art. 13 DSGVO.",
-          blocks_to_html(md["DATENSCHUTZ"]))
-
-    write("agb.html", "Allgemeine Geschäftsbedingungen", "AGB",
-          "Allgemeine Geschäftsbedingungen für die Teilnahme an B³ Retreats.",
-          build_agb((SRC / "agb.txt").read_text(encoding="utf-8")))
+    ziel = ROOT / "content" / "site.json"
+    daten = json.loads(ziel.read_text(encoding="utf-8"))
+    daten.setdefault("recht", {})
+    for schluessel, html in koerper.items():
+        entkerbt = "\n".join(z[6:] if z.startswith("      ") else z for z in html.split("\n"))
+        daten["recht"].setdefault(schluessel, {})["body"] = entkerbt
+        print(f"  {schluessel}: {len(entkerbt) / 1024:5.1f} KB")
+    ziel.write_text(json.dumps(daten, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("content/site.json geschrieben — danach: python3 tools/build-site.py")
 
     notes = md.get("NOTES")
     if notes:
         (ROOT / "tools" / "content" / "OFFENE-PUNKTE.md").write_text(
             "# Offene Punkte zu den Rechtstexten\n\n" + "\n".join(notes).strip() + "\n", encoding="utf-8")
         print("        tools/content/OFFENE-PUNKTE.md")
+
+
+if __name__ == "__main__":
+    if "--import" in sys.argv:
+        importieren()
+    else:
+        print(__doc__.strip())
+        print()
+        print("Nichts getan. Die Rechtstexte stehen im Panel, nicht mehr hier.")

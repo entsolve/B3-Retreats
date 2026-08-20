@@ -613,12 +613,15 @@
       <hr>
       <div class="ticket__prices">
         {{# buchung.preise }}
-        <div><b>{{ .label }}</b><span>{{ .preis }}</span><p class="small">{{ .hinweis }}</p></div>
+        <div>
+          <b>{{ .label }}</b><span>{{ .preis }}</span><p class="small">{{ .hinweis }}</p>
+          <a class="btn btn--primary btn--block ticket__btn" href="#buchung" data-booking
+             data-booking-url="{{ .url }}">{{ .cta }}</a>
+        </div>
         {{/ buchung.preise }}
       </div>
       <hr>
       <p class="small">{{ buchung.hinweis }}</p>
-      <p style="margin-top:2rem"><a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ buchung.cta.label }}</a></p>
       <p class="small ticket__fine">{{ buchung.fine }}</p>
     </div>
   </div>

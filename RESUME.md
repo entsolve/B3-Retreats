@@ -119,7 +119,7 @@ zeile = int(np.argmax(np.abs(np.diff(c)) > 6))   # должна совпадат
    странице с ценами это фактическое утверждение — пусть подтвердит Кристина.
 4. **Админка с базой данных.** Сделан фундамент: `db/schema.sql` (таблицы
    `admin_users`, `content`, `content_history`, `login_attempts`, `media`,
-   `settings`; таблицы `leads` нет — форм на сайте нет, бронь через Tentary) и
+   `settings`; таблицы `leads` нет — форм на сайте нет, бронь через Stripe) и
    `config.example.php`. `.gitignore` закрывает `config.php` и `img/uploads/`.
    Дальше по плану: `db.php` (PDO), `partials/content.php` с санитайзером,
    registry-дефолты, генератор `db/seed.sql` из `site.json`, затем сама панель.

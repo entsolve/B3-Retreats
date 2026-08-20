@@ -72,6 +72,22 @@ DirectoryIndex index.php index.html
   # landet auf der Startseite.
   RewriteRule ^danke/?$ danke.php [L]
 
+  # Die Rechtstexte kommen jetzt ebenfalls aus dem Panel. Verlinkt sind
+  # ueberall die .html-Adressen — die bleiben, sonst braechen alte Links und
+  # das, was Suchmaschinen und Behoerden bereits kennen. Sie zeigen nur nicht
+  # mehr auf die Datei, sondern auf die PHP-Fassung daneben.
+  #
+  # Die .html-Dateien BLEIBEN LIEGEN: sie sind der Notfallstand, den die
+  # PHP-Datei ausliefert, wenn Datenbank oder Vorlage ausfallen. Weil das ein
+  # Dateizugriff ist und kein neuer Aufruf, entsteht dabei keine Schleife.
+  #
+  # DIESE REGELN MUESSEN VOR DER 404-UMLEITUNG STEHEN — und ebenso vor der
+  # Bedingung !-f darunter, denn die Dateien gibt es ja, sie wuerden sonst
+  # unveraendert ausgeliefert und die Panel-Aenderung waere unsichtbar.
+  RewriteRule ^impressum(?:\.html)?/?$   impressum.php   [L]
+  RewriteRule ^datenschutz(?:\.html)?/?$ datenschutz.php [L]
+  RewriteRule ^agb(?:\.html)?/?$         agb.php         [L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ / [R=302,L]

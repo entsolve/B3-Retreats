@@ -18,7 +18,7 @@
 -- Zeichensatz: utf8mb4 — deutsche Umlaute ae oe ue ss und „ " brauchen ihn.
 --
 -- KEINE leads-Tabelle: B³ hat kein Kontaktformular, die Buchung laeuft
--- vollstaendig ueber Tentary. Kommt spaeter eines dazu, wird sie ergaenzt.
+-- vollstaendig ueber Stripe. Kommt spaeter eines dazu, wird sie ergaenzt.
 -- =====================================================================
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';

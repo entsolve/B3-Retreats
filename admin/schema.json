@@ -1025,7 +1025,7 @@
     "path": "haus.shared.url",
     "label": "Buchungslink Shared House",
     "type": "url",
-    "hint": "Nur ausfüllen, wenn Shared House einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
+    "hint": "Nur ausfüllen, wenn Shared House einen eigenen Stripe-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
   },
   {
     "path": "haus.friends.label",
@@ -1114,7 +1114,7 @@
     "path": "haus.friends.url",
     "label": "Buchungslink Friends Special",
     "type": "url",
-    "hint": "Nur ausfüllen, wenn Friends Special einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
+    "hint": "Nur ausfüllen, wenn Friends Special einen eigenen Stripe-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
   },
   {
     "path": "inkl.eyebrow",
@@ -1420,7 +1420,7 @@
     "path": "buchung.url",
     "label": "Buchungslink",
     "type": "url",
-    "hint": "Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Tentary, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt."
+    "hint": "Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Stripe, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt."
   },
   {
     "path": "buchung.bg.src",
@@ -1483,6 +1483,18 @@
         "label": "Preis-Zusatz",
         "type": "text",
         "hint": "Kleiner Zusatz unter dem Preis, z. B. pro Person."
+      },
+      {
+        "path": "cta",
+        "label": "Button-Beschriftung",
+        "type": "text",
+        "hint": "Text auf dem Buchungsbutton dieser Variante."
+      },
+      {
+        "path": "url",
+        "label": "Buchungslink dieser Variante",
+        "type": "url",
+        "hint": "Eigener Link für genau diese Variante. Leer lassen, wenn der allgemeine Buchungslink oben gilt."
       }
     ]
   },
@@ -1491,12 +1503,6 @@
     "label": "Leistungshinweis",
     "type": "textarea",
     "hint": "Was im Preis enthalten ist, direkt über dem Buchungsbutton."
-  },
-  {
-    "path": "buchung.cta.label",
-    "label": "Button-Beschriftung",
-    "type": "text",
-    "hint": "Text des Buchungsbuttons."
   },
   {
     "path": "buchung.fine",
@@ -1579,6 +1585,12 @@
     "label": "Fusszeile Spalte 1: Ueberschrift",
     "type": "text",
     "hint": "Ueberschrift der ersten Linkspalte."
+  },
+  {
+    "path": "foot.nav.retreat.start",
+    "label": "Fußzeile – Startseite",
+    "type": "text",
+    "hint": "Erster Punkt der Spalte „Retreat“. Erscheint nur auf den Rechtsseiten — auf der Startseite wäre ein Link auf sie selbst sinnlos."
   },
   {
     "path": "foot.nav.retreat.programm",
@@ -1849,5 +1861,89 @@
     "label": "Beschriftung des Knopfes zurück zur Seite",
     "type": "text",
     "hint": ""
+  },
+  {
+    "path": "recht.impressum.title",
+    "label": "Impressum — Titel im Browser-Tab",
+    "type": "text",
+    "hint": "Steht im Reiter des Browsers und als Überschrift in Suchergebnissen."
+  },
+  {
+    "path": "recht.impressum.h1",
+    "label": "Impressum — Überschrift auf der Seite",
+    "type": "text",
+    "hint": "Die große Überschrift oben auf der Seite."
+  },
+  {
+    "path": "recht.impressum.desc",
+    "label": "Impressum — Beschreibung für Suchmaschinen",
+    "type": "textarea",
+    "hint": "Der Zweizeiler unter dem Titel in Suchergebnissen. Etwa 150 Zeichen."
+  },
+  {
+    "path": "recht.impressum.body",
+    "label": "Impressum",
+    "type": "html",
+    "hint": "Der vollständige Text der Seite /impressum. Überschriften, Absätze und Listen über die Knöpfe im Editor. Pflichtangaben nach § 5 DDG nicht entfernen — Name, Anschrift, E-Mail und Umsatzsteuer-Angabe müssen stehen bleiben."
+  },
+  {
+    "path": "recht.datenschutz.title",
+    "label": "Datenschutz — Titel im Browser-Tab",
+    "type": "text",
+    "hint": "Steht im Reiter des Browsers und als Überschrift in Suchergebnissen."
+  },
+  {
+    "path": "recht.datenschutz.h1",
+    "label": "Datenschutz — Überschrift auf der Seite",
+    "type": "text",
+    "hint": "Die große Überschrift oben auf der Seite."
+  },
+  {
+    "path": "recht.datenschutz.desc",
+    "label": "Datenschutz — Beschreibung für Suchmaschinen",
+    "type": "textarea",
+    "hint": "Der Zweizeiler unter dem Titel in Suchergebnissen. Etwa 150 Zeichen."
+  },
+  {
+    "path": "recht.datenschutz.body",
+    "label": "Datenschutzerklärung",
+    "type": "html",
+    "hint": "Der vollständige Text der Seite /datenschutz. Vorsicht bei den Abschnitten zu Hosting, Stripe und den Betroffenenrechten: sie beschreiben, was technisch tatsächlich passiert. Ändert sich ein Dienst, muss der Text mitgeführt werden."
+  },
+  {
+    "path": "recht.agb.title",
+    "label": "AGB — Titel im Browser-Tab",
+    "type": "text",
+    "hint": "Steht im Reiter des Browsers und als Überschrift in Suchergebnissen."
+  },
+  {
+    "path": "recht.agb.h1",
+    "label": "AGB — Überschrift auf der Seite",
+    "type": "text",
+    "hint": "Die große Überschrift oben auf der Seite."
+  },
+  {
+    "path": "recht.agb.desc",
+    "label": "AGB — Beschreibung für Suchmaschinen",
+    "type": "textarea",
+    "hint": "Der Zweizeiler unter dem Titel in Suchergebnissen. Etwa 150 Zeichen."
+  },
+  {
+    "path": "recht.agb.body",
+    "label": "Allgemeine Geschäftsbedingungen",
+    "type": "html",
+    "hint": "Der vollständige Text der Seite /agb. Storno-, Zahlungs- und Widerrufsregeln sind Vertragsinhalt — Änderungen wirken nur für Buchungen ab dem Zeitpunkt der Änderung."
+  },
+  {
+    "path": "recht.eyebrow",
+    "label": "Kleine Zeile über der Überschrift",
+    "type": "text",
+    "hint": "Steht auf allen drei Rechtsseiten über der großen Überschrift."
+  },
+  {
+    "path": "recht.zurueck",
+    "label": "Link zurück im Kopf",
+    "type": "text",
+    "hint": "Der einzige Navigationspunkt im Kopf der Rechtsseiten."
   }
 ]

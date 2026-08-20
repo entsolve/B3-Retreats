@@ -26,6 +26,13 @@ return [
         'hint' => 'Ueberschrift der ersten Linkspalte.',
         'default' => 'Retreat',
     ],
+    'foot.nav.retreat.start' => [
+        'group' => '18 Fußzeile',
+        'label' => 'Fußzeile – Startseite',
+        'type' => 'text',
+        'hint' => 'Erster Punkt der Spalte „Retreat“. Erscheint nur auf den Rechtsseiten — auf der Startseite wäre ein Link auf sie selbst sinnlos.',
+        'default' => 'Startseite',
+    ],
     'foot.nav.retreat.programm' => [
         'group' => '18 Fußzeile',
         'label' => 'Link \'Programm\'',
@@ -136,6 +143,6 @@ return [
         'label' => 'Fusszeile: Hinweis zur Abwicklung',
         'type' => 'text',
         'hint' => 'Kurzer Hinweis, ueber welchen Anbieter Buchung und Zahlung laufen.',
-        'default' => 'Buchung und Zahlungsabwicklung über Tentary',
+        'default' => 'Buchung und Zahlungsabwicklung über Stripe',
     ],
 ];

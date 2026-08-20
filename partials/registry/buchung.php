@@ -9,7 +9,7 @@ return [
         'group' => '16 Buchung',
         'label' => 'Buchungslink',
         'type' => 'url',
-        'hint' => 'Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Tentary, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt.',
+        'hint' => 'Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Stripe, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt.',
         'default' => '',
     ],
     'buchung.bg.src' => [
@@ -87,17 +87,33 @@ return [
                 'type' => 'text',
                 'hint' => 'Kleiner Zusatz unter dem Preis, z. B. pro Person.',
             ],
+            [
+                'path' => 'cta',
+                'label' => 'Button-Beschriftung',
+                'type' => 'text',
+                'hint' => 'Text auf dem Buchungsbutton dieser Variante.',
+            ],
+            [
+                'path' => 'url',
+                'label' => 'Buchungslink dieser Variante',
+                'type' => 'url',
+                'hint' => 'Eigener Link für genau diese Variante. Leer lassen, wenn der allgemeine Buchungslink oben gilt.',
+            ],
         ],
         'default' => [
             [
                 'label' => 'Shared House',
                 'preis' => '1.549 €',
                 'hinweis' => 'pro Person',
+                'cta' => 'Meinen Platz sichern',
+                'url' => '',
             ],
             [
                 'label' => 'Friends Special',
                 'preis' => '3.950 €',
                 'hinweis' => 'für 2 Personen',
+                'cta' => 'Friends Special sichern',
+                'url' => '',
             ],
         ],
     ],
@@ -108,18 +124,11 @@ return [
         'hint' => 'Was im Preis enthalten ist, direkt über dem Buchungsbutton.',
         'default' => 'Unterkunft, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.',
     ],
-    'buchung.cta.label' => [
-        'group' => '16 Buchung',
-        'label' => 'Button-Beschriftung',
-        'type' => 'text',
-        'hint' => 'Text des Buchungsbuttons.',
-        'default' => 'Meinen Platz sichern',
-    ],
     'buchung.fine' => [
         'group' => '16 Buchung',
         'label' => 'Rechtlicher Hinweis',
         'type' => 'textarea',
         'hint' => 'Kleingedrucktes zu Zahlungsanbieter, AGB und Stornierung.',
-        'default' => 'Zahlung über unseren externen Anbieter Tentary. AGB und Stornierungsbedingungen sind vor Abschluss der Buchung vollständig einsehbar.',
+        'default' => 'Zahlung über unseren externen Zahlungsdienstleister Stripe. AGB und Stornierungsbedingungen sind vor Abschluss der Buchung vollständig einsehbar.',
     ],
 ];

@@ -27,7 +27,7 @@
     const url = (el.dataset.bookingUrl || '').trim() || allgemein;
 
     // Der Platzhalter aus frueheren Fassungen zaehlt weiterhin als „leer";
-    // sonst schickt ein vergessener Rest die Kundin auf eine 404 bei Tentary.
+    // sonst schickt ein vergessener Rest die Kundin auf eine 404.
     if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) return;
 
     el.setAttribute('href', url);

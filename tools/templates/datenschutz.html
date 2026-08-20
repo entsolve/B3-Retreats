@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ recht.datenschutz.title }} | B³ Retreats</title>
+<meta name="description" content="{{ recht.datenschutz.desc }}">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="b3mark">
+    <path d="M90.97 15.76 A54 54 0 1 1 73.98 7.84" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <path d="M94.71 18.64 A54 54 0 0 1 110.74 41.53" fill="none" stroke="currentColor" stroke-width="1.1"/>
+    <circle cx="82.82" cy="11.06" r="2.6" fill="currentColor"/>
+    <text x="58" y="74" text-anchor="middle" font-size="48" fill="currentColor"
+          font-family="'Cormorant Garamond', Georgia, serif" font-weight="300">B<tspan font-size="25" dy="-17">3</tspan></text>
+    <text x="64.8" y="93" text-anchor="middle" font-size="8.5" fill="currentColor" letter-spacing="3.6"
+          font-family="Manrope, system-ui, sans-serif" font-weight="400">RETREATS</text>
+  </g>
+</defs></svg>
+
+<header class="site-head site-head--solid">
+  <div class="wrap site-head__in">
+    <a href="/" aria-label="B³ Retreats – Startseite">
+      <svg class="mark" viewBox="0 0 120 120" width="76" height="76"><use href="#b3mark"/></svg>
+    </a>
+    <nav class="site-nav">
+      <a href="/">{{ recht.zurueck }}</a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal band-ivory">
+  <div class="wrap grid">
+    <div class="legal__head">
+      <p class="eyebrow">{{ recht.eyebrow }}</p>
+      <h1>{{ recht.datenschutz.h1 }}</h1>
+    </div>
+    <div class="legal__body">
+{{ recht.datenschutz.body }}
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap site-foot__in">
+    <div class="site-foot__brand">
+      <svg class="mark mark--invert" viewBox="0 0 120 120" width="96" height="96"><use href="#b3mark"/></svg>
+      <p class="small">{{ foot.brand.tagline }}</p>
+      <p class="small">{{ foot.brand.dateline }}</p>
+    </div>
+
+    <nav class="site-foot__col" aria-label="Retreat">
+      <p class="site-foot__label">{{ foot.nav.retreat.label }}</p>
+      <a href="/">{{ foot.nav.retreat.start }}</a>
+      <a href="/#experiences">{{ foot.nav.retreat.programm }}</a>
+      <a href="/#ort">{{ foot.nav.retreat.ort }}</a>
+      <a href="/#unterkunft">{{ foot.nav.retreat.unterkunft }}</a>
+      <a href="/#team">{{ foot.nav.retreat.team }}</a>
+      <a href="/#faq">{{ foot.nav.retreat.faq }}</a>
+    </nav>
+
+    <nav class="site-foot__col" aria-label="Rechtliches">
+      <p class="site-foot__label">{{ foot.nav.legal.label }}</p>
+      <a href="impressum.html">{{ foot.nav.legal.impressum }}</a>
+      <a href="datenschutz.html">{{ foot.nav.legal.datenschutz }}</a>
+      <a href="agb.html">{{ foot.nav.legal.agb }}</a>
+      <a href="impressum.html#kontakt">{{ foot.nav.legal.kontakt }}</a>
+      <button class="linklike" type="button" data-consent-open>{{ foot.nav.legal.consent }}</button>
+    </nav>
+
+    <div class="site-foot__col site-foot__book">
+      <p class="site-foot__label">{{ foot.booking.label }}</p>
+      <p class="small">{{ foot.booking.prices }}</p>
+      <a class="btn btn--invert" href="/#buchung" data-booking>{{ foot.booking.cta }}</a>
+    </div>
+
+    <p class="small site-foot__legal">
+      {{ foot.legal.line }}
+      <span>{{ foot.legal.note }}</span>
+    </p>
+  </div>
+</footer>
+
+<aside class="consent" id="consent" hidden aria-label="Hinweis zu Cookies">
+  <div class="wrap consent__in">
+    <div class="consent__tx">
+      <p class="eyebrow">{{ consent.eyebrow }}</p>
+      <p>{{ consent.text }}</p>
+    </div>
+    <div class="consent__btns">
+      <button class="btn btn--ghost" type="button" data-consent="necessary">{{ consent.btn_necessary }}</button>
+      <button class="btn btn--primary" type="button" data-consent="all">{{ consent.btn_all }}</button>
+    </div>
+  </div>
+</aside>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -185,29 +185,30 @@ Speicherdauer: Wir speichern Ihre Anfrage, bis der Zweck der Speicherung entfäl
 
 Bitte beachten Sie: Der Versand unverschlüsselter E-Mails erfolgt über das Internet und kann von Dritten mitgelesen werden. Bitte übersenden Sie uns keine besonders sensiblen Informationen (insbesondere Gesundheitsdaten im Sinne des Art. 9 DSGVO) unaufgefordert per unverschlüsselter E-Mail. Sofern Sie uns im Zusammenhang mit einem Retreat freiwillig Gesundheitsinformationen mitteilen (z. B. Allergien, Unverträglichkeiten oder körperliche Einschränkungen), verarbeiten wir diese ausschließlich zur Durchführung des Retreats und auf Grundlage Ihrer ausdrücklichen Einwilligung nach Art. 9 Abs. 2 lit. a DSGVO.
 
-## 7. Buchungs- und Zahlungsabwicklung über Tentary und Stripe
+## 7. Buchung und Zahlungsabwicklung über Stripe
 
-Für die Abwicklung von Buchungen und Zahlungen unserer Retreats setzen wir die Plattform Tentary ein.
+Für die Buchung unserer Retreats und die Abwicklung der Zahlung setzen wir Stripe ein. Der Buchungsvorgang findet auf einer von Stripe bereitgestellten und gehosteten Bezahlseite statt: Wenn Sie einen Buchungsbutton anklicken, verlassen Sie diese Website und geben Ihre Daten unmittelbar bei Stripe ein.
 
-Anbieterin: Tentary GmbH, Frankenstraße 152, 90461 Nürnberg, Deutschland.
+Anbieterin für Kundinnen und Kunden im Europäischen Wirtschaftsraum ist die Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland.
 
-Wenn Sie ein Retreat buchen, werden die von Ihnen im Buchungsprozess eingegebenen Daten über die Systeme von Tentary verarbeitet. Hierzu gehören insbesondere:
+Im Rahmen der Buchung werden insbesondere folgende Daten verarbeitet:
 
 - Vor- und Nachname
 - E-Mail-Adresse
 - Rechnungs- bzw. Postanschrift
 - gebuchtes Retreat und gewählte Buchungsoption
-- gewählte Zahlungsart und zahlungsbezogene Daten
-- Buchungs- und Transaktionsdaten (Datum, Betrag, Status)
-- ggf. weitere im Buchungsformular abgefragte Angaben
+- gewählte Zahlungsart und die zur Durchführung der Zahlung erforderlichen Zahlungsdaten
+- Buchungs- und Transaktionsdaten (Datum, Betrag, Währung, Status)
+- technische Daten wie IP-Adresse und Geräteinformationen, die Stripe zur Betrugsprävention erhebt
+- ggf. weitere im Buchungsvorgang abgefragte Angaben
 
 Zwecke der Verarbeitung: Durchführung des Buchungsvorgangs, Vertragsabwicklung, Zahlungsabwicklung, Rechnungsstellung, Kommunikation zur Buchung sowie Erfüllung gesetzlicher Aufbewahrungspflichten.
 
-Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Retreat-Vertrages bzw. Durchführung vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. c DSGVO (Erfüllung handels- und steuerrechtlicher Pflichten).
+Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Retreat-Vertrages bzw. Durchführung vorvertraglicher Maßnahmen), Art. 6 Abs. 1 lit. c DSGVO (Erfüllung handels- und steuerrechtlicher Pflichten) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und betrugsgeschützten Zahlungsabwicklung).
 
-Rolle von Tentary und Auftragsverarbeitung: Tentary stellt uns die technische Infrastruktur für den Verkaufs-, Buchungs- und Zahlungsprozess zur Verfügung und verarbeitet die dabei anfallenden personenbezogenen Daten für uns. Mit Tentary besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO.
+Rollenverteilung: Für die Buchungsdaten, die wir zur Erfüllung des Retreat-Vertrages benötigen, sind wir die Verantwortliche; Stripe verarbeitet diese Daten insoweit in unserem Auftrag, hierüber besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO. Für die eigentliche Zahlungsabwicklung sowie für Betrugsprävention und die Erfüllung eigener aufsichtsrechtlicher Pflichten (insbesondere nach Geldwäsche- und Zahlungsdiensterecht) ist Stripe eigenständig Verantwortliche und verarbeitet die Daten nach den eigenen Datenschutzbestimmungen.
 
-Zahlungsdienstleister Stripe: Die eigentliche Zahlungsabwicklung erfolgt über Tentary durch Stripe. Vertragspartnerin für Kundinnen und Kunden im Europäischen Wirtschaftsraum ist die Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland. Stripe verarbeitet die für die Zahlung erforderlichen Daten in eigener datenschutzrechtlicher Verantwortung nach den eigenen Datenschutzbestimmungen. Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst weder erhoben noch gespeichert; wir erhalten lediglich die Information, ob und wann eine Zahlung erfolgreich war.
+Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst weder erhoben noch gespeichert. Wir erhalten von Stripe die zur Vertragserfüllung nötigen Buchungsdaten sowie die Information, ob und wann eine Zahlung erfolgreich war.
 
 Im Buchungsvorgang stehen über Stripe folgende Zahlungsarten zur Verfügung:
 
@@ -216,10 +217,6 @@ Im Buchungsvorgang stehen über Stripe folgende Zahlungsarten zur Verfügung:
 - Apple Pay
 - Google Pay
 - Link (Bezahldienst von Stripe)
-
-An Stripe übermittelt bzw. von Stripe unmittelbar erhoben werden dabei insbesondere Name, E-Mail-Adresse, Rechnungsanschrift, Betrag und Währung, Zeitpunkt und Status der Transaktion, die gewählte Zahlungsart sowie die zur Durchführung der Zahlung erforderlichen Zahlungsdaten. Stripe verarbeitet darüber hinaus technische Daten wie IP-Adresse und Geräteinformationen zur Betrugsprävention sowie zur Erfüllung eigener aufsichtsrechtlicher Pflichten (insbesondere nach Geldwäsche- und Zahlungsdiensterecht).
-
-Rechtsgrundlagen für die Übermittlung an Stripe: Art. 6 Abs. 1 lit. b DSGVO (Abwicklung des Retreat-Vertrages) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und betrugsgeschützten Zahlungsabwicklung).
 
 Datenschutzerklärung von Stripe: https://stripe.com/de/privacy
 
@@ -230,8 +227,6 @@ Klarna und Ratenzahlung: Wenn Sie Klarna als Zahlungsart wählen – etwa um von
 Apple Pay und Google Pay: Bei Auswahl von Apple Pay oder Google Pay wird die Zahlung über den jeweiligen Wallet-Dienst freigegeben und anschließend über Stripe abgewickelt. Verantwortliche für den jeweiligen Wallet-Dienst sind die Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland (Datenschutzerklärung: https://www.apple.com/legal/privacy/de-ww/) bzw. die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Datenschutzerklärung: https://policies.google.com/privacy). Auf dieser Website selbst sind keine Skripte oder Schnittstellen von Apple oder Google eingebunden; die Wallet-Dienste kommen erst im Buchungs- und Bezahlvorgang zum Einsatz.
 
 Welche dieser Zahlungsarten im Einzelfall zum Einsatz kommt, entscheiden Sie selbst im Buchungsvorgang.
-
-Weitere Informationen zur Datenverarbeitung durch Tentary finden Sie in der Datenschutzerklärung von Tentary: https://tentary.com/de/privacy/
 
 Speicherdauer: Buchungs-, Vertrags- und Zahlungsdaten werden für die Dauer der Vertragsdurchführung sowie darüber hinaus im Rahmen der gesetzlichen Aufbewahrungsfristen gespeichert (insbesondere gemäß § 257 HGB und § 147 AO in der Regel sechs bzw. zehn Jahre). Nach Ablauf dieser Fristen werden die Daten gelöscht.
 
@@ -259,7 +254,7 @@ Rechtsgrundlage: Die Speicherung technisch notwendiger Cookies bzw. der Zugriff 
 
 Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden, Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.
 
-Hinweis: Im Rahmen des Buchungsvorgangs über Tentary können auf der Plattform von Tentary weitere Cookies gesetzt werden. Hierfür gelten die Datenschutz- und Cookie-Hinweise von Tentary.
+Hinweis: Der Buchungsvorgang findet auf einer Bezahlseite von Stripe statt. Dort können weitere Cookies gesetzt werden; hierfür gelten die Datenschutz- und Cookie-Hinweise von Stripe.
 
 ## 10. Einwilligungsbanner und lokale Speicherung Ihrer Entscheidung
 
@@ -390,10 +385,7 @@ Daraus folgen drei Punkte, die eine juristische Pruefung braucht:
 
 1. Bildnachweise im Impressum (wer hat die Fotos gemacht).
 2. Speicherdauer der Server-Logs — bei webhoster.de erfragen.
-3. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
-   automatische Abrufe mit HTTP 403, der Link muss von Hand geholt werden.
-
-Diese drei stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
+Diese zwei stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
 Absicht: sie stillschweigend zu loeschen wuerde eine unvollstaendige
 Datenschutzerklaerung vollstaendig aussehen lassen.
 
@@ -410,14 +402,14 @@ sind aus Abschnitt 7 entfernt.
 - Актуализация законов: TMG заменён на DDG (с 14.05.2024) — поэтому в тексте § 5 DDG и §§ 7-10 DDG, а не TMG. TTDSG переименован в TDDDG — используется § 25 Abs. 2 Nr. 2 TDDDG для cookies. Образец на creator-collabs.de ещё написан по старой редакции (§ 5 TMG), это нормально, что наши тексты отличаются.
 - Хостинг: провайдер неизвестен (в репозитории только изображения и AGB, кода сайта нет). Нужно от заказчицы/разработчика: точное название и адрес хостера, страна размещения серверов, и подтверждение, что подписан AVV (Auftragsverarbeitungsvertrag по Art. 28 DSGVO). Без этих данных раздел Hosting публиковать нельзя.
 - Срок хранения Server-Log-Dateien нужно уточнить у хостера (обычно 7-14 дней) и вписать конкретное число вместо плейсхолдера.
-- Tentary: адрес взят из Handelsregister (Tentary GmbH, Frankenstraße 152, 90461 Nürnberg, AG Nürnberg HRB 44976) — сайт tentary.com отдаёт 403 при автоматическом запросе, поэтому реквизиты нужно перепроверить вручную по их Impressum. Дополнительно нужно: (а) ссылка на Datenschutzerklärung Tentary, (б) подтверждение наличия AVV, (в) выяснить правовую роль Tentary — Auftragsverarbeiter или Merchant of Record/Reseller (продаёт от своего имени). От этого зависит формулировка раздела 7; в AGB § 3 указано, что договор заключается с Christina Brumm, что говорит скорее в пользу Auftragsverarbeitung, но это надо подтвердить документально.
+- ~~Tentary~~ — СНЯТО (20.08.2026): заказчица перешла на прямой Stripe, Tentary из всех текстов убран. Вопросы про AVV, реквизиты и роль (Auftragsverarbeiter vs. Merchant of Record) отпали вместе с ним.
 - Платёжные провайдеры: ЗАКРЫТО (20.08.2026). Заказчица подтвердила — платежи идут через Stripe, методы: Kreditkarte, Klarna (Ratenzahlung), Apple Pay, Google Pay, Link. PayPal и Mollie были предположением и убраны. В разделе 7 прописаны Stripe Payments Europe Ltd. (Dublin), Klarna Bank AB (Stockholm), Apple Distribution International Ltd. (Cork) и Google Ireland Ltd. (Dublin) как самостоятельные Verantwortliche, каждый со ссылкой на свою политику. Отдельно указана возможная Bonitätsprüfung у Klarna при рассрочке.
 - Google Fonts: текст написан строго в варианте «локальный хостинг, без CDN», как и требовалось. Перед публикацией разработчику обязательно проверить в DevTools (вкладка Network), что нет ни одного запроса к fonts.googleapis.com и fonts.gstatic.com — их часто тянут за собой темы, page-builder'ы и библиотеки иконок. Если запрос есть — либо переносить шрифты локально, либо переписывать раздел и ставить consent-баннер.
 - Cookies описаны как исключительно технически необходимые, consent-баннер не предусмотрен. Это верно только если на лендинге НЕТ Google Analytics, Meta Pixel, встроенных видео YouTube/Vimeo, ленты Instagram, Calendly, чатов и подобного. Нужно подтвердить у заказчицы/разработчика. При появлении любого такого сервиса потребуется полноценный consent-банер и дополнительные разделы.
 - Не описаны, так как пока неизвестно, будут ли они на лендинге: контактная форма, рассылка/newsletter (double opt-in), ссылки и виджеты соцсетей, отзывы участниц, фото- и видеосъёмка на ретритах. Особое внимание — Foto-/Videoaufnahmen: в AGB § 20 уже прописано отдельное согласие, при публикации фото участниц на сайте нужен отдельный раздел в Datenschutz.
-- Данные о здоровье (аллергии, непереносимости, ограничения — см. AGB §§ 7 и 10) относятся к особой категории по Art. 9 DSGVO. Я добавил соответствующую формулировку в раздел о контакте по e-mail (согласие по Art. 9 Abs. 2 lit. a). Если такие данные собираются через форму бронирования Tentary, нужен отдельный явный чекбокс согласия и расширение раздела 7.
+- Данные о здоровье (аллергии, непереносимости, ограничения — см. AGB §§ 7 и 10) относятся к особой категории по Art. 9 DSGVO. Я добавил соответствующую формулировку в раздел о контакте по e-mail (согласие по Art. 9 Abs. 2 lit. a). Если такие данные собираются в процессе бронирования у Stripe, нужен отдельный явный чекбокс согласия и расширение раздела 7.
 - Datenschutzbeauftragte(r) не назначен(а) — для ИП без масштабной обработки это, как правило, законно (§ 38 BDSG), но стоит подтвердить у заказчицы, что нет 20+ человек, постоянно занятых обработкой данных.
 - Телефон в Impressum формально не обязателен (по практике EuGH достаточно e-mail с быстрым ответом), поэтому строка помечена как опциональная. Уточнить, хочет ли заказчица публиковать номер.
 - Нужно указать точный домен лендинга (для Impressum → Kontakt) и Bildnachweise — авторство фотографий из папки materials- in (свои снимки или фотограф с лицензией).
 - Указать месяц/год в поле «Stand» на обеих страницах (в AGB стоит «Stand: August 2026» — имеет смысл синхронизировать).
-- Юридическая оговорка: это подготовленные тексты, а не юридическая консультация. Перед публикацией рекомендуется вычитка немецким юристом по IT-праву или хотя бы сверка с актуальным генератором (e-recht24), особенно по разделам Tentary, Hosting и Widerrufsrecht, поскольку у ретритов есть специфика (§ 312g Abs. 2 Nr. 9 BGB, см. AGB § 16).
+- Юридическая оговорка: это подготовленные тексты, а не юридическая консультация. Перед публикацией рекомендуется вычитка немецким юристом по IT-праву или хотя бы сверка с актуальным генератором (e-recht24), особенно по разделам Stripe (Abschnitt 7), Hosting и Widerrufsrecht, поскольку у ретритов есть специфика (§ 312g Abs. 2 Nr. 9 BGB, см. AGB § 16).

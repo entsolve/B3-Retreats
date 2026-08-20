@@ -21,7 +21,8 @@ tools/
   build-site.py         content/site.json + шаблон → index.html
   admin-server.py       локальный сервер редакторской панели
   build-assets.py       фото → assets/img/*.webp
-  build-legal.py        tools/content/*.{md,txt} → правовые страницы
+  build-legal.py        разовый импорт tools/content/*.{md,txt} → site.json (--import)
+  check-vorlagen.py     обратная проверка: что на странице НЕ из панели
 materials- in/        исходники заказчицы (в сайт не входят)
 ```
 
@@ -116,7 +117,7 @@ Experiences, абзацы внутри них. **Нельзя** добавлят
 ## Ссылка на оплату
 
 Живёт в панели, поле **«16 Buchung → Buchungslink»** (`buchung.url`). Одну ссылку
-Tentary подхватывают все 9 кнопок на странице — `target="_blank"`,
+Stripe подхватывают все кнопки на странице — `target="_blank"`,
 `rel="noopener noreferrer"`.
 
 Раньше это была константа `BOOKING_URL` в `assets/js/main.js`, и заказчица
@@ -130,6 +131,34 @@ Tentary подхватывают все 9 кнопок на странице —
 и на сами кнопки тарифов, `main.js` их оттуда читает. Пока ни одна ссылка не
 задана, кнопка остаётся на своей цели из шаблона (`#buchung`, на правовых
 страницах `/#buchung`) — то есть даже пустое состояние куда-то ведёт.
+
+## Правовые страницы
+
+Живут в панели, раздел **«22 Rechtstexte»** — три поля с HTML-редактором:
+`recht.impressum.body`, `recht.datenschutz.body`, `recht.agb.body`.
+
+Раньше это были статические HTML, которые `build-legal.py` пёк из
+`tools/content/legal.md` и `agb.txt`. Идея была «править тексты, не трогая
+HTML», но исходники лежали в репозитории — то есть добраться до них мог только
+тот, у кого есть рабочая копия и Python. У заказчицы не было доступа именно к
+тем страницам, за содержимое которых она отвечает лично.
+
+Как отдаются: `impressum.php`, `datenschutz.php`, `agb.php` собирают шаблон из
+`tools/templates/` и подставляют содержимое из БД — как `index.php`. Адреса
+`.html` сохранены (на них ссылаются футер и внешние ссылки), `.htaccess`
+перенаправляет их на `.php`. Сами файлы `impressum.html` и прочие остаются
+запасным стендом, на который откатывается PHP при аварии, и пересобираются
+`build-site.py`.
+
+Якоря заголовков (`<h2 id="7-buchung-und-zahlungsabwicklung-uber-stripe">`)
+переживают сохранение: в `partials/content.php` атрибут `id` добавлен в
+разрешённые для `h2/h3/h4`. Без этого первое же сохранение из панели вырезало
+бы все ссылки на параграфы. Проверено — все три текста проходят санитайзер
+байт в байт.
+
+`build-legal.py` больше не пишет страницы. Он остался импортёром из
+plain-text в `site.json` и без `--import` не делает ничего — случайный запуск
+затёр бы работу заказчицы.
 
 ## Куки-баннер
 
@@ -156,7 +185,8 @@ Tentary подхватывают все 9 кнопок на странице —
 ```bash
 python3 tools/build-fonts.py    # шрифты с Google Fonts → локальные woff2 + fonts.css
 python3 tools/build-assets.py   # фото из «materials- in» → assets/img/*.webp
-python3 tools/build-legal.py    # tools/content/*.{md,txt} → impressum/datenschutz/agb
+python3 tools/build-site.py     # index + impressum/datenschutz/agb (запасные копии)
+python3 tools/check-vorlagen.py # что на странице жёстко зашито мимо панели
 ```
 
 `build-assets.py` — не просто ресайз. Фото сняты в жёсткий полдень, небо
@@ -297,7 +327,7 @@ hairs and awns catch the low sun as **separate bright lines**». Это и ес�
   а не на несуществующий `mailto:`.
 - **USt-IdNr.** или отметка о § 19 UStG (Kleinunternehmerregelung).
 - **Хостер** и договор AVV — для раздела Datenschutz.
-- **Роль Tentary**: Auftragsverarbeiter или Merchant of Record — от этого зависит формулировка.
+- ~~**Роль Tentary**~~ — снято: Tentary больше не используется, бронирование и оплата идут напрямую через Stripe.
 - **Bildnachweise** — авторство фотографий.
 
 ## Чего на странице сознательно нет

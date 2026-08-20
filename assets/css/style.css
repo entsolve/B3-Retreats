@@ -1274,6 +1274,14 @@ section { position: relative; }
   letter-spacing: -.01em;
 }
 
+/* Je Variante ein eigener Button. Vorher lag EIN breiter Button unter beiden
+   Preisen — er liess offen, welchen Tarif er eigentlich bucht, und mit zwei
+   getrennten Buchungslinks war das nicht mehr aufloesbar. Die Spalten stehen
+   deshalb als Saeule: Preis oben, Button buendig unten. */
+.ticket__prices > div { display: flex; flex-direction: column; }
+.ticket__prices > div > p { margin-bottom: 1.4rem; }
+.ticket__btn { margin-top: auto; }
+
 .ticket__fine { margin-top: 1.4rem; text-align: center; }
 
 /* --- 15 FAQ --------------------------------------------------------------- */

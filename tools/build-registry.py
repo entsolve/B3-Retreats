@@ -61,6 +61,7 @@ ABSCHNITTE = {
     "bar":       ("19", "Mobile Buchungsleiste"),
     "consent":   ("20", "Cookie-Hinweis"),
     "danke":     ("21", "Danke-Seite"),
+    "recht":     ("22", "Rechtstexte"),
 }
 
 
