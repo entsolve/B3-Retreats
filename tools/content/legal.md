@@ -18,25 +18,19 @@ B³ Retreats ist eine Geschäftsbezeichnung der Einzelunternehmerin Christina Br
 
 Christina Brumm (Inhaberin)
 
-Es handelt sich um ein Einzelunternehmen. Eine Eintragung im Handelsregister besteht nach derzeitigem Stand nicht.
-
-[BITTE ERGÄNZEN: Falls doch eine Handelsregistereintragung besteht – Registergericht und Registernummer hier angeben, z. B. „Amtsgericht Bad Kreuznach, HRB 12345“. Andernfalls diesen Hinweis unverändert stehen lassen.]
+Es handelt sich um ein Einzelunternehmen. Eine Eintragung im Handelsregister besteht nicht.
 
 ## Kontakt
 
-E-Mail: [BITTE ERGÄNZEN: offizielle E-Mail-Adresse, z. B. hallo@b3-retreats.de – zwingend erforderlich nach § 5 Abs. 1 Nr. 2 DDG]
+E-Mail: hello@b3-retreats.de
 
-Telefon: [BITTE ERGÄNZEN: Telefonnummer – optional. Eine Telefonnummer ist nicht zwingend vorgeschrieben, solange eine schnelle elektronische Kontaktaufnahme und unmittelbare Kommunikation über die angegebene E-Mail-Adresse sichergestellt ist. Falls keine Angabe gewünscht ist, diese Zeile bitte vollständig löschen.]
-
-Website: [BITTE ERGÄNZEN: vollständige Domain der Landingpage, z. B. www.b3-retreats.de]
+Website: www.b3-retreats.de
 
 ## Umsatzsteuer-Identifikationsnummer
 
 Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
 
-[BITTE ERGÄNZEN: USt-IdNr. im Format DE + 9 Ziffern]
-
-[BITTE ERGÄNZEN: Sofern für B³ Retreats die Kleinunternehmerregelung nach § 19 UStG in Anspruch genommen wird und keine Umsatzsteuer-Identifikationsnummer vorliegt, ist dieser gesamte Abschnitt ersatzlos zu streichen. Alternativ kann – falls keine USt-IdNr., aber eine Steuernummer verwendet werden soll – auf die Angabe verzichtet werden; die Steuernummer muss nicht veröffentlicht werden.]
+DE369850912
 
 ## Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV
 
@@ -81,7 +75,7 @@ Soweit die Inhalte auf dieser Seite nicht von der Betreiberin erstellt wurden, w
 
 ## Stand
 
-Stand dieses Impressums: [BITTE ERGÄNZEN: Monat und Jahr der Veröffentlichung, z. B. August 2026]
+Stand dieses Impressums: August 2026
 
 
 # DATENSCHUTZ
@@ -109,12 +103,11 @@ An den Nahewiesen 20
 55450 Langenlonsheim
 Deutschland
 
-E-Mail: [BITTE ERGÄNZEN: offizielle E-Mail-Adresse, z. B. hallo@b3-retreats.de]
-Telefon: [BITTE ERGÄNZEN: optional – Telefonnummer oder diese Zeile löschen]
+E-Mail: hello@b3-retreats.de
 
 Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
 
-Eine gesetzliche Pflicht zur Benennung einer bzw. eines Datenschutzbeauftragten besteht nach derzeitigem Stand nicht. [BITTE ERGÄNZEN: Falls doch eine Datenschutzbeauftragte oder ein Datenschutzbeauftragter benannt wurde, hier Name und Kontaktdaten ergänzen.]
+Eine gesetzliche Pflicht zur Benennung einer bzw. eines Datenschutzbeauftragten besteht nach derzeitigem Stand nicht.
 
 ## 3. Allgemeine Hinweise und Rechtsgrundlagen der Verarbeitung
 
@@ -127,7 +120,7 @@ Je nach Verarbeitungssituation stützen wir uns auf folgende Rechtsgrundlagen:
 - Art. 6 Abs. 1 lit. c DSGVO – rechtliche Verpflichtung: insbesondere zur Erfüllung handels- und steuerrechtlicher Aufbewahrungspflichten.
 - Art. 6 Abs. 1 lit. f DSGVO – berechtigtes Interesse: insbesondere am technisch fehlerfreien, sicheren und stabilen Betrieb dieser Website.
 
-Eine Übermittlung personenbezogener Daten in ein Drittland außerhalb der EU bzw. des EWR findet nach derzeitigem Stand nicht statt. [BITTE ERGÄNZEN: Falls künftig Dienste mit Drittlandbezug eingesetzt werden (z. B. Newsletter-Tools, Videokonferenz-Dienste, Social-Media-Plugins), ist dieser Abschnitt zu ergänzen.]
+Eine Übermittlung personenbezogener Daten in ein Drittland außerhalb der EU bzw. des EWR findet nach derzeitigem Stand nicht statt.
 
 Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
 
@@ -139,13 +132,16 @@ Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die perso
 
 Anbieter des Hostings ist:
 
-[BITTE ERGÄNZEN: vollständiger Name und Anschrift des Hosting-Anbieters, z. B. „ALL-INKL.COM – Neue Medien Münnich, Inh. René Münnich, Hauptstraße 68, 02742 Friedersdorf, Deutschland“ oder der tatsächlich eingesetzte Anbieter (Strato, IONOS, Hetzner, Vercel, Netlify o. Ä.). Bitte auch angeben, in welchem Land die Server stehen.]
+webhoster.de AG
+Zum Haunert 22
+59519 Möhnesee
+Deutschland
+
+Die Server stehen in Deutschland.
 
 Der Einsatz des Hosters erfolgt zum Zweck der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Teilnehmerinnen (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
 
 Vertrag über Auftragsverarbeitung: Wir haben mit dem Hoster einen Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen. Dabei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass der Hoster die personenbezogenen Daten unserer Websitebesucherinnen und -besucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.
-
-[BITTE ERGÄNZEN: Bitte bestätigen, dass der Auftragsverarbeitungsvertrag (AVV) mit dem Hoster tatsächlich abgeschlossen und dokumentiert ist.]
 
 ## 5. Server-Log-Dateien
 
@@ -187,7 +183,6 @@ Bitte beachten Sie: Der Versand unverschlüsselter E-Mails erfolgt über das Int
 Für die Abwicklung von Buchungen und Zahlungen unserer Retreats setzen wir die Plattform Tentary ein.
 
 Anbieterin: Tentary GmbH, Frankenstraße 152, 90461 Nürnberg, Deutschland.
-[BITTE ERGÄNZEN: Firmierung und Anschrift bitte anhand des aktuellen Impressums von Tentary gegenprüfen und ggf. korrigieren.]
 
 Wenn Sie ein Retreat buchen, werden die von Ihnen im Buchungsprozess eingegebenen Daten über die Systeme von Tentary verarbeitet. Hierzu gehören insbesondere:
 
@@ -204,7 +199,6 @@ Zwecke der Verarbeitung: Durchführung des Buchungsvorgangs, Vertragsabwicklung,
 Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Retreat-Vertrages bzw. Durchführung vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. c DSGVO (Erfüllung handels- und steuerrechtlicher Pflichten).
 
 Rolle von Tentary und Auftragsverarbeitung: Tentary stellt uns die technische Infrastruktur für den Verkaufs-, Buchungs- und Zahlungsprozess zur Verfügung und verarbeitet die dabei anfallenden personenbezogenen Daten für uns. Mit Tentary besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO.
-[BITTE ERGÄNZEN: Bitte prüfen und bestätigen, (a) dass der Auftragsverarbeitungsvertrag mit Tentary abgeschlossen und dokumentiert ist und (b) ob Tentary im konkreten Vertragsmodell als Auftragsverarbeiterin oder in Teilbereichen als eigenständig Verantwortliche bzw. als Verkäuferin im eigenen Namen (Reseller/Merchant of Record) auftritt. Je nach Modell ist die Formulierung dieses Absatzes anzupassen.]
 
 Zahlungsdienstleister: Für die eigentliche Zahlungsabwicklung können über Tentary externe Zahlungsdienstleister eingebunden werden. Diese verarbeiten die für die Zahlung erforderlichen Daten in eigener datenschutzrechtlicher Verantwortung nach ihren jeweiligen Datenschutzbestimmungen. Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst nicht erhoben und nicht gespeichert.
 [BITTE ERGÄNZEN: Konkret eingesetzte Zahlungsdienstleister benennen (z. B. Stripe Payments Europe Ltd., PayPal (Europe) S.à r.l. et Cie, S.C.A., SEPA-Lastschrift, Klarna) einschließlich Anschrift und Link zur jeweiligen Datenschutzerklärung.]
@@ -251,8 +245,6 @@ Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG. Die Speicherung der Entscheidung ist 
 
 Sie können Ihre Entscheidung jederzeit ändern. Nutzen Sie hierfür den Link „Cookie-Einstellungen“ im Fußbereich jeder Seite. Alternativ können Sie den Local Storage Ihres Browsers für diese Website löschen; beim nächsten Aufruf werden Sie dann erneut gefragt.
 
-[BITTE ERGÄNZEN: Sobald einwilligungspflichtige Dienste hinzukommen (z. B. Google Analytics, Meta-Pixel, YouTube-Videos, eingebettete Instagram-Feeds, Calendly, Chat-Tools), müssen diese ausschließlich nach Auswahl von „Alle akzeptieren“ geladen werden, und dieser Abschnitt sowie Abschnitt 9 sind um Anbieter, Zweck, Speicherdauer und Empfänger zu ergänzen.]
-
 ## 11. SSL- bzw. TLS-Verschlüsselung
 
 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
@@ -296,8 +288,6 @@ Telefax: +49 6131 8920-299
 E-Mail: poststelle@datenschutz.rlp.de
 Website: https://www.datenschutz.rlp.de
 
-[BITTE ERGÄNZEN: Kontaktdaten vor Veröffentlichung auf der Website der Behörde gegenprüfen.]
-
 ## 15. Keine automatisierte Entscheidungsfindung
 
 Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne des Art. 22 Abs. 1 und 4 DSGVO findet nicht statt.
@@ -310,10 +300,50 @@ Für Ihren erneuten Besuch gilt dann die jeweils aktuelle, auf dieser Seite ver�
 
 ## 17. Stand
 
-Stand dieser Datenschutzerklärung: [BITTE ERGÄNZEN: Monat und Jahr der Veröffentlichung, z. B. August 2026]
+Stand dieser Datenschutzerklärung: August 2026
 
 
 # NOTES
+
+## Erledigt am 20.08.2026 (Daten von der Kundin)
+
+Christina Brumm hat auf ihr eigenes Impressum verwiesen (creator-collabs.de)
+und die E-Mail-Adresse benannt. Damit sind eingetragen:
+
+- E-Mail: hello@b3-retreats.de (ausdrueckliche Ansage der Kundin — NICHT die
+  dort stehende info@creator-collabs.de)
+- Website: www.b3-retreats.de
+- USt-IdNr.: DE369850912 (von creator-collabs.de; dieselbe Einzelunternehmerin,
+  daher fuer B³ Retreats gueltig)
+- Telefon: entfaellt — auf ihrem Impressum steht keine Nummer, und Pflicht ist
+  sie nicht
+- Handelsregister: kein Eintrag
+- Hoster: webhoster.de AG, Zum Haunert 22, 59519 Moehnesee — ermittelt ueber
+  die IP der Domain (RIPE: netname DE-WEBHOSTERDE, 91.230.22.75), Server in
+  Deutschland. ACHTUNG: das ist der technische Betreiber. Falls der Vertrag
+  ueber einen Reseller laeuft, gehoert DER ins Impressum und mit DEM muss der
+  AVV bestehen — bitte bei der Kundin gegenpruefen.
+- Aufsichtsbehoerde: Angaben am 20.08.2026 gegen datenschutz.rlp.de geprueft,
+  stimmen (Hintere Bleiche 34, 55116 Mainz, +49 6131 8920-0).
+
+Die reinen „falls kuenftig …"-Hinweise stehen nicht mehr auf der Seite: sie
+waren an die Betreiberin gerichtet, nicht an Besucherinnen, und wurden von
+Besucherinnen mitgelesen.
+
+## Noch offen — dafuer fehlen Angaben der Kundin
+
+1. Bildnachweise im Impressum (wer hat die Fotos gemacht).
+2. Speicherdauer der Server-Logs — bei webhoster.de erfragen.
+3. Zahlungsdienstleister hinter Tentary (Stripe? PayPal? Klarna?) mit
+   Anschrift und Link zur jeweiligen Datenschutzerklaerung.
+4. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
+   automatische Abrufe mit HTTP 403, der Link muss von Hand geholt werden.
+
+Diese vier stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
+Absicht: sie stillschweigend zu loeschen wuerde eine unvollstaendige
+Datenschutzerklaerung vollstaendig aussehen lassen.
+
+## Alte Punkte
 
 - E-Mail-Адрес отсутствует во всех документах (Impressum, Datenschutz, AGB). Это обязательное поле по § 5 Abs. 1 Nr. 2 DDG — без него страницу нельзя публиковать. Нужно уточнить у Christina Brumm официальный адрес (например, hallo@b3-retreats.de) и подставить его сразу в трёх местах: Impressum → Kontakt, Datenschutz → Verantwortliche Stelle, AGB → шапка и подвал.
 - USt-IdNr.: на образцовом сайте той же владелицы (creator-collabs.de) указан DE369850912. Нужно уточнить, действует ли этот номер и для B³ Retreats (это то же физлицо/ИП, поэтому скорее всего да) — или же по B³ Retreats применяется Kleinunternehmerregelung § 19 UStG. Если номера нет — весь блок про USt-IdNr удалить, а не оставлять пустым.

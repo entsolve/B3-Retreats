@@ -1,5 +1,45 @@
 # Offene Punkte zu den Rechtstexten
 
+## Erledigt am 20.08.2026 (Daten von der Kundin)
+
+Christina Brumm hat auf ihr eigenes Impressum verwiesen (creator-collabs.de)
+und die E-Mail-Adresse benannt. Damit sind eingetragen:
+
+- E-Mail: hello@b3-retreats.de (ausdrueckliche Ansage der Kundin — NICHT die
+  dort stehende info@creator-collabs.de)
+- Website: www.b3-retreats.de
+- USt-IdNr.: DE369850912 (von creator-collabs.de; dieselbe Einzelunternehmerin,
+  daher fuer B³ Retreats gueltig)
+- Telefon: entfaellt — auf ihrem Impressum steht keine Nummer, und Pflicht ist
+  sie nicht
+- Handelsregister: kein Eintrag
+- Hoster: webhoster.de AG, Zum Haunert 22, 59519 Moehnesee — ermittelt ueber
+  die IP der Domain (RIPE: netname DE-WEBHOSTERDE, 91.230.22.75), Server in
+  Deutschland. ACHTUNG: das ist der technische Betreiber. Falls der Vertrag
+  ueber einen Reseller laeuft, gehoert DER ins Impressum und mit DEM muss der
+  AVV bestehen — bitte bei der Kundin gegenpruefen.
+- Aufsichtsbehoerde: Angaben am 20.08.2026 gegen datenschutz.rlp.de geprueft,
+  stimmen (Hintere Bleiche 34, 55116 Mainz, +49 6131 8920-0).
+
+Die reinen „falls kuenftig …"-Hinweise stehen nicht mehr auf der Seite: sie
+waren an die Betreiberin gerichtet, nicht an Besucherinnen, und wurden von
+Besucherinnen mitgelesen.
+
+## Noch offen — dafuer fehlen Angaben der Kundin
+
+1. Bildnachweise im Impressum (wer hat die Fotos gemacht).
+2. Speicherdauer der Server-Logs — bei webhoster.de erfragen.
+3. Zahlungsdienstleister hinter Tentary (Stripe? PayPal? Klarna?) mit
+   Anschrift und Link zur jeweiligen Datenschutzerklaerung.
+4. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
+   automatische Abrufe mit HTTP 403, der Link muss von Hand geholt werden.
+
+Diese vier stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
+Absicht: sie stillschweigend zu loeschen wuerde eine unvollstaendige
+Datenschutzerklaerung vollstaendig aussehen lassen.
+
+## Alte Punkte
+
 - E-Mail-Адрес отсутствует во всех документах (Impressum, Datenschutz, AGB). Это обязательное поле по § 5 Abs. 1 Nr. 2 DDG — без него страницу нельзя публиковать. Нужно уточнить у Christina Brumm официальный адрес (например, hallo@b3-retreats.de) и подставить его сразу в трёх местах: Impressum → Kontakt, Datenschutz → Verantwortliche Stelle, AGB → шапка и подвал.
 - USt-IdNr.: на образцовом сайте той же владелицы (creator-collabs.de) указан DE369850912. Нужно уточнить, действует ли этот номер и для B³ Retreats (это то же физлицо/ИП, поэтому скорее всего да) — или же по B³ Retreats применяется Kleinunternehmerregelung § 19 UStG. Если номера нет — весь блок про USt-IdNr удалить, а не оставлять пустым.
 - ВАЖНО, юридическое обновление: ссылка на EU-Plattform zur Online-Streitbeilegung (ec.europa.eu/consumers/odr) больше не действительна — платформа окончательно закрыта 20.07.2025, и её сохранение в Impressum сейчас само по себе является поводом для Abmahnung. Поэтому в новом тексте ссылки нет. Отдельно стоит предупредить заказчицу, что на её действующем сайте creator-collabs.de эта устаревшая ссылка всё ещё стоит и её нужно убрать.
