@@ -169,6 +169,13 @@ return [
         'hint' => 'Beschriftung des Buchungsbuttons',
         'default' => 'Meinen Platz sichern',
     ],
+    'haus.shared.url' => [
+        'group' => '12 Unterkunft und Preise',
+        'label' => 'Buchungslink Shared House',
+        'type' => 'url',
+        'hint' => 'Nur ausfüllen, wenn Shared House einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“.',
+        'default' => '',
+    ],
     'haus.friends.label' => [
         'group' => '12 Unterkunft und Preise',
         'label' => 'Name der Option',
@@ -297,5 +304,12 @@ return [
         'type' => 'text',
         'hint' => 'Beschriftung des Buchungsbuttons',
         'default' => 'Friends Special sichern',
+    ],
+    'haus.friends.url' => [
+        'group' => '12 Unterkunft und Preise',
+        'label' => 'Buchungslink Friends Special',
+        'type' => 'url',
+        'hint' => 'Nur ausfüllen, wenn Friends Special einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“.',
+        'default' => '',
     ],
 ];

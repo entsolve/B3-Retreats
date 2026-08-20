@@ -1,45 +1,42 @@
 /* ==========================================================================
    B³ RETREATS
 
-   >>> HIER DIE BUCHUNGS-URL EINTRAGEN <<<
-   Eine Zeile — alle Buttons der Seite übernehmen sie automatisch und öffnen
-   in einem neuen Tab. Solange der Platzhalter steht, springen die Buttons
-   nur zum Buchungsblock, damit nichts ins Leere führt.
+   DIE BUCHUNGS-URL STEHT NICHT MEHR HIER, SONDERN IM PANEL:
+   „16 Buchung -> Buchungslink". Sie gilt fuer alle Buchungsbuttons der Seite.
+   Braucht eine Zimmerkategorie einen eigenen Link, steht er unter
+   „12 Unterkunft und Preise -> Buchungslink Shared House / Friends Special";
+   bleibt der leer, gilt wieder der allgemeine.
+
+   Vorher stand die Adresse als Konstante in dieser Datei. Damit konnte die
+   Kundin ausgerechnet den wichtigsten Wert der Seite nicht selbst setzen —
+   sie haette JavaScript anfassen muessen.
+
+   Die Vorlage schreibt die Adressen als data-booking-url an <body> bzw. an
+   den einzelnen Button. Ist keine eingetragen, bleibt der Button auf seinem
+   Ziel aus der Vorlage stehen (#buchung, auf den Rechtsseiten /#buchung) —
+   so fuehrt auch der leere Zustand irgendwohin.
    ========================================================================== */
-
-const BOOKING_URL = 'https://tentary.com/HIER-DEINEN-LINK-EINSETZEN';
-
-/* Zwei getrennte Tarife? Dann stattdessen so:
-   const BOOKING_URL = {
-     default: 'https://tentary.com/...',            // alle allgemeinen Buttons
-     shared:  'https://tentary.com/...shared-house',
-     friends: 'https://tentary.com/...friends-special'
-   };
-   und am Button data-booking="shared" bzw. data-booking="friends" setzen. */
 
 (function () {
   'use strict';
 
   // --- Buchungs-Links verdrahten -------------------------------------------
-  const isPlaceholder = typeof BOOKING_URL === 'string' && BOOKING_URL.indexOf('HIER-DEINEN-LINK') > -1;
-
-  function urlFor(key) {
-    if (typeof BOOKING_URL === 'string') return BOOKING_URL;
-    return BOOKING_URL[key] || BOOKING_URL.default;
-  }
+  const allgemein = ((document.body && document.body.dataset.bookingUrl) || '').trim();
 
   document.querySelectorAll('[data-booking]').forEach(function (el) {
-    if (isPlaceholder) {
-      el.setAttribute('href', '#buchung');
-      return;
-    }
-    el.setAttribute('href', urlFor(el.dataset.booking));
+    const url = (el.dataset.bookingUrl || '').trim() || allgemein;
+
+    // Der Platzhalter aus frueheren Fassungen zaehlt weiterhin als „leer";
+    // sonst schickt ein vergessener Rest die Kundin auf eine 404 bei Tentary.
+    if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) return;
+
+    el.setAttribute('href', url);
     el.setAttribute('target', '_blank');
     el.setAttribute('rel', 'noopener noreferrer');
   });
 
-  if (isPlaceholder) {
-    console.info('[B³] BOOKING_URL ist noch ein Platzhalter — assets/js/main.js, Zeile 11.');
+  if (!allgemein) {
+    console.info('[B³] Kein Buchungslink hinterlegt — Panel, Abschnitt „16 Buchung".');
   }
 
   // --- Einwilligung ---------------------------------------------------------

@@ -57,14 +57,17 @@ Daraus folgen drei Punkte, die eine juristische Pruefung braucht:
 
 1. Bildnachweise im Impressum (wer hat die Fotos gemacht).
 2. Speicherdauer der Server-Logs — bei webhoster.de erfragen.
-3. Zahlungsdienstleister hinter Tentary (Stripe? PayPal? Klarna?) mit
-   Anschrift und Link zur jeweiligen Datenschutzerklaerung.
-4. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
+3. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
    automatische Abrufe mit HTTP 403, der Link muss von Hand geholt werden.
 
-Diese vier stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
+Diese drei stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
 Absicht: sie stillschweigend zu loeschen wuerde eine unvollstaendige
 Datenschutzerklaerung vollstaendig aussehen lassen.
+
+Erledigt: Zahlungsdienstleister. Angabe der Kundin — Zahlung laeuft ueber
+Stripe, angebotene Methoden Kreditkarte, Klarna (Ratenzahlung moeglich),
+Apple Pay, Google Pay und Link. PayPal und Mollie waren Platzhalter und
+sind aus Abschnitt 7 entfernt.
 
 ## Alte Punkte
 
@@ -75,7 +78,7 @@ Datenschutzerklaerung vollstaendig aussehen lassen.
 - Хостинг: провайдер неизвестен (в репозитории только изображения и AGB, кода сайта нет). Нужно от заказчицы/разработчика: точное название и адрес хостера, страна размещения серверов, и подтверждение, что подписан AVV (Auftragsverarbeitungsvertrag по Art. 28 DSGVO). Без этих данных раздел Hosting публиковать нельзя.
 - Срок хранения Server-Log-Dateien нужно уточнить у хостера (обычно 7-14 дней) и вписать конкретное число вместо плейсхолдера.
 - Tentary: адрес взят из Handelsregister (Tentary GmbH, Frankenstraße 152, 90461 Nürnberg, AG Nürnberg HRB 44976) — сайт tentary.com отдаёт 403 при автоматическом запросе, поэтому реквизиты нужно перепроверить вручную по их Impressum. Дополнительно нужно: (а) ссылка на Datenschutzerklärung Tentary, (б) подтверждение наличия AVV, (в) выяснить правовую роль Tentary — Auftragsverarbeiter или Merchant of Record/Reseller (продаёт от своего имени). От этого зависит формулировка раздела 7; в AGB § 3 указано, что договор заключается с Christina Brumm, что говорит скорее в пользу Auftragsverarbeitung, но это надо подтвердить документально.
-- Платёжные провайдеры: по данным о Tentary деньги идут через Stripe и/или PayPal. Нужно уточнить, что реально подключено, и вписать полные реквизиты (Stripe Payments Europe Ltd., Dublin / PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg) плюс ссылки на их политики конфиденциальности. Они выступают самостоятельными Verantwortliche.
+- Платёжные провайдеры: ЗАКРЫТО (20.08.2026). Заказчица подтвердила — платежи идут через Stripe, методы: Kreditkarte, Klarna (Ratenzahlung), Apple Pay, Google Pay, Link. PayPal и Mollie были предположением и убраны. В разделе 7 прописаны Stripe Payments Europe Ltd. (Dublin), Klarna Bank AB (Stockholm), Apple Distribution International Ltd. (Cork) и Google Ireland Ltd. (Dublin) как самостоятельные Verantwortliche, каждый со ссылкой на свою политику. Отдельно указана возможная Bonitätsprüfung у Klarna при рассрочке.
 - Google Fonts: текст написан строго в варианте «локальный хостинг, без CDN», как и требовалось. Перед публикацией разработчику обязательно проверить в DevTools (вкладка Network), что нет ни одного запроса к fonts.googleapis.com и fonts.gstatic.com — их часто тянут за собой темы, page-builder'ы и библиотеки иконок. Если запрос есть — либо переносить шрифты локально, либо переписывать раздел и ставить consent-баннер.
 - Cookies описаны как исключительно технически необходимые, consent-баннер не предусмотрен. Это верно только если на лендинге НЕТ Google Analytics, Meta Pixel, встроенных видео YouTube/Vimeo, ленты Instagram, Calendly, чатов и подобного. Нужно подтвердить у заказчицы/разработчика. При появлении любого такого сервиса потребуется полноценный consent-банер и дополнительные разделы.
 - Не описаны, так как пока неизвестно, будут ли они на лендинге: контактная форма, рассылка/newsletter (double opt-in), ссылки и виджеты соцсетей, отзывы участниц, фото- и видеосъёмка на ретритах. Особое внимание — Foto-/Videoaufnahmen: в AGB § 20 уже прописано отдельное согласие, при публикации фото участниц на сайте нужен отдельный раздел в Datenschutz.

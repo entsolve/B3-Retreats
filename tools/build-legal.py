@@ -132,7 +132,7 @@ UML = str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss",
 
 def slug(text):
     out = re.sub(r"[^a-z0-9]+", "-", text.lower().translate(UML))
-    return out.strip("-")[:48]
+    return out.strip("-")[:48].strip("-")
 
 
 def join_para(lines):

@@ -1022,6 +1022,12 @@
     "hint": "Beschriftung des Buchungsbuttons"
   },
   {
+    "path": "haus.shared.url",
+    "label": "Buchungslink Shared House",
+    "type": "url",
+    "hint": "Nur ausfüllen, wenn Shared House einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
+  },
+  {
     "path": "haus.friends.label",
     "label": "Name der Option",
     "type": "text",
@@ -1103,6 +1109,12 @@
     "label": "Button Friends Special",
     "type": "text",
     "hint": "Beschriftung des Buchungsbuttons"
+  },
+  {
+    "path": "haus.friends.url",
+    "label": "Buchungslink Friends Special",
+    "type": "url",
+    "hint": "Nur ausfüllen, wenn Friends Special einen eigenen Tentary-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
   },
   {
     "path": "inkl.eyebrow",
@@ -1403,6 +1415,12 @@
     "label": "Kleinzeile unter dem Button",
     "type": "text",
     "hint": "Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben."
+  },
+  {
+    "path": "buchung.url",
+    "label": "Buchungslink",
+    "type": "url",
+    "hint": "Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Tentary, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt."
   },
   {
     "path": "buchung.bg.src",

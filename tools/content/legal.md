@@ -185,7 +185,7 @@ Speicherdauer: Wir speichern Ihre Anfrage, bis der Zweck der Speicherung entfäl
 
 Bitte beachten Sie: Der Versand unverschlüsselter E-Mails erfolgt über das Internet und kann von Dritten mitgelesen werden. Bitte übersenden Sie uns keine besonders sensiblen Informationen (insbesondere Gesundheitsdaten im Sinne des Art. 9 DSGVO) unaufgefordert per unverschlüsselter E-Mail. Sofern Sie uns im Zusammenhang mit einem Retreat freiwillig Gesundheitsinformationen mitteilen (z. B. Allergien, Unverträglichkeiten oder körperliche Einschränkungen), verarbeiten wir diese ausschließlich zur Durchführung des Retreats und auf Grundlage Ihrer ausdrücklichen Einwilligung nach Art. 9 Abs. 2 lit. a DSGVO.
 
-## 7. Buchungs- und Zahlungsabwicklung über Tentary
+## 7. Buchungs- und Zahlungsabwicklung über Tentary und Stripe
 
 Für die Abwicklung von Buchungen und Zahlungen unserer Retreats setzen wir die Plattform Tentary ein.
 
@@ -207,14 +207,29 @@ Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Retreat-Vertrages b
 
 Rolle von Tentary und Auftragsverarbeitung: Tentary stellt uns die technische Infrastruktur für den Verkaufs-, Buchungs- und Zahlungsprozess zur Verfügung und verarbeitet die dabei anfallenden personenbezogenen Daten für uns. Mit Tentary besteht ein Vertrag über Auftragsverarbeitung gemäß Art. 28 DSGVO.
 
-Zahlungsdienstleister: Für die eigentliche Zahlungsabwicklung können über Tentary externe Zahlungsdienstleister eingebunden werden. Diese verarbeiten die für die Zahlung erforderlichen Daten in eigener datenschutzrechtlicher Verantwortung nach ihren jeweiligen Datenschutzbestimmungen. Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst nicht erhoben und nicht gespeichert.
-Nach den Angaben von Tentary werden für die Zahlungsabwicklung folgende Anbieter eingesetzt:
+Zahlungsdienstleister Stripe: Die eigentliche Zahlungsabwicklung erfolgt über Tentary durch Stripe. Vertragspartnerin für Kundinnen und Kunden im Europäischen Wirtschaftsraum ist die Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland. Stripe verarbeitet die für die Zahlung erforderlichen Daten in eigener datenschutzrechtlicher Verantwortung nach den eigenen Datenschutzbestimmungen. Zahlungsdaten wie vollständige Kreditkartennummern oder Bankzugangsdaten werden von uns selbst weder erhoben noch gespeichert; wir erhalten lediglich die Information, ob und wann eine Zahlung erfolgreich war.
 
-- PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg – Datenschutzerklärung: https://www.paypal.com/de/webapps/mpp/ua/privacy-full
-- Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, Irland – Datenschutzerklärung: https://stripe.com/de/privacy
-- Mollie B.V., Keizersgracht 126, 1015 CW Amsterdam, Niederlande – Datenschutzerklärung: https://www.mollie.com/de/privacy
+Im Buchungsvorgang stehen über Stripe folgende Zahlungsarten zur Verfügung:
 
-Welcher dieser Anbieter im Einzelfall zum Einsatz kommt, hängt von der im Buchungsvorgang gewählten Zahlungsart ab.
+- Kreditkarte
+- Klarna (Ratenzahlung möglich)
+- Apple Pay
+- Google Pay
+- Link (Bezahldienst von Stripe)
+
+An Stripe übermittelt bzw. von Stripe unmittelbar erhoben werden dabei insbesondere Name, E-Mail-Adresse, Rechnungsanschrift, Betrag und Währung, Zeitpunkt und Status der Transaktion, die gewählte Zahlungsart sowie die zur Durchführung der Zahlung erforderlichen Zahlungsdaten. Stripe verarbeitet darüber hinaus technische Daten wie IP-Adresse und Geräteinformationen zur Betrugsprävention sowie zur Erfüllung eigener aufsichtsrechtlicher Pflichten (insbesondere nach Geldwäsche- und Zahlungsdiensterecht).
+
+Rechtsgrundlagen für die Übermittlung an Stripe: Art. 6 Abs. 1 lit. b DSGVO (Abwicklung des Retreat-Vertrages) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und betrugsgeschützten Zahlungsabwicklung).
+
+Datenschutzerklärung von Stripe: https://stripe.com/de/privacy
+
+Link: Link ist der Bezahldienst von Stripe, mit dem Zahlungs- und Kontaktdaten für spätere Zahlungen gespeichert werden können. Wenn Sie Link nutzen, speichert Stripe die von Ihnen hinterlegten Daten in Ihrem Link-Konto und stellt sie Ihnen auch bei anderen Händlern zur Verfügung, die Link einsetzen. Die Nutzung von Link ist freiwillig; Verantwortliche für das Link-Konto ist Stripe.
+
+Klarna und Ratenzahlung: Wenn Sie Klarna als Zahlungsart wählen – etwa um von der Möglichkeit der Ratenzahlung Gebrauch zu machen –, werden die für die Zahlungsabwicklung erforderlichen Daten an Klarna übermittelt. Anbieterin ist die Klarna Bank AB (publ), Sveavägen 46, 111 34 Stockholm, Schweden. Klarna ist für diese Verarbeitung eigenständig Verantwortliche. Bei Zahlungsarten mit Zahlungsaufschub oder Ratenzahlung kann Klarna eine Identitäts- und Bonitätsprüfung durchführen und hierfür Auskünfte bei Auskunfteien einholen. Auf Ablauf und Ergebnis dieser Prüfung haben wir keinen Einfluss. Einzelheiten hierzu sowie zu Ihren Rechten gegenüber Klarna entnehmen Sie bitte der Datenschutzerklärung von Klarna: https://www.klarna.com/de/datenschutz/
+
+Apple Pay und Google Pay: Bei Auswahl von Apple Pay oder Google Pay wird die Zahlung über den jeweiligen Wallet-Dienst freigegeben und anschließend über Stripe abgewickelt. Verantwortliche für den jeweiligen Wallet-Dienst sind die Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland (Datenschutzerklärung: https://www.apple.com/legal/privacy/de-ww/) bzw. die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Datenschutzerklärung: https://policies.google.com/privacy). Auf dieser Website selbst sind keine Skripte oder Schnittstellen von Apple oder Google eingebunden; die Wallet-Dienste kommen erst im Buchungs- und Bezahlvorgang zum Einsatz.
+
+Welche dieser Zahlungsarten im Einzelfall zum Einsatz kommt, entscheiden Sie selbst im Buchungsvorgang.
 
 Weitere Informationen zur Datenverarbeitung durch Tentary finden Sie in der Datenschutzerklärung von Tentary: https://tentary.com/de/privacy/
 
@@ -375,14 +390,17 @@ Daraus folgen drei Punkte, die eine juristische Pruefung braucht:
 
 1. Bildnachweise im Impressum (wer hat die Fotos gemacht).
 2. Speicherdauer der Server-Logs — bei webhoster.de erfragen.
-3. Zahlungsdienstleister hinter Tentary (Stripe? PayPal? Klarna?) mit
-   Anschrift und Link zur jeweiligen Datenschutzerklaerung.
-4. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
+3. Link zur Datenschutzerklaerung von Tentary — tentary.com antwortet auf
    automatische Abrufe mit HTTP 403, der Link muss von Hand geholt werden.
 
-Diese vier stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
+Diese drei stehen weiterhin als sichtbarer Hinweis auf der Seite. Das ist
 Absicht: sie stillschweigend zu loeschen wuerde eine unvollstaendige
 Datenschutzerklaerung vollstaendig aussehen lassen.
+
+Erledigt: Zahlungsdienstleister. Angabe der Kundin — Zahlung laeuft ueber
+Stripe, angebotene Methoden Kreditkarte, Klarna (Ratenzahlung moeglich),
+Apple Pay, Google Pay und Link. PayPal und Mollie waren Platzhalter und
+sind aus Abschnitt 7 entfernt.
 
 ## Alte Punkte
 
@@ -393,7 +411,7 @@ Datenschutzerklaerung vollstaendig aussehen lassen.
 - Хостинг: провайдер неизвестен (в репозитории только изображения и AGB, кода сайта нет). Нужно от заказчицы/разработчика: точное название и адрес хостера, страна размещения серверов, и подтверждение, что подписан AVV (Auftragsverarbeitungsvertrag по Art. 28 DSGVO). Без этих данных раздел Hosting публиковать нельзя.
 - Срок хранения Server-Log-Dateien нужно уточнить у хостера (обычно 7-14 дней) и вписать конкретное число вместо плейсхолдера.
 - Tentary: адрес взят из Handelsregister (Tentary GmbH, Frankenstraße 152, 90461 Nürnberg, AG Nürnberg HRB 44976) — сайт tentary.com отдаёт 403 при автоматическом запросе, поэтому реквизиты нужно перепроверить вручную по их Impressum. Дополнительно нужно: (а) ссылка на Datenschutzerklärung Tentary, (б) подтверждение наличия AVV, (в) выяснить правовую роль Tentary — Auftragsverarbeiter или Merchant of Record/Reseller (продаёт от своего имени). От этого зависит формулировка раздела 7; в AGB § 3 указано, что договор заключается с Christina Brumm, что говорит скорее в пользу Auftragsverarbeitung, но это надо подтвердить документально.
-- Платёжные провайдеры: по данным о Tentary деньги идут через Stripe и/или PayPal. Нужно уточнить, что реально подключено, и вписать полные реквизиты (Stripe Payments Europe Ltd., Dublin / PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxembourg) плюс ссылки на их политики конфиденциальности. Они выступают самостоятельными Verantwortliche.
+- Платёжные провайдеры: ЗАКРЫТО (20.08.2026). Заказчица подтвердила — платежи идут через Stripe, методы: Kreditkarte, Klarna (Ratenzahlung), Apple Pay, Google Pay, Link. PayPal и Mollie были предположением и убраны. В разделе 7 прописаны Stripe Payments Europe Ltd. (Dublin), Klarna Bank AB (Stockholm), Apple Distribution International Ltd. (Cork) и Google Ireland Ltd. (Dublin) как самостоятельные Verantwortliche, каждый со ссылкой на свою политику. Отдельно указана возможная Bonitätsprüfung у Klarna при рассрочке.
 - Google Fonts: текст написан строго в варианте «локальный хостинг, без CDN», как и требовалось. Перед публикацией разработчику обязательно проверить в DevTools (вкладка Network), что нет ни одного запроса к fonts.googleapis.com и fonts.gstatic.com — их часто тянут за собой темы, page-builder'ы и библиотеки иконок. Если запрос есть — либо переносить шрифты локально, либо переписывать раздел и ставить consent-баннер.
 - Cookies описаны как исключительно технически необходимые, consent-баннер не предусмотрен. Это верно только если на лендинге НЕТ Google Analytics, Meta Pixel, встроенных видео YouTube/Vimeo, ленты Instagram, Calendly, чатов и подобного. Нужно подтвердить у заказчицы/разработчика. При появлении любого такого сервиса потребуется полноценный consent-банер и дополнительные разделы.
 - Не описаны, так как пока неизвестно, будут ли они на лендинге: контактная форма, рассылка/newsletter (double opt-in), ссылки и виджеты соцсетей, отзывы участниц, фото- и видеосъёмка на ретритах. Особое внимание — Foto-/Videoaufnahmen: в AGB § 20 уже прописано отдельное согласие, при публикации фото участниц на сайте нужен отдельный раздел в Datenschutz.

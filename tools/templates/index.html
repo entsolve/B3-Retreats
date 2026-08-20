@@ -51,7 +51,7 @@
 }
 </script>
 </head>
-<body>
+<body data-booking-url="{{ buchung.url }}">
 
 <!-- Wiederverwendbares Markenzeichen -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -489,7 +489,8 @@
         <p class="price">{{ haus.shared.price }}
           <small>{{ haus.shared.price_note }}</small>
         </p>
-        <a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ haus.shared.cta }}</a>
+        <a class="btn btn--primary btn--block" href="#buchung" data-booking
+           data-booking-url="{{ haus.shared.url }}">{{ haus.shared.cta }}</a>
       </div>
     </article>
 
@@ -526,7 +527,8 @@
         <p class="price">{{ haus.friends.price }}
           <small>{{ haus.friends.price_note }}</small>
         </p>
-        <a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ haus.friends.cta }}</a>
+        <a class="btn btn--primary btn--block" href="#buchung" data-booking
+           data-booking-url="{{ haus.friends.url }}">{{ haus.friends.cta }}</a>
       </div>
     </article>
   </div>
@@ -616,7 +618,7 @@
       </div>
       <hr>
       <p class="small">{{ buchung.hinweis }}</p>
-      <p style="margin-top:2rem"><a class="btn btn--primary btn--block" href="#" data-booking>{{ buchung.cta.label }}</a></p>
+      <p style="margin-top:2rem"><a class="btn btn--primary btn--block" href="#buchung" data-booking>{{ buchung.cta.label }}</a></p>
       <p class="small ticket__fine">{{ buchung.fine }}</p>
     </div>
   </div>
@@ -705,7 +707,7 @@
 
 <div class="bar" id="bar">
   <span>{{ bar.price }}</span>
-  <a class="btn btn--primary" href="#" data-booking>{{ bar.cta }}</a>
+  <a class="btn btn--primary" href="#buchung" data-booking>{{ bar.cta }}</a>
 </div>
 
 <!-- Einwilligung. Aktuell setzt die Seite ausschließlich technisch notwendigen

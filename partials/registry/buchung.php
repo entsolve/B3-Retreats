@@ -5,6 +5,13 @@
    ueberschreibt die Datei. Texte gehoeren in content/site.json,
    danach `python3 tools/build-registry.py`. */
 return [
+    'buchung.url' => [
+        'group' => '16 Buchung',
+        'label' => 'Buchungslink',
+        'type' => 'url',
+        'hint' => 'Die Adresse, auf die alle Buchungsbuttons der Seite führen — der Link aus Tentary, vollständig mit https://. Solange das Feld leer ist, springen die Buttons nur zum Buchungsblock, damit kein Button ins Leere führt.',
+        'default' => '',
+    ],
     'buchung.bg.src' => [
         'group' => '16 Buchung',
         'label' => 'Hintergrundbild Buchung',

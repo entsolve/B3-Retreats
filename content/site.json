@@ -410,6 +410,7 @@
       "price": "1.549&nbsp;€",
       "price_note": "pro Person &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.",
       "cta": "Meinen Platz sichern",
+      "url": "",
       "galerie": [
         {
           "src": "assets/img/haus-g1.webp",
@@ -458,6 +459,7 @@
       "price": "3.950&nbsp;€",
       "price_note": "für 2 Personen &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.",
       "cta": "Friends Special sichern",
+      "url": "",
       "galerie": [
         {
           "src": "assets/img/friends-g1.webp",
@@ -607,6 +609,7 @@
     }
   },
   "buchung": {
+    "url": "",
     "bg": {
       "src": "assets/img/buchung-bg.webp"
     },
