@@ -126,7 +126,7 @@ return [
             [
                 'frage' => 'Was passiert, wenn ich stornieren muss?',
                 'antwort' => '
-            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class="link" href="agb.html">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>
+            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class="link" href="/agb">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>
             <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>
           ',
             ],

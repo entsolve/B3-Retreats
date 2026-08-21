@@ -715,7 +715,7 @@
       },
       {
         "frage": "Was passiert, wenn ich stornieren muss?",
-        "antwort": "\n            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class=\"link\" href=\"agb.html\">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>\n            <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>\n          "
+        "antwort": "\n            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class=\"link\" href=\"/agb\">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>\n            <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>\n          "
       }
     ]
   },
@@ -759,7 +759,7 @@
   },
   "consent": {
     "eyebrow": "Cookies",
-    "text": "Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing\n         erst mit deiner Zustimmung — mehr dazu in der <a class=\"link\" href=\"datenschutz.html\">Datenschutzerklärung</a>.",
+    "text": "Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing\n         erst mit deiner Zustimmung — mehr dazu in der <a class=\"link\" href=\"/datenschutz\">Datenschutzerklärung</a>.",
     "btn_necessary": "Nur notwendige",
     "btn_all": "Alle akzeptieren"
   },

@@ -64,29 +64,32 @@ DirectoryIndex index.php index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # /danke ist die Seite nach der Buchung. Sie liegt als danke.php vor, soll
-  # aber unter der kurzen Adresse erreichbar sein — mit und ohne Schraegstrich.
+  # KURZE ADRESSEN. /impressum statt /impressum.html, /danke statt danke.php.
+  # Die Endung ist eine Angabe ueber die Technik dahinter — sie geht niemanden
+  # etwas an und macht die Adresse unnoetig sperrig.
   #
-  # DIESE REGEL MUSS VOR DER 404-UMLEITUNG STEHEN. Sonst greift die Regel
-  # darunter zuerst („die Datei /danke gibt es nicht"), und die Danke-Seite
-  # landet auf der Startseite.
-  RewriteRule ^danke/?$ danke.php [L]
-
-  # Die Rechtstexte kommen jetzt ebenfalls aus dem Panel. Verlinkt sind
-  # ueberall die .html-Adressen — die bleiben, sonst braechen alte Links und
-  # das, was Suchmaschinen und Behoerden bereits kennen. Sie zeigen nur nicht
-  # mehr auf die Datei, sondern auf die PHP-Fassung daneben.
+  # Drei Regeln, und die Reihenfolge ist keine Geschmacksfrage:
   #
-  # Die .html-Dateien BLEIBEN LIEGEN: sie sind der Notfallstand, den die
-  # PHP-Datei ausliefert, wenn Datenbank oder Vorlage ausfallen. Weil das ein
-  # Dateizugriff ist und kein neuer Aufruf, entsteht dabei keine Schleife.
+  #   1. Endung abwerfen, dauerhaft. Verlinkt war bisher ueberall .html; wer
+  #      die alte Adresse kennt oder gespeichert hat, landet weiter richtig.
+  #   2. Schraegstrich am Ende abwerfen, ebenfalls dauerhaft. Das ist KEIN
+  #      Schoenheitsfehler: die Seiten verweisen auf Blatt und Bilder relativ
+  #      ("assets/css/style.css"). Unter /impressum meint das /assets/...,
+  #      unter /impressum/ dagegen /impressum/assets/... — die Seite kaeme
+  #      ohne jede Gestaltung an. Genau das passierte bisher schon bei
+  #      /danke/, weil die alte Regel den Schraegstrich stillschweigend
+  #      durchliess.
+  #   3. Erst jetzt die eigentliche Zuordnung auf die PHP-Datei.
   #
-  # DIESE REGELN MUESSEN VOR DER 404-UMLEITUNG STEHEN — und ebenso vor der
-  # Bedingung !-f darunter, denn die Dateien gibt es ja, sie wuerden sonst
-  # unveraendert ausgeliefert und die Panel-Aenderung waere unsichtbar.
-  RewriteRule ^impressum(?:\.html)?/?$   impressum.php   [L]
-  RewriteRule ^datenschutz(?:\.html)?/?$ datenschutz.php [L]
-  RewriteRule ^agb(?:\.html)?/?$         agb.php         [L]
+  # ALLE DREI MUESSEN VOR DER 404-UMLEITUNG STEHEN, und ebenso vor der
+  # Bedingung !-f darunter: die .html-Dateien gibt es ja: sie sind der
+  # Notfallstand, den die PHP-Datei bei Ausfall ausliefert. Ohne die Regeln
+  # wuerden sie unveraendert zugestellt, und keine Panel-Aenderung waere zu
+  # sehen. Weil Regel 3 in eine Datei ohne Treffer zeigt (impressum.php passt
+  # auf keines der Muster), entsteht dabei keine Schleife.
+  RewriteRule ^(impressum|datenschutz|agb)\.html$      /$1 [R=301,L]
+  RewriteRule ^(impressum|datenschutz|agb|danke)/$      /$1 [R=301,L]
+  RewriteRule ^(impressum|datenschutz|agb|danke)$       $1.php [L]
 
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

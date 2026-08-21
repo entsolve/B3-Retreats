@@ -18,7 +18,7 @@ return [
         'type' => 'html',
         'hint' => 'Erklaerung im Einwilligungsbanner, enthaelt den Link zur Datenschutzerklaerung als HTML. Rechtlich relevant, Aenderungen nur mit Bedacht.',
         'default' => 'Wir setzen nur technisch notwendige Cookies. Optionale Cookies für Statistik oder Marketing
-         erst mit deiner Zustimmung — mehr dazu in der <a class="link" href="datenschutz.html">Datenschutzerklärung</a>.',
+         erst mit deiner Zustimmung — mehr dazu in der <a class="link" href="/datenschutz">Datenschutzerklärung</a>.',
     ],
     'consent.btn_necessary' => [
         'group' => '20 Cookie-Hinweis',

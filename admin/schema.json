@@ -1680,19 +1680,19 @@
     "path": "foot.nav.legal.impressum",
     "label": "Link 'Impressum'",
     "type": "text",
-    "hint": "Beschriftung des Links auf impressum.html."
+    "hint": "Beschriftung des Links auf /impressum."
   },
   {
     "path": "foot.nav.legal.datenschutz",
     "label": "Link 'Datenschutz'",
     "type": "text",
-    "hint": "Beschriftung des Links auf datenschutz.html."
+    "hint": "Beschriftung des Links auf /datenschutz."
   },
   {
     "path": "foot.nav.legal.agb",
     "label": "Link 'AGB'",
     "type": "text",
-    "hint": "Beschriftung des Links auf agb.html."
+    "hint": "Beschriftung des Links auf /agb."
   },
   {
     "path": "foot.nav.legal.kontakt",
