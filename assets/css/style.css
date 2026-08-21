@@ -370,7 +370,7 @@ section { position: relative; }
   position: absolute;
   inset: 0 0 auto;
   z-index: 20;
-  padding: clamp(18px, 2.4vw, 34px) 0;
+  padding: var(--head-pad) 0;
   transition: background-color .35s var(--ease), border-color .35s var(--ease);
   border-bottom: 1px solid transparent;
 }
@@ -409,8 +409,8 @@ section { position: relative; }
    nicht die Navigation. Die Groesse kommt aus dem Blatt, nicht aus dem
    width-Attribut im HTML, damit sie an einer Stelle liegt. */
 .site-head__logo .mark {
-  width: 104px;
-  height: 104px;
+  width: var(--mark);
+  height: var(--mark);
   transition: width .3s var(--ease), height .3s var(--ease);
 }
 .site-head.is-stuck .site-head__logo .mark { width: 62px; height: 62px; }
@@ -522,7 +522,12 @@ section { position: relative; }
      Luft stehen — sonst klebt die Datumszeile am Logo. */
   /* Rechts weniger Polster als vorher (war 4.5vw/76px): das Oval des Bildes
      haelt den Abstand jetzt selbst, die Zeile darf dafuer laenger laufen. */
-  padding: clamp(140px, 16vh, 208px) clamp(24px, 3vw, 52px) clamp(56px, 6vh, 80px) var(--pad);
+  /* Gerechnet, nicht geraten: Polster der Leiste + Markenzeichen + Luft.
+     So kann die Datumszeile dem Logo nicht mehr auf zwei Pixel nahe kommen,
+     egal wie hoch das Fenster ist. Wird das Zeichen groesser, wandert der
+     Aufmacher von selbst mit — beide Groessen stehen in tokens.css. */
+  padding: calc(var(--head-pad) + var(--mark) + clamp(32px, 4vh, 64px))
+           clamp(24px, 3vw, 52px) clamp(56px, 6vh, 80px) var(--pad);
 }
 
 .hero__meta {
@@ -1964,7 +1969,10 @@ body { --consent-h: 0px; --bar-h: 0px; }
 
   /* Gross wirkt das Zeichen erst neben viel Weissraum. Auf dem Telefon steht
      es ueber dem Bild und wuerde bei 104px den halben Ausschnitt zudecken. */
-  .site-head__logo .mark { width: 76px; height: 76px; }
+  /* Der Aufmacher rechnet mit --mark, deshalb aendert sich hier der Wert und
+     nicht die Regel — sonst muesste das Polster oben von Hand nachgezogen
+     werden und liefe beim naechsten Mal wieder auseinander. */
+  :root { --mark: 76px; }
   .site-head.is-stuck .site-head__logo .mark { width: 54px; height: 54px; }
 
   /* --- Menü als eigene Fläche, nicht als gequetschte Zeile --- */
@@ -2073,6 +2081,14 @@ body { --consent-h: 0px; --bar-h: 0px; }
 }
 .legal__head { grid-column: 2 / span 8; }
 .legal__body { grid-column: 2 / span 7; margin-top: var(--space-s); }
+/* Die AGB trennen den Schlussblock (Stand, Anschrift) mit einer Linie vom
+   letzten Paragraphen. Ohne eigene Regel waere es der dicke Browser-Balken. */
+.legal__body hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.6rem 0 1.8rem;
+}
+
 .legal__body h2 { font-size: clamp(1.4rem, 1.15rem + .9vw, 1.85rem); max-width: 30ch; margin: var(--space-s) 0 1.1rem; }
 .legal__body h3 { font-size: clamp(1.2rem, 1.05rem + .5vw, 1.4rem); margin: 2.25rem 0 .9rem; }
 .legal__body ul { padding-left: 1.2rem; max-width: 62ch; }

@@ -29,6 +29,16 @@
   --pad:    clamp(20px, 5vw, 72px);
   --gutter: clamp(16px, 2vw, 32px);
 
+  /* Kopfleiste. Beide Werte stehen hier, weil der Aufmacher darunter mit
+     ihnen rechnen muss: die Leiste liegt absolut ueber dem Hero, also muss
+     dessen oberes Polster das Markenzeichen erst einmal freistellen.
+     Vorher war dort eine geratene Zahl (clamp(140px, 16vh, 208px)). Bei
+     34px Polster und 104px Zeichen endet das Logo auf 138px — die Datums-
+     zeile begann auf 140px. Zwei Pixel Luft, und nur auf hohen Schirmen
+     mehr, weil 16vh erst ab ~875px Fensterhoehe ueber den Boden steigt. */
+  --head-pad: clamp(18px, 2.4vw, 34px);
+  --mark:     104px;
+
   /* Rhythmus — bewusst ungleich, damit die Seite nicht durchgetaktet wirkt.
      Die Untergrenzen sind bewusst klein: auf dem Telefon stossen zwei Abstaende
      aneinander, aus 2 x 72px wird ein Loch von anderthalb Handbreit. Unterhalb

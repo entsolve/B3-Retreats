@@ -155,7 +155,7 @@ function site_base_url(): string
    ===================================================================== */
 
 const B3_ALLOWED_TAGS = [
-    'p', 'br', 'strong', 'b', 'em', 'i', 'u', 'small',
+    'p', 'br', 'hr', 'strong', 'b', 'em', 'i', 'u', 'small',
     'ul', 'ol', 'li', 'a', 'span', 'h2', 'h3', 'h4', 'blockquote',
 ];
 

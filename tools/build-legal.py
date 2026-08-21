@@ -17,7 +17,13 @@ schreiben — der Weg, auf dem die Texte urspruenglich hineingekommen sind.
 
     python3 tools/build-legal.py --import
 
-DAS UEBERSCHREIBT, WAS IM PANEL STEHT. Ohne --import passiert nichts, und das
+ACHTUNG, DER IMPORT IST VERLUSTBEHAFTET: die Klartextquellen kennen weder
+Verweise noch Auszeichnung. Die AGB tragen inzwischen einen echten mailto-Link
+und ein fettes „Stand: August 2026" — beides waere nach einem Import wieder
+gewoehnlicher Text. Fuer eine Textrunde ist der Weg brauchbar, danach gehoert
+das Feinere im Panel nachgezogen.
+
+DAS UEBERSCHREIBT AUSSERDEM, WAS IM PANEL STEHT. Ohne --import passiert nichts, und das
 ist Absicht: ein versehentlicher Lauf wuerde die Arbeit der Kundin still
 zuruecksetzen. Der umgekehrte Weg — Panel-Stand zurueck in den Klartext —
 existiert nicht; nach dem Import ist das Panel die Wahrheit.
