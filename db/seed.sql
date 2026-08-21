@@ -14,6 +14,7 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('meta.title', 'B³ Retreat für Frauen | 08.–11. Oktober 2026 in Spabrücken', 'text'),
 ('meta.description', 'Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom 08.–11. Oktober 2026 in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.', 'textarea'),
 ('meta.canonical', 'https://b3-retreats.de/', 'url'),
+('meta.google_site_verification', 'rea52oRzw9FTP1FTqxqboVxYl6JjOcomWECNzU3VXcc', 'text'),
 ('meta.favicon.src', 'assets/img/favicon.svg', 'image'),
 ('meta.favicon.apple', 'assets/img/favicon-180.png', 'image'),
 ('meta.og.site_name', 'B³ Retreats', 'text'),

@@ -18,6 +18,12 @@
     "hint": "Die eine offizielle Adresse dieser Seite für Suchmaschinen. Nur ändern, wenn die Domain wechselt."
   },
   {
+    "path": "meta.google_site_verification",
+    "label": "Google-Bestätigungscode",
+    "type": "text",
+    "hint": "Der Code aus der Google Search Console („HTML-Tag“) — nur der Wert aus content=\"…\", ohne den Rest der Zeile. Leer lassen entfernt die Zeile aus der Seite. Nicht löschen, solange die Search Console genutzt wird: Google prüft den Code regelmäßig nach."
+  },
+  {
     "path": "meta.favicon.src",
     "label": "Seitensymbol (Favicon im Browser-Tab)",
     "type": "image",

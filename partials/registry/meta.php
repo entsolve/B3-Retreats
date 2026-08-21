@@ -26,6 +26,13 @@ return [
         'hint' => 'Die eine offizielle Adresse dieser Seite für Suchmaschinen. Nur ändern, wenn die Domain wechselt.',
         'default' => 'https://b3-retreats.de/',
     ],
+    'meta.google_site_verification' => [
+        'group' => '01 Suchmaschine und Vorschau',
+        'label' => 'Google-Bestätigungscode',
+        'type' => 'text',
+        'hint' => 'Der Code aus der Google Search Console („HTML-Tag“) — nur der Wert aus content="…", ohne den Rest der Zeile. Leer lassen entfernt die Zeile aus der Seite. Nicht löschen, solange die Search Console genutzt wird: Google prüft den Code regelmäßig nach.',
+        'default' => 'rea52oRzw9FTP1FTqxqboVxYl6JjOcomWECNzU3VXcc',
+    ],
     'meta.favicon.src' => [
         'group' => '01 Suchmaschine und Vorschau',
         'label' => 'Seitensymbol (Favicon im Browser-Tab)',
