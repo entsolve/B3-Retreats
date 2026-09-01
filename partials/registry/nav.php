@@ -37,8 +37,8 @@ return [
         'group' => '02 Navigation',
         'label' => 'Termin im Menü',
         'type' => 'text',
-        'hint' => 'Datumszeile unter den Menüpunkten. Der Gedankenstrich ist ein Halbgeviertstrich (–).',
-        'default' => '08.–11. Oktober 2026',
+        'hint' => 'Datumszeile unter den Menüpunkten. Der Gedankenstrich ist ein Halbgeviertstrich (–). Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
+        'default' => '{datum}',
     ],
     'nav.meta.location' => [
         'group' => '02 Navigation',

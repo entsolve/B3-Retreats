@@ -62,6 +62,8 @@ ABSCHNITTE = {
     "consent":   ("20", "Cookie-Hinweis"),
     "danke":     ("21", "Danke-Seite"),
     "recht":     ("22", "Rechtstexte"),
+    "warteliste": ("23", "Warteliste"),
+    "termin":     ("24", "Termin und Plätze"),
 }
 
 

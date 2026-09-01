@@ -44,6 +44,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/content.php';
+require_once __DIR__ . '/termin.php';
 
 /** Ausnahme nur fuer den Pruefbetrieb (--check), nie im Netzbetrieb. */
 class B3TemplateError extends RuntimeException
@@ -160,12 +161,57 @@ function b3_get_path(array $quelle, string $pfad)
  * Ein LEERER Wert in `content` heisst „zurueck zum Standard" — genauso wie
  * in c(). Er wird uebersprungen, nicht als leerer Text uebernommen.
  */
+/**
+ * Ein Wert, der NUR fuer diesen einen Aufruf gilt — nicht aus site.json und
+ * nicht aus der Datenbank.
+ *
+ * Gebraucht fuer das, was von der Anfrage abhaengt und nicht vom Bestand:
+ * ob gerade der Dank fuer den Wartelisten-Eintrag stehen soll oder das
+ * Formular. Solche Schalter gehoeren NICHT ins Panel — die Kundin kann sie
+ * nicht sinnvoll setzen, und ein Feld ohne Wirkung ist schlimmer als keins.
+ *
+ * MUSS vor dem ersten b3_data() aufgerufen werden; danach steht der Bestand.
+ */
+function b3_runtime_set(string $pfad, $wert): void
+{
+    $laufzeit = &b3_runtime();
+    $laufzeit[$pfad] = $wert;
+
+    /* Den Bestand verwerfen, damit er die neuen Werte aufnimmt.
+       OHNE DIESE ZEILE gilt: wer b3_data() einmal gelesen hat — und sei
+       es nur, um daraus etwas zu berechnen —, friert den Bestand ein;
+       jeder spaeter gesetzte Wert verpufft. Genau das ist passiert: die
+       Plaetze wurden aus b3_data() gelesen, die abgeleiteten Schalter
+       danach gesetzt, und die Seite zeigte weiter den Buchungsknopf,
+       obwohl null Plaetze eingetragen waren. */
+    $stand = &b3_runtime_stand();
+    $stand++;
+}
+
+/** Zaehler, der sich bei jeder Laufzeitaenderung erhoeht. */
+function &b3_runtime_stand(): int
+{
+    static $stand = 0;
+    return $stand;
+}
+
+/** Sammelstelle fuer b3_runtime_set(). */
+function &b3_runtime(): array
+{
+    static $werte = [];
+    return $werte;
+}
+
 function b3_data(): array
 {
     static $daten = null;
-    if ($daten !== null) {
+    static $gebautBei = -1;
+
+    $stand = b3_runtime_stand();
+    if ($daten !== null && $gebautBei === $stand) {
         return $daten;
     }
+    $gebautBei = $stand;
     $daten = b3_site_json();
 
     foreach (b3_content_all() as $schluessel => $wert) {
@@ -184,6 +230,12 @@ function b3_data(): array
             }
             $wert = $dekodiert;
         }
+        b3_set_path($daten, $schluessel, $wert);
+    }
+
+    // Zuletzt, damit die Laufzeitwerte gewinnen: sie beschreiben DIESEN
+    // Aufruf, der Bestand nur den Normalfall.
+    foreach (b3_runtime() as $schluessel => $wert) {
         b3_set_path($daten, $schluessel, $wert);
     }
 
@@ -268,10 +320,31 @@ function b3_substitute(string $zeile, array $scopes, string $wo, bool $streng): 
                 error_log("B3 render: $wo: '{$m[1]}' ist kein einfacher Wert");
                 return '';
             }
-            return $wert === null ? '' : (string) $wert;
+            return $wert === null ? '' : termin_ersetzen((string) $wert, $scopes[0]);
         },
         $zeile
     );
+}
+
+/**
+ * Die Datums-Marken in einem Wert ersetzen.
+ *
+ * REINE ZEICHENKETTEN-ERSETZUNG, mit Absicht. Der Wert kommt aus der
+ * Datenbank und damit aus dem Panel; ihn als Vorlage auszuwerten hiesse,
+ * dass ein dort eingetragenes {{ … }} beliebige Werte auslesen koennte.
+ * Ersetzt werden nur die acht bekannten Marken, sonst nichts.
+ */
+function termin_ersetzen(string $wert, array $daten): string
+{
+    if (strpos($wert, '{') === false) {
+        return $wert;                   // der Normalfall, ohne jeden Aufwand
+    }
+    static $marken = null, $fuer = null;
+    if ($marken === null || $fuer !== ($daten['termin'] ?? null)) {
+        $marken = termin_marken($daten);
+        $fuer = $daten['termin'] ?? null;
+    }
+    return strtr($wert, $marken);
 }
 
 /** Den passenden schliessenden Marker suchen, Verschachtelung mitgezaehlt. */

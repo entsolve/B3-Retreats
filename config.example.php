@@ -44,4 +44,29 @@ return [
         'max_pixels' => 40000000,                         // Schutz vor Dekompressionsbomben
         'types'      => ['image/webp', 'image/jpeg', 'image/png'],
     ],
+
+    // --- Warteliste ------------------------------------------------------
+    'warteliste' => [
+        // Wohin die Eintraege gemeldet werden.
+        'empfaenger' => 'hello@b3-retreats.de',
+        // Absender MUSS eine Adresse der eigenen Domain sein, sonst wirft der
+        // Empfaenger die Nachricht wegen SPF/DMARC weg. Die Adresse der
+        // eintragenden Person steht im Reply-To, nicht im From.
+        'absender'   => 'noreply@b3-retreats.de',
+        // Pfeffer fuer den IP-Hash. EINMALIG durch etwas Zufaelliges ersetzen,
+        // z. B. `openssl rand -hex 32`. Ohne eigenen Wert ist der Hash
+        // durchprobierbar und damit wertlos.
+        'pfeffer'    => 'BITTE-EINMALIG-ERSETZEN',
+        // Hoechstens so viele Eintraege je IP und Stunde.
+        'max_pro_stunde' => 5,
+    ],
+
+    // --- E-Mail ----------------------------------------------------------
+    'mail' => [
+        // Schluessel, mit dem das SMTP-Passwort in der Datenbank verschluesselt
+        // wird. EINMALIG durch etwas Zufaelliges ersetzen: `openssl rand -hex 32`.
+        // Wird er spaeter geaendert, ist das gespeicherte Passwort unlesbar und
+        // muss im Panel neu eingetragen werden — kein Datenverlust, nur Arbeit.
+        'schluessel' => 'BITTE-EINMALIG-ERSETZEN',
+    ],
 ];

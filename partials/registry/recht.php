@@ -204,6 +204,22 @@ Deutschland</p>
 <p>Apple Pay und Google Pay: Bei Auswahl von Apple Pay oder Google Pay wird die Zahlung über den jeweiligen Wallet-Dienst freigegeben und anschließend über Stripe abgewickelt. Verantwortliche für den jeweiligen Wallet-Dienst sind die Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland (Datenschutzerklärung: https://www.apple.com/legal/privacy/de-ww/) bzw. die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Datenschutzerklärung: https://policies.google.com/privacy). Auf dieser Website selbst sind keine Skripte oder Schnittstellen von Apple oder Google eingebunden; die Wallet-Dienste kommen erst im Buchungs- und Bezahlvorgang zum Einsatz.</p>
 <p>Welche dieser Zahlungsarten im Einzelfall zum Einsatz kommt, entscheiden Sie selbst im Buchungsvorgang.</p>
 <p>Speicherdauer: Buchungs-, Vertrags- und Zahlungsdaten werden für die Dauer der Vertragsdurchführung sowie darüber hinaus im Rahmen der gesetzlichen Aufbewahrungsfristen gespeichert (insbesondere gemäß § 257 HGB und § 147 AO in der Regel sechs bzw. zehn Jahre). Nach Ablauf dieser Fristen werden die Daten gelöscht.</p>
+<h2 id="7a-warteliste">7a. Warteliste</h2>
+<p>Auf unserer Startseite können Sie sich unverbindlich in eine Warteliste eintragen, um benachrichtigt zu werden, sobald der Termin für ein Retreat feststeht.</p>
+<p>Verarbeitet werden dabei die von Ihnen angegebenen Daten:</p>
+<ul>
+<li>Vor- und Nachname</li>
+<li>E-Mail-Adresse</li>
+<li>Telefonnummer, sofern Sie sie freiwillig angeben</li>
+<li>die von Ihnen angekreuzte Buchungsvariante, für die Sie sich interessieren</li>
+<li>Zeitpunkt Ihres Eintrags sowie der Wortlaut der Einwilligung, der Ihnen dabei angezeigt wurde</li>
+<li>ein nicht rückrechenbarer Prüfwert Ihrer IP-Adresse</li>
+</ul>
+<p>Zweck: Sie zu benachrichtigen, sobald ein Termin feststeht, und Ihre Anfrage zuordnen zu können. Der Prüfwert der IP-Adresse dient ausschließlich dazu, das massenhafte automatisierte Eintragen fremder Adressen zu unterbinden; die IP-Adresse selbst wird nicht gespeichert.</p>
+<p>Rechtsgrundlagen: Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung) für die Benachrichtigung; Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Schutz des Formulars vor Missbrauch) für den Prüfwert der IP-Adresse. Die Dokumentation Ihrer Einwilligung erfolgt zur Erfüllung unserer Nachweispflicht nach Art. 5 Abs. 2 DSGVO.</p>
+<p>Ihre Angaben werden in der Datenbank dieser Website gespeichert und zusätzlich per E-Mail an unsere Adresse hello@b3-retreats.de übermittelt.</p>
+<p>Widerruf: Sie können Ihre Einwilligung jederzeit und ohne Angabe von Gründen formlos widerrufen, zum Beispiel per E-Mail an hello@b3-retreats.de. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.</p>
+<p>Speicherdauer: Wir löschen Ihren Eintrag, sobald Sie widerrufen, spätestens jedoch, wenn der Zweck entfällt – also nachdem wir Sie über den Termin benachrichtigt haben und Sie sich nicht angemeldet haben, längstens nach zwölf Monaten. Eine Weitergabe an Dritte zu Werbezwecken findet nicht statt.</p>
 <h2 id="8-schriftarten-google-fonts-lokal-gehostet">8. Schriftarten (Google Fonts – lokal gehostet)</h2>
 <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts. Die verwendeten Schriften (u. a. Google Fonts) sind ausschließlich lokal auf dem Server dieser Website installiert und werden von dort ausgeliefert.</p>
 <p>Eine Verbindung zu Servern von Google wird dabei ausdrücklich nicht hergestellt. Beim Aufruf dieser Website werden daher keine Daten – insbesondere nicht Ihre IP-Adresse – an Google übertragen.</p>

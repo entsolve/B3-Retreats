@@ -16,6 +16,9 @@ erst, wenn jemand beide Seiten nebeneinanderlegt.
 
 ERWARTETER REST: aria-label an Bedienelementen und Landmarken („Menü öffnen",
 „Vorheriges Bild", „Hinweis zu Cookies") sowie der Markenzusatz im <title>.
+Was in einem aria-hidden-Element steht, wird gar nicht erst geprueft: es ist
+per Definition nichts, was jemand liest — etwa die Bot-Falle im Wartelisten-
+Formular, deren Beschriftung nur fuer Maschinen echt aussehen soll.
 Das sind Bedienhilfen, kein Inhalt — sie gehoeren nicht ins Panel, sonst kann
 eine Textaenderung die Zugaenglichkeit zerlegen.
 
@@ -38,9 +41,39 @@ class Sichtbar(HTMLParser):
     def __init__(self):
         super().__init__()
         self.fund = []
+        self.stapel = []      # offene Elemente
+        self.versteckt = []   # davon jene mit aria-hidden
+
+    def _drin(self):
+        """Stehen wir innerhalb eines aria-hidden-Elements?"""
+        return bool(self.versteckt)
+
+    def handle_endtag(self, tag):
+        while self.stapel:
+            offen = self.stapel.pop()
+            if self.versteckt and self.versteckt[-1] >= len(self.stapel):
+                self.versteckt.pop()
+            if offen == tag:
+                break
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        # Leere Elemente machen keinen Baum auf.
+        if tag not in ("br", "img", "meta", "link", "input", "hr", "use",
+                       "source", "area", "base", "col", "embed", "param",
+                       "track", "wbr"):
+            self.stapel.append(tag)
+            if a.get("aria-hidden") == "true":
+                self.versteckt.append(len(self.stapel) - 1)
+        elif a.get("aria-hidden") == "true":
+            return
+        # Was der Screenreader nicht vorliest, ist kein Inhalt. Betrifft die
+        # Bot-Falle im Wartelisten-Formular: das Feld traegt die Beschriftung
+        # „Website", damit ein Bot es fuer echt haelt und ausfuellt. Kein
+        # Mensch sieht es je — es ins Panel zu holen waere Unfug, und die
+        # Beschriftung zu aendern wuerde die Falle stumpf machen.
+        if self._drin():
+            return
         for name in ("alt", "aria-label", "title", "placeholder"):
             wert = (a.get(name) or "").strip()
             if wert and BUCHSTABE.search(wert):
@@ -51,6 +84,8 @@ class Sichtbar(HTMLParser):
                 self.fund.append(("@description", wert))
 
     def handle_data(self, daten):
+        if self._drin():
+            return
         wert = " ".join(daten.split())
         if wert and BUCHSTABE.search(wert):
             self.fund.append(("Text", wert))

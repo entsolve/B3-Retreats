@@ -444,3 +444,71 @@ select:focus { outline: 2px solid #7A8C6B; outline-offset: 1px; }
   text-transform: uppercase;
   color: var(--olive);
 }
+
+/* --- Kalender fuer die Datumsfelder --------------------------------------
+   Bleibt dauerhaft offen (siehe panel.js): zwei zusammengehoerende Tage
+   waehlt man nicht blind. Die Spanne dazwischen wird eingefaerbt. */
+
+.kalender {
+  margin-top: .9rem;
+  max-width: 22rem;
+  border: 1px solid var(--rand, #d8d0c4);
+  background: #fff;
+  padding: .7rem;
+}
+
+.kalender__kopf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
+.kalender__titel { font-weight: 600; font-size: .95rem; }
+
+.kalender__pfeil {
+  border: 0;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: .2rem .55rem;
+  cursor: pointer;
+  color: inherit;
+}
+.kalender__pfeil:hover { background: #f0ece5; }
+
+.kalender__gitter {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.kalender__wt {
+  text-align: center;
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #8b8073;
+  padding-bottom: .3rem;
+}
+
+.kalender__leer { height: 2rem; }
+
+.kalender__tag {
+  border: 0;
+  background: transparent;
+  padding: .45rem 0;
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+  border-radius: 2px;
+  color: inherit;
+}
+.kalender__tag:hover { background: #f0ece5; }
+/* Tastaturbedienung sichtbar lassen — der Kalender ist eine Reihe echter
+   Knoepfe und wird auch so durchlaufen. */
+.kalender__tag:focus-visible { outline: 2px solid #454b40; outline-offset: -2px; }
+
+.kalender__tag.is-drin { background: #eae4da; }
+.kalender__tag.is-von,
+.kalender__tag.is-bis { background: #454b40; color: #f7f4ef; font-weight: 600; }

@@ -552,8 +552,17 @@
         <p class="price">{{ haus.shared.price }}
           <small>{{ haus.shared.price_note }}</small>
         </p>
+{{? haus.shared.plaetze_text }}
+        <p class="haus__frei">{{ haus.shared.plaetze_text }}</p>
+{{/? haus.shared.plaetze_text }}
+{{? haus.shared.frei }}
         <a class="btn btn--primary btn--block" href="#buchung" data-booking
            data-booking-url="{{ haus.shared.url }}">{{ haus.shared.cta }}</a>
+{{/? haus.shared.frei }}
+{{? haus.shared.voll }}
+        <p class="haus__voll">{{ haus.ausgebucht }}</p>
+        <a class="btn btn--ghost btn--block" href="#warteliste">{{ haus.zur_warteliste }}</a>
+{{/? haus.shared.voll }}
       </div>
     </article>
 
@@ -590,8 +599,17 @@
         <p class="price">{{ haus.friends.price }}
           <small>{{ haus.friends.price_note }}</small>
         </p>
+{{? haus.friends.plaetze_text }}
+        <p class="haus__frei">{{ haus.friends.plaetze_text }}</p>
+{{/? haus.friends.plaetze_text }}
+{{? haus.friends.frei }}
         <a class="btn btn--primary btn--block" href="#buchung" data-booking
            data-booking-url="{{ haus.friends.url }}">{{ haus.friends.cta }}</a>
+{{/? haus.friends.frei }}
+{{? haus.friends.voll }}
+        <p class="haus__voll">{{ haus.ausgebucht }}</p>
+        <a class="btn btn--ghost btn--block" href="#warteliste">{{ haus.zur_warteliste }}</a>
+{{/? haus.friends.voll }}
       </div>
     </article>
   </div>
@@ -690,7 +708,86 @@
   </div>
 </section>
 
-<!-- 15 ─ FAQ ──────────────────────────────────────────────────────────── -->
+<!-- 15 ─ Warteliste ───────────────────────────────────────────────────── -->
+<section class="wl band-sand" id="warteliste">
+  <div class="wrap grid">
+    <div class="wl__head rise">
+      <p class="eyebrow">{{ warteliste.eyebrow }}</p>
+      <h2>{{ warteliste.headline }}</h2>
+      <p class="lead">{{ warteliste.intro }}</p>
+    </div>
+
+{{? warteliste.ok }}
+    <p class="wl__danke rise" role="status">{{ warteliste.danke }}</p>
+{{/? warteliste.ok }}
+{{? warteliste.ist_pruefen }}
+    <p class="wl__danke rise" role="status">{{ warteliste.pruefen }}</p>
+{{/? warteliste.ist_pruefen }}
+{{? warteliste.formular }}
+    <form class="wl__form rise" method="post" action="/warteliste.php">
+{{? warteliste.nicht_ok }}
+      <p class="wl__fehler" role="alert">{{ warteliste.fehler }}</p>
+{{/? warteliste.nicht_ok }}
+{{? warteliste.ist_ungueltig }}
+      <p class="wl__fehler" role="alert">{{ warteliste.link_ungueltig }}</p>
+{{/? warteliste.ist_ungueltig }}
+
+      <div class="wl__reihe">
+        <label class="wl__feld">
+          <span>{{ warteliste.label_vorname }}</span>
+          <input type="text" name="vorname" required autocomplete="given-name" maxlength="120">
+        </label>
+        <label class="wl__feld">
+          <span>{{ warteliste.label_nachname }}</span>
+          <input type="text" name="nachname" required autocomplete="family-name" maxlength="120">
+        </label>
+      </div>
+
+      <div class="wl__reihe">
+        <label class="wl__feld">
+          <span>{{ warteliste.label_email }}</span>
+          <input type="email" name="email" required autocomplete="email" maxlength="190">
+        </label>
+        <label class="wl__feld">
+          <span>{{ warteliste.label_telefon }}</span>
+          <input type="tel" name="telefon" autocomplete="tel" maxlength="60">
+        </label>
+      </div>
+
+      <fieldset class="wl__wahl">
+        <legend>{{ warteliste.label_interesse }}</legend>
+        <label class="wl__haken">
+          <input type="checkbox" name="shared" value="1">
+          <span>{{ warteliste.label_shared }}</span>
+        </label>
+        <label class="wl__haken">
+          <input type="checkbox" name="friends" value="1">
+          <span>{{ warteliste.label_friends }}</span>
+        </label>
+      </fieldset>
+
+      <label class="wl__haken wl__haken--einwilligung">
+        <input type="checkbox" name="einwilligung" value="1" required>
+        <span>{{ warteliste.einwilligung }}</span>
+      </label>
+
+      <!-- Bot-Falle. Kein type="hidden": solche Felder ueberspringen viele
+           Bots. Dieses hier sieht fuer sie wie ein normales Feld aus, ist
+           aber aus dem Bild geschoben und aus der Tab-Reihenfolge genommen,
+           sodass weder Auge noch Tastatur noch Screenreader darauf stossen. -->
+      <div class="wl__falle" aria-hidden="true">
+        <label>Website
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+      <button class="btn btn--primary" type="submit">{{ warteliste.cta }}</button>
+    </form>
+{{/? warteliste.formular }}
+  </div>
+</section>
+
+<!-- 16 ─ FAQ ──────────────────────────────────────────────────────────── -->
 <section class="faq band-ivory" id="faq">
   <div class="wrap grid">
     <div class="rail">{{ faq.rail }}</div>

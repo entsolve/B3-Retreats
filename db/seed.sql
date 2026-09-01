@@ -11,19 +11,21 @@
 SET NAMES utf8mb4;
 
 INSERT INTO `content` (`k`, `v`, `type`) VALUES
-('meta.title', 'B³ Retreat für Frauen | 08.–11. Oktober 2026 in Spabrücken', 'text'),
-('meta.description', 'Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom 08.–11. Oktober 2026 in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.', 'textarea'),
+('termin.start', '2026-10-08', 'text'),
+('termin.ende', '2026-10-11', 'text'),
+('meta.title', 'B³ Retreat für Frauen | {datum} in Spabrücken', 'text'),
+('meta.description', 'Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom {datum} in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.', 'textarea'),
 ('meta.canonical', 'https://b3-retreats.de/', 'url'),
 ('meta.google_site_verification', 'rea52oRzw9FTP1FTqxqboVxYl6JjOcomWECNzU3VXcc', 'text'),
 ('meta.favicon.src', 'assets/img/favicon.svg', 'image'),
 ('meta.favicon.apple', 'assets/img/favicon-180.png', 'image'),
 ('meta.og.site_name', 'B³ Retreats', 'text'),
-('meta.og.title', 'B³ Retreat – Be free to be you. | 08.–11. Oktober 2026, Spabrücken', 'text'),
+('meta.og.title', 'B³ Retreat – Be free to be you. | {datum}, Spabrücken', 'text'),
 ('meta.og.description', 'Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst. Yin Yoga, Breathwork, Astrologie und Struktur – für maximal 11 Frauen.', 'textarea'),
 ('meta.og.image', 'assets/img/og-image.webp', 'image'),
 ('meta.jsonld.name', 'B³ Retreat – Be free to be you.', 'text'),
-('meta.jsonld.start_date', '2026-10-08T16:00', 'text'),
-('meta.jsonld.end_date', '2026-10-11T12:00', 'text'),
+('meta.jsonld.start_date', '{start_iso}T16:00', 'text'),
+('meta.jsonld.end_date', '{ende_iso}T12:00', 'text'),
 ('meta.jsonld.description', 'Vier Tage Frauen-Retreat mit Yin Yoga, Breathwork, Astro Energy Reading, Solfeggio-Frequenz-Reise und einer Session zu intuitiver Struktur.', 'textarea'),
 ('meta.jsonld.location.name', 'Anwesen Spabrücken', 'text'),
 ('meta.jsonld.location.locality', 'Spabrücken', 'text'),
@@ -39,9 +41,9 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('nav.unterkunft', 'Unterkunft &amp; Preise', 'text'),
 ('nav.team', 'Über uns', 'text'),
 ('nav.cta', 'Platz sichern', 'text'),
-('nav.meta.dates', '08.–11. Oktober 2026', 'text'),
+('nav.meta.dates', '{datum}', 'text'),
 ('nav.meta.location', 'Spabrücken, Rheinland-Pfalz', 'text'),
-('hero.meta', '08.–11. Oktober 2026 &nbsp;|&nbsp; Spabrücken', 'html'),
+('hero.meta', '{datum} &nbsp;|&nbsp; Spabrücken', 'html'),
 ('hero.headline', 'Be free to be&nbsp;you.', 'html'),
 ('hero.lead', 'Vier Tage zurück zu dir und dem, was du wirklich willst.', 'textarea'),
 ('hero.cta.label', 'Meinen Platz sichern', 'text'),
@@ -150,6 +152,7 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('haus.shared.price_note', 'pro Person &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.', 'textarea'),
 ('haus.shared.cta', 'Meinen Platz sichern', 'text'),
 ('haus.shared.url', '', 'url'),
+('haus.shared.plaetze', '8', 'number'),
 ('haus.friends.label', 'Friends Special', 'text'),
 ('haus.friends.badge', 'Exklusiv', 'text'),
 ('haus.friends.headline', 'Euer eigener Rückzugsort.', 'text'),
@@ -161,6 +164,7 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('haus.friends.price_note', 'für 2 Personen &middot; 3 Übernachtungen, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.', 'textarea'),
 ('haus.friends.cta', 'Friends Special sichern', 'text'),
 ('haus.friends.url', '', 'url'),
+('haus.friends.plaetze', '2', 'number'),
 ('inkl.eyebrow', 'Im Preis enthalten', 'text'),
 ('inkl.headline', 'Was ist inklusive?', 'text'),
 ('inkl.intro', 'Mit deiner Buchung ist fast alles abgedeckt, was du während der gemeinsamen Tage brauchst:', 'textarea'),
@@ -214,12 +218,12 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('fuerwen.fragen', '[{"text": "Was will ich gerade wirklich?"}, {"text": "Was brauche ich mehr und wovon vielleicht weniger?"}, {"text": "Was fühlt sich noch nach mir an?"}, {"text": "Wo möchte ich etwas verändern?"}, {"text": "Was möchte ich genauso behalten, wie es ist?"}]', 'json'),
 ('fuerwen.fazit', 'Du musst bei B³ keine neue Version von dir werden. Es geht vielmehr darum, wieder näher an das heranzukommen, was längst zu dir gehört.', 'textarea'),
 ('fuerwen.cta.label', 'Ja, ich möchte dabei sein', 'text'),
-('fuerwen.cta.note', '08.–11. Oktober 2026 &middot; Spabrücken &middot; Ratenzahlung möglich', 'text'),
+('fuerwen.cta.note', '{datum} &middot; Spabrücken &middot; Ratenzahlung möglich', 'text'),
 ('buchung.url', '', 'url'),
 ('buchung.bg.src', 'assets/img/buchung-bg.webp', 'image'),
-('buchung.titel', 'B³ Retreat Oktober 2026', 'text'),
+('buchung.titel', 'B³ Retreat {monat}', 'text'),
 ('buchung.ort', 'Spabrücken, Rheinland-Pfalz', 'text'),
-('buchung.termine', '[{"label": "Anreise", "zeit": "Donnerstag, 08.10.2026 ab 16:00 Uhr"}, {"label": "Abreise", "zeit": "Sonntag, 11.10.2026 bis 12:00 Uhr"}]', 'json'),
+('buchung.termine', '[{"label": "Anreise", "zeit": "{start_tag}, {start} ab 16:00 Uhr"}, {"label": "Abreise", "zeit": "{ende_tag}, {ende} bis 12:00 Uhr"}]', 'json'),
 ('buchung.preise', '[{"label": "Shared House", "preis": "1.549 €", "hinweis": "pro Person", "cta": "Meinen Platz sichern", "url": ""}, {"label": "Friends Special", "preis": "3.950 €", "hinweis": "für 2 Personen", "cta": "Friends Special sichern", "url": ""}]', 'json'),
 ('buchung.hinweis', 'Unterkunft, Verpflegung und alle regulären B³ Experiences inklusive. Ratenzahlung möglich.', 'textarea'),
 ('buchung.fine', 'Zahlung über unseren externen Zahlungsdienstleister Stripe. AGB und Stornierungsbedingungen sind vor Abschluss der Buchung vollständig einsehbar.', 'textarea'),
@@ -229,7 +233,7 @@ INSERT INTO `content` (`k`, `v`, `type`) VALUES
 ('faq.spalte1', '[{"frage": "Muss ich an allen Experiences teilnehmen?", "antwort": "<p>Nein. Alle Experiences sind freiwillig. Wenn du eine Session auslassen und stattdessen spazieren gehen, schlafen, lesen oder einfach Zeit für dich verbringen möchtest, ist das vollkommen in Ordnung.</p>"}, {"frage": "Gibt es genügend Freizeit?", "antwort": "<p>Ja. Wir planen bewusst freie Zeiten zwischen den gemeinsamen Experiences ein, damit du das Erlebte wirken lassen und das Retreat in deinem eigenen Tempo genießen kannst.</p>"}, {"frage": "Kann ich eine persönliche 1:1 Session buchen?", "antwort": "<p>Ja. In ausgewählten freien Zeitfenstern kannst du zusätzliche 1:1 Sessions mit Sophie, Sarah oder Christina buchen. Diese sind nicht im Retreat-Preis enthalten und werden separat berechnet.</p>"}, {"frage": "Ist das Retreat ausschließlich für Frauen?", "antwort": "<p>Ja. Dieses B³ Retreat richtet sich ausschließlich an Frauen.</p>"}, {"frage": "Ist die Verpflegung inklusive?", "antwort": "<p>Ja. Frühstück, gemeinsame Abendessen und Snacks für zwischendurch sind inklusive. Bei der Buchung kannst du zwischen normaler und vegetarischer Verpflegung wählen.</p>"}, {"frage": "Was ist bei Allergien oder Unverträglichkeiten?", "antwort": "\\n            <p>Wir können keine individuell allergenfreie Zubereitung und keinen vollständigen Ausschluss von Kreuzkontaminationen gewährleisten.</p>\\n            <p>Wenn du Allergien oder Unverträglichkeiten hast, informiere uns bitte vorab und achte vor Ort eigenverantwortlich darauf, welche Lebensmittel für dich geeignet sind.</p>\\n          "}, {"frage": "Kann ich mein Zimmer auswählen?", "antwort": "<p>Nein. Im Shared House erfolgt die Unterbringung in 2- und 3-Bettzimmern mit Einzelbetten. Die Zimmer und Betten werden von uns zugeteilt.</p>"}]', 'json'),
 ('faq.spalte2', '[{"frage": "Kann ich auch alleine kommen?", "antwort": "<p>Natürlich. Du musst niemanden kennen oder gemeinsam mit jemandem anreisen. Du wirst während der vier Tage Teil unserer kleinen B³ Gruppe sein und hast gleichzeitig jederzeit die Möglichkeit, dich zurückzuziehen.</p>"}, {"frage": "Kann ich mit einer Freundin kommen?", "antwort": "<p>Ja. Ihr könnt entweder jeweils einen Platz im Shared House buchen oder gemeinsam unser Friends Special wählen. Damit steht euch das ca. 150 m² große Apartment exklusiv zur Verfügung.</p>"}, {"frage": "Ist Ratenzahlung möglich?", "antwort": "<p>Ja. Die verfügbaren Möglichkeiten zur Ratenzahlung kannst du direkt im Buchungsprozess auswählen.</p>"}, {"frage": "Wie funktioniert die Anreise?", "antwort": "<p>Die An- und Abreise organisierst du eigenständig und sie ist nicht im Retreat-Preis enthalten. Die genaue Adresse in Spabrücken sowie weitere Informationen erhältst du rechtzeitig vor dem Retreat.</p>"}, {"frage": "Wann beginnt und endet das Retreat?", "antwort": "<p>Die Anreise ist am Donnerstag, den 08. Oktober 2026 ab 16:00 Uhr möglich. Am Sonntag, den 11. Oktober 2026 erfolgt die Abreise vormittags bis spätestens 12:00 Uhr.</p>"}, {"frage": "Gibt es einen Hund auf dem Gelände?", "antwort": "<p>Ja. Auf dem Anwesen lebt ein großer Wachhund. Er befindet sich in einem eigenen, gesicherten Bereich und läuft während des Retreats nicht frei auf dem Gelände herum. Diese Information ist vor allem wichtig, wenn du Angst vor großen Hunden hast.</p>"}, {"frage": "Was passiert, wenn ich stornieren muss?", "antwort": "\\n            <p>Deine Buchung ist verbindlich. Für eine Stornierung gelten unsere zum Zeitpunkt deiner Buchung gültigen Stornierungsbedingungen und <a class=\\"link\\" href=\\"/agb\\">AGB</a>, die du vor Abschluss deiner Buchung vollständig einsehen kannst.</p>\\n            <p>Für unvorhergesehene Fälle empfehlen wir dir, eine passende Reiserücktrittsversicherung abzuschließen.</p>\\n          "}]', 'json'),
 ('foot.brand.tagline', 'Body. Mind. Soul.<br>Yoga &middot; Astro &middot; Business', 'html'),
-('foot.brand.dateline', '08.&ndash;11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz', 'html'),
+('foot.brand.dateline', '{datum}<br>Spabrücken, Rheinland-Pfalz', 'html'),
 ('foot.nav.retreat.label', 'Retreat', 'text'),
 ('foot.nav.retreat.start', 'Startseite', 'text'),
 ('foot.nav.retreat.programm', 'Programm', 'text'),
@@ -424,6 +428,22 @@ Deutschland</p>
 <p>Apple Pay und Google Pay: Bei Auswahl von Apple Pay oder Google Pay wird die Zahlung über den jeweiligen Wallet-Dienst freigegeben und anschließend über Stripe abgewickelt. Verantwortliche für den jeweiligen Wallet-Dienst sind die Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland (Datenschutzerklärung: https://www.apple.com/legal/privacy/de-ww/) bzw. die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (Datenschutzerklärung: https://policies.google.com/privacy). Auf dieser Website selbst sind keine Skripte oder Schnittstellen von Apple oder Google eingebunden; die Wallet-Dienste kommen erst im Buchungs- und Bezahlvorgang zum Einsatz.</p>
 <p>Welche dieser Zahlungsarten im Einzelfall zum Einsatz kommt, entscheiden Sie selbst im Buchungsvorgang.</p>
 <p>Speicherdauer: Buchungs-, Vertrags- und Zahlungsdaten werden für die Dauer der Vertragsdurchführung sowie darüber hinaus im Rahmen der gesetzlichen Aufbewahrungsfristen gespeichert (insbesondere gemäß § 257 HGB und § 147 AO in der Regel sechs bzw. zehn Jahre). Nach Ablauf dieser Fristen werden die Daten gelöscht.</p>
+<h2 id="7a-warteliste">7a. Warteliste</h2>
+<p>Auf unserer Startseite können Sie sich unverbindlich in eine Warteliste eintragen, um benachrichtigt zu werden, sobald der Termin für ein Retreat feststeht.</p>
+<p>Verarbeitet werden dabei die von Ihnen angegebenen Daten:</p>
+<ul>
+<li>Vor- und Nachname</li>
+<li>E-Mail-Adresse</li>
+<li>Telefonnummer, sofern Sie sie freiwillig angeben</li>
+<li>die von Ihnen angekreuzte Buchungsvariante, für die Sie sich interessieren</li>
+<li>Zeitpunkt Ihres Eintrags sowie der Wortlaut der Einwilligung, der Ihnen dabei angezeigt wurde</li>
+<li>ein nicht rückrechenbarer Prüfwert Ihrer IP-Adresse</li>
+</ul>
+<p>Zweck: Sie zu benachrichtigen, sobald ein Termin feststeht, und Ihre Anfrage zuordnen zu können. Der Prüfwert der IP-Adresse dient ausschließlich dazu, das massenhafte automatisierte Eintragen fremder Adressen zu unterbinden; die IP-Adresse selbst wird nicht gespeichert.</p>
+<p>Rechtsgrundlagen: Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung) für die Benachrichtigung; Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Schutz des Formulars vor Missbrauch) für den Prüfwert der IP-Adresse. Die Dokumentation Ihrer Einwilligung erfolgt zur Erfüllung unserer Nachweispflicht nach Art. 5 Abs. 2 DSGVO.</p>
+<p>Ihre Angaben werden in der Datenbank dieser Website gespeichert und zusätzlich per E-Mail an unsere Adresse hello@b3-retreats.de übermittelt.</p>
+<p>Widerruf: Sie können Ihre Einwilligung jederzeit und ohne Angabe von Gründen formlos widerrufen, zum Beispiel per E-Mail an hello@b3-retreats.de. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt davon unberührt.</p>
+<p>Speicherdauer: Wir löschen Ihren Eintrag, sobald Sie widerrufen, spätestens jedoch, wenn der Zweck entfällt – also nachdem wir Sie über den Termin benachrichtigt haben und Sie sich nicht angemeldet haben, längstens nach zwölf Monaten. Eine Weitergabe an Dritte zu Werbezwecken findet nicht statt.</p>
 <h2 id="8-schriftarten-google-fonts-lokal-gehostet">8. Schriftarten (Google Fonts – lokal gehostet)</h2>
 <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts. Die verwendeten Schriften (u. a. Google Fonts) sind ausschließlich lokal auf dem Server dieser Website installiert und werden von dort ausgeliefert.</p>
 <p>Eine Verbindung zu Servern von Google wird dabei ausdrücklich nicht hergestellt. Beim Aufruf dieser Website werden daher keine Daten – insbesondere nicht Ihre IP-Adresse – an Google übertragen.</p>
@@ -725,5 +745,31 @@ An den Nahewiesen 20<br>
 Deutschland<br>
 E-Mail: <a href="mailto:hello@b3-retreats.de">hello@b3-retreats.de</a></p>', 'html'),
 ('recht.eyebrow', 'Rechtliches', 'text'),
-('recht.zurueck', 'Zurück zur Startseite', 'text')
+('recht.zurueck', 'Zurück zur Startseite', 'text'),
+('warteliste.eyebrow', 'Warteliste', 'text'),
+('warteliste.headline', 'Warteliste', 'text'),
+('warteliste.intro', 'Trag dich ganz unverbindlich in unsere Warteliste ein und erfahre als Erste, sobald der Termin für das Retreat feststeht.', 'textarea'),
+('warteliste.label_vorname', 'Vorname', 'text'),
+('warteliste.label_nachname', 'Name', 'text'),
+('warteliste.label_email', 'E-Mail-Adresse', 'text'),
+('warteliste.label_telefon', 'Telefonnummer (optional)', 'text'),
+('warteliste.label_interesse', 'Interesse an', 'text'),
+('warteliste.label_shared', 'Shared House', 'text'),
+('warteliste.label_friends', 'Friends Special', 'text'),
+('warteliste.einwilligung', 'Ich möchte benachrichtigt werden, sobald der Termin feststeht, und bin damit einverstanden, dass meine Angaben dafür gespeichert werden. Ich kann das jederzeit formlos widerrufen. Mehr dazu in der <a class="link" href="/datenschutz">Datenschutzerklärung</a>.', 'html'),
+('warteliste.cta', 'Absenden', 'text'),
+('warteliste.danke', 'Wie schön, dass du dabei sein möchtest! 🤍
+
+Du stehst jetzt ganz unverbindlich auf unserer Warteliste. Sobald der Termin für das Retreat feststeht, erfährst du als eine der Ersten davon.
+
+Wir freuen uns schon sehr auf alles, was kommt – und vielleicht sehen wir uns ganz bald beim Retreat!', 'textarea'),
+('warteliste.fehler', 'Da hat leider etwas nicht geklappt. Bitte prüf noch einmal, ob Vor- und Nachname, eine gültige E-Mail-Adresse und das Häkchen zur Einwilligung gesetzt sind.', 'textarea'),
+('warteliste.pruefen', 'Fast geschafft! Wir haben dir eine E-Mail geschickt.
+
+Bitte klick auf den Bestätigungslink darin – erst danach stehst du auf der Warteliste. Schau notfalls kurz im Spam-Ordner nach.', 'textarea'),
+('warteliste.link_ungueltig', 'Dieser Bestätigungslink gilt leider nicht mehr – er ist entweder abgelaufen oder wurde bereits verwendet. Trag dich einfach noch einmal ein, dann schicken wir dir einen neuen.', 'textarea'),
+('haus.plaetze_muster', 'Noch {n} Plätze frei', 'text'),
+('haus.plaetze_einer', 'Nur noch 1 Platz frei', 'text'),
+('haus.ausgebucht', 'Ausgebucht', 'text'),
+('haus.zur_warteliste', 'Auf die Warteliste', 'text')
 ON DUPLICATE KEY UPDATE `v` = VALUES(`v`), `type` = VALUES(`type`);

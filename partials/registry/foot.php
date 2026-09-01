@@ -16,8 +16,8 @@ return [
         'group' => '18 Fußzeile',
         'label' => 'Fusszeile: Termin und Ort',
         'type' => 'html',
-        'hint' => 'Datum und Ort unter dem Logo. Zeilenumbruch als <br>, Gedankenstrich als &ndash;.',
-        'default' => '08.&ndash;11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz',
+        'hint' => 'Datum und Ort unter dem Logo. Zeilenumbruch als <br>, Gedankenstrich als &ndash;. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
+        'default' => '{datum}<br>Spabrücken, Rheinland-Pfalz',
     ],
     'foot.nav.retreat.label' => [
         'group' => '18 Fußzeile',

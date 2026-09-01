@@ -23,6 +23,7 @@ $titel = $titel ?? 'Redaktion';
     <p class="marke">B³ <span>Redaktion</span></p>
     <nav>
       <a href="index.php"<?= basename($_SERVER['SCRIPT_NAME']) === 'index.php' ? ' class="aktiv"' : '' ?>>Inhalte</a>
+      <a href="email.php"<?= basename($_SERVER['SCRIPT_NAME']) === 'email.php' ? ' class="aktiv"' : '' ?>>E-Mail</a>
       <a href="../" target="_blank" rel="noopener">Seite ansehen</a>
     </nav>
     <p class="nutzer"><?= esc($nutzer['username'] ?? '') ?>

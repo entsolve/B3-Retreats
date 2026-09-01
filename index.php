@@ -43,6 +43,27 @@ header('Content-Type: text/html; charset=utf-8');
    Stile) tragen ihr ?v= und werden weiterhin lange zwischengespeichert. */
 header('Cache-Control: no-cache, must-revalidate');
 
+/* Warteliste: warteliste.php leitet nach dem Absenden hierher zurueck und
+   haengt den Ausgang an die Adresse. Der Vorlagensprache fehlt ein „sonst",
+   deshalb drei Schalter statt einem — genau einer davon ist gesetzt.
+
+   Nach dem Dank wird das Formular ausgeblendet: es noch einmal anzubieten
+   laedt dazu ein, sich zweimal einzutragen. Nach einem Fehler bleibt es
+   stehen, sonst muesste die Person alles neu suchen. */
+$stand = (string) ($_GET['warteliste'] ?? '');
+$fertig = in_array($stand, ['ok', 'pruefen'], true);   // Formular hat ausgedient
+b3_runtime_set('warteliste.ok',           $stand === 'ok'             ? '1' : '');
+b3_runtime_set('warteliste.ist_pruefen',  $stand === 'pruefen'        ? '1' : '');
+b3_runtime_set('warteliste.nicht_ok',     $stand === 'fehler'         ? '1' : '');
+b3_runtime_set('warteliste.ist_ungueltig', $stand === 'link-ungueltig' ? '1' : '');
+b3_runtime_set('warteliste.formular',     $fertig                     ? ''  : '1');
+
+/* Freie Plaetze -> was der Tarif anzeigt. Die Rechnung selbst steht in
+   partials/termin.php, damit tools/check-pfade.php sie mitbenutzen kann. */
+foreach (plaetze_ableiten(b3_data()) as $pfad => $wert) {
+    b3_runtime_set($pfad, $wert);
+}
+
 try {
     $html = b3_render_template(__DIR__ . '/tools/templates/index.html');
     if (trim($html) === '') {

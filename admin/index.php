@@ -253,6 +253,20 @@ require __DIR__ . '/_header.php';
                       data-felder="<?= esc(json_encode($def['fields'] ?? [],
                           JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) ?>"
                       data-eintrag-label="<?= esc($def['itemLabel'] ?? '') ?>"><?= esc($wert) ?></textarea>
+          <?php elseif ($typ === 'datum'): ?>
+            <?php /* Das Eingabefeld bleibt ein normales Textfeld im Format
+                     JJJJ-MM-TT — ohne JavaScript ist es damit weiterhin voll
+                     bedienbar. assets/panel.js haengt den Kalender davor.
+
+                     BEWUSST KEIN <input type="date">: der native Kalender
+                     schliesst sich nach dem ersten Klick. Hier werden aber
+                     zwei zusammengehoerende Tage gewaehlt, und dabei will man
+                     sehen, was man tut — der Kalender bleibt offen und
+                     zeichnet die Spanne ein. */ ?>
+            <input id="<?= $id ?>" name="feld[<?= esc($key) ?>]" type="text"
+                   value="<?= esc($wert) ?>" spellcheck="false" autocapitalize="none"
+                   data-datum="<?= esc($key) ?>" placeholder="JJJJ-MM-TT"
+                   pattern="\d{4}-\d{2}-\d{2}">
           <?php elseif ($typ === 'textarea'): ?>
             <textarea id="<?= $id ?>" name="feld[<?= esc($key) ?>]" rows="4"
                       spellcheck="true"><?= esc($wert) ?></textarea>

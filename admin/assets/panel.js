@@ -598,4 +598,130 @@
   document.querySelectorAll('textarea').forEach(function (t) {
     if (!t.hidden) mitwachsen(t);
   });
+
+  /* ------------------------------------------------------------------
+     6. Kalender fuer die Datumsfelder
+
+     ABSICHTLICH SELBST GEBAUT, in zwei Punkten anders als der native
+     <input type="date">:
+
+     1. ER BLEIBT OFFEN. Der native Kalender klappt nach dem ersten Klick
+        zu. Hier gehoeren zwei Tage zusammen — erster und letzter Tag des
+        Retreats —, und wer den zweiten waehlt, will den ersten dabei noch
+        sehen. Zugeklappt waere jede Wahl ein Blindflug.
+
+     2. ER ZEIGT DIE SPANNE. Beide Felder eines Termins teilen sich einen
+        Kalender; die Tage dazwischen sind eingefaerbt. So sieht man
+        sofort, ob es vier Tage sind und ob sie auf dem gewuenschten
+        Wochentag beginnen — die Angabe, die auf der Seite als
+        „Donnerstag, 08.10.2026" erscheint.
+
+     Das Textfeld bleibt daneben bestehen und bleibt das, was abgeschickt
+     wird. Ohne JavaScript tippt man weiter JJJJ-MM-TT von Hand.
+     ------------------------------------------------------------------ */
+
+  var MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
+                'August', 'September', 'Oktober', 'November', 'Dezember'];
+  var TAGE = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+
+  function iso(d) {
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2)
+         + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function ausIso(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec((s || '').trim());
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    // 31. Februar faengt der Date-Konstruktor nicht ab, er rechnet weiter.
+    return d.getMonth() === +m[2] - 1 ? d : null;
+  }
+
+  function kalenderBauen(felder) {
+    var box = el('div', 'kalender');
+    var kopf = el('div', 'kalender__kopf');
+    var zurueck = el('button', 'kalender__pfeil'); zurueck.type = 'button';
+    zurueck.textContent = '‹'; zurueck.title = 'Voriger Monat';
+    var titel = el('span', 'kalender__titel');
+    var vor = el('button', 'kalender__pfeil'); vor.type = 'button';
+    vor.textContent = '›'; vor.title = 'Nächster Monat';
+    kopf.appendChild(zurueck); kopf.appendChild(titel); kopf.appendChild(vor);
+
+    var gitter = el('div', 'kalender__gitter');
+    box.appendChild(kopf); box.appendChild(gitter);
+
+    // Der gezeigte Monat richtet sich nach dem ersten gefuellten Feld.
+    var start = ausIso(felder[0] && felder[0].value) || new Date();
+    var zeigt = new Date(start.getFullYear(), start.getMonth(), 1);
+    var aktiv = 0;   // welches Feld der naechste Klick fuellt
+
+    function zeichnen() {
+      titel.textContent = MONATE[zeigt.getMonth()] + ' ' + zeigt.getFullYear();
+      gitter.textContent = '';
+      TAGE.forEach(function (t) {
+        var k = el('span', 'kalender__wt'); k.textContent = t; gitter.appendChild(k);
+      });
+
+      var erster = new Date(zeigt.getFullYear(), zeigt.getMonth(), 1);
+      // Montag als erster Spaltentag: getDay() liefert 0 fuer Sonntag.
+      var luecke = (erster.getDay() + 6) % 7;
+      for (var i = 0; i < luecke; i++) gitter.appendChild(el('span', 'kalender__leer'));
+
+      var von = ausIso(felder[0] && felder[0].value);
+      var bis = felder[1] ? ausIso(felder[1].value) : null;
+      var tage = new Date(zeigt.getFullYear(), zeigt.getMonth() + 1, 0).getDate();
+
+      for (var t = 1; t <= tage; t++) {
+        (function (tag) {
+          var d = new Date(zeigt.getFullYear(), zeigt.getMonth(), tag);
+          var knopf = el('button', 'kalender__tag');
+          knopf.type = 'button';
+          knopf.textContent = tag;
+          if (von && +d === +von) knopf.classList.add('is-von');
+          if (bis && +d === +bis) knopf.classList.add('is-bis');
+          if (von && bis && d > von && d < bis) knopf.classList.add('is-drin');
+          knopf.addEventListener('click', function () {
+            var ziel = felder[aktiv] || felder[0];
+            ziel.value = iso(d);
+            // Das Panel merkt sich Aenderungen ueber input-Ereignisse.
+            ziel.dispatchEvent(new Event('input', { bubbles: true }));
+            // Nach dem ersten Tag auf das zweite Feld weiterruecken —
+            // aber NICHT schliessen. Genau das ist der Punkt.
+            if (felder.length > 1) aktiv = aktiv === 0 ? 1 : 0;
+            zeichnen();
+          });
+          gitter.appendChild(knopf);
+        })(t);
+      }
+    }
+
+    zurueck.addEventListener('click', function () {
+      zeigt = new Date(zeigt.getFullYear(), zeigt.getMonth() - 1, 1); zeichnen();
+    });
+    vor.addEventListener('click', function () {
+      zeigt = new Date(zeigt.getFullYear(), zeigt.getMonth() + 1, 1); zeichnen();
+    });
+    felder.forEach(function (f, i) {
+      f.addEventListener('focus', function () { aktiv = i; });
+      f.addEventListener('input', function () {
+        var d = ausIso(f.value);
+        if (d) { zeigt = new Date(d.getFullYear(), d.getMonth(), 1); }
+        zeichnen();
+      });
+    });
+
+    zeichnen();
+    return box;
+  }
+
+  var datumsfelder = [].slice.call(document.querySelectorAll('input[data-datum]'));
+  if (datumsfelder.length) {
+    // Alle Datumsfelder eines Formulars teilen sich EINEN Kalender: sie
+    // beschreiben denselben Termin, und zwei Kalender nebeneinander
+    // wuerden die Spanne auseinanderreissen.
+    var letztes = datumsfelder[datumsfelder.length - 1];
+    var traeger = letztes.closest('.feld') || letztes.parentNode;
+    traeger.appendChild(kalenderBauen(datumsfelder));
+  }
+
 })();

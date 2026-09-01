@@ -1,15 +1,27 @@
 [
   {
+    "path": "termin.start",
+    "label": "Erster Tag",
+    "type": "datum",
+    "hint": "Anreisetag. Alle Datumsangaben auf der Seite rechnen sich hieraus — auch die für Google unsichtbar mitgelieferten."
+  },
+  {
+    "path": "termin.ende",
+    "label": "Letzter Tag",
+    "type": "datum",
+    "hint": "Abreisetag."
+  },
+  {
     "path": "meta.title",
     "label": "Seitentitel (Browser-Tab & Google)",
     "type": "text",
-    "hint": "Erscheint im Browser-Tab und als blaue Überschrift bei Google. Ideal 50–60 Zeichen."
+    "hint": "Erscheint im Browser-Tab und als blaue Überschrift bei Google. Ideal 50–60 Zeichen. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "meta.description",
     "label": "Meta-Beschreibung (Google-Vorschau)",
     "type": "textarea",
-    "hint": "Der Beschreibungstext unter dem Google-Treffer. Ideal 140–160 Zeichen, mit Termin, Ort und Preis."
+    "hint": "Der Beschreibungstext unter dem Google-Treffer. Ideal 140–160 Zeichen, mit Termin, Ort und Preis. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "meta.canonical",
@@ -45,7 +57,7 @@
     "path": "meta.og.title",
     "label": "Titel beim Teilen (Social Media)",
     "type": "text",
-    "hint": "Überschrift der Link-Vorschau, wenn jemand die Seite in WhatsApp, Instagram oder Facebook teilt."
+    "hint": "Überschrift der Link-Vorschau, wenn jemand die Seite in WhatsApp, Instagram oder Facebook teilt. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "meta.og.description",
@@ -69,13 +81,13 @@
     "path": "meta.jsonld.start_date",
     "label": "Beginn (Datum und Uhrzeit)",
     "type": "text",
-    "hint": "Startzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-08T16:00."
+    "hint": "Startzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-08T16:00. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "meta.jsonld.end_date",
     "label": "Ende (Datum und Uhrzeit)",
     "type": "text",
-    "hint": "Endzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-11T12:00."
+    "hint": "Endzeitpunkt in technischer Schreibweise JJJJ-MM-TTThh:mm, z. B. 2026-10-11T12:00. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "meta.jsonld.description",
@@ -171,7 +183,7 @@
     "path": "nav.meta.dates",
     "label": "Termin im Menü",
     "type": "text",
-    "hint": "Datumszeile unter den Menüpunkten. Der Gedankenstrich ist ein Halbgeviertstrich (–)."
+    "hint": "Datumszeile unter den Menüpunkten. Der Gedankenstrich ist ein Halbgeviertstrich (–). Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "nav.meta.location",
@@ -183,7 +195,7 @@
     "path": "hero.meta",
     "label": "Termin und Ort (kleine Zeile oben)",
     "type": "html",
-    "hint": "Steht über der Hauptüberschrift. Das Trennzeichen &nbsp;|&nbsp; bitte unverändert lassen."
+    "hint": "Steht über der Hauptüberschrift. Das Trennzeichen &nbsp;|&nbsp; bitte unverändert lassen. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "hero.headline",
@@ -1034,6 +1046,12 @@
     "hint": "Nur ausfüllen, wenn Shared House einen eigenen Stripe-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
   },
   {
+    "path": "haus.shared.plaetze",
+    "label": "Freie Plätze Shared House",
+    "type": "number",
+    "hint": "Wie viele Plätze noch zu haben sind. Bei 0 verschwindet der Buchungsknopf und an seiner Stelle steht der Weg auf die Warteliste — so verkauft die Seite nichts mehr, was es nicht mehr gibt."
+  },
+  {
     "path": "haus.friends.label",
     "label": "Name der Option",
     "type": "text",
@@ -1121,6 +1139,12 @@
     "label": "Buchungslink Friends Special",
     "type": "url",
     "hint": "Nur ausfüllen, wenn Friends Special einen eigenen Stripe-Link hat. Bleibt das Feld leer, gilt der allgemeine Buchungslink aus Abschnitt „16 Buchung“."
+  },
+  {
+    "path": "haus.friends.plaetze",
+    "label": "Freie Plätze Friends Special",
+    "type": "number",
+    "hint": "Wie viele Plätze noch zu haben sind. Bei 0 verschwindet der Buchungsknopf und an seiner Stelle steht der Weg auf die Warteliste — so verkauft die Seite nichts mehr, was es nicht mehr gibt."
   },
   {
     "path": "inkl.eyebrow",
@@ -1468,7 +1492,7 @@
     "path": "fuerwen.cta.note",
     "label": "Kleinzeile unter dem Button",
     "type": "text",
-    "hint": "Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben."
+    "hint": "Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "buchung.url",
@@ -1486,7 +1510,7 @@
     "path": "buchung.titel",
     "label": "Ticket-Titel",
     "type": "text",
-    "hint": "Name des Retreats auf dem Ticket."
+    "hint": "Name des Retreats auf dem Ticket. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "buchung.ort",
@@ -1512,7 +1536,8 @@
         "type": "text",
         "hint": "Wochentag, Datum und Uhrzeit als ein Text."
       }
-    ]
+    ],
+    "hint": "Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "buchung.preise",
@@ -1632,7 +1657,7 @@
     "path": "foot.brand.dateline",
     "label": "Fusszeile: Termin und Ort",
     "type": "html",
-    "hint": "Datum und Ort unter dem Logo. Zeilenumbruch als <br>, Gedankenstrich als &ndash;."
+    "hint": "Datum und Ort unter dem Logo. Zeilenumbruch als <br>, Gedankenstrich als &ndash;. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt."
   },
   {
     "path": "foot.nav.retreat.label",
@@ -1999,5 +2024,125 @@
     "label": "Link zurück im Kopf",
     "type": "text",
     "hint": "Der einzige Navigationspunkt im Kopf der Rechtsseiten."
+  },
+  {
+    "path": "warteliste.eyebrow",
+    "label": "Kleine Zeile über der Überschrift",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.headline",
+    "label": "Überschrift",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.intro",
+    "label": "Einleitung",
+    "type": "textarea",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_vorname",
+    "label": "Feld: Vorname",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_nachname",
+    "label": "Feld: Name",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_email",
+    "label": "Feld: E-Mail",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_telefon",
+    "label": "Feld: Telefon",
+    "type": "text",
+    "hint": "Das Feld ist freiwillig — der Hinweis darauf gehört in die Beschriftung."
+  },
+  {
+    "path": "warteliste.label_interesse",
+    "label": "Feld: Interesse",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_shared",
+    "label": "Auswahl: erste Variante",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.label_friends",
+    "label": "Auswahl: zweite Variante",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.einwilligung",
+    "label": "Einwilligung neben dem Häkchen",
+    "type": "html",
+    "hint": "Der Satz neben dem Häkchen. WORTLAUT NICHT ABSCHWÄCHEN: er wird zu jedem Eintrag mitgespeichert und ist der Nachweis, wozu zugestimmt wurde."
+  },
+  {
+    "path": "warteliste.cta",
+    "label": "Beschriftung des Knopfes",
+    "type": "text",
+    "hint": "Text im Warteliste-Abschnitt."
+  },
+  {
+    "path": "warteliste.danke",
+    "label": "Nachricht nach dem Absenden",
+    "type": "textarea",
+    "hint": "Erscheint anstelle des Formulars, nachdem jemand sich eingetragen hat."
+  },
+  {
+    "path": "warteliste.fehler",
+    "label": "Nachricht, wenn etwas fehlt",
+    "type": "textarea",
+    "hint": "Erscheint, wenn Pflichtangaben fehlen. Das Formular bleibt daneben stehen."
+  },
+  {
+    "path": "warteliste.pruefen",
+    "label": "Nachricht: bitte Postfach prüfen",
+    "type": "textarea",
+    "hint": "Erscheint anstelle des Formulars."
+  },
+  {
+    "path": "warteliste.link_ungueltig",
+    "label": "Nachricht: Link gilt nicht mehr",
+    "type": "textarea",
+    "hint": "Erscheint, wenn jemand einen alten oder schon benutzten Bestätigungslink öffnet."
+  },
+  {
+    "path": "haus.plaetze_muster",
+    "label": "Text „noch X frei“",
+    "type": "text",
+    "hint": "Die Marke {n} wird durch die Zahl ersetzt. Gilt für beide Varianten."
+  },
+  {
+    "path": "haus.plaetze_einer",
+    "label": "Text bei genau einem Platz",
+    "type": "text",
+    "hint": "Eigener Satz, weil „Noch 1 Plätze frei“ falsch wäre."
+  },
+  {
+    "path": "haus.ausgebucht",
+    "label": "Text bei null Plätzen",
+    "type": "text",
+    "hint": "Steht anstelle des Preises, wenn nichts mehr frei ist."
+  },
+  {
+    "path": "haus.zur_warteliste",
+    "label": "Knopf zur Warteliste",
+    "type": "text",
+    "hint": "Ersetzt den Buchungsknopf, sobald ausgebucht."
   }
 ]

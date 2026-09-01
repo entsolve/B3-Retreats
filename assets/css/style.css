@@ -1324,6 +1324,82 @@ section { position: relative; }
 
 .ticket__fine { margin-top: 1.4rem; text-align: center; }
 
+/* --- 15 Warteliste -------------------------------------------------------- */
+
+.wl { padding: var(--space-l) 0; }
+.wl__head { grid-column: 2 / span 6; }
+.wl__form, .wl__danke { grid-column: 2 / span 7; margin-top: var(--space-s); }
+
+/* Der Dank kommt als Fliesstext aus dem Panel, mit Leerzeilen dazwischen.
+   pre-line macht daraus Absaetze, ohne dass die Kundin HTML tippen muss. */
+.wl__danke {
+  white-space: pre-line;
+  max-width: 54ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.wl__fehler {
+  border-left: 1px solid var(--rule-strong);
+  padding: .2rem 0 .2rem 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 54ch;
+}
+
+.wl__reihe { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.6rem; margin-bottom: 1.6rem; }
+.wl__feld { display: flex; flex-direction: column; gap: .5rem; }
+
+.wl__feld > span,
+.wl__wahl legend {
+  font-weight: 500;
+  font-size: .6875rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+/* Eine Linie unten statt eines Kastens — dasselbe Mittel wie im Raster.
+   Der Rahmen eines Standard-Eingabefeldes waere hier ein Fremdkoerper. */
+.wl__feld input {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: .5rem 0;
+  transition: border-color var(--dur-s) var(--ease-soft);
+}
+.wl__feld input:focus { outline: 0; border-bottom-color: var(--olive); }
+/* Sichtbar auch fuer die, die mit der Tastatur unterwegs sind. */
+.wl__feld input:focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; }
+
+.wl__wahl { border: 0; padding: 0; margin: 0 0 1.6rem; }
+.wl__wahl legend { padding: 0; margin-bottom: .8rem; }
+
+.wl__haken { display: flex; align-items: flex-start; gap: .7rem; margin-bottom: .6rem; }
+.wl__haken input { margin-top: .25rem; accent-color: var(--olive); flex: none; }
+.wl__haken span { font-size: .9375rem; line-height: 1.55; }
+
+.wl__haken--einwilligung { margin: 2rem 0; max-width: 58ch; }
+
+/* Die Bot-Falle. NICHT display:none und nicht hidden — beides erkennen
+   Bots und lassen das Feld dann aus. Aus dem Bild geschoben wirkt es fuer
+   sie wie ein normales Feld, waehrend Auge, Tastatur (tabindex="-1") und
+   Screenreader (aria-hidden) es nicht erreichen. */
+.wl__falle {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+  .wl__head, .wl__form, .wl__danke { grid-column: 1 / -1; }
+  .wl__reihe { grid-template-columns: 1fr; }
+}
+
 /* --- 15 FAQ --------------------------------------------------------------- */
 
 .faq { padding: var(--space-l) 0; }

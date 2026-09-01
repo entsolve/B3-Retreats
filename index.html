@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="rea52oRzw9FTP1FTqxqboVxYl6JjOcomWECNzU3VXcc">
-<title>B³ Retreat für Frauen | 08.–11. Oktober 2026 in Spabrücken</title>
-<meta name="description" content="Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom 08.–11. Oktober 2026 in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.">
+<title>B³ Retreat für Frauen | {datum} in Spabrücken</title>
+<meta name="description" content="Vier Tage zurück zu dir: Frauen-Retreat mit Yin Yoga, Breathwork, Astrologie und Struktur vom {datum} in Spabrücken. Ab 1.549 € inkl. Unterkunft und Verpflegung, Ratenzahlung möglich.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://b3-retreats.de/">
 
@@ -20,22 +20,22 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="B³ Retreats">
-<meta property="og:title" content="B³ Retreat – Be free to be you. | 08.–11. Oktober 2026, Spabrücken">
+<meta property="og:title" content="B³ Retreat – Be free to be you. | {datum}, Spabrücken">
 <meta property="og:description" content="Vier Tage zurück zu dir, deinen Bedürfnissen und dem, was du wirklich willst. Yin Yoga, Breathwork, Astrologie und Struktur – für maximal 11 Frauen.">
 <meta property="og:image" content="assets/img/og-image.webp">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2?v=5d618c46" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-400-latin.woff2?v=e310b55a" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=b2b7cb58">
+<link rel="stylesheet" href="assets/css/style.css?v=abda5fef">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "B³ Retreat – Be free to be you.",
-  "startDate": "2026-10-08T16:00",
-  "endDate": "2026-10-11T12:00",
+  "startDate": "{start_iso}T16:00",
+  "endDate": "{ende_iso}T12:00",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "description": "Vier Tage Frauen-Retreat mit Yin Yoga, Breathwork, Astro Energy Reading, Solfeggio-Frequenz-Reise und einer Session zu intuitiver Struktur.",
@@ -99,7 +99,7 @@
       <a href="#unterkunft"><i>02</i>Unterkunft &amp; Preise</a>
       <a href="#team"><i>03</i>Über uns</a>
       <a class="is-cta" href="#buchung" data-booking>Platz sichern</a>
-      <p class="site-nav__meta">08.–11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz</p>
+      <p class="site-nav__meta">{datum}<br>Spabrücken, Rheinland-Pfalz</p>
     </nav>
 
     <!-- Zwei Haarlinien statt eines Standard-Icons — dasselbe Mittel wie im Raster -->
@@ -114,7 +114,7 @@
 <!-- 01 ─ Hero ─────────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero__copy">
-    <p class="hero__meta">08.–11. Oktober 2026 &nbsp;|&nbsp; Spabrücken</p>
+    <p class="hero__meta">{datum} &nbsp;|&nbsp; Spabrücken</p>
     <h1>Be free to be&nbsp;you.</h1>
     <p class="lead">Vier Tage zurück zu dir und dem, was du wirklich willst.</p>
     <div class="hero__cta">
@@ -691,7 +691,7 @@
 
     <div class="fuerwen__cta rise">
       <a class="btn btn--invert" href="#buchung" data-booking>Ja, ich möchte dabei sein</a>
-      <p class="small">08.–11. Oktober 2026 &middot; Spabrücken &middot; Ratenzahlung möglich</p>
+      <p class="small">{datum} &middot; Spabrücken &middot; Ratenzahlung möglich</p>
     </div>
   </div>
 </section>
@@ -704,13 +704,13 @@
   <div class="wrap">
     <div class="ticket rise">
       <div class="ticket__top">
-        <h2>B³ Retreat Oktober 2026</h2>
+        <h2>B³ Retreat {monat}</h2>
         <span>Spabrücken, Rheinland-Pfalz</span>
       </div>
       <hr>
       <div class="ticket__when">
-        <div><b>Anreise</b><span class="num-tab">Donnerstag, 08.10.2026 ab 16:00 Uhr</span></div>
-        <div><b>Abreise</b><span class="num-tab">Sonntag, 11.10.2026 bis 12:00 Uhr</span></div>
+        <div><b>Anreise</b><span class="num-tab">{start_tag}, {start} ab 16:00 Uhr</span></div>
+        <div><b>Abreise</b><span class="num-tab">{ende_tag}, {ende} bis 12:00 Uhr</span></div>
       </div>
       <hr>
       <div class="ticket__prices">
@@ -732,7 +732,72 @@
   </div>
 </section>
 
-<!-- 15 ─ FAQ ──────────────────────────────────────────────────────────── -->
+<!-- 15 ─ Warteliste ───────────────────────────────────────────────────── -->
+<section class="wl band-sand" id="warteliste">
+  <div class="wrap grid">
+    <div class="wl__head rise">
+      <p class="eyebrow">Warteliste</p>
+      <h2>Warteliste</h2>
+      <p class="lead">Trag dich ganz unverbindlich in unsere Warteliste ein und erfahre als Erste, sobald der Termin für das Retreat feststeht.</p>
+    </div>
+
+    <form class="wl__form rise" method="post" action="/warteliste.php">
+
+      <div class="wl__reihe">
+        <label class="wl__feld">
+          <span>Vorname</span>
+          <input type="text" name="vorname" required autocomplete="given-name" maxlength="120">
+        </label>
+        <label class="wl__feld">
+          <span>Name</span>
+          <input type="text" name="nachname" required autocomplete="family-name" maxlength="120">
+        </label>
+      </div>
+
+      <div class="wl__reihe">
+        <label class="wl__feld">
+          <span>E-Mail-Adresse</span>
+          <input type="email" name="email" required autocomplete="email" maxlength="190">
+        </label>
+        <label class="wl__feld">
+          <span>Telefonnummer (optional)</span>
+          <input type="tel" name="telefon" autocomplete="tel" maxlength="60">
+        </label>
+      </div>
+
+      <fieldset class="wl__wahl">
+        <legend>Interesse an</legend>
+        <label class="wl__haken">
+          <input type="checkbox" name="shared" value="1">
+          <span>Shared House</span>
+        </label>
+        <label class="wl__haken">
+          <input type="checkbox" name="friends" value="1">
+          <span>Friends Special</span>
+        </label>
+      </fieldset>
+
+      <label class="wl__haken wl__haken--einwilligung">
+        <input type="checkbox" name="einwilligung" value="1" required>
+        <span>Ich möchte benachrichtigt werden, sobald der Termin feststeht, und bin damit einverstanden, dass meine Angaben dafür gespeichert werden. Ich kann das jederzeit formlos widerrufen. Mehr dazu in der <a class="link" href="/datenschutz">Datenschutzerklärung</a>.</span>
+      </label>
+
+      <!-- Bot-Falle. Kein type="hidden": solche Felder ueberspringen viele
+           Bots. Dieses hier sieht fuer sie wie ein normales Feld aus, ist
+           aber aus dem Bild geschoben und aus der Tab-Reihenfolge genommen,
+           sodass weder Auge noch Tastatur noch Screenreader darauf stossen. -->
+      <div class="wl__falle" aria-hidden="true">
+        <label>Website
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </label>
+      </div>
+
+      <button class="btn btn--primary" type="submit">Absenden</button>
+    </form>
+  </div>
+</section>
+
+<!-- 16 ─ FAQ ──────────────────────────────────────────────────────────── -->
 <section class="faq band-ivory" id="faq">
   <div class="wrap grid">
     <div class="rail">Kapitel 12</div>
@@ -825,7 +890,7 @@
     <div class="site-foot__brand">
       <svg class="mark mark--invert" viewBox="0 0 120 120" width="96" height="96"><use href="#b3mark"/></svg>
       <p class="small">Body. Mind. Soul.<br>Yoga &middot; Astro &middot; Business</p>
-      <p class="small">08.&ndash;11. Oktober 2026<br>Spabrücken, Rheinland-Pfalz</p>
+      <p class="small">{datum}<br>Spabrücken, Rheinland-Pfalz</p>
     </div>
 
     <nav class="site-foot__col" aria-label="Retreat">

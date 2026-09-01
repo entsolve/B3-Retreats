@@ -23,8 +23,8 @@ return [
         'group' => '16 Buchung',
         'label' => 'Ticket-Titel',
         'type' => 'text',
-        'hint' => 'Name des Retreats auf dem Ticket.',
-        'default' => 'B³ Retreat Oktober 2026',
+        'hint' => 'Name des Retreats auf dem Ticket. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
+        'default' => 'B³ Retreat {monat}',
     ],
     'buchung.ort' => [
         'group' => '16 Buchung',
@@ -37,6 +37,7 @@ return [
         'group' => '16 Buchung',
         'label' => 'An- und Abreise',
         'type' => 'list',
+        'hint' => 'Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
         'itemLabel' => 'label',
         'fields' => [
             [
@@ -55,11 +56,11 @@ return [
         'default' => [
             [
                 'label' => 'Anreise',
-                'zeit' => 'Donnerstag, 08.10.2026 ab 16:00 Uhr',
+                'zeit' => '{start_tag}, {start} ab 16:00 Uhr',
             ],
             [
                 'label' => 'Abreise',
-                'zeit' => 'Sonntag, 11.10.2026 bis 12:00 Uhr',
+                'zeit' => '{ende_tag}, {ende} bis 12:00 Uhr',
             ],
         ],
     ],

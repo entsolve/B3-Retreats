@@ -9,8 +9,8 @@ return [
         'group' => '03 Aufmacher',
         'label' => 'Termin und Ort (kleine Zeile oben)',
         'type' => 'html',
-        'hint' => 'Steht über der Hauptüberschrift. Das Trennzeichen &nbsp;|&nbsp; bitte unverändert lassen.',
-        'default' => '08.–11. Oktober 2026 &nbsp;|&nbsp; Spabrücken',
+        'hint' => 'Steht über der Hauptüberschrift. Das Trennzeichen &nbsp;|&nbsp; bitte unverändert lassen. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
+        'default' => '{datum} &nbsp;|&nbsp; Spabrücken',
     ],
     'hero.headline' => [
         'group' => '03 Aufmacher',

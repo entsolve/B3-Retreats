@@ -17,8 +17,9 @@
 -- ohne Belang: gebraucht wird dort nur admin_users.
 -- Zeichensatz: utf8mb4 — deutsche Umlaute ae oe ue ss und „ " brauchen ihn.
 --
--- KEINE leads-Tabelle: B³ hat kein Kontaktformular, die Buchung laeuft
--- vollstaendig ueber Stripe. Kommt spaeter eines dazu, wird sie ergaenzt.
+-- Ein Formular gibt es: die Warteliste (Tabelle `warteliste`, unten). Die
+-- Buchung selbst laeuft weiterhin vollstaendig ueber Stripe, dort werden bei
+-- uns keine Zahlungsdaten erhoben.
 -- =====================================================================
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
@@ -125,4 +126,61 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `updated_at` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
                             ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`k`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------------------
+-- 4) Warteliste — Eintraege aus dem Formular auf der Startseite.
+--
+--    ZWEI SCHRITTE: nach dem Absenden geht eine Bestaetigungsmail an die
+--    eingetragene Adresse; erst der Klick darin traegt endgueltig ein und
+--    meldet den Eintrag an die Veranstalterin. Bis dahin steht die Zeile
+--    mit `bestaetigt_at IS NULL` in der Tabelle und zaehlt nicht.
+--
+--    Die bestaetigten Eintraege gehen ausserdem per E-Mail an die Veranstalterin. Die
+--    Tabelle ist der Zweitweg und der eigentliche Bestand: E-Mail kann im
+--    Spam landen, geloescht werden oder gar nicht erst rausgehen. Wer sich
+--    eingetragen hat, waere dann weg — und genau das darf nicht passieren,
+--    denn diese Menschen warten auf eine Nachricht.
+--
+--    EINWILLIGUNG WIRD MITGESCHRIEBEN, nicht bloss abgehakt: Art. 5 Abs. 2
+--    DSGVO verlangt, dass die Einwilligung nachweisbar ist. Deshalb stehen
+--    Zeitpunkt UND der Wortlaut daneben, der der Person tatsaechlich
+--    angezeigt wurde. Aendert sich der Text spaeter, bleibt fuer jeden
+--    Altfall belegt, wozu genau zugestimmt wurde.
+--
+--    IP-ADRESSE NUR ALS HASH. Gebraucht wird sie einzig, um massenhaftes
+--    Eintragen zu bremsen; dafuer genuegt ein Vergleich. Der Klartext
+--    waere ein personenbezogenes Datum ohne Zweck. Gepfeffert mit einem
+--    Geheimnis aus config.php, sonst waere der Hash eines IPv4-Raums in
+--    Minuten durchprobiert.
+-- --------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `warteliste` (
+  `id`                INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `vorname`           VARCHAR(120) NOT NULL,
+  `nachname`          VARCHAR(120) NOT NULL,
+  `email`             VARCHAR(190) NOT NULL,
+  `telefon`           VARCHAR(60)  NULL DEFAULT NULL,
+  `will_shared`       TINYINT(1)   NOT NULL DEFAULT 0,
+  `will_friends`      TINYINT(1)   NOT NULL DEFAULT 0,
+  `einwilligung_text` TEXT         NULL DEFAULT NULL,
+  `einwilligung_at`   DATETIME     NULL DEFAULT NULL,
+  `ip_hash`           CHAR(64)     NULL DEFAULT NULL,
+  -- Bestaetigung per E-Mail (Double Opt-in). Erst wenn `bestaetigt_at`
+  -- steht, gilt der Eintrag. Vorher ist er nur eine Behauptung: jede und
+  -- jeder kann eine fremde Adresse eintippen, und die spaetere Nachricht
+  -- „der Termin steht fest" ist Werbung im Sinne des § 7 UWG. Ohne
+  -- bestaetigte Adresse laesst sich nicht belegen, dass die Einwilligung
+  -- von der Inhaberin des Postfachs kam.
+  `token`             CHAR(64)     NULL DEFAULT NULL,
+  `token_at`          DATETIME     NULL DEFAULT NULL,
+  `bestaetigt_at`     DATETIME     NULL DEFAULT NULL,
+  `mail_ok`           TINYINT(1)   NOT NULL DEFAULT 0,
+  `created_at`        DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  -- Zweimal dieselbe Adresse ist kein Fehler der Person, sondern ein zweiter
+  -- Klick. Der Eintrag wird dann aufgefrischt statt verdoppelt.
+  UNIQUE KEY `uq_warteliste_email` (`email`),
+  KEY `idx_warteliste_created` (`created_at`),
+  KEY `idx_warteliste_ip` (`ip_hash`, `created_at`),
+  KEY `idx_warteliste_token` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

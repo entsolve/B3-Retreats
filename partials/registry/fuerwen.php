@@ -111,7 +111,7 @@ return [
         'group' => '15 Für wen',
         'label' => 'Kleinzeile unter dem Button',
         'type' => 'text',
-        'hint' => 'Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben.',
-        'default' => '08.–11. Oktober 2026 &middot; Spabrücken &middot; Ratenzahlung möglich',
+        'hint' => 'Termin, Ort und Hinweis. &middot; erzeugt den Trennpunkt zwischen den Angaben. Verfügbare Marken: {datum} = 08.–11. Oktober 2026 · {monat} = Oktober 2026 · {start} / {ende} = 08.10.2026 · {start_tag} / {ende_tag} = Donnerstag · {start_iso} / {ende_iso} = 2026-10-08. Sie werden beim Anzeigen durch den Termin aus Abschnitt „24 Termin und Plätze“ ersetzt.',
+        'default' => '{datum} &middot; Spabrücken &middot; Ratenzahlung möglich',
     ],
 ];
