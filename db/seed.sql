@@ -758,6 +758,7 @@ E-Mail: <a href="mailto:hello@b3-retreats.de">hello@b3-retreats.de</a></p>', 'ht
 ('warteliste.label_friends', 'Friends Special', 'text'),
 ('warteliste.einwilligung', 'Ich möchte benachrichtigt werden, sobald der Termin feststeht, und bin damit einverstanden, dass meine Angaben dafür gespeichert werden. Ich kann das jederzeit formlos widerrufen. Mehr dazu in der <a class="link" href="/datenschutz">Datenschutzerklärung</a>.', 'html'),
 ('warteliste.cta', 'Absenden', 'text'),
+('warteliste.cta_knoepfe', 'Auf die Warteliste', 'text'),
 ('warteliste.danke', 'Wie schön, dass du dabei sein möchtest! 🤍
 
 Du stehst jetzt ganz unverbindlich auf unserer Warteliste. Sobald der Termin für das Retreat feststeht, erfährst du als eine der Ersten davon.

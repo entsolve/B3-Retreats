@@ -108,7 +108,6 @@ $hatPasswort = trim($werte['passwort'] ?? '') !== '';
 $titel = 'E-Mail';
 require __DIR__ . '/_header.php';
 ?>
-<main class="inhalt inhalt--schmal">
   <?php if ($meldung !== null): ?>
     <p class="meldung meldung--<?= esc($meldungsart) ?>"><?= esc($meldung) ?></p>
   <?php endif; ?>
@@ -168,5 +167,4 @@ require __DIR__ . '/_header.php';
       </button>
     </div>
   </form>
-</main>
 <?php require __DIR__ . '/_footer.php'; ?>

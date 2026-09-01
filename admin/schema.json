@@ -2098,6 +2098,12 @@
     "hint": "Text im Warteliste-Abschnitt."
   },
   {
+    "path": "warteliste.cta_knoepfe",
+    "label": "Beschriftung der Buchungsknöpfe, solange nicht gebucht werden kann",
+    "type": "text",
+    "hint": "NICHT der Knopf unter dem Formular — das ist das Feld darüber. Dieser Text ersetzt die Beschriftung ALLER Buchungsknöpfe der Seite, sobald kein Buchungslink hinterlegt oder alles ausgebucht ist: sie führen dann hierher und sollten nicht weiter „Meinen Platz sichern“ versprechen. Leer lassen behält die ursprünglichen Beschriftungen."
+  },
+  {
     "path": "warteliste.danke",
     "label": "Nachricht nach dem Absenden",
     "type": "textarea",

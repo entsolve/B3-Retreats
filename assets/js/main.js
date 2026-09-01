@@ -22,13 +22,32 @@
 
   // --- Buchungs-Links verdrahten -------------------------------------------
   const allgemein = ((document.body && document.body.dataset.bookingUrl) || '').trim();
+  // Wohin, wenn es nichts zu buchen gibt — gesetzt von index.php, sobald
+  // kein Buchungslink hinterlegt oder alles ausgebucht ist.
+  const ersatz = ((document.body && document.body.dataset.bookingErsatz) || '').trim();
+  // Beschriftung fuer denselben Zustand. Leer heisst: Beschriftungen so lassen.
+  const ersatzText = ((document.body && document.body.dataset.bookingErsatzText) || '').trim();
 
   document.querySelectorAll('[data-booking]').forEach(function (el) {
     const url = (el.dataset.bookingUrl || '').trim() || allgemein;
 
     // Der Platzhalter aus frueheren Fassungen zaehlt weiterhin als „leer";
     // sonst schickt ein vergessener Rest die Kundin auf eine 404.
-    if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) return;
+    if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) {
+      // Ohne Buchungslink fuehrte der Knopf bisher auf #buchung — also auf
+      // einen Abschnitt, der zum Bezahlen einlaedt, ohne dass es einen Weg
+      // dorthin gaebe. Jetzt geht er zur Warteliste: das ist das Einzige,
+      // was die Seite in diesem Zustand wirklich anbietet.
+      if (ersatz) {
+        el.setAttribute('href', ersatz);
+        el.removeAttribute('target');
+        el.removeAttribute('rel');
+        // textContent und nicht innerHTML: was aus dem Panel kommt, wird hier
+        // als Text eingesetzt und nicht als Markup ausgewertet.
+        if (ersatzText) el.textContent = ersatzText;
+      }
+      return;
+    }
 
     el.setAttribute('href', url);
     el.setAttribute('target', '_blank');
@@ -36,7 +55,8 @@
   });
 
   if (!allgemein) {
-    console.info('[B³] Kein Buchungslink hinterlegt — Panel, Abschnitt „16 Buchung".');
+    console.info('[B³] Kein Buchungslink hinterlegt — die Knoepfe fuehren zur '
+      + 'Warteliste. Link setzen im Panel, Abschnitt „16 Buchung".');
   }
 
   // --- Einwilligung ---------------------------------------------------------

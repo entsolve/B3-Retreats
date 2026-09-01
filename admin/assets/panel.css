@@ -512,3 +512,15 @@ select:focus { outline: 2px solid #7A8C6B; outline-offset: 1px; }
 .kalender__tag.is-drin { background: #eae4da; }
 .kalender__tag.is-von,
 .kalender__tag.is-bis { background: #454b40; color: #f7f4ef; font-weight: 600; }
+
+/* --- Warteliste ----------------------------------------------------------
+   Karten statt Tabelle: auf dem Telefon ist eine achtspaltige Tabelle
+   unlesbar, und das Panel wird auch unterwegs geoeffnet. */
+
+.eintrag--offen { opacity: .72; border-left: 3px solid #c9b48a; padding-left: .8rem; }
+
+.eintrag__kopf { margin: 0 0 .3rem; display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.eintrag__zeile { margin: 0 0 .25rem; font-size: .92rem; }
+.eintrag__aktion { margin-top: .5rem; }
+
+.leise { color: #8b8073; }

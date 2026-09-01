@@ -157,3 +157,60 @@ function plaetze_ableiten(array $daten): array
     }
     return $aus;
 }
+
+/**
+ * Uebernimmt die Warteliste die Buchungsknoepfe?
+ *
+ * JA in zwei Faellen:
+ *
+ *   1. Es ist gar kein Buchungslink hinterlegt. Ein Knopf, der „Meinen
+ *      Platz sichern" verspricht und dann nur zum naechsten Absatz
+ *      springt, ist ein kaputter Knopf — und der steht ausgerechnet auf
+ *      der Stelle, an der jemand gerade zusagen wollte.
+ *
+ *   2. Alle Varianten sind ausgebucht. Weiter zum Bezahlen einzuladen
+ *      hiesse, Geld fuer einen Platz zu nehmen, den es nicht gibt.
+ *
+ * In beiden Faellen ist die Warteliste das ehrliche Ziel: sie ist das,
+ * was die Seite in diesem Moment tatsaechlich anbieten kann.
+ */
+function warteliste_uebernimmt(array $daten): bool
+{
+    $abgeleitet = plaetze_ableiten($daten);
+    $alleVoll = ($abgeleitet['haus.shared.voll'] ?? '') === '1'
+             && ($abgeleitet['haus.friends.voll'] ?? '') === '1';
+
+    $links = [(string) b3_get_path($daten, 'buchung.url'),
+              (string) b3_get_path($daten, 'haus.shared.url'),
+              (string) b3_get_path($daten, 'haus.friends.url')];
+    foreach ((array) b3_get_path($daten, 'buchung.preise') as $eintrag) {
+        $links[] = (string) ($eintrag['url'] ?? '');
+    }
+    $keinLink = true;
+    foreach ($links as $l) {
+        if (trim($l) !== '') {
+            $keinLink = false;
+            break;
+        }
+    }
+
+    return $keinLink || $alleVoll;
+}
+
+/**
+ * Was aus der Warteliste-Uebernahme folgt: Ziel und Beschriftung der Knoepfe.
+ *
+ * Wie plaetze_ableiten() steht auch das hier und nicht in index.php, damit
+ * tools/check-pfade.php dieselbe Rechnung anstellen kann. Sonst meldet die
+ * Probe das Beschriftungsfeld als wirkungslos — es steht ja nirgends
+ * woertlich in der Vorlage, sondern geht in einen abgeleiteten Wert ein.
+ */
+function buchung_ersatz_ableiten(array $daten): array
+{
+    $uebernimmt = warteliste_uebernimmt($daten);
+    return [
+        'warteliste.ziel' => $uebernimmt ? '#warteliste' : '',
+        'warteliste.cta_knoepfe_aktiv' => $uebernimmt
+            ? (string) b3_get_path($daten, 'warteliste.cta_knoepfe') : '',
+    ];
+}

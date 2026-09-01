@@ -880,6 +880,9 @@
     "pruefen": "Fast geschafft! Wir haben dir eine E-Mail geschickt.\n\nBitte klick auf den Bestätigungslink darin – erst danach stehst du auf der Warteliste. Schau notfalls kurz im Spam-Ordner nach.",
     "link_ungueltig": "Dieser Bestätigungslink gilt leider nicht mehr – er ist entweder abgelaufen oder wurde bereits verwendet. Trag dich einfach noch einmal ein, dann schicken wir dir einen neuen.",
     "ist_pruefen": "",
-    "ist_ungueltig": ""
+    "ist_ungueltig": "",
+    "ziel": "",
+    "cta_knoepfe": "Auf die Warteliste",
+    "cta_knoepfe_aktiv": ""
   }
 }

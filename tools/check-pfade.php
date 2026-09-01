@@ -89,6 +89,11 @@ function bauen_mit(array $zeilen, string $schluessel, $wert): string
             b3_set_path($daten, $pfad, $abgeleitet);
         }
     }
+    foreach (buchung_ersatz_ableiten($daten) as $pfad => $abgeleitet) {
+        if ($pfad !== $schluessel) {
+            b3_set_path($daten, $pfad, $abgeleitet);
+        }
+    }
     /* DANACH alle Schalter einschalten, auch die einander ausschliessenden.
        Vorher waere es wirkungslos: plaetze_ableiten() ueberschreibt „voll"
        anhand der acht freien Plaetze aus dem Bestand, und der Zweig fuer

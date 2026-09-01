@@ -89,6 +89,13 @@ return [
         'hint' => 'Text im Warteliste-Abschnitt.',
         'default' => 'Absenden',
     ],
+    'warteliste.cta_knoepfe' => [
+        'group' => '23 Warteliste',
+        'label' => 'Beschriftung der Buchungsknöpfe, solange nicht gebucht werden kann',
+        'type' => 'text',
+        'hint' => 'NICHT der Knopf unter dem Formular — das ist das Feld darüber. Dieser Text ersetzt die Beschriftung ALLER Buchungsknöpfe der Seite, sobald kein Buchungslink hinterlegt oder alles ausgebucht ist: sie führen dann hierher und sollten nicht weiter „Meinen Platz sichern“ versprechen. Leer lassen behält die ursprünglichen Beschriftungen.',
+        'default' => 'Auf die Warteliste',
+    ],
     'warteliste.danke' => [
         'group' => '23 Warteliste',
         'label' => 'Nachricht nach dem Absenden',

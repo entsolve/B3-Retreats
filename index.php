@@ -64,6 +64,14 @@ foreach (plaetze_ableiten(b3_data()) as $pfad => $wert) {
     b3_runtime_set($pfad, $wert);
 }
 
+/* Wohin die Buchungsknoepfe zeigen, wenn es nichts zu buchen gibt.
+   Leer heisst: alles beim Alten, main.js nimmt den Stripe-Link. */
+/* Wohin die Buchungsknoepfe zeigen und wie sie heissen, wenn es nichts zu
+   buchen gibt. Die Regel steht in partials/termin.php. */
+foreach (buchung_ersatz_ableiten(b3_data()) as $pfad => $wert) {
+    b3_runtime_set($pfad, $wert);
+}
+
 try {
     $html = b3_render_template(__DIR__ . '/tools/templates/index.html');
     if (trim($html) === '') {
