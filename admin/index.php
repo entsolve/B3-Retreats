@@ -253,6 +253,18 @@ require __DIR__ . '/_header.php';
                       data-felder="<?= esc(json_encode($def['fields'] ?? [],
                           JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) ?>"
                       data-eintrag-label="<?= esc($def['itemLabel'] ?? '') ?>"><?= esc($wert) ?></textarea>
+          <?php elseif ($typ === 'schalter'): ?>
+            <?php /* Ein Haken statt eines Textfeldes. Das versteckte Feld davor
+                     sorgt dafuer, dass beim Abhaken auch wirklich etwas
+                     abgeschickt wird: ein nicht angehaktes <input type=checkbox>
+                     taucht im POST gar nicht auf, und das Feld bliebe auf dem
+                     alten Wert stehen. */ ?>
+            <input type="hidden" name="feld[<?= esc($key) ?>]" value="">
+            <label class="schalter">
+              <input id="<?= $id ?>" name="feld[<?= esc($key) ?>]" type="checkbox"
+                     value="1"<?= trim($wert) !== '' ? ' checked' : '' ?>>
+              <span><?= esc($def['label'] ?? $key) ?></span>
+            </label>
           <?php elseif ($typ === 'datum'): ?>
             <?php /* Das Eingabefeld bleibt ein normales Textfeld im Format
                      JJJJ-MM-TT — ohne JavaScript ist es damit weiterhin voll

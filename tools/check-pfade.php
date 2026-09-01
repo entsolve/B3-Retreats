@@ -81,6 +81,32 @@ function bauen_mit(array $zeilen, string $schluessel, $wert): string
         }
     }
 
+    /* Und ein Buchungslink, damit der Normalfall geprueft wird: eine Seite,
+       auf der tatsaechlich gebucht werden kann.
+
+       Im Bestand ist das Feld leer — die Seite laeuft im Wartelisten-Modus.
+       Damit waere „Warteliste statt Buchung" ein Schalter ohne beobachtbare
+       Wirkung, weil beide Stellungen dasselbe ergeben. Geprueft werden soll
+       aber, ob er ueberhaupt verdrahtet ist, und das zeigt sich nur, wenn es
+       etwas umzuschalten GIBT. */
+    if ($schluessel !== 'buchung.url' && trim((string) b3_get_path($daten, 'buchung.url')) === '') {
+        b3_set_path($daten, 'buchung.url', 'https://buy.stripe.com/pruefung');
+    }
+
+    /* Dazu den Wartelisten-Schalter AN. Zusammen ergibt das die einzige
+       Ausgangslage, in der sich beide Seiten der Sache zeigen lassen:
+
+         - der Schalter selbst wird auf '1' und '' gebaut und muss sich
+           unterscheiden — dank des Buchungslinks tut er das;
+         - die Wartelisten-Beschriftung der Knoepfe erscheint ueberhaupt
+           nur, solange die Warteliste uebernimmt.
+
+       Fuer den Schalter selbst wird der Wert unten ohnehin ueberschrieben;
+       die Zeile hier betrifft alle ANDEREN Pruefungen. */
+    if ($schluessel !== 'warteliste.statt_buchung') {
+        b3_set_path($daten, 'warteliste.statt_buchung', '1');
+    }
+
     /* Dieselbe Rechnung wie im Seitenaufbau. Ohne sie erschienen die
        Felder rund um die freien Plaetze als wirkungslos: sie stehen nicht
        woertlich in der Vorlage, sondern gehen in abgeleitete Werte ein. */
@@ -165,6 +191,27 @@ foreach ($register as $schluessel => $def) {
         }
         if (!$treffer) {
             $fehler[] = $schluessel . '  (Datum kommt auf keiner Seite an)';
+        }
+        continue;
+    }
+
+    /* SCHALTER TRAGEN KEINEN TEXT, sondern nur „an" oder „aus". Eine Marke
+       kann dort nicht auftauchen, egal wie richtig das Feld verdrahtet ist.
+
+       Geprueft wird deshalb die Wirkung: die Seite einmal mit gesetztem und
+       einmal mit leerem Schalter bauen. Unterscheiden sich die Ergebnisse,
+       tut der Schalter etwas — und genau das ist die Frage, die diese Probe
+       stellt. Sind sie gleich, ist er ein Knopf ohne Draht. */
+    if ($typ === 'schalter') {
+        $wirkt = false;
+        foreach ($vorlagen as $zeilen) {
+            if (bauen_mit($zeilen, $schluessel, '1') !== bauen_mit($zeilen, $schluessel, '')) {
+                $wirkt = true;
+                break;
+            }
+        }
+        if (!$wirkt) {
+            $fehler[] = $schluessel . '  (Schalter ohne Wirkung)';
         }
         continue;
     }

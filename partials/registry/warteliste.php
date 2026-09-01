@@ -5,6 +5,13 @@
    ueberschreibt die Datei. Texte gehoeren in content/site.json,
    danach `python3 tools/build-registry.py`. */
 return [
+    'warteliste.statt_buchung' => [
+        'group' => '23 Warteliste',
+        'label' => 'Warteliste statt Buchung',
+        'type' => 'schalter',
+        'hint' => 'Angehakt führen ALLE Knöpfe der Seite zum Wartelisten-Formular, auch wenn ein Buchungslink hinterlegt ist. Ohne Haken entscheidet die Seite selbst: solange ein Buchungslink da ist und Plätze frei sind, wird gebucht — sonst geht es ebenfalls zur Warteliste.',
+        'default' => '1',
+    ],
     'warteliste.eyebrow' => [
         'group' => '23 Warteliste',
         'label' => 'Kleine Zeile über der Überschrift',

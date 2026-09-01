@@ -2026,6 +2026,12 @@
     "hint": "Der einzige Navigationspunkt im Kopf der Rechtsseiten."
   },
   {
+    "path": "warteliste.statt_buchung",
+    "label": "Warteliste statt Buchung",
+    "type": "schalter",
+    "hint": "Angehakt führen ALLE Knöpfe der Seite zum Wartelisten-Formular, auch wenn ein Buchungslink hinterlegt ist. Ohne Haken entscheidet die Seite selbst: solange ein Buchungslink da ist und Plätze frei sind, wird gebucht — sonst geht es ebenfalls zur Warteliste."
+  },
+  {
     "path": "warteliste.eyebrow",
     "label": "Kleine Zeile über der Überschrift",
     "type": "text",

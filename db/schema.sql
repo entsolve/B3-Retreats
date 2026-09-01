@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS `admin_users` (
 CREATE TABLE IF NOT EXISTS `content` (
   `k`          VARCHAR(190) NOT NULL,
   `v`          LONGTEXT     NULL,
-  `type`       ENUM('text','textarea','html','image','number','url','json')
+  `type`       ENUM('text','textarea','html','image','number','url','json',
+                     'datum','schalter')
                             NOT NULL DEFAULT 'text',
   `updated_at` DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
                             ON UPDATE CURRENT_TIMESTAMP,
@@ -184,3 +185,19 @@ CREATE TABLE IF NOT EXISTS `warteliste` (
   KEY `idx_warteliste_ip` (`ip_hash`, `created_at`),
   KEY `idx_warteliste_token` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------------------
+-- Nachtrag: neue Feldtypen fuer die content-Tabelle.
+--
+--    CREATE TABLE IF NOT EXISTS ruehrt eine vorhandene Tabelle nicht an —
+--    bei einer bestehenden Installation bliebe der alte ENUM stehen, und
+--    das Speichern eines Datums- oder Schalterfeldes im Panel liefe ins
+--    Leere: MySQL nimmt den unbekannten Wert nicht an. Sichtbar waere das
+--    als „ich aendere den Termin, es passiert nichts".
+--
+--    MODIFY COLUMN ist wiederholbar: steht der ENUM schon richtig, ist die
+--    Anweisung wirkungslos.
+-- --------------------------------------------------------------------
+ALTER TABLE `content`
+  MODIFY COLUMN `type` ENUM('text','textarea','html','image','number','url','json',
+                            'datum','schalter') NOT NULL DEFAULT 'text';

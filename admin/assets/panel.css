@@ -524,3 +524,7 @@ select:focus { outline: 2px solid #7A8C6B; outline-offset: 1px; }
 .eintrag__aktion { margin-top: .5rem; }
 
 .leise { color: #8b8073; }
+
+.schalter { display: flex; align-items: center; gap: .55rem; cursor: pointer; }
+.schalter input { width: 1.05rem; height: 1.05rem; accent-color: #454b40; }
+.schalter span { font-size: .95rem; }

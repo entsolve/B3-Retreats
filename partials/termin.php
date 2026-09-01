@@ -176,6 +176,20 @@ function plaetze_ableiten(array $daten): array
  */
 function warteliste_uebernimmt(array $daten): bool
 {
+    /* Der ausdrueckliche Schalter aus dem Panel schlaegt alles.
+
+       Er ist dazugekommen, weil die Regel darunter zwar richtig, aber nicht
+       bedienbar war: um auf Warteliste umzustellen, musste man den
+       Buchungslink loeschen oder die Plaetze auf null setzen — beides
+       Umwege, auf die niemand von selbst kommt. Stattdessen wurden die
+       Knopf-BESCHRIFTUNGEN auf „In Warteliste eintragen" geaendert, und die
+       Knoepfe fuehrten weiter zu Stripe. Die Seite tat, was in den Daten
+       stand; die Daten widersprachen sich. Ein Schalter, der genau das
+       sagt, was er tut, verhindert das. */
+    if (trim((string) b3_get_path($daten, 'warteliste.statt_buchung')) !== '') {
+        return true;
+    }
+
     $abgeleitet = plaetze_ableiten($daten);
     $alleVoll = ($abgeleitet['haus.shared.voll'] ?? '') === '1'
              && ($abgeleitet['haus.friends.voll'] ?? '') === '1';

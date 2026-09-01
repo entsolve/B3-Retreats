@@ -29,25 +29,31 @@
   const ersatzText = ((document.body && document.body.dataset.bookingErsatzText) || '').trim();
 
   document.querySelectorAll('[data-booking]').forEach(function (el) {
+    /* UEBERNIMMT DIE WARTELISTE, GILT SIE FUER ALLE — auch dann, wenn ein
+       Buchungslink hinterlegt ist.
+
+       Hier steckte der Fehler: die Zeile stand frueher unten im Zweig „kein
+       Link vorhanden". Der Schalter im Panel setzte das Ersatzziel brav,
+       aber solange ein Stripe-Link existierte, kam dieser Zweig nie dran.
+       Ergebnis: der Knopf hiess „In Warteliste eintragen" und oeffnete
+       Stripe. Wer darauf klickt, landet auf einer Bezahlseite, die er nicht
+       gesucht hat — im schlimmsten Fall zahlt er. */
+    if (ersatz) {
+      el.setAttribute('href', ersatz);
+      el.removeAttribute('target');
+      el.removeAttribute('rel');
+      // textContent und nicht innerHTML: was aus dem Panel kommt, wird hier
+      // als Text eingesetzt und nicht als Markup ausgewertet.
+      if (ersatzText) el.textContent = ersatzText;
+      return;
+    }
+
     const url = (el.dataset.bookingUrl || '').trim() || allgemein;
 
     // Der Platzhalter aus frueheren Fassungen zaehlt weiterhin als „leer";
-    // sonst schickt ein vergessener Rest die Kundin auf eine 404.
-    if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) {
-      // Ohne Buchungslink fuehrte der Knopf bisher auf #buchung — also auf
-      // einen Abschnitt, der zum Bezahlen einlaedt, ohne dass es einen Weg
-      // dorthin gaebe. Jetzt geht er zur Warteliste: das ist das Einzige,
-      // was die Seite in diesem Zustand wirklich anbietet.
-      if (ersatz) {
-        el.setAttribute('href', ersatz);
-        el.removeAttribute('target');
-        el.removeAttribute('rel');
-        // textContent und nicht innerHTML: was aus dem Panel kommt, wird hier
-        // als Text eingesetzt und nicht als Markup ausgewertet.
-        if (ersatzText) el.textContent = ersatzText;
-      }
-      return;
-    }
+    // sonst schickt ein vergessener Rest die Kundin auf eine 404. Ohne
+    // Ersatzziel bleibt der Knopf dann auf seinem Ziel aus der Vorlage.
+    if (!url || url.indexOf('HIER-DEINEN-LINK') > -1) return;
 
     el.setAttribute('href', url);
     el.setAttribute('target', '_blank');

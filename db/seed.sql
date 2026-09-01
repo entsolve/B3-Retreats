@@ -746,6 +746,7 @@ Deutschland<br>
 E-Mail: <a href="mailto:hello@b3-retreats.de">hello@b3-retreats.de</a></p>', 'html'),
 ('recht.eyebrow', 'Rechtliches', 'text'),
 ('recht.zurueck', 'Zurück zur Startseite', 'text'),
+('warteliste.statt_buchung', '1', 'text'),
 ('warteliste.eyebrow', 'Warteliste', 'text'),
 ('warteliste.headline', 'Warteliste', 'text'),
 ('warteliste.intro', 'Trag dich ganz unverbindlich in unsere Warteliste ein und erfahre als Erste, sobald der Termin für das Retreat feststeht.', 'textarea'),
