@@ -87,10 +87,48 @@ function mail_settings_neu_lesen(): array
  */
 function mail_key(): string
 {
+    static $key = null;
+    if ($key !== null) {
+        return $key;
+    }
+
     $datei = __DIR__ . '/../config.php';
     $roh = is_file($datei) ? require $datei : [];
-    $key = is_array($roh) ? (string) ($roh['mail']['schluessel'] ?? '') : '';
-    return $key !== '' ? $key : '';
+    if (!is_array($roh)) {
+        return $key = '';
+    }
+
+    // Erste Wahl: ein ausdruecklich gesetzter Schluessel.
+    $eigen = trim((string) ($roh['mail']['schluessel'] ?? ''));
+    if ($eigen !== '' && strpos($eigen, 'BITTE-EINMALIG') === false) {
+        return $key = $eigen;
+    }
+
+    /* SONST AUS DEN DATENBANK-ZUGANGSDATEN ABGELEITET.
+       
+       Vorher stand hier: „In config.php fehlt der Schluessel" — und damit
+       war die SMTP-Einrichtung im Panel eine Sackgasse. Wer sie oeffnet,
+       hat gerade KEINEN Dateizugriff; sonst haette er nicht das Panel
+       aufgemacht. Eine Einstellungsseite, die zum FTP-Programm schickt,
+       ist keine Einstellungsseite.
+
+       Die Ableitung schuetzt genau gegen das, worum es geht: ein
+       Datenbank-Auszug — aus einem Backup, bei einem Umzug, nach einem
+       Leck — enthaelt die verschluesselten Bytes, aber nicht config.php
+       und damit nicht die Zugangsdaten, aus denen der Schluessel faellt.
+       Wer ohnehin die Datei lesen kann, kommt auch an alles andere.
+
+       Preis der Bequemlichkeit, offen gesagt: aendert sich das
+       Datenbank-Passwort, ist das gespeicherte SMTP-Passwort unlesbar und
+       muss im Panel neu eingetragen werden. Genau das meldet die Seite
+       dann auch. Wer das vermeiden will, traegt mail.schluessel ein. */
+    $db = (array) ($roh['db'] ?? []);
+    $stoff = (string) ($db['pass'] ?? '') . '|' . (string) ($db['name'] ?? '')
+           . '|' . (string) ($db['user'] ?? '');
+    if (trim($stoff, '|') === '') {
+        return $key = '';
+    }
+    return $key = hash('sha256', 'b3-mail|' . $stoff);
 }
 
 function mail_encrypt(string $klartext): string

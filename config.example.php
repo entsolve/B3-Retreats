@@ -63,10 +63,19 @@ return [
 
     // --- E-Mail ----------------------------------------------------------
     'mail' => [
-        // Schluessel, mit dem das SMTP-Passwort in der Datenbank verschluesselt
-        // wird. EINMALIG durch etwas Zufaelliges ersetzen: `openssl rand -hex 32`.
-        // Wird er spaeter geaendert, ist das gespeicherte Passwort unlesbar und
-        // muss im Panel neu eingetragen werden — kein Datenverlust, nur Arbeit.
+        // OPTIONAL. Schluessel, mit dem das SMTP-Passwort in der Datenbank
+        // verschluesselt wird.
+        //
+        // Bleibt der Platzhalter stehen, wird der Schluessel aus den
+        // Datenbank-Zugangsdaten oben abgeleitet — die SMTP-Einrichtung im
+        // Panel funktioniert dann ohne jeden Eingriff in diese Datei. Das ist
+        // Absicht: wer die Einstellungsseite oeffnet, hat in dem Moment keinen
+        // Dateizugriff, sonst braeuchte er die Seite nicht.
+        //
+        // Einen eigenen Wert einzutragen lohnt aus einem Grund: aendert sich
+        // das Datenbank-Passwort, ist das gespeicherte SMTP-Passwort sonst
+        // unlesbar und muss im Panel neu hinterlegt werden. Wert erzeugen mit
+        // `openssl rand -hex 32`.
         'schluessel' => 'BITTE-EINMALIG-ERSETZEN',
     ],
 ];
