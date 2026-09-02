@@ -143,19 +143,60 @@ function mail_encrypt(string $klartext): string
     return $roh === false ? '' : base64_encode($iv . $roh);
 }
 
+/**
+ * Alle Schluessel, mit denen ein gespeichertes Passwort verschluesselt sein
+ * KANN — in der Reihenfolge, in der sie probiert werden.
+ *
+ * Ein einzelner Schluessel reicht nicht, weil sich die Herkunft im Betrieb
+ * geaendert hat. Frueher verlangte das Panel einen Eintrag in config.php;
+ * wer dort die Vorlage einfach uebernommen hat, verschluesselte mit der
+ * Zeichenkette „BITTE-EINMALIG-ERSETZEN". Seit der Schluessel notfalls aus
+ * den Datenbank-Zugangsdaten abgeleitet wird, faellt dieser Wert weg — und
+ * das gespeicherte Passwort waere von einem Tag auf den anderen unlesbar,
+ * ohne dass sich am Postfach irgendetwas geaendert haette.
+ *
+ * Genau das ist passiert. Also werden die alten Moeglichkeiten
+ * mitprobiert, statt der Kundin die Arbeit zurueckzugeben.
+ */
+function mail_keys(): array
+{
+    $keys = [mail_key()];
+
+    $datei = __DIR__ . '/../config.php';
+    $roh = is_file($datei) ? require $datei : [];
+    if (is_array($roh)) {
+        // Ein ausdruecklicher Schluessel, auch der Platzhalter aus der Vorlage.
+        $eigen = trim((string) ($roh['mail']['schluessel'] ?? ''));
+        if ($eigen !== '') {
+            $keys[] = $eigen;
+        }
+    }
+
+    return array_values(array_unique(array_filter($keys, static function ($k) {
+        return $k !== '';
+    })));
+}
+
 function mail_decrypt(string $gespeichert): string
 {
-    $key = mail_key();
-    if ($key === '' || $gespeichert === '') {
+    if ($gespeichert === '') {
         return '';
     }
     $roh = base64_decode($gespeichert, true);
     if ($roh === false || strlen($roh) <= 16) {
         return '';
     }
-    $klar = openssl_decrypt(substr($roh, 16), 'aes-256-cbc', hash('sha256', $key, true),
-                            OPENSSL_RAW_DATA, substr($roh, 0, 16));
-    return $klar === false ? '' : $klar;
+    $iv = substr($roh, 0, 16);
+    $rest = substr($roh, 16);
+
+    foreach (mail_keys() as $key) {
+        $klar = openssl_decrypt($rest, 'aes-256-cbc', hash('sha256', $key, true),
+                                OPENSSL_RAW_DATA, $iv);
+        if ($klar !== false) {
+            return $klar;
+        }
+    }
+    return '';
 }
 
 /* ---------------------------------------------------------------------
@@ -315,4 +356,59 @@ function smtp_send(array $s, string $von, string $an, array $kopf, string $koerp
     @fwrite($fp, "QUIT\r\n");
     @fclose($fp);
     return $ok;
+}
+
+/**
+ * Ein mit einem alten Schluessel abgelegtes Passwort auf den aktuellen
+ * umstellen — still und ohne Zutun.
+ *
+ * Ohne diesen Schritt bliebe die Ablage dauerhaft von dem alten Wert in
+ * config.php abhaengig. Wer ihn dort eines Tages aufraeumt — er sieht ja aus
+ * wie ein vergessener Platzhalter —, macht das Passwort damit unlesbar, und
+ * niemand haette einen Zusammenhang vermutet.
+ *
+ * Liefert true, wenn tatsaechlich umgestellt wurde.
+ */
+function mail_passwort_umschluesseln(): bool
+{
+    $s = mail_settings();
+    $gespeichert = trim($s['passwort'] ?? '');
+    if ($gespeichert === '') {
+        return false;
+    }
+
+    $klar = mail_decrypt($gespeichert);
+    if ($klar === '') {
+        return false;                       // unlesbar — hier ist nichts zu retten
+    }
+
+    // Laesst es sich mit dem AKTUELLEN Schluessel allein lesen, ist alles gut.
+    $keys = mail_keys();
+    if (!$keys) {
+        return false;
+    }
+    $roh = base64_decode($gespeichert, true);
+    if ($roh !== false && strlen($roh) > 16) {
+        $mitAktuellem = openssl_decrypt(substr($roh, 16), 'aes-256-cbc',
+            hash('sha256', $keys[0], true), OPENSSL_RAW_DATA, substr($roh, 0, 16));
+        if ($mitAktuellem !== false) {
+            return false;
+        }
+    }
+
+    $pdo = db();
+    if (!$pdo) {
+        return false;
+    }
+    try {
+        $pdo->prepare('INSERT INTO settings (k, v) VALUES (?, ?) '
+            . 'ON DUPLICATE KEY UPDATE v = VALUES(v)')
+            ->execute(['smtp.passwort', mail_encrypt($klar)]);
+        mail_settings_neu_lesen();
+        error_log('B3 mail: SMTP-Passwort auf den aktuellen Schluessel umgestellt.');
+        return true;
+    } catch (Throwable $e) {
+        error_log('B3 mail: Umschluesseln fehlgeschlagen — ' . $e->getMessage());
+        return false;
+    }
 }

@@ -102,6 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Beim Oeffnen der Seite still auf den aktuellen Schluessel umstellen,
+// falls das Passwort noch mit einem frueheren abgelegt ist.
+mail_settings_neu_lesen();
+mail_passwort_umschluesseln();
+
 $werte = mail_settings_neu_lesen();
 $hatPasswort = trim($werte['passwort'] ?? '') !== '';
 
