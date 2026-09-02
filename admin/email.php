@@ -122,6 +122,14 @@ require __DIR__ . '/_header.php';
       „E-Mail-Konten“ → „Einstellungen“.
     </p>
 
+    <?php if (trim($werte['empfaenger'] ?? '') === ''): ?>
+      <p class="meldung meldung--fehler">
+        „Eintragungen melden an“ ist leer. Solange dort nichts steht, gehen die
+        Meldungen über neue Wartelisten-Einträge an die fest eingebaute Adresse
+        hello@b3-retreats.de. Wer sie woanders haben will, trägt sie hier ein.
+      </p>
+    <?php endif; ?>
+
     <?php foreach (EMAIL_FELDER as $k => [$label, $hilfe]):
       $id = 'f_' . $k; $wert = (string) ($werte[$k] ?? ''); ?>
       <div class="feld">

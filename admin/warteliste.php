@@ -136,6 +136,19 @@ function wl_datum(?string $s): string
     return $s === null || $s === '' ? '—' : date('d.m.Y H:i', strtotime($s));
 }
 
+/* Letzter Grund, warum ein Eintrag nicht durchging. Steht in `settings`,
+   weil das Fehlerprotokoll des Servers fuer die Betreiberin unerreichbar ist. */
+$stoerung = '';
+if ($pdo !== null) {
+    try {
+        $q = $pdo->prepare('SELECT v FROM settings WHERE k = ?');
+        $q->execute(['warteliste.letzter_fehler']);
+        $stoerung = trim((string) $q->fetchColumn());
+    } catch (Throwable $e) {
+        // settings fehlt -> dann fehlt ohnehin die ganze Datenbank-Struktur.
+    }
+}
+
 $titel = 'Warteliste';
 require __DIR__ . '/_header.php';
 ?>
@@ -143,6 +156,15 @@ require __DIR__ . '/_header.php';
 
   <?php if ($meldung !== null): ?>
     <p class="meldung meldung--<?= esc($meldungsart) ?>"><?= esc($meldung) ?></p>
+  <?php endif; ?>
+
+  <?php if ($stoerung !== ''): ?>
+    <p class="meldung meldung--fehler">
+      <strong>Zuletzt ist ein Eintrag nicht durchgegangen.</strong><br>
+      <?= esc($stoerung) ?><br>
+      <span class="leise">Die Meldung verschwindet von selbst, sobald sich wieder
+      jemand erfolgreich einträgt.</span>
+    </p>
   <?php endif; ?>
 
   <?php if ($fehlerText !== null): ?>

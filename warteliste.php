@@ -34,6 +34,45 @@ require_once __DIR__ . '/partials/render.php';
 require_once __DIR__ . '/partials/mail.php';
 require_once __DIR__ . '/partials/mail-vorlagen.php';
 
+/**
+ * Den Grund eines Fehlschlags dort ablegen, wo die Betreiberin ihn findet.
+ *
+ * Er stand bisher nur im Fehlerprotokoll des Servers. Das ist der richtige
+ * Ort fuer Einzelheiten, aber niemand kommt dort hin, der nicht ohnehin
+ * SSH hat — und wer das Panel benutzt, hat es nicht. Uebrig blieb „geht
+ * nicht", ohne jede Spur.
+ *
+ * OHNE PERSONENBEZUG: gespeichert wird die technische Ursache und der
+ * Zeitpunkt, nicht wer es versucht hat. Eine Fehlermeldung ist kein Grund,
+ * die Adresse von jemandem aufzuheben, der gerade NICHT eingetragen wurde.
+ */
+function wl_grund(string $text): void
+{
+    if ($text !== '') {
+        error_log('B3 warteliste: ' . $text);
+    }
+    $pdo = db();
+    if (!$pdo) {
+        return;
+    }
+    try {
+        if ($text === '') {
+            // Geraeumt heisst geraeumt: ein Eintrag mit Zeitstempel und leerem
+            // Text sieht fuer das Panel weiterhin wie eine Stoerung aus.
+            $pdo->prepare('DELETE FROM settings WHERE k = ?')
+                ->execute(['warteliste.letzter_fehler']);
+            return;
+        }
+        $pdo->prepare('INSERT INTO settings (k, v) VALUES (?, ?) '
+            . 'ON DUPLICATE KEY UPDATE v = VALUES(v)')
+            ->execute(['warteliste.letzter_fehler',
+                       date('d.m.Y H:i') . ' — ' . mb_substr($text, 0, 500)]);
+    } catch (Throwable $e) {
+        // Wenn nicht einmal das geht, bleibt das Protokoll.
+        error_log('B3 warteliste: Grund nicht speicherbar — ' . $e->getMessage());
+    }
+}
+
 /** Zurueck zur Seite, mit einem Vermerk fuer die Anzeige. */
 function wl_zurueck(string $stand): void
 {
@@ -98,6 +137,8 @@ $zustimmungstext = trim(strip_tags(c('warteliste.einwilligung')));
 
 if ($vorname === '' || $nachname === '' || !$zustimmung
     || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    // Kein Betreiberfehler, sondern eine unvollstaendige Eingabe — die
+    // gehoert nicht in die Stoerungsanzeige des Panels.
     wl_zurueck('fehler');
 }
 
@@ -123,7 +164,7 @@ if ($pdo && $hash !== null) {
 
 /* --- Speichern, noch unbestaetigt ------------------------------------ */
 if (!$pdo) {
-    error_log('B3 warteliste: keine Datenbank — Eintrag von ' . $email . ' abgewiesen.');
+    wl_grund('Keine Datenbankverbindung. ' . (string) db_error());
     wl_zurueck('fehler');
 }
 
@@ -162,7 +203,9 @@ try {
     $pdo->prepare($sql)->execute([$vorname, $nachname, $email, $telefon ?: null,
         $shared, $friends, $zustimmungstext ?: null, $hash, $token]);
 } catch (Throwable $e) {
-    error_log('B3 warteliste (speichern): ' . $e->getMessage());
+    wl_grund('Der Eintrag liess sich nicht speichern. ' . $e->getMessage()
+        . ' — fehlt die Tabelle, hilft auf dieser Seite der Knopf '
+        . '„Datenbank aktualisieren".');
     wl_zurueck('fehler');
 }
 
@@ -178,8 +221,10 @@ if (!$verschickt) {
     // Ohne diese Mail kommt die Person nie auf die Liste. Das zu
     // verschweigen und „hat geklappt" anzuzeigen waere die schlechteste
     // aller Varianten: sie wartet auf eine Nachricht, die es nicht gibt.
-    error_log('B3 warteliste (Bestaetigungsmail an ' . $email . '): ' . (string) $fehler);
+    wl_grund('Die Bestätigungsmail ging nicht hinaus. ' . (string) $fehler
+        . ' — Einstellungen unter „E-Mail" prüfen.');
     wl_zurueck('fehler');
 }
 
+wl_grund('');          // geklappt — alte Stoerungsmeldung raeumen
 wl_zurueck('pruefen');
