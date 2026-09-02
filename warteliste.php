@@ -73,9 +73,66 @@ function wl_grund(string $text): void
     }
 }
 
-/** Zurueck zur Seite, mit einem Vermerk fuer die Anzeige. */
+/**
+ * Kam das Formular per JavaScript, ohne die Seite zu verlassen?
+ *
+ * main.js schickt dann diesen Kopf mit. Ein eigener Name und kein
+ * `X-Requested-With`: der steht in jedem zweiten Werkzeug drin und saehe
+ * auch dann nach „Hintergrund" aus, wenn es keiner war.
+ */
+function wl_ohne_neuladen(): bool
+{
+    return ($_SERVER['HTTP_X_B3_FORMULAR'] ?? '') === '1';
+}
+
+/**
+ * Der Satz, den die Besucherin zu sehen bekommt — derselbe, den die
+ * Vorlage bei einem normalen Absenden einsetzt.
+ *
+ * AUS DEM PANEL, nicht aus dem JavaScript. Sonst haette die Kundin vier
+ * Felder unter „Warteliste", die nur noch fuer Besucher ohne JavaScript
+ * gelten — tote Felder, die man erst beim Nachmessen bemerkt.
+ */
+function wl_meldung(string $stand): string
+{
+    $schluessel = [
+        'ok'      => 'warteliste.danke',
+        'pruefen' => 'warteliste.pruefen',
+        'fehler'  => 'warteliste.fehler',
+        'panne'   => 'warteliste.panne',
+    ];
+    return isset($schluessel[$stand]) ? c($schluessel[$stand]) : '';
+}
+
+/**
+ * Zurueck zur Seite, mit einem Vermerk fuer die Anzeige.
+ *
+ * ZWEI WEGE, EIN ERGEBNIS. Ohne JavaScript wird umgeleitet (Post/Redirect/Get,
+ * siehe oben). Mit JavaScript kommt die Antwort als JSON zurueck und die
+ * Seite bleibt stehen, wo sie ist.
+ *
+ * Der Grund ist der Weg zurueck: `/?warteliste=…#warteliste` laedt die ganze
+ * Startseite neu, beginnt oben und faehrt zum Anker hinunter. Wer gerade auf
+ * „Absenden" gedrueckt hat, sieht sein Formular verschwinden, die halbe Seite
+ * vorbeiziehen und landet erst danach bei der Antwort. Das wurde als
+ * unangenehm gemeldet, und zu Recht: die Antwort gehoert dorthin, wo der
+ * Blick schon ist.
+ */
 function wl_zurueck(string $stand): void
 {
+    if (wl_ohne_neuladen()) {
+        header('Content-Type: application/json; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo (string) json_encode([
+            'stand'  => $stand,
+            // Erledigt heisst: das Formular hat ausgedient und wird durch den
+            // Dank ersetzt — dieselbe Regel wie in index.php.
+            'fertig' => in_array($stand, ['ok', 'pruefen'], true),
+            'text'   => wl_meldung($stand),
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        exit;
+    }
+
     header('Location: /?warteliste=' . rawurlencode($stand) . '#warteliste', true, 303);
     exit;
 }

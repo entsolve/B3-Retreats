@@ -23,23 +23,31 @@
   /* Weiches Rollen NACHTRAEGLICH einschalten.
 
      In tokens/style.css steht `scroll-behavior: auto`, damit der Sprung zu
-     einem Anker beim Laden sofort passiert. Nach dem Absenden der Warteliste
-     kommt man auf /?warteliste=…#warteliste zurueck; mit „smooth" faehrt der
+     einem Anker beim Laden sofort passiert. Wer ohne JavaScript absendet,
+     kommt auf /?warteliste=…#warteliste zurueck; mit „smooth" faehrt der
      Browser dabei vom Seitenanfang durch die ganze Seite nach unten, und die
      Antwort auf das Formular zieht sekundenlang vorbei, statt dazustehen.
 
      Fuer Klicks im Menue ist weiches Rollen dagegen richtig — die schaltet
-     diese Zeile wieder frei, sobald das Laden vorbei ist. Wer weniger
+     diese Zeile wieder frei, sobald jemand die Seite anfasst. Wer weniger
      Bewegung eingestellt hat, bekommt es gar nicht erst: das regelt die
-     Medienabfrage im Blatt. */
+     Medienabfrage im Blatt.
+
+     NACHTRAEGLICH heisst hier: nach der ersten Geste, nicht schon beim
+     `load`. Browser springen einen Anker mehrfach an, solange noch Bilder
+     nachkommen — der letzte Versuch faellt genau auf das Ende des Ladens.
+     Stand „smooth" da bereits, faehrt die Seite doch wieder von oben nach
+     unten. Vor der ersten Geste rollt niemand freiwillig; danach kann es
+     nur noch ein Klick gewesen sein. */
   function weichesRollen() {
     document.documentElement.style.scrollBehavior = 'smooth';
+    ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (art) {
+      window.removeEventListener(art, weichesRollen);
+    });
   }
-  if (document.readyState === 'complete') {
-    weichesRollen();
-  } else {
-    window.addEventListener('load', weichesRollen);
-  }
+  ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (art) {
+    window.addEventListener(art, weichesRollen, { passive: true });
+  });
 
   // --- Buchungs-Links verdrahten -------------------------------------------
   const allgemein = ((document.body && document.body.dataset.bookingUrl) || '').trim();
@@ -279,6 +287,110 @@
     const kids = list.matches('.site-nav') ? list.querySelectorAll('a, .site-nav__meta') : list.children;
     [].forEach.call(kids, function (el, i) { el.style.setProperty('--i', i); });
   });
+
+  /* --- Warteliste absenden, ohne die Seite zu verlassen --------------------
+
+     Vorher lief das Formular ueber den normalen Weg: absenden, umleiten auf
+     /?warteliste=…#warteliste, ganze Startseite neu laden, von oben zum Anker
+     hinunter. Der Blick war schon beim Formular, und trotzdem zog erst die
+     halbe Seite vorbei. Fuer die Besucherin sieht das aus wie ein Aussetzer.
+
+     Jetzt geht die Anfrage im Hintergrund hinaus und die Antwort erscheint an
+     genau der Stelle, an der eben noch das Formular stand. Kein Neuladen,
+     kein Sprung, keine Nachfrage „Formular erneut senden?".
+
+     DER ALTE WEG BLEIBT. Ohne JavaScript (oder wenn die Anfrage scheitert)
+     wird das Formular ganz normal abgeschickt und warteliste.php leitet um
+     wie bisher. Das Formular traegt weiterhin method und action — hier wird
+     nur abgefangen, was ohnehin funktionieren wuerde. */
+  const wlFormular = document.querySelector('.wl__form');
+
+  if (wlFormular && window.fetch && window.FormData) {
+    const wlKnopf = wlFormular.querySelector('button[type="submit"]');
+    let laeuft = false;
+
+    /* Meldung setzen. Text und nicht Markup: was aus dem Panel kommt, wird
+       angezeigt und nicht ausgewertet — dieselbe Regel wie in der Vorlage. */
+    function wlMeldung(klasse, rolle, text) {
+      const p = document.createElement('p');
+      // .is-in von Hand: der Beobachter fuer .rise hat diesen Absatz beim
+      // Laden nicht gesehen, sonst bliebe er auf opacity 0 stehen.
+      p.className = klasse + ' is-in';
+      p.setAttribute('role', rolle);
+      p.textContent = text;
+      return p;
+    }
+
+    function wlFehlerZeigen(text) {
+      const alt = wlFormular.querySelector('.wl__fehler');
+      const neu = wlMeldung('wl__fehler', 'alert', text);
+      if (alt) {
+        alt.replaceWith(neu);
+      } else {
+        wlFormular.insertBefore(neu, wlFormular.firstChild);
+      }
+    }
+
+    wlFormular.addEventListener('submit', function (ev) {
+      // Der Browser hat required und type="email" bereits geprueft, sonst
+      // waere dieses Ereignis nicht ausgeloest worden.
+      if (laeuft) { ev.preventDefault(); return; }
+      ev.preventDefault();
+      laeuft = true;
+
+      const beschriftung = wlKnopf ? wlKnopf.textContent : '';
+      if (wlKnopf) {
+        wlKnopf.disabled = true;
+        wlKnopf.setAttribute('aria-busy', 'true');
+        wlKnopf.textContent = 'Wird gesendet …';
+      }
+
+      function zurueckAufAnfang() {
+        laeuft = false;
+        if (wlKnopf) {
+          wlKnopf.disabled = false;
+          wlKnopf.removeAttribute('aria-busy');
+          wlKnopf.textContent = beschriftung;
+        }
+      }
+
+      /* Scheitert die Anfrage (Netz weg, Server antwortet nicht wie
+         erwartet), wird ganz normal abgeschickt. Lieber ein Neuladen als
+         ein Formular, das nichts tut: der Eintrag ist wichtiger als die
+         Bequemlichkeit. */
+      function altenWegGehen() {
+        laeuft = false;
+        if (wlKnopf) {
+          wlKnopf.disabled = false;
+          wlKnopf.removeAttribute('aria-busy');
+          wlKnopf.textContent = beschriftung;
+        }
+        HTMLFormElement.prototype.submit.call(wlFormular);
+      }
+
+      fetch(wlFormular.getAttribute('action') || '/warteliste.php', {
+        method: 'POST',
+        body: new FormData(wlFormular),
+        headers: { 'X-B3-Formular': '1' },
+        credentials: 'same-origin'
+      }).then(function (antwort) {
+        if (!antwort.ok) throw new Error('HTTP ' + antwort.status);
+        return antwort.json();
+      }).then(function (daten) {
+        if (!daten || !daten.text) throw new Error('leere Antwort');
+
+        if (daten.fertig) {
+          /* Eingetragen. Das Formular hat ausgedient — es noch einmal
+             anzubieten laedt dazu ein, sich zweimal einzutragen. Genau so
+             haelt es index.php nach dem Umleiten. */
+          wlFormular.replaceWith(wlMeldung('wl__danke', 'status', daten.text));
+        } else {
+          wlFehlerZeigen(daten.text);
+          zurueckAufAnfang();
+        }
+      }).catch(altenWegGehen);
+    });
+  }
 
   // --- Einblenden ------------------------------------------------------------
   const targets = document.querySelectorAll('.rise, .ph, .moons, .medallion, .stagger, ' + LINE_SEL);
