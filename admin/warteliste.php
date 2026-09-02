@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/../partials/content.php';
+require_once __DIR__ . '/../partials/schema.php';
 
 security_headers();
 require_login();
@@ -34,8 +35,26 @@ $pdo = db();
 $meldung = null;
 $meldungsart = 'ok';
 
+/* --- Tabellen nachziehen ----------------------------------------------- */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && post('schema') === '1') {
+    csrf_check();
+    if ($pdo === null) {
+        $meldung = db_error() ?? 'Keine Datenbankverbindung.';
+        $meldungsart = 'fehler';
+    } else {
+        [$n, $fehler] = schema_anwenden($pdo, __DIR__ . '/../db/schema.sql');
+        if ($fehler !== null) {
+            $meldung = $fehler;
+            $meldungsart = 'fehler';
+        } else {
+            $meldung = 'Datenbank ist auf dem neuesten Stand (' . $n
+                     . ' Anweisungen ausgeführt). Vorhandene Inhalte bleiben unberührt.';
+        }
+    }
+}
+
 /* --- Loeschen --------------------------------------------------------- */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && post('schema') !== '1') {
     csrf_check();
     $id = (int) post('loeschen');
     if ($id > 0 && $pdo !== null) {
@@ -91,8 +110,12 @@ if ($pdo === null) {
             . '(bestaetigt_at IS NULL), COALESCE(bestaetigt_at, created_at) DESC')
             ->fetchAll(PDO::FETCH_ASSOC);
     } catch (Throwable $e) {
-        $fehlerText = 'Die Tabelle `warteliste` fehlt oder ist nicht lesbar. '
-            . 'Sie wird von db/schema.sql angelegt — /admin/setup.php aufrufen.';
+        // NICHT auf setup.php verweisen: die verweigert den Dienst, sobald
+        // ein Konto besteht — der Hinweis liefe ins Leere. Der Knopf darunter
+        // ist der Weg, der auch dann noch funktioniert.
+        $fehlerText = 'Die Tabelle für die Warteliste gibt es noch nicht. '
+            . 'Solange sie fehlt, meldet das Formular auf der Seite einen Fehler '
+            . 'und niemand kann sich eintragen.';
     }
 }
 
@@ -124,6 +147,17 @@ require __DIR__ . '/_header.php';
 
   <?php if ($fehlerText !== null): ?>
     <p class="meldung meldung--fehler"><?= esc($fehlerText) ?></p>
+    <?php /* Der einzige Weg, der ohne phpMyAdmin auskommt. setup.php kann das
+             nicht mehr: sie verweigert den Dienst, sobald ein Konto besteht. */ ?>
+    <form method="post">
+      <?= csrf_field() ?>
+      <p class="hinweis">
+        Die Tabelle wird von <code>db/schema.sql</code> angelegt. Der Knopf führt
+        die Datei aus — er legt nur an, was fehlt, und ändert an vorhandenen
+        Inhalten nichts.
+      </p>
+      <button class="knopf" type="submit" name="schema" value="1">Datenbank aktualisieren</button>
+    </form>
   <?php else: ?>
 
     <p class="hinweis">

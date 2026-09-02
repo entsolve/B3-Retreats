@@ -11,7 +11,14 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+  /* Weiches Rollen erst, wenn die Seite steht — siehe assets/js/main.js.
+
+     Sonst faehrt der Sprung zu einem Anker BEIM LADEN durch die gesamte
+     Seite: nach dem Absenden der Warteliste kommt man auf
+     /?warteliste=…#warteliste zurueck, der Browser beginnt oben und rollt
+     sekundenlang nach unten. Die Antwort auf ein abgeschicktes Formular
+     soll sofort dastehen, nicht angefahren werden. */
+  scroll-behavior: auto;
   overflow-x: clip;   /* die angeschnittene Sonne und der Zweig ragen bewusst raus */
 }
 
@@ -1874,7 +1881,9 @@ body { --consent-h: 0px; --bar-h: 0px; }
 /* --- Abschalter ----------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  /* !important, weil main.js das weiche Rollen nach dem Laden direkt am
+     Element setzt — ein Inline-Stil schlaegt sonst jede Regel hier. */
+  html { scroll-behavior: auto !important; }
 
   .rise, .rise.is-in,
   .stagger > *,

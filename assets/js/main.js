@@ -20,6 +20,27 @@
 (function () {
   'use strict';
 
+  /* Weiches Rollen NACHTRAEGLICH einschalten.
+
+     In tokens/style.css steht `scroll-behavior: auto`, damit der Sprung zu
+     einem Anker beim Laden sofort passiert. Nach dem Absenden der Warteliste
+     kommt man auf /?warteliste=…#warteliste zurueck; mit „smooth" faehrt der
+     Browser dabei vom Seitenanfang durch die ganze Seite nach unten, und die
+     Antwort auf das Formular zieht sekundenlang vorbei, statt dazustehen.
+
+     Fuer Klicks im Menue ist weiches Rollen dagegen richtig — die schaltet
+     diese Zeile wieder frei, sobald das Laden vorbei ist. Wer weniger
+     Bewegung eingestellt hat, bekommt es gar nicht erst: das regelt die
+     Medienabfrage im Blatt. */
+  function weichesRollen() {
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }
+  if (document.readyState === 'complete') {
+    weichesRollen();
+  } else {
+    window.addEventListener('load', weichesRollen);
+  }
+
   // --- Buchungs-Links verdrahten -------------------------------------------
   const allgemein = ((document.body && document.body.dataset.bookingUrl) || '').trim();
   // Wohin, wenn es nichts zu buchen gibt — gesetzt von index.php, sobald
