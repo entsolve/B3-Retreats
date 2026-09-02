@@ -2122,6 +2122,12 @@
     "hint": "Erscheint, wenn Pflichtangaben fehlen. Das Formular bleibt daneben stehen."
   },
   {
+    "path": "warteliste.panne",
+    "label": "Nachricht bei einer technischen Störung",
+    "type": "textarea",
+    "hint": "Erscheint, wenn die Eingabe in Ordnung war und trotzdem etwas schiefging — Datenbank oder E-Mail-Versand. Der Besucherin dann „prüf deine Angaben“ zu sagen, wäre schlicht falsch: sie hat alles richtig gemacht."
+  },
+  {
     "path": "warteliste.pruefen",
     "label": "Nachricht: bitte Postfach prüfen",
     "type": "textarea",

@@ -121,6 +121,13 @@ Wir freuen uns schon sehr auf alles, was kommt – und vielleicht sehen wir uns 
         'hint' => 'Erscheint, wenn Pflichtangaben fehlen. Das Formular bleibt daneben stehen.',
         'default' => 'Da hat leider etwas nicht geklappt. Bitte prüf noch einmal, ob Vor- und Nachname, eine gültige E-Mail-Adresse und das Häkchen zur Einwilligung gesetzt sind.',
     ],
+    'warteliste.panne' => [
+        'group' => '23 Warteliste',
+        'label' => 'Nachricht bei einer technischen Störung',
+        'type' => 'textarea',
+        'hint' => 'Erscheint, wenn die Eingabe in Ordnung war und trotzdem etwas schiefging — Datenbank oder E-Mail-Versand. Der Besucherin dann „prüf deine Angaben“ zu sagen, wäre schlicht falsch: sie hat alles richtig gemacht.',
+        'default' => 'Das lag diesmal nicht an dir — bei uns ist gerade etwas schiefgelaufen. Bitte versuch es später noch einmal oder schreib uns kurz an hello@b3-retreats.de, dann tragen wir dich von Hand ein.',
+    ],
     'warteliste.pruefen' => [
         'group' => '23 Warteliste',
         'label' => 'Nachricht: bitte Postfach prüfen',

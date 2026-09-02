@@ -884,6 +884,8 @@
     "ist_ungueltig": "",
     "ziel": "",
     "cta_knoepfe": "Auf die Warteliste",
-    "cta_knoepfe_aktiv": ""
+    "cta_knoepfe_aktiv": "",
+    "panne": "Das lag diesmal nicht an dir — bei uns ist gerade etwas schiefgelaufen. Bitte versuch es später noch einmal oder schreib uns kurz an hello@b3-retreats.de, dann tragen wir dich von Hand ein.",
+    "ist_panne": ""
   }
 }

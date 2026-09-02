@@ -732,6 +732,9 @@
 {{? warteliste.ist_ungueltig }}
       <p class="wl__fehler" role="alert">{{ warteliste.link_ungueltig }}</p>
 {{/? warteliste.ist_ungueltig }}
+{{? warteliste.ist_panne }}
+      <p class="wl__fehler" role="alert">{{ warteliste.panne }}</p>
+{{/? warteliste.ist_panne }}
 
       <div class="wl__reihe">
         <label class="wl__feld">

@@ -137,8 +137,18 @@ $zustimmungstext = trim(strip_tags(c('warteliste.einwilligung')));
 
 if ($vorname === '' || $nachname === '' || !$zustimmung
     || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    // Kein Betreiberfehler, sondern eine unvollstaendige Eingabe — die
-    // gehoert nicht in die Stoerungsanzeige des Panels.
+    /* Unvollstaendige Eingabe. Ohne Personenbezug festhalten — WELCHES Feld
+       fehlte, nicht wer es war. Sonst bleibt bei „geht nicht" offen, ob es
+       an der Besucherin lag oder an der Technik, und man sucht am falschen
+       Ende. Genau das ist gerade passiert. */
+    $fehlt = [];
+    if ($vorname === '')  { $fehlt[] = 'Vorname'; }
+    if ($nachname === '') { $fehlt[] = 'Name'; }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $fehlt[] = 'gültige E-Mail'; }
+    if (!$zustimmung)     { $fehlt[] = 'Häkchen zur Einwilligung'; }
+    wl_grund('Das Formular kam unvollständig an — es fehlte: '
+        . implode(', ', $fehlt) . '. Das ist meist eine Eingabe der Besucherin '
+        . 'und kein technisches Problem.');
     wl_zurueck('fehler');
 }
 
@@ -165,7 +175,7 @@ if ($pdo && $hash !== null) {
 /* --- Speichern, noch unbestaetigt ------------------------------------ */
 if (!$pdo) {
     wl_grund('Keine Datenbankverbindung. ' . (string) db_error());
-    wl_zurueck('fehler');
+    wl_zurueck('panne');
 }
 
 /* SCHON BESTAETIGT? Dann hier abbiegen, VOR dem Schreiben. Sonst legt das
@@ -206,7 +216,7 @@ try {
     wl_grund('Der Eintrag liess sich nicht speichern. ' . $e->getMessage()
         . ' — fehlt die Tabelle, hilft auf dieser Seite der Knopf '
         . '„Datenbank aktualisieren".');
-    wl_zurueck('fehler');
+    wl_zurueck('panne');
 }
 
 /* --- Bitte bestaetigen ----------------------------------------------- */
@@ -223,7 +233,7 @@ if (!$verschickt) {
     // aller Varianten: sie wartet auf eine Nachricht, die es nicht gibt.
     wl_grund('Die Bestätigungsmail ging nicht hinaus. ' . (string) $fehler
         . ' — Einstellungen unter „E-Mail" prüfen.');
-    wl_zurueck('fehler');
+    wl_zurueck('panne');
 }
 
 wl_grund('');          // geklappt — alte Stoerungsmeldung raeumen

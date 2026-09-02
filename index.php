@@ -55,6 +55,7 @@ $fertig = in_array($stand, ['ok', 'pruefen'], true);   // Formular hat ausgedien
 b3_runtime_set('warteliste.ok',           $stand === 'ok'             ? '1' : '');
 b3_runtime_set('warteliste.ist_pruefen',  $stand === 'pruefen'        ? '1' : '');
 b3_runtime_set('warteliste.nicht_ok',     $stand === 'fehler'         ? '1' : '');
+b3_runtime_set('warteliste.ist_panne',    $stand === 'panne'          ? '1' : '');
 b3_runtime_set('warteliste.ist_ungueltig', $stand === 'link-ungueltig' ? '1' : '');
 b3_runtime_set('warteliste.formular',     $fertig                     ? ''  : '1');
 

@@ -766,6 +766,7 @@ Du stehst jetzt ganz unverbindlich auf unserer Warteliste. Sobald der Termin fü
 
 Wir freuen uns schon sehr auf alles, was kommt – und vielleicht sehen wir uns ganz bald beim Retreat!', 'textarea'),
 ('warteliste.fehler', 'Da hat leider etwas nicht geklappt. Bitte prüf noch einmal, ob Vor- und Nachname, eine gültige E-Mail-Adresse und das Häkchen zur Einwilligung gesetzt sind.', 'textarea'),
+('warteliste.panne', 'Das lag diesmal nicht an dir — bei uns ist gerade etwas schiefgelaufen. Bitte versuch es später noch einmal oder schreib uns kurz an hello@b3-retreats.de, dann tragen wir dich von Hand ein.', 'textarea'),
 ('warteliste.pruefen', 'Fast geschafft! Wir haben dir eine E-Mail geschickt.
 
 Bitte klick auf den Bestätigungslink darin – erst danach stehst du auf der Warteliste. Schau notfalls kurz im Spam-Ordner nach.', 'textarea'),

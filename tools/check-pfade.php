@@ -57,6 +57,7 @@ const LAUFZEIT_SCHALTER = [
     'warteliste.formular' => '1',
     'warteliste.ist_pruefen' => '1',
     'warteliste.ist_ungueltig' => '1',
+    'warteliste.ist_panne' => '1',
     'haus.shared.frei' => '1',
     'haus.shared.voll' => '1',
     'haus.friends.frei' => '1',
